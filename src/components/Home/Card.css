@@ -1,0 +1,52 @@
+.solution-card {
+    /* background-color: #fafafc; */
+    box-shadow: 17px 17px 11px -12px black;
+    color: #030c65;
+    border: none;
+    padding: 70px 30px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border-radius: 10px;
+  }
+
+  .solution-card .icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .solution-card .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .card-details {
+    font-size: 20px !important;
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .solution-card:hover {
+   background-color: #00437C;
+   color: white;
+  }
+
+  .solution-card:hover .icon,
+  .solution-card:hover .title {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .solution-card:hover .card-details {
+    opacity: 1;
+  }

@@ -1,0 +1,77 @@
+.services-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 0px !important;
+    position: relative;
+    display: inline-block;
+  }
+
+  .service-card {
+    background-color: #061068;
+    height: 300px;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .service-card {
+    background-color: #061068;
+    border-radius: 10px;
+    padding: 70px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .default-content {
+    margin-top: 40px;
+    transition: opacity 0.4s ease;
+  }
+  
+  .service-card:hover .default-content {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding: 40px;
+  }
+
+  .service-card:hover .overlay-content {
+    opacity: 1;
+    visibility: visible;
+  }
+  

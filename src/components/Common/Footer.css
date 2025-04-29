@@ -1,0 +1,12 @@
+.bg-dark-blue {
+    background-color: #040f6d;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  .foot-icon{
+    width: 36px; 
+    height: 36px;
+  }
