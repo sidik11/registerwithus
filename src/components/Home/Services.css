@@ -11,6 +11,18 @@
     display: inline-block;
   }
 
+  .section-title .overlap-cont::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 111px;
+    height: 21px;
+    width: 100%;
+    background: url(../../../public/img/Element.png) no-repeat center;
+    background-size: contain;
+    z-index: -1;
+  }
+
   .service-card {
     background-color: #061068;
     height: 300px;

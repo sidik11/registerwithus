@@ -1,6 +1,6 @@
 .why-section {
     padding: 60px 0;
-    background-color: #fff;
+    /* background-color: #fff; */
   }
 
   .why-heading {
@@ -9,6 +9,18 @@
     text-align: center;
     margin-bottom: 50px;
     position: relative;
+  }
+
+  .why-heading .bg-conten::after {
+    content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 100px;
+      height: 18px;
+      width: 100%;
+      background: url(../../../public/img/Element.png) no-repeat center;
+      background-size: contain;
+      z-index: -1;
   }
 
   .why-heading::after {

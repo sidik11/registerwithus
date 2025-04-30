@@ -7,7 +7,8 @@ import './Whychooseus.css'
 function Aboutmain() {
     return (
         <section className="why-section container">
-            <h2 className="why-heading">Why Choose Us?</h2>
+            <h2 className="why-heading"><span className="bg-conten" >Why Choose Us?</span></h2>
+            {/* <h2 className="section-title text-center text-dark pb-5 d-block"><span className="bg-conten" >Why Choose Us?</span></h2> */}
             <div className="row g-5 d-flex justify-content-center align-items-center">
                 <div className="col-lg-5 text-center">
                     <div className="why-image">

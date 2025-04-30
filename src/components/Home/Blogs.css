@@ -11,17 +11,17 @@
     display: inline-block;
   }
 
-  /* .section-title span::after {
+  .section-title span::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 12px;
+    bottom: 48px;
+    left: 93px;
+    height: 18px;
     width: 100%;
-    background: url('https://i.imgur.com/ADmE7zN.png') no-repeat center;
+    background: url(../../../public/img/Element.png) no-repeat center;
     background-size: contain;
     z-index: -1;
-  } */
+  }
 
   .blog-card {
     border: none;

@@ -8,7 +8,7 @@ function Services() {
     return (
         <section className="services-section text-center">
             <div className="container">
-                <h2 className="section-title">Our Services</h2>
+                <h2 className="section-title"><span className="overlap-cont" >Our Services</span></h2>
                 <div className="row mt-5">
 
                     <div className="col-md-4 mb-4">

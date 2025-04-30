@@ -8,8 +8,8 @@ function WhatClientSays() {
   return (
     <div className="container py-5 text-center">
       <h2 className="section-title d-block" >
-        <span className="fw-bold mb-5">
-          What Our Clients <span className="">Says</span>
+        <span className="fw-bold mb-5 overlap-conten">
+          What Our Clients Says
         </span>
       </h2>
 
