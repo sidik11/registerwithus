@@ -1,16 +1,22 @@
+/* Ensure dropdowns are positioned correctly */
 .dropdown-menu li {
   position: relative;
-  }
-  .dropdown-menu .dropdown-submenu {
+}
+.dropdown-menu .dropdown-submenu {
   display: none;
   position: absolute;
   left: 100%;
   top: -7px;
-  }
-  .dropdown-menu .dropdown-submenu-left {
+}
+.dropdown-menu .dropdown-submenu-left {
   right: 100%;
   left: auto;
-  }
-  .dropdown-menu > li:hover > .dropdown-submenu {
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
-  }
+}
+/* Optional: Add styles for active dropdown items */
+.navbar-nav .nav-item.active .nav-link {
+  font-weight: bold;
+  color: #007bff;
+}
