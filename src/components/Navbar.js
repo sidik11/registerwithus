@@ -2,34 +2,41 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Collapse from "bootstrap/js/dist/collapse";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../components/Common/Navbar.css";
+import "./Navbar.css";
+
 function Navbar() {
   const handleNavLinkClick = () => {
     const navbar = document.getElementById("navbarNav");
-    const bsCollapse = new window.bootstrap.Collapse(navbar);
+    const bsCollapse = Collapse.getInstance(navbar);
     if (bsCollapse) {
       bsCollapse.hide();
     }
   };
+
   useEffect(() => {
     const submenuElements = document.querySelectorAll('.dropdown-submenu');
+
     const mouseEnterHandler = (event) => {
       const submenu = event.currentTarget.querySelector('.dropdown-menu');
       if (submenu) {
         submenu.classList.add('show');
       }
     };
+
     const mouseLeaveHandler = (event) => {
       const submenu = event.currentTarget.querySelector('.dropdown-menu');
       if (submenu) {
         submenu.classList.remove('show');
       }
     };
+
     submenuElements.forEach((element) => {
       element.addEventListener('mouseenter', mouseEnterHandler);
       element.addEventListener('mouseleave', mouseLeaveHandler);
     });
+
     return () => {
       submenuElements.forEach((element) => {
         element.removeEventListener('mouseenter', mouseEnterHandler);
@@ -37,7 +44,9 @@ function Navbar() {
       });
     };
   }, []);
+
   const preventDefault = (e) => e.preventDefault();
+
   return (
     <nav className="navbar navbar-expand-lg py-3">
       <div className="container">
@@ -45,29 +54,32 @@ function Navbar() {
           <img src="img/logo.png" alt="Logo" className="me-2" />
           REGISTER WITH US
         </Link>
+
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <i className="fas fa-bars"></i>
         </button>
+
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
+
             <li className="nav-item">
               <Link className="nav-link" to="/" onClick={handleNavLinkClick}>
                 Home
               </Link>
             </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="/about" onClick={handleNavLinkClick}>
                 About Us
               </Link>
             </li>
+
+            {/* Services Dropdown */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -80,10 +92,13 @@ function Navbar() {
               >
                 Services
               </a>
+
               <ul className="dropdown-menu" aria-labelledby="servicesDropdown">
+
                 <li>
                   <a className="dropdown-item" href="#">Service 1</a>
                 </li>
+
                 <li className="dropdown-submenu">
                   <a
                     className="dropdown-item dropdown-toggle"
@@ -92,8 +107,13 @@ function Navbar() {
                   >
                     Service 2
                   </a>
+
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Service 2.1</a></li>
+
+                    <li>
+                      <a className="dropdown-item" href="#">Service 2.1</a>
+                    </li>
+
                     <li className="dropdown-submenu">
                       <a
                         className="dropdown-item dropdown-toggle"
@@ -102,6 +122,7 @@ function Navbar() {
                       >
                         Service 2.2
                       </a>
+
                       <ul className="dropdown-menu">
                         <li><a className="dropdown-item" href="#">Service 2.2.1</a></li>
                         <li><a className="dropdown-item" href="#">Service 2.2.2</a></li>
@@ -110,30 +131,40 @@ function Navbar() {
                         <li><a className="dropdown-item" href="#">Service 2.2.5</a></li>
                       </ul>
                     </li>
+
                     <li><a className="dropdown-item" href="#">Service 2.3</a></li>
                     <li><a className="dropdown-item" href="#">Service 2.4</a></li>
                     <li><a className="dropdown-item" href="#">Service 2.5</a></li>
+
                   </ul>
                 </li>
+
                 <li><a className="dropdown-item" href="#">Service 3</a></li>
                 <li><a className="dropdown-item" href="#">Service 4</a></li>
                 <li><a className="dropdown-item" href="#">Service 5</a></li>
+
               </ul>
             </li>
+
+        
+
             <li className="nav-item">
               <Link className="nav-link" to="/blogs" onClick={handleNavLinkClick}>
                 Blogs
               </Link>
             </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="/contact" onClick={handleNavLinkClick}>
                 Contact Us
               </Link>
             </li>
+
           </ul>
         </div>
       </div>
     </nav>
   );
 }
+
 export default Navbar;
