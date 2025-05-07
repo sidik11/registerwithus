@@ -7,7 +7,7 @@ import './Servicedetails.css'
 function Servicedetails() {
     return (
         <section>
-            <div className="container py-5">
+            <div className="container py-5 mt-5">
                 <div class="row align-items-center mb-5">
                     <div class="col-md-7">
                         <h3 class="fw-bold">Get Online EPF Registration</h3>
