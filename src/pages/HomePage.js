@@ -8,6 +8,8 @@ import Blogs from '../components/Home/Blogs';
 import Clients from '../components/Home/Clients';
 import RegisterWithUs from '../components/Home/RegisterWithUs';
 import WhatClientSays from '../components/Home/WhatClientSays';
+import WhyChooseUs from '../components/Home/WhyChooseUs';
+import Faq from '../components/Faq/Faq';
 import Footer from '../components/Common/Footer';
 import '../pages/Homepage.css'
 
@@ -23,6 +25,8 @@ const HomePage = () => {
             <Clients />
             <RegisterWithUs />
             <WhatClientSays />
+            <WhyChooseUs />
+            <Faq />
             <Footer />
         </>
     );

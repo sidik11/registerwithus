@@ -7,7 +7,8 @@ function Faq() {
     return (
         <section>
             <div className="container my-5">
-                <h2 className="text-center text-primary fw-bold mb-4">Frequently Asked Questions</h2>
+                {/* <h2 className="text-center text-primary fw-bold mb-4">Frequently Asked Questions</h2> */}
+                <h2 className="section-title text-center text-dark pb-5 d-block"><span className="overlap-conte" >Frequently Asked Questions</span></h2>
 
                 <div className="accordion" id="faqAccordion">
 

@@ -16,32 +16,6 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const submenuElements = document.querySelectorAll(".dropdown-submenu");
-
-    const mouseEnterHandler = (event) => {
-      const submenu = event.currentTarget.querySelector(".dropdown-menu");
-      if (submenu) submenu.classList.add("show");
-    };
-
-    const mouseLeaveHandler = (event) => {
-      const submenu = event.currentTarget.querySelector(".dropdown-menu");
-      if (submenu) submenu.classList.remove("show");
-    };
-
-    submenuElements.forEach((element) => {
-      element.addEventListener("mouseenter", mouseEnterHandler);
-      element.addEventListener("mouseleave", mouseLeaveHandler);
-    });
-
-    return () => {
-      submenuElements.forEach((element) => {
-        element.removeEventListener("mouseenter", mouseEnterHandler);
-        element.removeEventListener("mouseleave", mouseLeaveHandler);
-      });
-    };
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector(".navbar");
       if (window.scrollY > 50) {
@@ -54,8 +28,6 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const preventDefault = (e) => e.preventDefault();
 
   return (
     <nav className="navbar navbar-expand-lg py-3 fixed-top">
@@ -74,136 +46,157 @@ function Navbar() {
           <i className="fas fa-bars"></i>
         </button>
 
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link" to="/" onClick={handleNavLinkClick}>
                 Home
               </Link>
             </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="/about" onClick={handleNavLinkClick}>
                 About Us
               </Link>
             </li>
 
-            <li className="nav-item dropdown">
+            {/* Mega Dropdown Services */}
+            <li className="nav-item dropdown position-static">
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="servicesDropdown"
+                id="megaDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                onClick={preventDefault}
               >
                 Services
               </a>
-
-              <ul className="dropdown-menu" aria-labelledby="servicesDropdown">
-                <li className="dropdown-submenu">
-                  <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>Business Registration</Link>
-                  <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/service">Solo Partnership</Link></li>
-                    <li><Link className="dropdown-item" to="/service">Partnership</Link></li>
-                    <li><Link className="dropdown-item" to="/service">LLP Registration</Link></li>
-                    <li className="dropdown-submenu">
-                      <Link className="dropdown-item dropdown-toggle" to="/service">Company Registration</Link>
-                      <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/service">Private Limited Company</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Public Limited Company</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Foreign Company</Link></li>
-                        <li><Link className="dropdown-item" to="/service">NGO / Section 8 Company</Link></li>
+              <div className="dropdown-menu w-100 mega-dropdown mt-0 p-4 border-0 shadow">
+                <div className="container">
+                  <div className="row">
+                    {/* Column 1 */}
+                    <div className="col-md-3">
+                      <h5 className="fw-bold mb-2"><i className="fas fa-file-alt me-2"></i>Business Registration</h5>
+                      <ul className="list-unstyled">
+                        <li className="fs-4" ><Link to="#">Solo Partnership</Link></li>
+                        <li><Link to="/service">Partnership</Link></li>
+                        <li><Link to="/service">LLP Registration</Link></li>
+                        <li><Link to="/service">Company Registration</Link></li>
+                        <ul className="list-unstyled" >
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Private Limited Company</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Private Limited Company</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Foreign Company</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            NGO / Section & Company</Link></li>
+                        </ul>
                       </ul>
-                    </li>
-                  </ul>
-                </li>
+                    </div>
 
-                <li className="dropdown-submenu">
-                  <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>Trade Licenses</Link>
-                  <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/service">PAN</Link></li>
-                    <li><Link className="dropdown-item" to="/service">GST</Link></li>
-                    <li><Link className="dropdown-item" to="/service">IEC</Link></li>
-                    <li className="dropdown-submenu">
-                      <Link className="dropdown-item dropdown-toggle" to="/service">Food Licenses / FSSAI</Link>
-                      <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/service">Manufacturer</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Wholesale / Retail</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Relabeler</Link></li>
+                    {/* Column 2 */}
+                    <div className="col-md-2">
+                      <h5 className="fw-bold mb-2"><i className="fas fa-hand-holding-heart me-2"></i>Trade Licenses</h5>
+                      <ul className="list-unstyled">
+                        <li><Link to="/service">PAN</Link></li>
+                        <li><Link to="/service">GST</Link></li>
+                        <li><Link to="/service">IEC</Link></li>
+                        <li><Link to="/service">Food License/FSSAI</Link></li>
+                        <li><Link to="/service">Profession Tax Registration</Link></li>
+                        <li><Link to="/service">MSME</Link></li>
+                        <li><Link to="/service">Start-up Registration</Link></li>
+                        <li><Link to="/service">Shops & Establishment</Link></li>
+                        <li><Link to="/service">APEDA Registration</Link></li>
                       </ul>
-                    </li>
-                    <li><Link className="dropdown-item" to="/service">Professional Tax Registrations</Link></li>
-                    <li><Link className="dropdown-item" to="/service">MSME</Link></li>
-                    <li><Link className="dropdown-item" to="/service">Start-up Registration</Link></li>
-                    <li><Link className="dropdown-item" to="/service">Shops and Establishment</Link></li>
-                    <li><Link className="dropdown-item" to="/service">APEDA Registration</Link></li>
-                  </ul>
-                </li>
+                    </div>
 
-                <li className="dropdown-submenu">
-                  <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>Labour Laws</Link>
-                  <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/service">PF Registrations</Link></li>
-                    <li><Link className="dropdown-item" to="/service">ESIC Registrations</Link></li>
-                  </ul>
-                </li>
-
-                <li className="dropdown-submenu">
-                  <Link className="dropdown-item dropdown-toggle" to="/service/trademarks" onClick={preventDefault}>Trademarks</Link>
-                  <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/service">TM Registrations</Link></li>
-                    <li><Link className="dropdown-item" to="/service">TM Renewals</Link></li>
-                    <li><Link className="dropdown-item" to="/service">TM Assignments / Transfers</Link></li>
-                    <li><Link className="dropdown-item" to="/service">TM Amendments</Link></li>
-                  </ul>
-                </li>
-
-                <li className="dropdown-submenu">
-                  <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>Company Compliances</Link>
-                  <ul className="dropdown-menu">
-                    <li className="dropdown-submenu">
-                      <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>Transfers</Link>
-                      <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/service">Share Transfers</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Share Transmissions</Link></li>
+                    {/* Column 3 */}
+                    <div className="col-md-2">
+                      <h5 className="fw-bold mb-2"><i className="fas fa-balance-scale me-2"></i>Labour Laws</h5>
+                      <ul className="list-unstyled">
+                        <li><Link to="/service">PF Registrations</Link></li>
+                        <li><Link to="/service">ESIC Registrations</Link></li>
                       </ul>
-                    </li>
-                    <li><Link className="dropdown-item" to="/service">Share Allotments</Link></li>
-                    <li><Link className="dropdown-item" to="/service">Equity / Debt Raising</Link></li>
-                    <li><Link className="dropdown-item" to="/service">Equity / Debt Raising</Link></li>
-                    <li className="dropdown-submenu">
-                      <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>Change</Link>
-                      <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/service">MSME Filings</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Return of Deposit</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Fund Raise</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Annual Filing</Link></li>
+                      <h5 className="fw-bold mb-2"><i className="fas fa-certificate me-2"></i>Trademarks</h5>
+                      <ul className="list-unstyled">
+                        <li><Link to="/service">TM Registrations</Link></li>
+                        <li><Link to="/service">TM Renewals</Link></li>
+                        <li><Link to="/service">TM Assignments / Transfers</Link></li>
+                        <li><Link to="/service">TM Amendments</Link></li>
                       </ul>
-                    </li>
-                  </ul>
-                </li>
+                    </div>
 
-                <li className="dropdown-submenu">
-                  <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>Tax Filings</Link>
-                  <ul className="dropdown-menu">
-                    <li className="dropdown-submenu">
-                      <Link className="dropdown-item dropdown-toggle" to="/service" onClick={preventDefault}>ITR Filing</Link>
-                      <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/service">Individual</Link></li>
-                        <li><Link className="dropdown-item" to="/service">Corporate</Link></li>
+                    {/* Column 4 */}
+                    {/* <div className="col-md-3">
+                      <h5 className="fw-bold mb-2"><i className="fas fa-balance-scale me-2"></i>Company Compliances</h5>
+                      <li><Link to="/service">Transfers</Link></li>
+                      <ul className="list-unstyled" >
+                        <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                          Share Transfers</Link></li>
+                        <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                          Share Transmissions</Link></li>
                       </ul>
-                    </li>
-                    <li><Link className="dropdown-item" to="/service">GST Returns</Link></li>
-                    <li><Link className="dropdown-item" to="/service">TDS Filing</Link></li>
-                  </ul>
-                </li>
+                      <li><Link to="/service">Share Allotments</Link></li>
+                      <li><Link to="/service">Equity / Debt Raising</Link></li>
+                      <li><Link to="/service">Change</Link></li>
+                      <ul className="list-unstyled" >
+                        <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                          MSME Fillings</Link></li>
+                        <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                          Return of Deposit</Link></li>
+                        <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                          Fund Raising</Link></li>
+                        <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                          Annual Filling</Link></li>
+                      </ul>
+                    </div> */}
+                    <div className="col-md-3">
+                      <h5 className="fw-bold mb-2"><i className="fas fa-file-alt me-2"></i>Company Compliances</h5>
+                      <ul className="list-unstyled">
+                        <li><Link to="/service">Transfers</Link></li>
+                        <ul className="list-unstyled" >
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Share Transfers</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Share Transmissions</Link></li>
+                        </ul>
+                        <li><Link to="/service">Share Allotments</Link></li>
+                        <li><Link to="/service">Equity / Debt Raising</Link></li>
+                        <li><Link to="/service">Change</Link></li>
+                        <ul className="list-unstyled" >
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            MSME Fillings</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Return of Deposit</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Fund Raising</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Annual Filling</Link></li>
+                        </ul>
+                      </ul>
+                    </div>
 
-                <li><Link className="dropdown-item" to="/service">ISO Certifications</Link></li>
-              </ul>
+                    {/* Column 5 */}
+                    <div className="col-md-2">
+                      <h5 className="fw-bold mb-2"><i className="fas fa-utensils me-2"></i>Tax Fillings</h5>
+                      <ul className="list-unstyled">
+                        <li><Link to="/service">ITR Filling</Link></li>
+                        <ul className="list-unstyled" >
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Individual</Link></li>
+                          <li><Link to="/service"><i class="fa fa-arrow-right me-2" aria-hidden="true"></i>
+                            Corporate</Link></li>
+                        </ul>
+                        <li><Link to="/service">GST Returns</Link></li>
+                        <li><Link to="/service">TDS Fillings</Link></li>
+                      </ul>
+                      <h5 className="fw-bold mb-2"><i className="fas fa-utensils me-2"></i>Tax Fillings</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </li>
 
             <li className="nav-item">
@@ -211,11 +204,19 @@ function Navbar() {
                 Blogs
               </Link>
             </li>
-
             <li className="nav-item">
               <Link className="nav-link" to="/contact" onClick={handleNavLinkClick}>
                 Contact Us
               </Link>
+            </li>
+            <li className="nav-item">
+              <a
+                href="tel:+917855865181"
+                className="d-inline-flex align-items-center px-3 py-2 text-white contact-nav"
+              >
+                <i className="fa fa-phone me-2"></i>
+                +917855865181
+              </a>
             </li>
           </ul>
         </div>

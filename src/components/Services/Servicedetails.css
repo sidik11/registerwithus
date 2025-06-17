@@ -1,3 +1,175 @@
 .obj-img {
     height: 240px !important;
 }
+
+.hero-gradient-bg {
+    min-height: 100%;
+    background-image:
+        linear-gradient(to bottom right, #4c57b8 40%, transparent 109%),
+        /* top-left to center */
+        linear-gradient(to top left, #fbfbfb 30%, transparent 70%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 4.6rem;
+}
+
+.styled-form-container {
+    background: linear-gradient(145deg, #f0f8ff, #ffffff);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.custom-input {
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-input:focus {
+    border-color: #00bcd4;
+    box-shadow: 0 0 0 0.2rem rgba(0, 188, 212, 0.25);
+}
+
+.custom-addon {
+    background-color: #e0f7fa;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.btn-gradient {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+.tab-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    border-radius: 50px;
+    padding: 0 40px;
+}
+
+.scroll-tabs {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1rem;
+    padding: 10px 0;
+    margin: 0;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.scroll-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.tab-arrow.left {
+    left: 5px;
+}
+
+.tab-arrow.right {
+    right: 5px;
+}
+
+.nav-link {
+    border-radius: 20px !important;
+    padding: 8px 20px;
+    background-color: transparent;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    background-color: orange !important;
+    color: white !important;
+}
+
+.scroll-tabs .nav-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.scroll-tabs .nav-link {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* ✅ Sticky form only within section */
+.sticky-form {
+    position: relative;
+    /* transition: all 0.3s ease; */
+}
+
+/* Fix the form on scroll */
+.fixed-form {
+    position: fixed !important;
+    top: 190px;
+    right: 74px;
+    width: 356px;
+    z-index: 999;
+}
+
+.at-bottom {
+    position: absolute !important;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+/* Fix the tab pills on scroll */
+.fixed-tabs {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background: #f8f9fa;
+    z-index: 998;
+    padding: 10px 40px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+}
+
+.fixed-tabs {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.nav-pills .nav-link {
+  color: #333;
+  background-color: transparent;
+  border-radius: 0;
+  transition: background-color 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #007bff; /* or your preferred color */
+  color: white;
+  font-weight: bold;
+}

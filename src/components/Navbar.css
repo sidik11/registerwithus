@@ -22,7 +22,7 @@
   height: 32px;
 }
 
-/* Navbar Links - Default (on transparent background) */
+/* Navbar Links */
 .navbar-nav .nav-link {
   font-weight: 600;
   color: #fff;
@@ -30,44 +30,24 @@
   transition: color 0.3s ease;
 }
 
-/* Hover and Focus */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
   color: #8686ff;
 }
 
-/* Active link */
 .navbar-nav .nav-link.active {
   color: #8686ff !important;
 }
 
-/* Special case: Home page */
-.navbar-nav .nav-link.home-active {
-  color: #8686ff !important;
-}
-
-/* Scrolled Navbar - change link color to black */
 .navbar.scrolled .nav-link {
   color: #000 !important;
 }
 
-/* Scrolled + Hover/Focus */
 .navbar.scrolled .nav-link:hover,
 .navbar.scrolled .nav-link:focus {
   color: #8686ff !important;
 }
 
-/* Scrolled + Active */
-.navbar.scrolled .nav-link.active {
-  color: #8686ff !important;
-}
-
-/* Scrolled + Home */
-.navbar.scrolled .nav-link.home-active {
-  color: #8686ff !important;
-}
-
-/* Navbar Toggler */
 .navbar-toggler {
   border: none;
   font-size: 1.25rem;
@@ -77,52 +57,57 @@
   box-shadow: none;
 }
 
-/* Mega Menu Styles */
-.mega-dropdown {
-  position: relative;
-}
-
-.mega-dropdown:hover .mega-menu {
-  display: block;
-}
-
-.mega-menu {
-  display: none;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 100%;
-  background-color: white;
-  z-index: 1000;
-}
-
-.mega-menu h6 {
+/* Contact Nav Style */
+.contact-nav {
+  background-color: #0a0a83;
+  border-radius: 999px;
+  text-decoration: none;
   font-weight: bold;
-  margin-bottom: 1rem;
 }
 
-.mega-menu .dropdown-item {
-  padding: 0.25rem 0;
-  color: #333;
+/* Mega Dropdown Styles */
+.mega-dropdown {
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  z-index: 999;
 }
 
-.mega-menu .dropdown-item:hover {
-  color: #8686ff;
+.mega-dropdown .row {
+  justify-content: space-between;
 }
 
-/* Responsive Fix for Mega Menu */
-@media (max-width: 991.98px) {
-  .mega-menu {
-    position: static;
-    display: block;
-    width: 100%;
-    padding: 1rem 0;
-  }
+.mega-dropdown h5 {
+  /* font-size: 14px; */
+  color: #0A0A83;
 }
 
-@media (min-width: 992px) {
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
-      position: absolute;
-      left: -150px;
-  }
+.mega-dropdown ul {
+  padding-left: 0;
+}
+
+.mega-dropdown ul li {
+  margin-bottom: 5px;
+}
+
+.mega-dropdown ul li a {
+  font-size: 1rem;
+  color: #000;
+  display: block;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.mega-dropdown ul li span {
+  font-size: 1rem;
+  color: #000;
+  display: block;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.mega-dropdown ul li a:hover {
+  color: #0A0A83;
+  text-decoration: underline;
 }
