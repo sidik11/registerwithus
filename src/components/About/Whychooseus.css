@@ -1,5 +1,5 @@
 .why-section {
-    padding: 60px 0;
+    padding: 60px 0px;
     /* background-color: #fff; */
   }
 
@@ -11,7 +11,7 @@
     position: relative;
   }
 
-  .why-heading .bg-conten::after {
+  /* .why-heading .bg-conten::after {
     content: '';
       position: absolute;
       bottom: -1px;
@@ -31,9 +31,7 @@
     transform: translateX(-50%);
     width: 120px;
     height: 10px;
-    /* background: url('img/underline.png') no-repeat center center;
-    background-size: contain; */
-  }
+  } */
 
   .why-image img {
     max-width: 85%;

@@ -13,6 +13,7 @@ function ChatWidget() {
   const [selectedOption, setSelectedOption] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const [viewText, setViewText] = useState("");
   const [loading, setLoading] = useState(false);
   const chatBodyRef = useRef(null);
 
@@ -66,7 +67,14 @@ function ChatWidget() {
       showTypingThen("Please enter your number.", 3);
     } else if (step === 3) {
       setNumber(userInput);
-      showTypingThen(`Thanks ${name}! Please click Submit.`, 4);  // use `name` here
+      if (selectedOption === "Others") {
+        showTypingThen("Type your view.", 5);
+      } else {
+        showTypingThen(`Thanks ${userInput}! Please click Submit.`, 4);
+      }
+    } else if (step === 5) {
+      setViewText(userInput);
+      showTypingThen(`Thanks for your response, ${name}. Please click Submit.`, 4);
     }
 
     setUserInput("");
@@ -75,12 +83,16 @@ function ChatWidget() {
   const handleWhatsAppRedirect = () => {
     const phone = "917855865181";
 
-    // if (!selectedOption || !name.trim() || !number.trim()) {
-    //   alert("⚠️ Please complete all fields before submitting.");
-    //   return;
-    // }
+    const message = selectedOption === "Others"
+      ? `Hi, my name is ${name}. I selected "Others".
+Here is my view: ${viewText}
+You can contact me at: ${number}.
+Thanks!`
+      : `Hi, my name is ${name}. I'm interested in ${selectedOption}.
+Please share the details regarding the process, documents required, and charges.
+You can contact me at: ${number}.
+Thanks!`;
 
-    const message = `Hello Ankita 👋,\nI am interested in *${selectedOption}*.\nName: ${name}\nPhone: ${number}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
 
@@ -90,13 +102,10 @@ function ChatWidget() {
       alert("❌ Failed to open WhatsApp. Please ensure popup is allowed.");
     } else {
       setTimeout(() => {
-        if (newWindow.closed) {
-          alert("✅ WhatsApp opened — please check if the message is pre-filled.");
-        } else {
-          alert("🔔 WhatsApp opened. If the message isn't pre-filled, please type it manually.");
-        }
-      }, 2000);
+        window.location.reload();
+      }, 1000);
     }
+
   };
 
   return (
@@ -130,7 +139,8 @@ function ChatWidget() {
                     "LLP Registration",
                     "OPC(One Person Company) Registration",
                     "Public Company Registration",
-                    "Virtual Company Registration"
+                    "Virtual Company Registration",
+                    "Others"
                   ].map((opt) => (
                     <button key={opt} className="option-btn" onClick={() => handleOptionClick(opt)}>
                       {opt}
@@ -140,14 +150,18 @@ function ChatWidget() {
               )}
             </div>
 
-            {(step === 2 || step === 3) && (
+            {(step === 2 || step === 3 || step === 5) && (
               <div className="input-bar">
                 <input
                   type="text"
                   className="form-control"
                   value={userInput}
                   onChange={(e) => setUserInput(e.target.value)}
-                  placeholder={step === 2 ? "Enter your name" : "Enter your number"}
+                  placeholder={
+                    step === 2 ? "Enter your name" :
+                      step === 3 ? "Enter your number" :
+                        "Type your view"
+                  }
                 />
                 <button className="btn btn-primary" onClick={handleSubmitInput}>Send</button>
               </div>
@@ -163,7 +177,7 @@ function ChatWidget() {
       )}
 
       {/* Footer (unchanged) */}
-      <footer className="main-footer bg-dark-blue text-white pt-5 pb-3">
+      <footer id="footer" className="main-footer bg-dark-blue text-white pt-5 pb-3">
         <div className="container">
           <div className="row gy-5">
             <div className="col-lg-3 col-sm-12 text-start">
@@ -204,6 +218,7 @@ function ChatWidget() {
               <ul className="list-unstyled small">
                 <li className="mb-3"><Link to="/about" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> About</Link></li>
                 <li className="mb-3"><Link to="/blogs" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> Blog</Link></li>
+                {/* <li className="mb-3"><Link to="/hero" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> Hero Banner</Link></li> */}
                 <li><Link to="/faqs" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> FAQ's</Link></li>
               </ul>
             </div>
@@ -217,12 +232,95 @@ function ChatWidget() {
           </div>
 
           <hr className="border-secondary my-4" />
+
+          <div className="footer-service-dark text-white">
+            <div className="row">
+              <div className="col-12 mb-4" id="business-registration" >
+                <h6 className="section-title footer-heading">Business Registration</h6>
+                <div className="row g-2">
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Sole Proprietorship</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Partnership</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>LLP Registration</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Private Limited Company Registration</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Public Limited Company Registration</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Foreign Company Registration</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>NGO / Section 8 Company Registration</div>
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 id="trade-licenses" className="section-title footer-heading">Trade Licenses</h6>
+                <div className="row g-2">
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>PAN</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>GST</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>IEC</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Manufactures</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Wholesale / Retail</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Relabeler</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Professional Tax Registrations</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>MSME</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Start-Up Registration</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Shops & Establishment</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>APEDA Registration</div>
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 className="section-title footer-heading">Labour Laws</h6>
+                <div className="row g-2">
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>One Time PF Registrations</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>ESIC Registrations</div>
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 className="section-title footer-heading">Trademarks</h6>
+                <div className="row g-2">
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Registration</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Renewal</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Assignments / Transfers</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Amendments</div>
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 id="company-compliances" className="section-title footer-heading">Company Compliance</h6>
+                <div className="row g-2">
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Share Transfers</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Share Transmission</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Share Allotments</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Equity / Debt Raising</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Change in Directors / KMP</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Change in Auditors</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Change in Address / Shifting of Office</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>MSME Fillings</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Return of Deposit</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Fund Raise</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Annual Filling</div>
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 id="tax-fillings" className="section-title footer-heading">Tax Filling</h6>
+                <div className="row g-2">
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Individual ITR Fillings</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Corporate ITR Fillings</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>GST Returns</div>
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TDS Fillings</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-secondary my-4" />
+
           <div className="d-flex flex-wrap justify-content-between align-items-center text-center text-md-start small">
             <div className="mb-2 mb-md-0 text-start">
-              <a href="#" className="text-white me-4 text-decoration-none">Terms & privacy</a>
-              <a href="#" className="text-white me-4 text-decoration-none">Security</a>
-              <a href="#" className="text-white me-4 text-decoration-none">Status</a>
+              <a href="/privacy" className="text-white me-4 text-decoration-none">Privacy Policy</a>
+              <a href="/refund" className="text-white me-4 text-decoration-none">Refund Policy</a>
+              {/* <a href="#" className="text-white me-4 text-decoration-none">Status</a> */}
               <span>©2025 TECHGEERING</span>
+              {/* <a href="/hero" className="ms-3 text-decoration-none text-white" >Hero Banner</a> */}
             </div>
             <div className="text-start">
               <a href="#" className="text-white me-3"><i className="fab fa-facebook-f"></i></a>

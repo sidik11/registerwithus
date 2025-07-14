@@ -1,16 +1,15 @@
-.obj-img {
-    height: 240px !important;
-}
-
 .hero-gradient-bg {
     min-height: 100%;
     background-image:
-        linear-gradient(to bottom right, #4c57b8 40%, transparent 109%),
-        /* top-left to center */
-        linear-gradient(to top left, #fbfbfb 30%, transparent 70%);
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        /* Black overlay */
+        url('../../../public/img/a852b6e8-6b91-4957-b31a-c7082a74b56e_large.webp');
+    /* Replace with actual image path */
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    margin-top: 4.6rem;
+    background-size: cover;
+    background-position: center;
+    margin-top: 4.9rem;
+    color: white;
 }
 
 .styled-form-container {
@@ -62,16 +61,22 @@
 .scroll-tabs {
     display: flex;
     overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 1rem;
-    padding: 10px 0;
-    margin: 0;
-    list-style: none;
     white-space: nowrap;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
 }
 
 .scroll-tabs::-webkit-scrollbar {
     display: none;
+}
+
+.scroll-tabs .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .tab-arrow {
@@ -101,75 +106,144 @@
 .nav-link {
     border-radius: 20px !important;
     padding: 8px 20px;
+    font-weight: 500;
     background-color: transparent;
     color: #333;
-    font-weight: 500;
 }
 
 .nav-link.active {
-    background-color: orange !important;
+    background-color: #061067 !important;
     color: white !important;
 }
 
-.scroll-tabs .nav-item {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.scroll-tabs .nav-link {
-    display: inline-block;
-    white-space: nowrap;
-}
-
-/* ✅ Sticky form only within section */
-.sticky-form {
-    position: relative;
-    /* transition: all 0.3s ease; */
-}
-
-/* Fix the form on scroll */
-.fixed-form {
-    position: fixed !important;
-    top: 190px;
-    right: 74px;
-    width: 356px;
-    z-index: 999;
-}
-
-.at-bottom {
-    position: absolute !important;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-}
-
-/* Fix the tab pills on scroll */
 .fixed-tabs {
     position: fixed;
-    top: 50px;
+    top: 77px;
     left: 0;
     right: 0;
     background: #f8f9fa;
     z-index: 998;
     padding: 10px 40px;
     border-bottom: 1px solid #ddd;
-    border-radius: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    animation: slideDown 0.3s forwards ease-in-out;
 }
 
-.fixed-tabs {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.sticky-form {
+    position: relative;
+    transition: top 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+}
+
+.fixed-form {
+    position: fixed;
+    top: 190px;
+    /* right: 74px; */
+    width: 414px;
+    z-index: 999;
+    transform: translateY(-10px);
+    opacity: 0;
+    animation: fadeSlideIn 0.3s forwards ease-in-out;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.sticky-form:not(.fixed-form) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 767px) {
+    .fixed-form {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+}
+
+.at-bottom {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
     width: 100%;
 }
 
-.nav-pills .nav-link {
-  color: #333;
-  background-color: transparent;
-  border-radius: 0;
-  transition: background-color 0.3s ease;
+/* Common fixed dimensions */
+.sticky-form,
+.fixed-form,
+.at-bottom {
+    width: 100% !important;
+    max-width: 414px !important;
+    box-sizing: border-box !important;
 }
 
-.nav-pills .nav-link.active {
-  background-color: #007bff; /* or your preferred color */
-  color: white;
-  font-weight: bold;
+.btn-request {
+    background-color: #061067 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.banner-vh {
+    height: 100% !important;
+}
+
+.fa-check-double {
+    background-color: white;
+    color: #061067;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.text-theme {
+    color: #061067;
+    font-weight: bold;
+}
+
+/* Section: Startup Registration Details */
+.startup-info-section {
+    background-color: #f9f9ff;
+}
+
+.startup-info-heading {
+    font-size: 1.7rem;
+    color: #1c2c4c;
+}
+
+.startup-info-subtitle {
+    font-size: 1rem;
+}
+
+.startup-info-list {
+    padding-left: 0;
+}
+
+.startup-info-item {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.startup-info-item i {
+    color: #0d6efd;
 }

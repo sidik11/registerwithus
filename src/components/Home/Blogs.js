@@ -11,15 +11,18 @@ function Blogs() {
 
             <div class="row g-4 align-items-stretch">
                 <div class="col-md-6 d-flex">
-                    <div class="card blog-card w-100 d-flex flex-column justify-content-start blog-card1">
+                    <div class="card blog-card w-100 d-flex flex-column justify-content-center blog-card1">
                         <img src="img/blog11.png" alt="Blog 1" class="blog-image mx-auto d-block" />
-                            <div class="blog-text">
-                                <h5>Accessible on all your devices</h5>
-                                <p>
-                                    On our website, registerwithus.com, you can easily search and read about legal advertising.
-                                    We designed Register with Us to be as simple and user-friendly as possible.
-                                </p>
-                            </div>
+                        <div class="blog-text">
+                            <h5>Accessible on all your devices</h5>
+                            <p>
+                                On our website, registerwithus.com, you can easily search and read about legal advertising.
+                                We designed Register with Us to be as simple and user-friendly as possible.
+                            </p>
+                            <a href="/blogs" className="text-decoration-none">
+                                Learn More <i className="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -32,6 +35,9 @@ function Blogs() {
                                     On our website, registerwithus.com, you can easily explore and learn about legal advertising.
                                     We designed Register with Us to be as simple and user-friendly as possible.
                                 </p>
+                                <a href="/blogs" className="text-decoration-none">
+                                    Learn More <i className="fas fa-arrow-right ms-2"></i>
+                                </a>
                             </div>
                             <div class="col-md-6">
                                 <img src="img/blog22.png" alt="Blog 2" class="img-fluid" />
@@ -50,6 +56,9 @@ function Blogs() {
                                     On our website, registerwithus.com, you can easily search and learn about legal advertising.
                                     We designed Register with Us to be simple and easy to use.
                                 </p>
+                                <a href="/blogs" className="text-decoration-none">
+                                    Learn More <i className="fas fa-arrow-right ms-2"></i>
+                                </a>
                             </div>
                         </div>
                     </div>

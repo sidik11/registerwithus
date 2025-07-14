@@ -28,7 +28,7 @@
   content: '';
     position: absolute;
     bottom: -1px;
-    left: 222px;
+    left: 0px;
     height: 22px;
     width: 100%;
     background: url(../../../public/img/Element.png) no-repeat center;
@@ -118,4 +118,14 @@
 
 .carousel-control-next {
   margin-right: -50px;
+}
+
+@media (max-width: 767px) {
+  .carousel-control-prev {
+    margin-left: 0;
+  }
+
+  .carousel-control-next {
+    margin-right: 0;
+  }
 }

@@ -1,52 +1,46 @@
-.solution-card {
-    /* background-color: #fafafc; */
-    box-shadow: 17px 17px 11px -12px black;
-    color: #030c65;
-    border: none;
-    padding: 70px 30px;
+.about-us-section {
+  background-color: #f8f9fa;
+}
+
+.about-us-image {
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #030c65;
+}
+
+.about-us-description {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about-us-btn {
+  background-color: #030c65 !important;
+  color: #fff !important;
+  padding: 10px 24px;
+  font-weight: 500;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.about-us-btn:hover {
+  background-color: #a1a9f4 !important;
+  color: #fff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-us-section {
     text-align: center;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
-    height: 300px;
-    border-radius: 10px;
   }
-
-  .solution-card .icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
+  .about-us-heading {
+    font-size: 2rem;
   }
-
-  .solution-card .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
-
-  .card-details {
-    font-size: 20px !important;
-    opacity: 0;
-    transition: all 0.3s ease;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    max-width: 90%;
-  }
-
-  .solution-card:hover {
-   background-color: #00437C;
-   color: white;
-  }
-
-  .solution-card:hover .icon,
-  .solution-card:hover .title {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-
-  .solution-card:hover .card-details {
-    opacity: 1;
-  }
+}

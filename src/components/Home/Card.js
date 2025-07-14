@@ -2,45 +2,42 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import './Card.css'
+import './Card.css';
 
 function Card() {
-    return (
-        <div className="container py-5">
+  return (
+    <section className="about-us-section py-5">
+      <div className="container">
+        <div className="row align-items-center">
+          {/* Left Side Image */}
+          <div className="col-lg-6 mb-4 mb-lg-0">
+            <img
+              src="/img/consultant3.jpeg"
+              alt="About Us"
+              className="about-us-image img-fluid"
+            />
+          </div>
 
-            <div className="row text-center g-4">
-                <div className="col-md-4">
-                    <div className="solution-card">
-                        <div className="icon"><i className="fas fa-user"></i></div>
-                        <div className="title">Sole Trader</div>
-                        <div className="card-details">
-                            <p>We help sole traders streamline compliance and reduce burden with expert support.</p>
-                        </div>
-                    </div>
-                </div>
+          {/* Right Side Content */}
+          <div className="col-lg-6 about-us-content">
+            <h2 className="about-us-heading mb-3">
+              About Us
+            </h2>
+            <p className="about-us-description">
+              We are not just a service provider — we are your strategic partners in achieving compliance and sustainable growth. Our passionate team is committed to delivering personalized business solutions that address the unique needs of every client.
+            </p>
+            <p className="about-us-description">
+              Whether you're a startup or an established enterprise, we bring clarity, efficiency, and trust to every project we handle.
+            </p>
 
-                <div className="col-md-4">
-                    <div className="solution-card">
-                        <div className="icon"><i className="fas fa-building"></i></div>
-                        <div className="title">Limited Company</div>
-                        <div className="card-details">
-                            <p>Get customized solutions for your limited company with reliable, fast services.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-4">
-                    <div className="solution-card">
-                        <div className="icon"><i className="fas fa-chart-line"></i></div>
-                        <div className="title">Growing Business</div>
-                        <div className="card-details">
-                            <p>Scale confidently with tailored compliance strategies that grow with your business.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a href="#" className="btn about-us-btn mt-4">
+              Learn More <i className="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
         </div>
-    );
+      </div>
+    </section>
+  );
 }
 
 export default Card;

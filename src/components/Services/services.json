@@ -1,0 +1,392 @@
+[
+  {
+    "service": "Solo Partnership",
+    "intro": "Start your business with ease by registering your sole proprietorship firm online. Fast, affordable, and fully digital registration for individuals planning to start a business in India.",
+    "tabs": [
+      {
+        "id": "overview",
+        "title": "What is Sole Proprietorship Registration?",
+        "content": [
+          "Sole proprietorship registration online in India is the easiest way for individuals to start a business legally and independently. It’s ideal for freelancers, traders, and small business owners who want full control with minimal hassle. With this setup, you can get essential licenses like GST registration, a trade license for sole proprietorship, and build your business credibility fast."
+        ]
+      },
+      {
+        "id": "characteristics",
+        "title": "Characteristics of Sole Proprietorship Registration",
+        "intro": "Sole proprietorship registration has several distinctive characteristics that define its legal status and operational framework:",
+        "points": [
+          {
+            "title": "Single Owner Structure",
+            "description": "The business is owned and operated by one individual with complete control over operations.",
+            "subpoints": [
+              "Only one person can be the proprietor; no partners or co-owners are allowed.",
+              "Complete decision-making authority rests with the sole proprietor."
+            ]
+          },
+          {
+            "title": "No Separate Legal Entity",
+            "description": "The business and the owner are legally considered as one entity under the law.",
+            "subpoints": [
+              "No distinction between personal and business legal identity.",
+              "Business assets and liabilities are treated as personal assets and liabilities."
+            ]
+          },
+          {
+            "title": "Unlimited Liability Framework",
+            "description": "The proprietor bears unlimited personal liability for all business debts and obligations.",
+            "subpoints": [
+              "In a sole proprietorship, there is no legal separation between the owner and the business. This means personal assets like savings, property, or valuables can be used to pay off business debts or legal claims.",
+              "No limit on the extent of personal liability for business-related matters."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "benefits",
+         "title": "Benifits of Sole Proprietorship Registration in India",
+        "intro": "Sole proprietorships in India can encompass various business activities, often categorized by their nature and regulatory needs:",
+        "types": [
+          {
+            "heading": "Service-Based Sole Proprietorship",
+            "description": "This covers businesses providing professional services, consultancy, or skill-based offerings to clients.",
+            "example": "A freelance graphic designer registers their sole proprietorship to offer design services to corporate clients and maintain proper business records."
+          },
+          {
+            "heading": "Trading Business Sole Proprietorship",
+            "description": "For businesses involved in buying and selling goods, whether retail or wholesale trading operations.",
+            "example": "An individual registers a sole proprietorship to operate a retail clothing store or an online marketplace business."
+          },
+          {
+            "heading": "Manufacturing Sole Proprietorship",
+            "description": "Covers small-scale manufacturing operations where an individual produces goods for sale in the market.",
+            "example": "A person starts a small food processing unit or handicraft manufacturing business under a sole proprietorship structure."
+          },
+          {
+            "heading": "Online Business Sole Proprietorship",
+            "description": "For digital businesses, e-commerce operations, or online service providers operating through digital platforms.",
+            "example": "An entrepreneur registers their sole proprietorship to operate an e-commerce website or provide digital marketing services online."
+          },
+          {
+            "heading": "Professional Practice Sole Proprietorship",
+            "description": "For licensed professionals providing specialized services requiring professional qualifications or certifications.",
+            "example": "A chartered accountant, lawyer, or doctor establishing their independent practice under a sole proprietorship structure."
+          },
+          {
+            "heading": "Home-Based Business Sole Proprietorship",
+            "description": "For businesses operated from residential premises, including small-scale operations and service providers.",
+            "example": "A person running a home-based catering service or tutoring center registers as a sole proprietorship for legal compliance."
+          },
+          {
+            "heading": "Freelance Business Sole Proprietorship",
+            "description": "For independent contractors and freelancers providing specialized services to multiple clients on a project basis.",
+            "example": "A content writer or software developer registers their freelance business as a sole proprietorship for professional credibility."
+          }
+        ]
+      },
+      {
+        "id": "eligibility",
+        "title": "Eligibility Criteria for Sole Proprietorship Registration",
+        "intro": "Eligibility for sole proprietorship registration is straightforward but requires meeting certain basic criteria under Indian law and regulations.",
+        "points": [
+          {
+            "title": "Individual Ownership Requirement",
+            "description": "Only a person can establish and operate a sole proprietorship; corporate entities or groups cannot form this business structure."
+          },
+          {
+            "title": "Age and Legal Capacity",
+            "description": "The proprietor must be a major (18 years or above) with legal capacity to enter into contracts and conduct business."
+          },
+          {
+            "title": "Indian Residency Status",
+            "description": "While Indian citizenship is not mandatory, the proprietor should have legal residency status and necessary permissions to conduct business in India."
+          }
+        ]
+      },
+      {
+        "id": "documents",
+        "title": "Documents Required for Sole Proprietorship Registration",
+        "intro": "Proper documentation is essential for successful sole proprietorship registration, with specific documents required for various aspects of business establishment:",
+        "identityDocuments": [
+          "PAN Card: Original and photocopy of the proprietor's Permanent Account Number.",
+          "Aadhaar Card: Identity and address proof with current details.",
+          "Passport: For identity verification and address proof (if applicable).",
+          "Voter ID Card: Alternative identity proof acceptable for registration purposes."
+        ],
+        "addressProof": [
+          "For owned premises: Property deed, tax receipts, or utility bills in the proprietor's name.",
+          "For rented premises: Rent agreement along with the owner's NOC and property documents.",
+          "For residential premises: Utility bills and residential address proof documents.",
+          "Municipal permissions: Any required permissions for operating a business from the chosen location."
+        ]
+      },
+      {
+        "id": "registration-process",
+        "title": "How to Register a Sole Proprietorship in India?",
+        "intro": "Registering a sole proprietorship in India involves a systematic process that establishes your business with proper legal compliance and documentation:",
+        "steps": [
+          "Choose Business Name and Activity",
+          "Obtain Required Identity Documents",
+          "Secure Business Address Documentation",
+          "Apply for PAN Card (if not available)",
+          "Register for GST (if applicable)",
+          "Obtain Shop and Establishment License",
+          "Open a Business Bank Account",
+          "Apply for Professional Tax Registration",
+          "Obtain Industry-Specific Licenses",
+          "Complete MSME Registration (optional)",
+          "Set up Accounting and Compliance System"
+        ],
+        "note": "Our expert consultants ensure a seamless sole proprietorship registration journey, providing continuous support and guidance through all registration processes until your business is fully compliant and operational."
+      },
+      {
+        "id": "fees",
+        "title": "Fees for Sole Proprietorship Registration",
+        "intro": "Costs for registering a sole proprietorship help entrepreneurs budget better when starting their business.",
+        "charges": [
+          "GST Registration: Free of cost for online applications; Rs. 100 for offline applications.",
+          "Shop and Establishment License: Rs. 1,000 - Rs. 5,000 depending on the state and business nature.",
+          "Trade License: Rs. 500 - Rs. 2,000 from local municipal authorities.",
+          "Professional Tax Registration: Rs. 300 - Rs. 1,000 based on state regulations.",
+          "FSSAI Registration: Rs. 100 for Basic, Rs. 3,000 for State, Rs. 7,500 for Central license.",
+          "Bank Account Opening: Rs. 500 - Rs. 2,000 as account opening charges and minimum balance.",
+          "Professional Service Fees: Rs. 5,000 - Rs. 15,000 for complete registration assistance from consultants."
+        ]
+      },
+      {
+        "id": "certificate",
+        "title": "Sole Proprietorship Registration Certificate",
+        "intro": "This sole proprietorship registration certificate is the official proof of your business's legal establishment.",
+        "details": [
+          "It includes essential registration details and business identification numbers, which are crucial for establishing your business identity and enabling business operations like bank account opening and license applications."
+        ],
+        "charges": [
+          "GST Registration: Free of cost for online applications; Rs. 100 for offline applications.",
+          "Shop and Establishment License: Rs. 1,000 - Rs. 5,000 depending on the state and business nature.",
+          "Trade License: Rs. 500 - Rs. 2,000 from local municipal authorities.",
+          "Professional Tax Registration: Rs. 300 - Rs. 1,000 based on state regulations.",
+          "FSSAI Registration: Rs. 100 for Basic, Rs. 3,000 for State, Rs. 7,500 for Central license.",
+          "Bank Account Opening: Rs. 500 - Rs. 2,000 as account opening charges and minimum balance.",
+          "Professional Service Fees: Rs. 5,000 - Rs. 15,000 for complete registration assistance from consultants."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "type": "text",
+        "label": "What is your full name?",
+        "placeholder": "Enter your name"
+      },
+      {
+        "type": "dropdown",
+        "label": "What type of business do you plan to register?",
+        "options": [
+          "Service-Based",
+          "Trading",
+          "Manufacturing",
+          "Online Business",
+          "Freelance"
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "Which of the following documents do you already have?",
+        "options": [
+          "PAN Card",
+          "Aadhaar Card",
+          "Voter ID",
+          "Passport"
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "What services would you like assistance with?",
+        "options": [
+          "GST Registration",
+          "Business Name Selection",
+          "Bank Account Opening",
+          "MSME Registration"
+        ]
+      }
+    ]
+  },
+  {
+    "service": "Private Limited Company",
+    "intro": "Incorporate a Private Limited Company to enjoy limited liability, credibility, and easier access to funding for your growing business.",
+    "tabs": [
+      {
+        "id": "overview",
+        "title": "What is Private Company Registration?",
+        "content": [
+          "Private company registration is the formal process of incorporating a company that is privately held and limited by shares. It is governed by the Companies Act, 2013 in India and is one of the most preferred business structures for startups and growing businesses.",
+          "A private limited company offers limited liability protection to its shareholders, a separate legal identity, and greater credibility among investors, customers, and vendors.",
+          "The registration process includes obtaining Digital Signature Certificates (DSC), Director Identification Numbers (DIN), name approval, and filing incorporation forms with the Ministry of Corporate Affairs (MCA)."
+        ]
+      },
+      {
+        "id": "characteristics",
+        "title": "Types of Private Companies in India",
+        "intro": "Private companies in India can be categorized based on their ownership structure and operations:",
+        "types": [
+          {
+            "heading": "Company Limited by Shares",
+            "description": "Most common type where the liability of members is limited to the unpaid amount on shares held by them.",
+            "example": "A startup tech firm formed with 2 co-founders and registered as a private limited company to attract investors."
+          },
+          {
+            "heading": "Company Limited by Guarantee",
+            "description": "Often used for non-profit or charitable purposes, where members guarantee a fixed amount in case of winding up.",
+            "example": "An NGO registered as a private company limited by guarantee to promote education in rural areas."
+          },
+          {
+            "heading": "Unlimited Company",
+            "description": "In this type, there is no limit on the liability of its members. Rarely used in modern practice.",
+            "example": "A high-risk investment firm may register as an unlimited company with full liability among members."
+          }
+        ]
+      },
+      {
+        "id": "benefits",
+        "title": "Benefits of Registering a Private Company",
+        "intro": "A private limited company structure comes with multiple legal and operational advantages:",
+        "points": [
+          {
+            "title": "Limited Liability Protection",
+            "description": "Shareholders are only liable to the extent of their shareholding; personal assets remain protected.",
+            "subpoints": [
+              "Ideal for risk mitigation in business operations.",
+              "Secures personal wealth from business losses."
+            ]
+          },
+          {
+            "title": "Separate Legal Identity",
+            "description": "The company exists as a separate legal entity distinct from its owners.",
+            "subpoints": [
+              "Can own property, sue and be sued in its own name.",
+              "Greater credibility in business transactions."
+            ]
+          },
+          {
+            "title": "Ease of Fundraising",
+            "description": "A private limited company is preferred by banks, venture capitalists, and investors for funding.",
+            "subpoints": [
+              "Equity-based funding possible.",
+              "Easy to issue shares to new investors."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "eligibility",
+        "title": "Eligibility Criteria for Private Company Registration",
+        "intro": "The following conditions must be fulfilled to register a private company under Indian law:",
+        "points": [
+          {
+            "title": "Minimum 2 Directors",
+            "description": "At least two individuals must be appointed as directors; one must be a resident of India."
+          },
+          {
+            "title": "Minimum 2 Shareholders",
+            "description": "The company must have at least two shareholders. A person can be both a director and a shareholder."
+          },
+          {
+            "title": "Registered Office Address",
+            "description": "A valid address in India must be provided for official communication and business operations."
+          }
+        ]
+      },
+      {
+        "id": "documents",
+        "title": "Documents Required for Private Company Registration",
+        "intro": "These documents must be submitted for registration of a private limited company:",
+        "identityDocuments": [
+          "PAN Card of all directors and shareholders.",
+          "Aadhaar Card or Passport for identity and address proof.",
+          "Passport size photographs of directors."
+        ],
+        "addressProof": [
+          "Electricity bill or rent agreement for registered office.",
+          "NOC from the property owner for office use.",
+          "Property tax receipt or sale deed if the property is owned."
+        ]
+      },
+      {
+        "id": "registration-process",
+        "title": "Steps to Register a Private Limited Company",
+        "intro": "Here are the key steps involved in private company registration in India:",
+        "steps": [
+          "Obtain Digital Signature Certificate (DSC)",
+          "Apply for Director Identification Number (DIN)",
+          "Reserve Company Name via RUN (Reserve Unique Name) form",
+          "Draft MOA (Memorandum) and AOA (Articles) of Association",
+          "File SPICe+ (INC-32) form for incorporation",
+          "Obtain Certificate of Incorporation from ROC",
+          "Apply for PAN and TAN of the company"
+        ],
+        "note": "Our legal advisors ensure hassle-free incorporation of your private company with proper documentation, name selection, and government liaison support."
+      },
+      {
+        "id": "fees",
+        "title": "Registration Fees for Private Company",
+        "intro": "The cost varies based on professional service, authorized capital, and government fees:",
+        "charges": [
+          "Digital Signature: Rs. 1,000 - Rs. 1,500 per director",
+          "DIN Application: Rs. 500 per application",
+          "Name Reservation: Rs. 1,000",
+          "Stamp Duty: Varies by state and authorized capital",
+          "Professional Fees: Rs. 8,000 - Rs. 20,000 based on complexity",
+          "ROC Filing Fees: Rs. 2,000 - Rs. 4,000"
+        ]
+      },
+      {
+        "id": "certificate",
+        "title": "Certificate of Incorporation",
+        "intro": "This official document issued by the Registrar of Companies (ROC) marks the legal formation of your private company.",
+        "details": [
+          "It includes the Corporate Identification Number (CIN), date of incorporation, company name, and registered office.",
+          "The certificate acts as legal proof of company existence and is required for opening bank accounts, entering contracts, and applying for licenses."
+        ],
+        "charges": [
+          "Included in the overall registration fees mentioned above."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "type": "text",
+        "label": "Enter full name of one of the directors",
+        "placeholder": "Full Name"
+      },
+      {
+        "type": "dropdown",
+        "label": "What is the nature of your business?",
+        "options": [
+          "IT Services",
+          "Manufacturing",
+          "Trading",
+          "Consulting",
+          "Other"
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "Which of the following do you already have?",
+        "options": [
+          "DSC (Digital Signature)",
+          "DIN (Director ID Number)",
+          "PAN Card",
+          "Office Space with Address Proof"
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "What assistance do you require?",
+        "options": [
+          "Company Name Suggestion",
+          "MOA & AOA Drafting",
+          "Filing SPICe+ Form",
+          "End-to-End Registration Support"
+        ]
+      }
+    ]
+  }
+]

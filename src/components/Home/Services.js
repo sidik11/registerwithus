@@ -1,104 +1,134 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Services.css';
 
 function Services() {
-    return (
-        <section className="services-section text-center">
-            <div className="container">
-                <h2 className="section-title"><span className="overlap-cont" >Our Services</span></h2>
-                <div className="row mt-5">
+  const scrollToFooter = (e) => {
+    e.preventDefault();
+    document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-                    <div className="col-md-4 mb-4">
-                        <div className="service-card">
-                            <div className="default-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>Company / LLP Registration</p>
-                            </div>
-                            <div className="overlay-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>We provide our services for company / LLP registration of all types. We also provide registration of foreign companies and foreign LLPs including RBI and other government Compliances relating to Foreign Entities.</p>
-                                <button className="btn btn-light" >Explore More</button>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <section className="services-section pt-5">
+      <div className="container">
+        <h2 className="section-title d-block mb-5"><span>Our Services</span></h2>
+        <div className="row g-4">
 
-                    <div className="col-md-4 mb-4">
-                        <div className="service-card">
-                            <div className="default-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>Company / LLP Registration</p>
-                            </div>
-                            <div className="overlay-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>We provide our services for company / LLP registration of all types. We also provide registration of foreign companies and foreign LLPs including RBI and other government Compliances relating to Foreign Entities.</p>
-                                <button className="btn btn-light" >Explore More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-4">
-                        <div className="service-card">
-                            <div className="default-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>GST Registration / Filing</p>
-                            </div>
-                            <div className="overlay-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>We provide our services for company / LLP registration of all types. We also provide registration of foreign companies and foreign LLPs including RBI and other government Compliances relating to Foreign Entities.</p>
-                                <button className="btn btn-light" >Explore More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-4">
-                        <div className="service-card">
-                            <div className="default-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>ITR Preparation & Filing</p>
-                            </div>
-                            <div className="overlay-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>We provide our services for company / LLP registration of all types. We also provide registration of foreign companies and foreign LLPs including RBI and other government Compliances relating to Foreign Entities.</p>
-                                <button className="btn btn-light" >Explore More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-4">
-                        <div className="service-card">
-                            <div className="default-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>Compliances</p>
-                            </div>
-                            <div className="overlay-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>We provide our services for company / LLP registration of all types. We also provide registration of foreign companies and foreign LLPs including RBI and other government Compliances relating to Foreign Entities.</p>
-                                <button className="btn btn-light" >Explore More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-4">
-                        <div className="service-card">
-                            <div className="default-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>Accounting / Bookkeeping</p>
-                            </div>
-                            <div className="overlay-content">
-                                <i className="fas fa-building-circle-check service-icon"></i>
-                                <p>We provide our services for company / LLP registration of all types. We also provide registration of foreign companies and foreign LLPs including RBI and other government Compliances relating to Foreign Entities.</p>
-                                <button className="btn btn-light" >Explore More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+          {/* Business Registration */}
+          <div className="col-md-6 col-lg-3">
+            <div className="modern-card text-center">
+              <div className="icon-wrapper mb-3">
+                <i className="fas fa-scale-balanced"></i>
+              </div>
+              <h5 className="service-title mb-3">Business Registration</h5>
+              <ul className="animated-list">
+                <li className="list-item">Solo Proprietorship <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">Partnership <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">LLP Registration <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">Foreign Company <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">NGO/Section 8 Company <i className="fas fa-chevron-right"></i></li>
+              </ul>
+              <div className="hover-indicator d-none d-lg-block">
+                <span>Hover to see more</span> <i className="fas fa-arrow-down"></i>
+              </div>
+              <div className="know-more-btn d-none d-lg-block">
+                <a href="#business-registration" className='text-decoration-none text-dark'>
+                  Explore More <i className="fas fa-arrow-right ms-1"></i>
+                </a>
+              </div>
             </div>
-        </section>
-    );
+          </div>
+
+          {/* Trade Licenses */}
+          <div className="col-md-6 col-lg-3">
+            <div className="modern-card text-center">
+              <div className="icon-wrapper mb-3">
+                <i className="fas fa-file-circle-check"></i>
+              </div>
+              <h5 className="service-title mb-3">Trade Licenses</h5>
+              <ul className="animated-list">
+                <li className="list-item">PAN <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">GST <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">IEC <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">MSME <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">APEDA Registration <i className="fas fa-chevron-right"></i></li>
+              </ul>
+              <div className="hover-indicator d-none d-lg-block">
+                <span>Hover to see more</span> <i className="fas fa-arrow-down"></i>
+              </div>
+              <div className="know-more-btn d-none d-lg-block">
+                <a href="#trade-licenses" className='text-decoration-none text-dark'>
+                  Explore More <i className="fas fa-arrow-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Company Compliances */}
+          <div className="col-md-6 col-lg-3">
+            <div className="modern-card text-center">
+              <div className="icon-wrapper mb-3">
+                <i className="fas fa-shield-halved"></i>
+              </div>
+              <h5 className="service-title mb-3">Company Compliances</h5>
+              <ul className="animated-list">
+                <li className="list-item">Share Transfers <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">Share Transmission <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">Share Allotments <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">Equity/Debt. Raising <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">Annual Filing <i className="fas fa-chevron-right"></i></li>
+              </ul>
+              <div className="hover-indicator d-none d-lg-block">
+                <span>Hover to see more</span> <i className="fas fa-arrow-down"></i>
+              </div>
+              <div className="know-more-btn d-none d-lg-block">
+                <a href="#company-compliances" className='text-decoration-none text-dark'>
+                  Explore More <i className="fas fa-arrow-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Tax Fillings */}
+          <div className="col-md-6 col-lg-3">
+            <div className="modern-card text-center">
+              <div className="icon-wrapper mb-3">
+                <i className="fas fa-award"></i>
+              </div>
+              <h5 className="service-title mb-3">Tax Fillings</h5>
+              <ul className="animated-list">
+                <li className="list-item">Individual ITR Filling <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">Corporate ITR Filling <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">GST Returns <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra">TDS Fillings <i className="fas fa-chevron-right"></i></li>
+              </ul>
+              <div className="hover-indicator d-none d-lg-block">
+                <span>Hover to see more</span> <i className="fas fa-arrow-down"></i>
+              </div>
+              <div className="know-more-btn d-none d-lg-block">
+                <a href="#tax-fillings" className='text-decoration-none text-dark'>
+                  Explore More <i className="fas fa-arrow-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100px' }}>
+          <a
+            href="#"
+            className="btn about-us-btn text-decoration-none"
+            style={{ height: 'auto', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+            onClick={scrollToFooter}
+          >
+            View All Services <i className="fas fa-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Services;

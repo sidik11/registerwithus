@@ -9,6 +9,8 @@ import BlogPage from './pages/BlogPage';
 import BlogDetailsPage from './pages/BlogDetailsPage';
 import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPage from './pages/PrivacyPage';
+import RefundPage from './pages/RefundPage';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css'
 
@@ -25,6 +27,8 @@ function App() {
         <Route path="/blogdetails" element={<BlogDetailsPage />} />
         <Route path="/faqs" element={<FaqPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/refund" element={<RefundPage />} />
       </Routes>
     </Router>
   );

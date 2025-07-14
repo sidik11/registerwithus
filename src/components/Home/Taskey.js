@@ -4,20 +4,37 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Taskey.css';
 
-function Services() {
-    return (
-        <section className="hero-section">
-            <div className="container">
-                <h1 className="hero-title">
-                    Start your business journey on the right path 
-                    Register with our organization today!
-                </h1>
-                <a href="#" className="btn hero-btn">
-                    Try Taskey <i className="fa-solid fa-arrow-right ms-2"></i>
-                </a>
+function Taskey(props) {
+  return (
+    <section className="cta-split-section">
+      <div className="container-fluid px-0">
+        <div className="row g-0">
+          {/* Left Content */}
+          <div className="col-md-6 d-flex align-items-center justify-content-center cta-content">
+            <div className="cta-box text-center text-white px-4 py-5">
+              <h2
+                className="fw-bold mb-3"
+                dangerouslySetInnerHTML={{ __html: props.heading }}
+              />
+              <p className="mb-4">{props.subheading}</p>
+              <a href={props.buttonLink} className="btn cta-btn-glass">
+                {props.buttonText} <i className="fa-solid fa-arrow-right ms-2"></i>
+              </a>
             </div>
-        </section>
-    );
+          </div>
+
+          {/* Right Image */}
+          <div className="col-md-6 cta-image d-none d-md-block">
+            <img
+              src={props.imageSrc}
+              alt="CTA Background"
+              className="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Services;
+export default Taskey;

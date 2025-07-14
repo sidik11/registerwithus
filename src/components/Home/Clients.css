@@ -14,7 +14,7 @@
     content: '';
     position: absolute;
     bottom: -2px;
-    left: 111px;
+    /* left: 111px; */
     height: 21px;
     width: 100%;
     background: url(../../../public/img/Element.png) no-repeat center;

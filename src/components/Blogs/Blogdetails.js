@@ -7,7 +7,7 @@ import './Blogdetails.css';
 function Blogdetails() {
     return (
         <section>
-            <div class="container py-5">
+            <div class="container py-5 mt-5">
                         <h2 class="fw-bold">Mastering ChatGPT</h2>
                         <p class="date">17 April 2024</p>
                 <div class="row">

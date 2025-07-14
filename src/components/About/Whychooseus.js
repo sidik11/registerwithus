@@ -4,18 +4,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Whychooseus.css'
 
-function Aboutmain() {
+function Whychooseus() {
     return (
-        <section className="why-section container">
+        <section className="py-5 container">
             <h2 className="why-heading"><span className="bg-conten" >Why Choose Us?</span></h2>
             {/* <h2 className="section-title text-center text-dark pb-5 d-block"><span className="bg-conten" >Why Choose Us?</span></h2> */}
-            <div className="row g-5 d-flex justify-content-center align-items-center">
-                <div className="col-lg-5 text-center">
+            <div className="row d-flex justify-content-center align-items-center">
+                <div className="col-lg-5 col-sm-12 text-center">
                     <div className="why-image">
                         <img src="img/unsplash_iPum7Ket2jo.png" className="img-fluid" alt="Person with Sparkler" />
                     </div>
                 </div>
-                <div className="col-lg-7">
+                <div className="col-lg-7 col-sm-12">
                     <div className="row g-4">
                         <div className="col-md-6">
                             <div className="why-card">
@@ -88,4 +88,4 @@ function Aboutmain() {
     );
 }
 
-export default Aboutmain;
+export default Whychooseus;
