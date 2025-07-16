@@ -60,13 +60,17 @@ function Contactus() {
               <div class="icon-circle mb-2">
                 <i class="fas fa-user fs-2"></i>
               </div>
-              <div class="info-text mt-2">+91 43446537758</div>
+              <a className='text-decoration-none' href="tel:+919643981247">
+                <div class="info-text mt-2">+919643981247</div>
+              </a>
             </div>
             <div class="col-12 col-md-4 d-flex flex-column align-items-center">
               <div class="icon-circle mb-2">
                 <i class="fas fa-envelope fs-2"></i>
               </div>
-              <div class="info-text mt-2">registerwithus@gmail.com</div>
+              <a className='text-decoration-none' href="mailto:info@registerwithus.in">
+                <div class="info-text mt-2">info@registerwithus.in</div>
+              </a>
             </div>
             <div class="col-12 col-md-4 d-flex flex-column align-items-center">
               <div class="icon-circle mb-2">

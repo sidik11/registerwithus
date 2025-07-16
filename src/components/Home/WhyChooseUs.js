@@ -12,7 +12,7 @@ function WhyChooseUs() {
                     <span className="fw-bold text-white mb-4">Why Choose Us</span>
                 </h2>
 
-                <div className="row g-4 justify-content-center">
+                <div className="row g-4 justify-content-center mb-4">
                     {/* Feature 1 */}
                     <div className="col-md-3">
                         <div className="feature-card text-center p-4">

@@ -10,11 +10,11 @@ function Hero3() {
                 <div className="container h-100">
                     <div className="row align-items-center h-100">
                         <div className="col-lg-7 text-white biz-hero-content">
-                            <h5 className="sub-head">Ignite Possibilities</h5>
                             <h1 className="hero-title">
                                 We help you <br />
                                 <span className="highlight-yellow">Anyway</span> to rise, build, and lead.
                             </h1>
+                            <h5 className="sub-head">Ignite Possibilities</h5>
 
                             <ul className="hero-features mt-4">
                                 <li><i className="fas fa-check-circle text-success me-2"></i> Empowering startups with seamless registration</li>

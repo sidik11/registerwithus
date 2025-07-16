@@ -100,8 +100,8 @@ function Navbar() {
                     <div className="col-md-3">
                       <h4 className="mega-heading"><i className="fas fa-briefcase me-2"></i>Business Registration</h4>
                       <ul className="mega-list">
-                        <li><Link to="/service?name=Solo Partnership">Solo Proprietorship</Link></li>
-                        <li><Link to="/service?name=Partnership">Partnership</Link></li>
+                        <li><Link to="/service?name=Solo Proprietorship">Solo Proprietorship</Link></li>
+                        <li><Link to="/service?name=Partnership Registration">Partnership</Link></li>
                         <li><Link to="/service?name=LLP Registration">LLP Registration</Link></li>
                         <li>
                           <Link to="/service?name=Company Registration">Company Registration</Link>
@@ -132,8 +132,8 @@ function Navbar() {
                       <h4 className="mega-heading"><i className="fas fa-id-card-alt me-2"></i>Trade Licenses</h4>
                       <ul className="mega-list">
                         <li><Link to="/service?name=PAN">PAN</Link></li>
-                        <li><Link to="/service?name=GST">GST</Link></li>
-                        <li><Link to="/service?name=IEC">IEC</Link></li>
+                        <li><Link to="/service?name=GST Registration">GST</Link></li>
+                        <li><Link to="/service?name=IEC Registration">IEC</Link></li>
                         <li>
                           <Link to="/service?name=Company Registration">Food Licenses / FSSAI</Link>
                           <ul className="sub-list">
@@ -143,7 +143,7 @@ function Navbar() {
                           </ul>
                         </li>
                         <li><Link to="/service?name=MSME">Professional Tax Registration</Link></li>
-                        <li><Link to="/service?name=MSME">MSME</Link></li>
+                        <li><Link to="/service?name=MSME Registration">MSME</Link></li>
                         <li><Link to="/service?name=Start-up">Start-up Registration</Link></li>
                         <li><Link to="/service?name=Shops & Establishment">Shops & Establishment</Link></li>
                         <li><Link to="/service?name=Shops & Establishment">APEDA Registration</Link></li>
@@ -154,7 +154,7 @@ function Navbar() {
                     <div className="col-md-3">
                       <h4 className="mega-heading"><i className="fas fa-balance-scale me-2"></i>Labour Laws</h4>
                       <ul className="mega-list">
-                        <li><Link to="/service?name=PF Registration">One Time PF Registration</Link></li>
+                        <li><Link to="/service?name=EPF Registration">One Time PF Registration</Link></li>
                         <li><Link to="/service?name=ESIC Registration">ESIC Registration</Link></li>
                       </ul>
                       <h4 className="mega-heading mt-4"><i className="fas fa-award me-2"></i>Trademarks</h4>
@@ -211,8 +211,8 @@ function Navbar() {
               <Link className="nav-link" to="/contact" onClick={handleNavLinkClick}>Contact Us</Link>
             </li>
             <li className="nav-item">
-              <a href="tel:+917855865181" className="d-inline-flex align-items-center px-3 py-2 text-white contact-nav">
-                <i className="fa fa-phone me-2"></i> +917855865181
+              <a href="tel:+919643981247" className="d-inline-flex align-items-center px-3 py-2 text-white contact-nav">
+                <i className="fa fa-phone me-2"></i> +919643981247
               </a>
             </li>
           </ul>

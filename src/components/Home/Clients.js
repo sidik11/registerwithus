@@ -6,8 +6,8 @@ import './Clients.css';
 
 function Clients() {
     return (
-        <section className="py-5">
-            <div className="container py-5">
+        <section className="pb-5">
+            <div className="container">
                 <h2 className="section-title text-center text-dark pb-5 d-block"><span className="overlap-conte" >Our Clients</span></h2>
 
                 <div className="logo-container text-center">

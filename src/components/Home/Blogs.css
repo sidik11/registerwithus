@@ -14,7 +14,7 @@
   .section-title span::after {
     content: '';
     position: absolute;
-    bottom: 48px;
+    bottom: 0px;
     left: 5px;
     height: 18px;
     width: 100%;
@@ -60,3 +60,13 @@
   .blog-card3 {
     background-color: #f3eafb;
   }
+  .cursor-loader {
+    cursor: progress;
+  }
+  .list-item {
+  cursor: pointer;
+}
+.list-item:hover {
+  background-color: #f8f9fa;
+  transition: 0.3s;
+}

@@ -81,7 +81,7 @@ function ChatWidget() {
   };
 
   const handleWhatsAppRedirect = () => {
-    const phone = "917855865181";
+    const phone = "919643981247";
 
     const message = selectedOption === "Others"
       ? `Hi, my name is ${name}. I selected "Others".
@@ -199,13 +199,13 @@ Thanks!`;
                   </a>
                 </li>
                 <li className="mb-3">
-                  <a href="tel:+91XXXXXXXXXX" className="text-white text-decoration-none">
-                    <i className="fas fa-phone-alt fs-5 me-2 icon-color"></i> +91 XXXX-XXXXXX
+                  <a href="tel:+919643981247" className="text-white text-decoration-none">
+                    <i className="fas fa-phone-alt fs-5 me-2 icon-color"></i> +919643981247
                   </a>
                 </li>
                 <li className="mb-3">
-                  <a href="mailto:contact@example.com" className="text-white text-decoration-none">
-                    <i className="fas fa-envelope fs-5 me-2 icon-color"></i> contact@example.com
+                  <a href="mailto:info@registerwithus.in" className="text-white text-decoration-none">
+                    <i className="fas fa-envelope fs-5 me-2 icon-color"></i> info@registerwithus.in
                   </a>
                 </li>
                 <li className="mb-3">
@@ -238,77 +238,259 @@ Thanks!`;
               <div className="col-12 mb-4" id="business-registration" >
                 <h6 className="section-title footer-heading">Business Registration</h6>
                 <div className="row g-2">
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Sole Proprietorship</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Partnership</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>LLP Registration</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Private Limited Company Registration</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Public Limited Company Registration</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Foreign Company Registration</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>NGO / Section 8 Company Registration</div>
+                  <div id="solo-proprietorship" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=Solo Proprietorship" className="text-light text-decoration-none">Sole Proprietorship</Link>
+                  </div>
+                  <div id="partnership" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=partnership" className="text-light text-decoration-none">Partnership</Link>
+                  </div>
+                  <div id="llp-registration" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=llp-registration" className="text-light text-decoration-none">LLP Registration</Link>
+                  </div>
+                  <div id="private-limited" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=private-limited" className="text-light text-decoration-none">Private Limited Company Registration</Link>
+                  </div>
+                  <div id="public-limited" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=public-limited" className="text-light text-decoration-none">Public Limited Company Registration</Link>
+                  </div>
+                  <div id="foreign-company" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=foreign-company" className="text-light text-decoration-none">Foreign Company Registration</Link>
+                  </div>
+                  <div id="ngo-section8" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=ngo-section8" className="text-light text-decoration-none">NGO / Section 8 Company Registration</Link>
+                  </div>
                 </div>
               </div>
 
+              {/* Trade Licenses */}
               <div className="col-12 mb-4">
                 <h6 id="trade-licenses" className="section-title footer-heading">Trade Licenses</h6>
                 <div className="row g-2">
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>PAN</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>GST</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>IEC</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Manufactures</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Wholesale / Retail</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Relabeler</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Professional Tax Registrations</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>MSME</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Start-Up Registration</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Shops & Establishment</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>APEDA Registration</div>
+                  <div id="pan" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=pan" className="text-light text-decoration-none">PAN</Link>
+                  </div>
+                  <div id="gst" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=gst" className="text-light text-decoration-none">GST</Link>
+                  </div>
+                  <div id="iec" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=iec" className="text-light text-decoration-none">IEC</Link>
+                  </div>
+                  <div id="manufactures" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=manufactures" className="text-light text-decoration-none">Manufactures</Link>
+                  </div>
+                  <div id="wholesale-retail" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=wholesale-retail" className="text-light text-decoration-none">Wholesale / Retail</Link>
+                  </div>
+                  <div id="relabeler" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=relabeler" className="text-light text-decoration-none">Relabeler</Link>
+                  </div>
+                  <div id="professional-tax" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=professional-tax" className="text-light text-decoration-none">Professional Tax Registrations</Link>
+                  </div>
+                  <div id="msme" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=msme" className="text-light text-decoration-none">MSME</Link>
+                  </div>
+                  <div id="startup" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=startup" className="text-light text-decoration-none">Start-Up Registration</Link>
+                  </div>
+                  <div id="shops-establishment" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=shops-establishment" className="text-light text-decoration-none">Shops & Establishment</Link>
+                  </div>
+                  <div id="apeda-registration" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=apeda-registration" className="text-light text-decoration-none">APEDA Registration</Link>
+                  </div>
                 </div>
               </div>
-
               <div className="col-12 mb-4">
                 <h6 className="section-title footer-heading">Labour Laws</h6>
                 <div className="row g-2">
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>One Time PF Registrations</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>ESIC Registrations</div>
+                  <div id="one-time-pf-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=one-time-pf-registrations" className="text-light text-decoration-none">
+                      One Time PF Registrations
+                    </Link>
+                  </div>
+                  <div id="esic-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=esic-registrations" className="text-light text-decoration-none">
+                      ESIC Registrations
+                    </Link>
+                  </div>
                 </div>
               </div>
 
               <div className="col-12 mb-4">
                 <h6 className="section-title footer-heading">Trademarks</h6>
                 <div className="row g-2">
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Registration</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Renewal</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Assignments / Transfers</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TM Amendments</div>
+
+                  <div id="tm-registration" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=tm-registration" className="text-light text-decoration-none">
+                      TM Registration
+                    </Link>
+                  </div>
+
+                  <div id="tm-renewal" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=tm-renewal" className="text-light text-decoration-none">
+                      TM Renewal
+                    </Link>
+                  </div>
+
+                  <div id="tm-assignments-transfers" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=tm-assignments-transfers" className="text-light text-decoration-none">
+                      TM Assignments / Transfers
+                    </Link>
+                  </div>
+
+                  <div id="tm-amendments" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/service?name=tm-amendments" className="text-light text-decoration-none">
+                      TM Amendments
+                    </Link>
+                  </div>
+
                 </div>
               </div>
 
               <div className="col-12 mb-4">
-                <h6 id="company-compliances" className="section-title footer-heading">Company Compliance</h6>
-                <div className="row g-2">
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Share Transfers</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Share Transmission</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Share Allotments</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Equity / Debt Raising</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Change in Directors / KMP</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Change in Auditors</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Change in Address / Shifting of Office</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>MSME Fillings</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Return of Deposit</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Fund Raise</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Annual Filling</div>
-                </div>
-              </div>
+  <h6 id="company-compliances" className="section-title footer-heading">Company Compliance</h6>
+  <div className="row g-2">
+
+    <div id="share-transfers" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=share-transfers" className="text-light text-decoration-none">
+        Share Transfers
+      </Link>
+    </div>
+
+    <div id="share-transmission" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=share-transmission" className="text-light text-decoration-none">
+        Share Transmission
+      </Link>
+    </div>
+
+    <div id="share-allotments" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=share-allotments" className="text-light text-decoration-none">
+        Share Allotments
+      </Link>
+    </div>
+
+    <div id="equity-debt-raising" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=equity-debt-raising" className="text-light text-decoration-none">
+        Equity / Debt Raising
+      </Link>
+    </div>
+
+    <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=change-directors-kmp" className="text-light text-decoration-none">
+        Change in Directors / KMP
+      </Link>
+    </div>
+
+    <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=change-auditors" className="text-light text-decoration-none">
+        Change in Auditors
+      </Link>
+    </div>
+
+    <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=change-address-office" className="text-light text-decoration-none">
+        Change in Address / Shifting of Office
+      </Link>
+    </div>
+
+    <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=msme-fillings" className="text-light text-decoration-none">
+        MSME Fillings
+      </Link>
+    </div>
+
+    <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=return-deposit" className="text-light text-decoration-none">
+        Return of Deposit
+      </Link>
+    </div>
+
+    <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=fund-raise" className="text-light text-decoration-none">
+        Fund Raise
+      </Link>
+    </div>
+
+    <div id="annual-filing" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=annual-filing" className="text-light text-decoration-none">
+        Annual Filing
+      </Link>
+    </div>
+
+  </div>
+</div>
 
               <div className="col-12 mb-4">
-                <h6 id="tax-fillings" className="section-title footer-heading">Tax Filling</h6>
-                <div className="row g-2">
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Individual ITR Fillings</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>Corporate ITR Fillings</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>GST Returns</div>
-                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12"><i class="fa-solid fa-angles-right fa-icons me-2 text-light"></i>TDS Fillings</div>
-                </div>
-              </div>
+  <h6 id="tax-fillings" className="section-title footer-heading">Tax Filing</h6>
+  <div className="row g-2">
+
+    <div id="individual-itr" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=individual-itr" className="text-light text-decoration-none">
+        Individual ITR Fillings
+      </Link>
+    </div>
+
+    <div id="corporate-itr" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=corporate-itr" className="text-light text-decoration-none">
+        Corporate ITR Fillings
+      </Link>
+    </div>
+
+    <div id="gst-returns" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=gst-returns" className="text-light text-decoration-none">
+        GST Returns
+      </Link>
+    </div>
+
+    <div id="tds-fillings" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+      <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+      <Link to="/service?name=tds-fillings" className="text-light text-decoration-none">
+        TDS Fillings
+      </Link>
+    </div>
+
+  </div>
+</div>
+
             </div>
           </div>
 
