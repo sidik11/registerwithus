@@ -1,0 +1,520 @@
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./Footer.css";
+
+function ChatWidget() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [step, setStep] = useState(0);
+  const [userInput, setUserInput] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [viewText, setViewText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const chatBodyRef = useRef(null);
+
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) startChat();
+  };
+
+  const startChat = () => {
+    setMessages([]);
+    setStep(0);
+    setLoading(true);
+    setTimeout(() => {
+      setMessages([
+        { from: "bot", text: "Hi! I'm Ankita." },
+        { from: "bot", text: "How may I help you today?" },
+        { from: "bot", text: "Are you looking for?" }
+      ]);
+      setStep(1);
+      setLoading(false);
+    }, 2500);
+  };
+
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [messages, loading]);
+
+  const showTypingThen = (newMsg, nextStep) => {
+    setLoading(true);
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { from: "bot", text: newMsg }]);
+      setStep(nextStep);
+      setLoading(false);
+    }, 2500);
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    setMessages((prev) => [...prev, { from: "user", text: option }]);
+    showTypingThen("What's your name?", 2);
+  };
+
+  const handleSubmitInput = () => {
+    if (!userInput.trim()) return;
+    setMessages((prev) => [...prev, { from: "user", text: userInput }]);
+
+    if (step === 2) {
+      setName(userInput);
+      showTypingThen("Please enter your number.", 3);
+    } else if (step === 3) {
+      setNumber(userInput);
+      if (selectedOption === "Others") {
+        showTypingThen("Type your view.", 5);
+      } else {
+        showTypingThen(`Thanks ${userInput}! Please click Submit.`, 4);
+      }
+    } else if (step === 5) {
+      setViewText(userInput);
+      showTypingThen(`Thanks for your response, ${name}. Please click Submit.`, 4);
+    }
+
+    setUserInput("");
+  };
+
+  const handleWhatsAppRedirect = () => {
+    const phone = "919643981247";
+
+    const message = selectedOption === "Others"
+      ? `Hi, my name is ${name}. I selected "Others".
+Here is my view: ${viewText}
+You can contact me at: ${number}.
+Thanks!`
+      : `Hi, my name is ${name}. I'm interested in ${selectedOption}.
+Please share the details regarding the process, documents required, and charges.
+You can contact me at: ${number}.
+Thanks!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
+
+    const newWindow = window.open(whatsappURL, '_blank');
+
+    if (!newWindow) {
+      alert("❌ Failed to open WhatsApp. Please ensure popup is allowed.");
+    } else {
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+
+  };
+
+  return (
+    <>
+      <button className="whatsapp-float" onClick={toggleChat}>
+        <i className="fab fa-whatsapp"></i>
+      </button>
+
+      {isOpen && (
+        <div className="chat-popup">
+          <div className="chat-header">
+            <img src="https://i.ibb.co/3kJ9Y9V/ankita.jpg" alt="ankita" className="agent-pic" />
+            <strong>Ankita</strong>
+            <span className="close-btn" onClick={toggleChat}>&times;</span>
+          </div>
+
+          <div className="chat-content-wrapper">
+            <div className="chat-body" ref={chatBodyRef}>
+              {messages.map((msg, i) => (
+                <div key={i} className={`chat-bubble ${msg.from}`}>{msg.text}</div>
+              ))}
+              {loading && (
+                <div className="chat-bubble bot">
+                  Typing<span className="dots">...</span>
+                </div>
+              )}
+              {step === 1 && !loading && (
+                <div className="options">
+                  {[
+                    "Private Company Registration",
+                    "LLP Registration",
+                    "OPC(One Person Company) Registration",
+                    "Public Company Registration",
+                    "Virtual Company Registration",
+                    "Others"
+                  ].map((opt) => (
+                    <button key={opt} className="option-btn" onClick={() => handleOptionClick(opt)}>
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {(step === 2 || step === 3 || step === 5) && (
+              <div className="input-bar">
+                <input
+                  type="text"
+                  className="form-control"
+                  value={userInput}
+                  onChange={(e) => setUserInput(e.target.value)}
+                  placeholder={
+                    step === 2 ? "Enter your name" :
+                      step === 3 ? "Enter your number" :
+                        "Type your view"
+                  }
+                />
+                <button className="btn btn-primary" onClick={handleSubmitInput}>Send</button>
+              </div>
+            )}
+
+            {step === 4 && (
+              <button className="btn btn-success w-100 mt-2" onClick={handleWhatsAppRedirect}>
+                Submit
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Footer (unchanged) */}
+      <footer id="footer" className="main-footer bg-dark-blue text-white pt-5 pb-3">
+        <div className="container">
+          <div className="row gy-5">
+            <div className="col-lg-3 col-sm-12 text-start">
+              <div className="d-flex align-items-center mb-3">
+                {/* <div className="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center me-2 foot-icon">
+                  <i className="fa-solid fa-r"></i>
+                </div> */}
+                {/* <h5 className="fw-bold mb-0">Register With Us</h5> */}
+                <img className="foot-logo" src="img/new-foot-logo (1).png" alt=""></img>
+              </div>
+              <p className="small mb-1">Register with us was created for<br /> the new ways we live and work.</p>
+              <p className="small">We make a better register with<br /> us around the world</p>
+            </div>
+            <div className="col-lg-4 col-sm-6 text-start">
+              <h5 className="fw-bold mb-3">Contact Info</h5>
+              <ul className="list-unstyled small">
+                <li className="mb-3">
+                  <a href="https://maps.google.com/?q=Bhubaneshwar, Odisha, India" target="_blank" className="text-white text-decoration-none">
+                    <i className="fas fa-map-marker-alt fs-5 me-2 icon-color"></i> Bhubaneshwar, Odisha, India
+                  </a>
+                </li>
+                <li className="mb-3">
+                  <a href="tel:+919643981247" className="text-white text-decoration-none">
+                    <i className="fas fa-phone-alt fs-5 me-2 icon-color"></i> +919643981247
+                  </a>
+                </li>
+                <li className="mb-3">
+                  <a href="mailto:info@registerwithus.in" className="text-white text-decoration-none">
+                    <i className="fas fa-envelope fs-5 me-2 icon-color"></i> info@registerwithus.in
+                  </a>
+                </li>
+                <li className="mb-3">
+                  <i className="fas fa-clock fs-5 me-2 icon-color"></i> Business Hours: Mon-Sat, 9:00 AM - 6:00 PM IST
+                </li>
+              </ul>
+            </div>
+            <div className="col-lg-2 col-sm-6 text-start">
+              <h5 className="fw-bold mb-3">Company</h5>
+              <ul className="list-unstyled small">
+                <li className="mb-3"><Link to="/about" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> About</Link></li>
+                <li className="mb-3"><Link to="/blogs" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> Blog</Link></li>
+                {/* <li className="mb-3"><Link to="/hero" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> Hero Banner</Link></li> */}
+                <li><Link to="/faqs" className="text-white text-decoration-none"><i className="fas fa-arrow-right fs-5 me-2"></i> FAQ's</Link></li>
+              </ul>
+            </div>
+            <div className="col-lg-3 col-sm-12 text-start">
+              <h5 className="fw-bold mb-3">Try It Today</h5>
+              <p className="small mb-3">Get started for free. Add your<br /> whole team as your needs grow.</p>
+              <a href="#" className="btn btn-info text-dark fw-semibold px-4 py-2 rounded-3">
+                Start today <i className="fa-solid fa-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <hr className="border-secondary my-4" />
+
+          <div className="footer-service-dark text-white">
+            <div className="row">
+              <div className="col-12 mb-4" id="business-registration" >
+                <h6 className="section-title footer-heading">Business Registration</h6>
+                <div className="row g-2">
+                  <div id="solo-proprietorship" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/sole-proprietorship-registration-online" className="text-light text-decoration-none">Sole Proprietorship</Link>
+                  </div>
+                  <div id="partnership" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/partnership-firm-registration-online" className="text-light text-decoration-none">Partnership</Link>
+                  </div>
+                  <div id="llp-registration" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/llp-registration-services-online" className="text-light text-decoration-none">LLP Registration</Link>
+                  </div>
+                  <div id="private-limited" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/private-limited-company-registration-online" className="text-light text-decoration-none">Private Limited Company Registration</Link>
+                  </div>
+                  <div id="public-limited" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/public-limited-company-registration-online" className="text-light text-decoration-none">Public Limited Company Registration</Link>
+                  </div>
+                  <div id="foreign-company" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/foreign-company" className="text-light text-decoration-none">Foreign Company Registration</Link>
+                  </div>
+                  <div id="ngo-section8" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/ngo-section8" className="text-light text-decoration-none">NGO / Section 8 Company Registration</Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trade Licenses */}
+              <div className="col-12 mb-4">
+                <h6 id="trade-licenses" className="section-title footer-heading">Trade Licenses</h6>
+                <div className="row g-2">
+                  <div id="pan" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/pan-card-registration-online" className="text-light text-decoration-none">PAN</Link>
+                  </div>
+                  <div id="gst" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/apply-gst-registration-online" className="text-light text-decoration-none">GST</Link>
+                  </div>
+                  <div id="iec" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/import-export-code-registration-online" className="text-light text-decoration-none">IEC</Link>
+                  </div>
+                  <div id="manufactures" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/manufactures" className="text-light text-decoration-none">Manufactures</Link>
+                  </div>
+                  <div id="wholesale-retail" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/wholesale-retail" className="text-light text-decoration-none">Wholesale / Retail</Link>
+                  </div>
+                  <div id="relabeler" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/relabeler" className="text-light text-decoration-none">Relabeler</Link>
+                  </div>
+                  <div id="professional-tax" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/professional-tax-registration-online" className="text-light text-decoration-none">Professional Tax Registrations</Link>
+                  </div>
+                  <div id="msme" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/udyam-msme-registration-online" className="text-light text-decoration-none">MSME</Link>
+                  </div>
+                  <div id="startup" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/startup-india-registration-online" className="text-light text-decoration-none">Start-Up Registration</Link>
+                  </div>
+                  <div id="shops-establishment" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/shop-and-establishment-act-registration" className="text-light text-decoration-none">Shops & Establishment</Link>
+                  </div>
+                  <div id="apeda-registration" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/apeda-registration-online" className="text-light text-decoration-none">APEDA Registration</Link>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 mb-4">
+                <h6 className="section-title footer-heading">Labour Laws</h6>
+                <div className="row g-2">
+                  <div id="one-time-pf-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/epf-registration-online" className="text-light text-decoration-none">
+                      One Time PF Registrations
+                    </Link>
+                  </div>
+                  <div id="esic-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/esic-registration-online" className="text-light text-decoration-none">
+                      ESIC Registrations
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 className="section-title footer-heading">Trademarks</h6>
+                <div className="row g-2">
+
+                  <div id="tm-registration" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/online-trademark-registration-india" className="text-light text-decoration-none">
+                      TM Registration
+                    </Link>
+                  </div>
+
+                  <div id="tm-renewal" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/tm-renewal" className="text-light text-decoration-none">
+                      TM Renewal
+                    </Link>
+                  </div>
+
+                  <div id="tm-assignments-transfers" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/tm-assignments-transfers" className="text-light text-decoration-none">
+                      TM Assignments / Transfers
+                    </Link>
+                  </div>
+
+                  <div id="tm-amendments" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/tm-amendments" className="text-light text-decoration-none">
+                      TM Amendments
+                    </Link>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 id="company-compliances" className="section-title footer-heading">Company Compliance</h6>
+                <div className="row g-2">
+
+                  <div id="share-transfers" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/share-transfers" className="text-light text-decoration-none">
+                      Share Transfers
+                    </Link>
+                  </div>
+
+                  <div id="share-transmission" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/share-transmission" className="text-light text-decoration-none">
+                      Share Transmission
+                    </Link>
+                  </div>
+
+                  <div id="share-allotments" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/share-allotments" className="text-light text-decoration-none">
+                      Share Allotments
+                    </Link>
+                  </div>
+
+                  <div id="equity-debt-raising" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/equity-debt-raising" className="text-light text-decoration-none">
+                      Equity / Debt Raising
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/change-directors-kmp" className="text-light text-decoration-none">
+                      Change in Directors / KMP
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/change-auditors" className="text-light text-decoration-none">
+                      Change in Auditors
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/change-address-office" className="text-light text-decoration-none">
+                      Change in Address / Shifting of Office
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/msme-fillings" className="text-light text-decoration-none">
+                      MSME Fillings
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/return-deposit" className="text-light text-decoration-none">
+                      Return of Deposit
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/fund-raise" className="text-light text-decoration-none">
+                      Fund Raise
+                    </Link>
+                  </div>
+
+                  <div id="annual-filing" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/annual-filing" className="text-light text-decoration-none">
+                      Annual Filing
+                    </Link>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className="col-12 mb-4">
+                <h6 id="tax-fillings" className="section-title footer-heading">Tax Filing</h6>
+                <div className="row g-2">
+
+                  <div id="individual-itr" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/individual-itr" className="text-light text-decoration-none">
+                      Individual ITR Fillings
+                    </Link>
+                  </div>
+
+                  <div id="corporate-itr" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/corporate-itr" className="text-light text-decoration-none">
+                      Corporate ITR Fillings
+                    </Link>
+                  </div>
+
+                  <div id="gst-returns" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/gst-returns" className="text-light text-decoration-none">
+                      GST Returns
+                    </Link>
+                  </div>
+
+                  <div id="tds-fillings" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
+                    <Link to="/tds-fillings" className="text-light text-decoration-none">
+                      TDS Fillings
+                    </Link>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <hr className="border-secondary my-4" />
+
+          <div className="d-flex flex-wrap justify-content-between align-items-center text-center text-md-start small">
+            <div className="mb-2 mb-md-0 text-start">
+              <a href="/privacy" className="text-white me-4 text-decoration-none">Privacy Policy</a>
+              <a href="/refund" className="text-white me-4 text-decoration-none">Refund Policy</a>
+              {/* <a href="#" className="text-white me-4 text-decoration-none">Status</a> */}
+              <span>©2025 TECHGEERING</span>
+              {/* <a href="/hero" className="ms-3 text-decoration-none text-white" >Hero Banner</a> */}
+            </div>
+            <div className="text-start">
+              <a href="#" className="text-white me-3"><i className="fab fa-facebook-f"></i></a>
+              <a href="#" className="text-white me-3"><i className="fab fa-twitter"></i></a>
+              <a href="#" className="text-white"><i className="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+export default ChatWidget;

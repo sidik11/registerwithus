@@ -1,0 +1,21 @@
+.refund-policy {
+  background-color: #1a1a1a;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.refund-policy h2 {
+  font-weight: 600;
+  color: #ffc107;
+}
+
+.refund-box {
+  background-color: #212529;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.refund-box ol li {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,27 @@
+.card-title {
+    font-weight: 600;
+  }
+  .card-text {
+    color: #6c757d;
+  }
+  .category {
+    color: #6366f1;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .author-img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .search-box {
+    max-width: 300px;
+  }
+  .card-body small {
+    color: #6c757d;
+  }
+
+  .text-primary {
+    color: (6 16 103) !important
+  }
