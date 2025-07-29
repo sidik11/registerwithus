@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -283,6 +283,93 @@ function Servicedetails() {
         if (tabList) tabList.scrollLeft += offset;
     };
 
+    const form = useRef();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            user_name: form.current.user_name.value,
+            user_phone: form.current.user_phone.value,
+            user_email: form.current.user_email.value,
+            message: form.current.message.value,
+            form_type: "Quick Contact"
+        };
+
+        try {
+            const response = await fetch('http://localhost:3001/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert('✅ Message saved to DB!');
+                form.current.reset();
+            } else {
+                alert('❌ Failed to save message.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('❌ Server error. Please try again.');
+        }
+    };
+
+    const handleExpertSubmit = async (e) => {
+    e.preventDefault();
+
+    alert("📌 Step 1: Submission triggered");
+
+    const expertForm = e.target;
+
+    alert("📌 Step 2: Accessing form elements");
+
+    const userName = expertForm.expert_name?.value;
+    const userPhone = expertForm.expert_phone?.value;
+    const userEmail = expertForm.expert_email?.value;
+
+    alert(`📌 Step 3: Collected values\nName: ${userName}\nPhone: ${userPhone}\nEmail: ${userEmail}`);
+
+    const formData = {
+        user_name: userName,
+        user_phone: userPhone,
+        user_email: userEmail,
+        form_type: "Talk To Expert"
+    };
+
+    alert("📌 Step 4: Form data ready. Sending fetch request...");
+
+    try {
+        const response = await fetch("http://localhost:3001/api/submit/expert", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+
+        alert("📌 Step 5: Got response from server");
+
+        const result = await response.json();
+
+        alert("📌 Step 6: Parsed response JSON");
+
+        if (result.success) {
+            alert("✅ Step 7: Expert form submitted successfully!");
+            expertForm.reset();
+        } else {
+            alert("❌ Step 7: Server responded with failure");
+        }
+    } catch (error) {
+        console.error("❌ Error caught in catch block:", error);
+        alert("❌ Step 8: Server/network error caught. See console.");
+    }
+};
+
     return (
         <>
             {/* Hero Section */}
@@ -310,16 +397,15 @@ function Servicedetails() {
                         </div>
                         <div className="col-lg-5">
                             <div className="styled-form-container">
-                                <form>
-                                    <p className='text-dark' >Submit your details to get an instant <span className='text-theme' >All-inclusive</span> Quote to your email and a <span className='text-theme' >FREE</span> Expert Consultation</p>
-                                    <input type="text" className="form-control custom-input mb-3" placeholder="Your Name" required />
+                                <form ref={form} onSubmit={handleSubmit}>
+                                    <input type="text" name="user_name" className="form-control custom-inputs mb-3" placeholder="Your Name" required />
                                     <div className="input-group mb-3">
-                                        <span className="input-group-text custom-addon">+91</span>
-                                        <input type="tel" className="form-control custom-input" placeholder="Mobile Number" required />
+                                        <span className="input-group-text custom-addons">+91</span>
+                                        <input type="tel" name="user_phone" className="form-control custom-inputs" placeholder="Mobile Number" required />
                                     </div>
-                                    <input type="email" className="form-control custom-input mb-3" placeholder="Email" required />
-                                    <textarea className="form-control custom-input mb-3" placeholder="Message" rows="3" required></textarea>
-                                    <button type="submit" className="btn btn-gradient w-100 fw-bold">Register Now →</button>
+                                    <input type="email" name="user_email" className="form-control custom-inputs mb-3" placeholder="Email" required />
+                                    <textarea name="message" className="form-control custom-inputs mb-3" placeholder="Message" rows="3" required></textarea>
+                                    <button type="submit" className="btn btn-gradients w-100 fw-bold">Register Now →</button>
                                 </form>
                             </div>
                         </div>
@@ -407,14 +493,14 @@ function Servicedetails() {
                         <div className="col-lg-4 position-relative">
                             <div className="bg-white p-4 rounded shadow sticky-form">
                                 <h5 className="fw-bold mb-3">Talk To Our Experts</h5>
-                                <form>
-                                    <input type="text" className="form-control mb-3" placeholder="Your Name" />
+                                <form onSubmit={handleExpertSubmit}>
+                                    <input type="text" name="expert_name" className="form-control mb-3" placeholder="Your Name" required />
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">+91</span>
-                                        <input type="tel" className="form-control" placeholder="Phone" />
+                                        <input type="tel" name="expert_phone" className="form-control" placeholder="Phone" required />
                                     </div>
-                                    <input type="email" className="form-control mb-3" placeholder="Email" />
-                                    <button className="btn btn-request w-100">Request Callback</button>
+                                    <input type="email" name="expert_email" className="form-control mb-3" placeholder="Email" required />
+                                    <button type="submit" className="btn btn-request w-100">Request Callback</button>
                                     <p className="small mt-2 text-muted">We never share your details.</p>
                                 </form>
                             </div>

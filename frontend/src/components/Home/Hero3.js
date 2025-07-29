@@ -13,7 +13,8 @@ function Hero3() {
             user_name: form.current.user_name.value,
             user_phone: form.current.user_phone.value,
             user_email: form.current.user_email.value,
-            message: form.current.message.value
+            message: form.current.message.value,
+            form_type: "Quick Contact"
         };
 
         try {

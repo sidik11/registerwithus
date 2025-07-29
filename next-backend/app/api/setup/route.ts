@@ -4,8 +4,8 @@ import mysql from "mysql2/promise";
 // XAMPP MySQL details
 const connection = mysql.createPool({
   host: "localhost",
-  user: "root",        // 👈 XAMPP ka default username
-  password: "",        // 👈 Agar password hai toh daalo, warna blank
+  user: "root",
+  password: "",
 });
 
 export async function GET() {
@@ -17,7 +17,7 @@ export async function GET() {
     // Use Database
     await connection.query(`USE registerwithus`);
 
-    // Create Table
+    // Create Table (without form_type initially)
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,6 +29,15 @@ export async function GET() {
       )
     `);
     console.log("✅ Table created or already exists");
+
+    // Check if 'form_type' column exists
+    const [columns] = await connection.query(`SHOW COLUMNS FROM users LIKE 'form_type'`);
+    if ((columns as any[]).length === 0) {
+      await connection.query(`ALTER TABLE users ADD COLUMN form_type VARCHAR(50) DEFAULT 'Quick Contact' AFTER message`);
+      console.log("✅ 'form_type' column added");
+    } else {
+      console.log("ℹ️ 'form_type' column already exists");
+    }
 
     return NextResponse.json({ success: true, message: "DB & Table setup complete ✅" });
   } catch (err) {
