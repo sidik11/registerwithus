@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import { API_BASE_URL } from '../../utils/api';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Swal from 'sweetalert2';
 import './Servicedetails.css';
 import tabData from './services.json';
 
@@ -180,7 +182,11 @@ function Servicedetails() {
                 }, 100);
 
             } else {
-                alert("No matching service found in JSON");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No Service Found',
+                    text: 'Sorry, we could not found any service from the data.'
+                });
             }
         }
 
@@ -288,16 +294,18 @@ function Servicedetails() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!form.current) return;
+
         const formData = {
-            user_name: form.current.user_name.value,
-            user_phone: form.current.user_phone.value,
-            user_email: form.current.user_email.value,
-            message: form.current.message.value,
+            user_name: form.current.user_name.value.trim(),
+            user_phone: form.current.user_phone.value.trim(),
+            user_email: form.current.user_email.value.trim(),
+            message: form.current.message.value.trim(),
             form_type: "Quick Contact"
         };
 
         try {
-            const response = await fetch('http://localhost:3001/api/submit', {
+            const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -308,67 +316,91 @@ function Servicedetails() {
             const result = await response.json();
 
             if (result.success) {
-                alert('✅ Message saved to DB!');
+                Swal.fire({
+                    icon: 'success',
+                    title: '✅ Form Submitted Successfully!',
+                    text: 'We will connect with you soon.'
+                });
                 form.current.reset();
             } else {
-                alert('❌ Failed to save message.');
+                Swal.fire({
+                    icon: 'error',
+                    title: '❌ Form Submission Failed!',
+                    text: 'Under Maintenance. Please try again later.'
+                });
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('❌ Server error. Please try again.');
+            Swal.fire({
+                icon: 'error',
+                title: '❌ Server Error!',
+                text: 'Something went wrong. Please try again later.'
+            });
+        }
+    };
+
+    const scrollToFooter = (e) => {
+        e.preventDefault();
+        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToId = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
     const handleExpertSubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    alert("📌 Step 1: Submission triggered");
+        // Swal.fire("📌 Step 1", "Submission triggered", "info");
 
-    const expertForm = e.target;
+        const expertForm = e.target;
 
-    alert("📌 Step 2: Accessing form elements");
+        // Swal.fire("📌 Step 2", "Accessing form elements", "info");
 
-    const userName = expertForm.expert_name?.value;
-    const userPhone = expertForm.expert_phone?.value;
-    const userEmail = expertForm.expert_email?.value;
+        const userName = expertForm.expert_name?.value;
+        const userPhone = expertForm.expert_phone?.value;
+        const userEmail = expertForm.expert_email?.value;
 
-    alert(`📌 Step 3: Collected values\nName: ${userName}\nPhone: ${userPhone}\nEmail: ${userEmail}`);
+        // Swal.fire("📌 Step 3", `Collected values:<br>Name: ${userName}<br>Phone: ${userPhone}<br>Email: ${userEmail}`, "info");
 
-    const formData = {
-        user_name: userName,
-        user_phone: userPhone,
-        user_email: userEmail,
-        form_type: "Talk To Expert"
-    };
+        const formData = {
+            user_name: userName,
+            user_phone: userPhone,
+            user_email: userEmail,
+            form_type: "Talk To Expert"
+        };
 
-    alert("📌 Step 4: Form data ready. Sending fetch request...");
+        // Swal.fire("📌 Step 4", "Form data ready. Sending fetch request...", "info");
 
-    try {
-        const response = await fetch("http://localhost:3001/api/submit/expert", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        });
+        try {
+            const response = await fetch("http://localhost:3001/api/submit/expert", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
 
-        alert("📌 Step 5: Got response from server");
+            // Swal.fire("📌 Step 5", "Got response from server", "info");
 
-        const result = await response.json();
+            const result = await response.json();
 
-        alert("📌 Step 6: Parsed response JSON");
+            // Swal.fire("📌 Step 6", "Parsed response JSON", "info");
 
-        if (result.success) {
-            alert("✅ Step 7: Expert form submitted successfully!");
-            expertForm.reset();
-        } else {
-            alert("❌ Step 7: Server responded with failure");
+            if (result.success) {
+                Swal.fire("✅ Success", "Expert form submitted successfully!", "success");
+                expertForm.reset();
+            } else {
+                Swal.fire("❌ Failed", "Server responded with failure", "error");
+            }
+        } catch (error) {
+            console.error("❌ Error caught in catch block:", error);
+            Swal.fire("❌ Error", "Server/network error caught. See console.", "error");
         }
-    } catch (error) {
-        console.error("❌ Error caught in catch block:", error);
-        alert("❌ Step 8: Server/network error caught. See console.");
-    }
-};
+    };
 
     return (
         <>
@@ -396,16 +428,57 @@ function Servicedetails() {
                             </div>
                         </div>
                         <div className="col-lg-5">
-                            <div className="styled-form-container">
+                            <div className="styled-form-containers">
+                                <p className='text-white'>
+                                    Submit your details to get an instant <span className=''>All-inclusive</span> Quote to your email and a <span className=''>FREE</span> Expert Consultation
+                                </p>
                                 <form ref={form} onSubmit={handleSubmit}>
-                                    <input type="text" name="user_name" className="form-control custom-inputs mb-3" placeholder="Your Name" required />
+                                    <input
+                                        type="text"
+                                        name="user_name"
+                                        maxLength="50"
+                                        onInput={(e) => {
+                                            e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+                                        }}
+                                        className="form-control custom-inputs mb-3"
+                                        placeholder="Your Name"
+                                        required
+                                    />
+
                                     <div className="input-group mb-3">
                                         <span className="input-group-text custom-addons">+91</span>
-                                        <input type="tel" name="user_phone" className="form-control custom-inputs" placeholder="Mobile Number" required />
+                                        <input
+                                            type="tel"
+                                            name="user_phone"
+                                            maxLength="10"
+                                            onInput={(e) => {
+                                                e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 10);
+                                            }}
+                                            className="form-control custom-inputs"
+                                            placeholder="Mobile Number"
+                                            required
+                                        />
                                     </div>
-                                    <input type="email" name="user_email" className="form-control custom-inputs mb-3" placeholder="Email" required />
-                                    <textarea name="message" className="form-control custom-inputs mb-3" placeholder="Message" rows="3" required></textarea>
-                                    <button type="submit" className="btn btn-gradients w-100 fw-bold">Register Now →</button>
+
+                                    <input
+                                        type="email"
+                                        name="user_email"
+                                        className="form-control custom-inputs mb-3"
+                                        placeholder="Email"
+                                        required
+                                    />
+
+                                    <textarea
+                                        name="message"
+                                        className="form-control custom-inputs mb-3"
+                                        placeholder="Message"
+                                        rows="3"
+                                        required
+                                    ></textarea>
+
+                                    <button type="submit" className="btn btn-gradients w-100 fw-bold">
+                                        Register Now →
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -511,7 +584,7 @@ function Servicedetails() {
 
             <section>
                 <div className="container py-5">
-                    <h2 className="section-title text-center text-dark pb-5 d-block">
+                    <h2 className="section-title text-center text-dark d-block">
                         <span className="overlap-conte">Frequently Asked Questions</span>
                     </h2>
                     <div className="accordion" id="faqAccordion"></div>

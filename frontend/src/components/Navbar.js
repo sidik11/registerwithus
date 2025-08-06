@@ -49,10 +49,24 @@ function Navbar() {
     menu.addEventListener("mouseleave", handleMouseLeave);
     menu.addEventListener("mouseenter", handleMouseEnter);
 
+    // ✅ Auto-close dropdown on link click inside mega menu
+    const serviceLinks = menu.querySelectorAll("a");
+    const closeDropdown = () => {
+      dropdown.classList.remove("show");
+      menu.classList.remove("show");
+    };
+    serviceLinks.forEach((serviceLink) =>
+      serviceLink.addEventListener("click", closeDropdown)
+    );
+
     return () => {
       link.removeEventListener("click", handleClick);
       menu.removeEventListener("mouseleave", handleMouseLeave);
       menu.removeEventListener("mouseenter", handleMouseEnter);
+
+      serviceLinks.forEach((serviceLink) =>
+        serviceLink.removeEventListener("click", closeDropdown)
+      );
     };
   }, []);
 
@@ -95,7 +109,6 @@ function Navbar() {
               <div className="dropdown-menu w-100 mega-dropdown mt-0 border-0 shadow-lg" ref={menuRef}>
                 <div className="container">
                   <div className="row gy-4">
-                    {/* Column 1 */}
                     {/* Column 1 */}
                     <div className="col-md-3">
                       <h4 className="mega-heading"><i className="fas fa-briefcase me-2"></i>Business Registration</h4>
@@ -154,7 +167,6 @@ function Navbar() {
                     <div className="col-md-3">
                       <h4 className="mega-heading"><i className="fas fa-balance-scale me-2"></i>Labour Laws</h4>
                       <ul className="mega-list">
-                        <li><Link to="/epf-registration-online">One Time PF Registration</Link></li>
                         <li><Link to="/esic-registration-online">ESIC Registration</Link></li>
                       </ul>
                       <h4 className="mega-heading mt-4"><i className="fas fa-award me-2"></i>Trademarks</h4>
@@ -193,12 +205,6 @@ function Navbar() {
                         <li><Link to="/Allotments">Annual Filling</Link></li>
                       </ul>
                     </div>
-
-                    {/* Column 5 */}
-                    {/* <div className="col-md-2">
-                      
-                    </div> */}
-
                   </div>
                 </div>
               </div>

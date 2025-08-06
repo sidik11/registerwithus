@@ -32,7 +32,8 @@ export async function GET(req: NextRequest) {
 
     if (id) {
       const [blogs]: any = await connection.execute(
-        `SELECT * FROM blogs WHERE id=?`, [id]
+        `SELECT *, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at FROM blogs WHERE id=?`,
+        [id]
       );
 
       if (!blogs.length) {
@@ -41,18 +42,26 @@ export async function GET(req: NextRequest) {
       }
 
       const [meta]: any = await connection.execute(
-        `SELECT meta_name, meta_content FROM blog_meta WHERE blog_id=?`, [id]
+        `SELECT meta_name, meta_content FROM blog_meta WHERE blog_id=?`,
+        [id]
       );
 
       await connection.end();
       return NextResponse.json({ success: true, blog: { ...blogs[0], meta } });
     } else {
       const [rows]: any = await connection.execute(`
-        SELECT blogs.id, blogs.title, blogs.image, blogs.category_id, blog_categories.name AS category_name
-        FROM blogs
-        LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
-        ORDER BY blogs.id DESC
-      `);
+  SELECT 
+    blogs.id, 
+    blogs.title, 
+    blogs.image, 
+    blogs.category_id, 
+    blogs.description AS blogDescription,  -- ✅ Yeh line add karo
+    DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
+    blog_categories.name AS category_name
+  FROM blogs
+  LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
+  ORDER BY blogs.id DESC
+`);
 
       await connection.end();
       return NextResponse.json({ success: true, blogs: rows });

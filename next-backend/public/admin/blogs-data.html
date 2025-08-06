@@ -22,7 +22,8 @@
     <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-
+    <!-- Include Quill stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 
     <link href="css/app.css" rel="stylesheet">
@@ -39,7 +40,7 @@
 
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">
-                        Pages
+
                     </li>
 
                     <li class="sidebar-item">
@@ -50,280 +51,150 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-profile.html">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+                        <a class="sidebar-link" href="admin-data.html">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Admin
+                                Data</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-sign-in.html">
-                            <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-sign-up.html">
-                            <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign
-                                Up</span>
+                        <a class="sidebar-link" href="blogs-category.html">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
+                                Category</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="pages-blank.html">
-                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-header">
-                        Tools & Components
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="ui-buttons.html">
-                            <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
+                        <a class="sidebar-link" href="blogs-data.html">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
+                                Data</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="ui-forms.html">
-                            <i class="align-middle" data-feather="check-square"></i> <span
-                                class="align-middle">Forms</span>
+                        <a class="sidebar-link" href="quick-contact.html">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Contact
+                                Forms</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="ui-cards.html">
-                            <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="ui-typography.html">
-                            <i class="align-middle" data-feather="align-left"></i> <span
-                                class="align-middle">Typography</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="icons-feather.html">
-                            <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-header">
-                        Plugins & Addons
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="charts-chartjs.html">
-                            <i class="align-middle" data-feather="bar-chart-2"></i> <span
-                                class="align-middle">Charts</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="maps-google.html">
-                            <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+                        <a class="sidebar-link" href="expert-requests.html">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Expert
+                                Requests</span>
                         </a>
                     </li>
                 </ul>
-
-                <div class="sidebar-cta">
-                    <div class="sidebar-cta-content">
-                        <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-                        <div class="mb-3 text-sm">
-                            Are you looking for more components? Check out our premium version.
-                        </div>
-                        <div class="d-grid">
-                            <a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </nav>
 
         <div class="main">
-            <nav class="navbar navbar-expand navbar-light navbar-bg">
-                <a class="sidebar-toggle js-sidebar-toggle">
-                    <i class="hamburger align-self-center"></i>
-                </a>
+            			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+					<i class="hamburger align-self-center"></i>
+				</a>
 
-                <div class="navbar-collapse collapse">
-                    <ul class="navbar-nav navbar-align">
-                        <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-                                <div class="position-relative">
-                                    <i class="align-middle" data-feather="bell"></i>
-                                    <span class="indicator">4</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-                                aria-labelledby="alertsDropdown">
-                                <div class="dropdown-menu-header">
-                                    4 New Notifications
-                                </div>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <i class="text-danger" data-feather="alert-circle"></i>
-                                            </div>
-                                            <div class="col-10">
-                                                <div class="text-dark">Update completed</div>
-                                                <div class="text-muted small mt-1">Restart server 12 to complete the
-                                                    update.</div>
-                                                <div class="text-muted small mt-1">30m ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <i class="text-warning" data-feather="bell"></i>
-                                            </div>
-                                            <div class="col-10">
-                                                <div class="text-dark">Lorem ipsum</div>
-                                                <div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate
-                                                    hendrerit et.</div>
-                                                <div class="text-muted small mt-1">2h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <i class="text-primary" data-feather="home"></i>
-                                            </div>
-                                            <div class="col-10">
-                                                <div class="text-dark">Login from 192.186.1.8</div>
-                                                <div class="text-muted small mt-1">5h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <i class="text-success" data-feather="user-plus"></i>
-                                            </div>
-                                            <div class="col-10">
-                                                <div class="text-dark">New connection</div>
-                                                <div class="text-muted small mt-1">Christina accepted your request.
-                                                </div>
-                                                <div class="text-muted small mt-1">14h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="dropdown-menu-footer">
-                                    <a href="#" class="text-muted">Show all notifications</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
-                                data-bs-toggle="dropdown">
-                                <div class="position-relative">
-                                    <i class="align-middle" data-feather="message-square"></i>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-                                aria-labelledby="messagesDropdown">
-                                <div class="dropdown-menu-header">
-                                    <div class="position-relative">
-                                        4 New Messages
-                                    </div>
-                                </div>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-5.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">Vanessa Tucker</div>
-                                                <div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
-                                                    tortor.</div>
-                                                <div class="text-muted small mt-1">15m ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-2.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="William Harris">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">William Harris</div>
-                                                <div class="text-muted small mt-1">Curabitur ligula sapien euismod
-                                                    vitae.</div>
-                                                <div class="text-muted small mt-1">2h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-4.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Christina Mason">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">Christina Mason</div>
-                                                <div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
-                                                </div>
-                                                <div class="text-muted small mt-1">4h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-3.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">Sharon Lessman</div>
-                                                <div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
-                                                    posuere ac, mattis non.</div>
-                                                <div class="text-muted small mt-1">5h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="dropdown-menu-footer">
-                                    <a href="#" class="text-muted">Show all messages</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
-                                data-bs-toggle="dropdown">
-                                <i class="align-middle" data-feather="settings"></i>
-                            </a>
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="messagesDropdown">
+								<div class="dropdown-menu-header">
+									<div class="position-relative">
+										4 New Messages
+									</div>
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-5.jpg"
+													class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Vanessa Tucker</div>
+												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
+													tortor.</div>
+												<div class="text-muted small mt-1">15m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-2.jpg"
+													class="avatar img-fluid rounded-circle" alt="William Harris">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">William Harris</div>
+												<div class="text-muted small mt-1">Curabitur ligula sapien euismod
+													vitae.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-4.jpg"
+													class="avatar img-fluid rounded-circle" alt="Christina Mason">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Christina Mason</div>
+												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
+												</div>
+												<div class="text-muted small mt-1">4h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-3.jpg"
+													class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Sharon Lessman</div>
+												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
+													posuere ac, mattis non.</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all messages</a>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+								data-bs-toggle="dropdown">
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
 
-                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
-                                data-bs-toggle="dropdown">
-                                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
-                                    alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
-                                        data-feather="user"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1"
-                                        data-feather="pie-chart"></i> Analytics</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.html"><i class="align-middle me-1"
-                                        data-feather="settings"></i> Settings & Privacy</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1"
-                                        data-feather="help-circle"></i> Help Center</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+								data-bs-toggle="dropdown">
+								<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
+									alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
+										data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="pie-chart"></i> Analytics</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1"
+										data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="help-circle"></i> Help Center</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#" id="logoutBtn">Log out</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
 
             <main class="content">
                 <div class="container-fluid p-0">
@@ -416,8 +287,8 @@
 
                                             <div class="col-12">
                                                 <label>Blog Description</label>
-                                                <textarea class="form-control" name="description" rows="6"
-                                                    placeholder="Write blog description..."></textarea>
+                                                <div id="quillEditor" style="height: 300px;"></div>
+                                                <input type="hidden" name="description" id="hiddenDescription" />
                                             </div>
                                         </div>
                                     </div>
@@ -436,35 +307,36 @@
 
 
             <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6 text-start">
-                            <p class="mb-0">
-                                <a class="text-muted" href="https://adminkit.io/"
-                                    target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted"
-                                    href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin
-                                        Template</strong></a> &copy;
-                            </p>
-                        </div>
-                        <div class="col-6 text-end">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="javascript:void(0)"><strong>Register With Us</strong></a> - <a class="text-muted"
+									href="https://techgeering.in/" target="_blank"><strong> &copy; Techgeering Solutions Private Limited</strong></a>
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<!-- <li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+								</li> -->
+								<li class="list-inline-item">
+									<a class="text-muted" style="cursor:default;" href="javascript:void(0)" target="_blank">Version 1.0</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
         </div>
     </div>
 
@@ -497,7 +369,8 @@
                         </div>
                         <div class="mb-2">
                             <label>Description</label>
-                            <textarea name="description" id="editDescription" class="form-control"></textarea>
+                            <div id="editQuillEditor" style="height: 300px;"></div>
+                            <input type="hidden" name="description" id="editHiddenDescription" />
                         </div>
                         <div class="mb-2">
                             <label>Image</label>
@@ -520,9 +393,86 @@
 
     <!-- Before closing </body> tag -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
     <script>
+        let editQuill;
+
         document.addEventListener("DOMContentLoaded", async () => {
+            // ✒️ Quill Initialization for EDIT Modal
+            editQuill = new Quill("#editQuillEditor", {
+                theme: "snow",
+                modules: {
+                    toolbar: [
+                        [{ header: [1, 2, 3, false] }],
+                        ["bold", "italic", "underline"],
+                        ["link", "image"],
+                        [{ list: "ordered" }, { list: "bullet" }],
+                        ["clean"]
+                    ]
+                }
+            });
+
+            // 📷 Base64 Image Handler for EDIT Quill
+            const editToolbar = editQuill.getModule("toolbar");
+            editToolbar.addHandler("image", () => {
+                const input = document.createElement("input");
+                input.type = "file";
+                input.accept = "image/*";
+                input.click();
+
+                input.onchange = () => {
+                    const file = input.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            const base64Image = reader.result;
+                            const range = editQuill.getSelection();
+                            editQuill.insertEmbed(range.index, "image", base64Image);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+            });
+
+            // ✒️ Quill Initialization for ADD Blog
+            const quill = new Quill("#quillEditor", {
+                theme: "snow",
+                modules: {
+                    toolbar: [
+                        [{ header: [1, 2, 3, false] }],
+                        ["bold", "italic", "underline"],
+                        ["link", "image"],
+                        [{ list: "ordered" }, { list: "bullet" }],
+                        ["clean"]
+                    ]
+                }
+            });
+
+            // 📷 Base64 Image Handler for ADD Quill
+            const toolbar = quill.getModule("toolbar");
+            toolbar.addHandler("image", () => {
+                const input = document.createElement("input");
+                input.type = "file";
+                input.accept = "image/*";
+                input.click();
+
+                input.onchange = () => {
+                    const file = input.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            const base64Image = reader.result;
+                            const range = quill.getSelection();
+                            quill.insertEmbed(range.index, "image", base64Image);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+            });
+
+            // 🌐 Select DOM Elements
             const blogsTableBody = document.getElementById("blogsTableBody");
             const editModal = new bootstrap.Modal(document.getElementById("editBlogModal"));
             const editForm = document.getElementById("editBlogForm");
@@ -532,11 +482,12 @@
             const editCategorySelect = document.getElementById("editCategory");
             const addBlogForm = document.getElementById("addBlogForm");
 
-            // ✅ Load categories in dropdown
+            // 📦 Load Categories
             async function loadCategories(selectEl) {
                 const res = await fetch("/api/categories");
                 const data = await res.json();
                 selectEl.innerHTML = "";
+
                 if (data.success) {
                     const defaultOption = document.createElement("option");
                     defaultOption.textContent = "Select Category";
@@ -553,7 +504,7 @@
                 }
             }
 
-            // ✅ Load blogs into table
+            // 📰 Load Blogs into Table
             async function loadBlogs() {
                 const res = await fetch("/api/blogs/view");
                 const data = await res.json();
@@ -563,38 +514,34 @@
                     data.blogs.forEach((blog, index) => {
                         const row = document.createElement("tr");
                         row.innerHTML = `
-          <td>${index + 1}</td>
-          <td>${blog.title}</td>
-          <td>${blog.category_name || "N/A"}</td>
-          <td><img src="${blog.image}" width="60"></td>
-          <td><span class="badge bg-success">Active</span></td>
-          <td>
-            <button class="btn btn-warning btn-sm edit-btn" data-id="${blog.id}">Edit</button>
-            <button class="btn btn-danger btn-sm delete-btn" data-id="${blog.id}">Delete</button>
-          </td>`;
+                        <td>${index + 1}</td>
+                        <td>${blog.title}</td>
+                        <td>${blog.category_name || "N/A"}</td>
+                        <td><img src="${blog.image}" width="60"></td>
+                        <td><span class="badge bg-success">Active</span></td>
+                        <td>
+                            <button class="btn btn-warning btn-sm edit-btn" data-id="${blog.id}">Edit</button>
+                            <button class="btn btn-danger btn-sm delete-btn" data-id="${blog.id}">Delete</button>
+                        </td>`;
                         blogsTableBody.appendChild(row);
                     });
                 }
             }
 
-            // ✅ ADD BLOG
-
-
+            // ➕ Submit New Blog
             addBlogForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
-
                 try {
+                    document.getElementById("hiddenDescription").value = quill.root.innerHTML;
                     const formData = new FormData(addBlogForm);
                     const res = await fetch("/api/blogs", {
                         method: "POST",
                         body: formData,
                     });
-
                     const result = await res.json();
                     if (result.success) {
                         alert("✅ Blog added successfully!");
                         location.reload();
-                        loadBlogs();
                     } else {
                         alert("❌ Failed to add blog: " + (result.message || "Unknown error"));
                     }
@@ -603,47 +550,66 @@
                 }
             });
 
-            // ✅ EDIT BLOG
+            // 📝 Handle Edit and Delete Buttons
             blogsTableBody.addEventListener("click", async (e) => {
-                if (e.target.classList.contains("edit-btn")) {
-                    const blogId = e.target.dataset.id;
+                const target = e.target;
+
+                // ✏️ EDIT Button Click
+                if (target.classList.contains("edit-btn")) {
+                    const blogId = target.dataset.id;
                     const res = await fetch(`/api/blogs/view?id=${blogId}`);
                     const data = await res.json();
+
                     if (data.success) {
                         const blog = data.blog;
+
+                        // 🔔 Alerts to check fetched data
+                        alert("🆔 ID: " + blog.id);
+                        alert("📝 Title: " + blog.title);
+                        alert("🔗 Slug: " + blog.slug);
+                        alert("📅 Date: " + blog.date);
+                        alert("📷 Image (base64): " + blog.image);
+                        alert("📄 Description HTML: " + blog.description);
+
                         await loadCategories(editCategorySelect);
 
                         document.getElementById("editBlogId").value = blog.id;
                         document.getElementById("editTitle").value = blog.title;
                         document.getElementById("editSlug").value = blog.slug;
-                        document.getElementById("editDescription").value = blog.description;
                         document.getElementById("editDate").value = blog.date.split("T")[0];
                         editCategorySelect.value = blog.category_id;
 
-                        // ✅ Show existing image
+                        // ✅ Fill Quill correctly
+                        const delta = editQuill.clipboard.convert(blog.description || "");
+                        editQuill.setContents(delta, 'silent');
+
+                        // ✅ Preview Image
                         const previewImg = document.getElementById("editPreviewImage");
                         previewImg.src = blog.image;
 
+                        // 🏷️ Meta Tags
                         editMetaContainer.innerHTML = "";
                         if (Array.isArray(blog.meta)) {
-                            blog.meta.forEach(m => {
+                            blog.meta.forEach((meta) => {
+                                alert(`🔖 Meta: ${meta.meta_name} = ${meta.meta_content}`);
                                 const div = document.createElement("div");
                                 div.className = "d-flex gap-2 mb-2";
                                 div.innerHTML = `
-                <input type="text" name="metatag[]" value="${m.meta_name}" class="form-control">
-                <input type="text" name="metadesc[]" value="${m.meta_content}" class="form-control">
-            `;
+                                <input type="text" name="metatag[]" value="${meta.meta_name}" class="form-control">
+                                <input type="text" name="metadesc[]" value="${meta.meta_content}" class="form-control">`;
                                 editMetaContainer.appendChild(div);
                             });
                         }
-                        editModal.show();
-                    }
 
+                        editModal.show();
+                    } else {
+                        alert("❌ Failed to fetch blog details.");
+                    }
                 }
 
-                // ✅ DELETE BLOG
-                if (e.target.classList.contains("delete-btn")) {
-                    const blogId = e.target.dataset.id;
+                // 🗑️ DELETE Button Click
+                if (target.classList.contains("delete-btn")) {
+                    const blogId = target.dataset.id;
                     if (confirm("Are you sure you want to delete this blog?")) {
                         const res = await fetch(`/api/blogs/view?id=${blogId}`, { method: "DELETE" });
                         const result = await res.json();
@@ -657,8 +623,9 @@
                 }
             });
 
-            // ✅ UPDATE BLOG
+            // 🔄 For Updating Blog
             updateBtn.addEventListener("click", async () => {
+                document.getElementById("editHiddenDescription").value = editQuill.root.innerHTML;
                 const formData = new FormData(editForm);
                 const res = await fetch("/api/blogs/view", {
                     method: "PUT",
@@ -674,11 +641,39 @@
                 }
             });
 
-            // ✅ Load initial data
+            // 🌐 Initial Load
             await loadCategories(addCategorySelect);
             loadBlogs();
         });
     </script>
+
+	<script>
+		document.getElementById("logoutBtn").addEventListener("click", async (e) => {
+			e.preventDefault();
+
+			try {
+				const res = await fetch("/api/admin/logout", { method: "POST" });
+				const result = await res.json();
+
+				if (result.success) {
+					// Clear history and redirect to login.html
+					window.location.replace("/admin/login.html");
+				} else {
+					alert("Logout failed!");
+				}
+			} catch (err) {
+				console.error("Logout error:", err);
+				alert("Logout failed: " + err.message);
+			}
+		});
+		window.addEventListener("DOMContentLoaded", async () => {
+			const res = await fetch('/api/admin/check-auth');
+			const data = await res.json();
+			if (!data.authenticated) {
+				window.location.replace('/admin/login.html');
+			}
+		});
+	</script>
 
 
 </body>

@@ -1,27 +1,85 @@
 .section-title {
-    font-weight: 800;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .service-head {
+     text-align: center;
+    margin-bottom: 60px;;
+    position: relative;
     font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-  }
+    font-weight: 900;
+    color: #030c65;
+}
+}
 
-  .section-title span {
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .service-head {
+      text-align: center;
+    margin-bottom: 60px;;
     position: relative;
-    display: inline-block;
-  }
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #030c65;
+}
+}
 
-  .section-title span::after {
-    content: '';
-    position: absolute;
-    bottom: 48px;
-    left: 5px;
-    height: 18px;
-    width: 100%;
-    background: url(../../../public/img/Element.png) no-repeat center;
-    background-size: contain;
-    z-index: -1;
-  }
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .service-head {
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .service-head {
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .service-head {
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+}
+
+.section-title span {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title span::after {
+  content: '';
+  position: absolute;
+  bottom: 48px;
+  left: 5px;
+  height: 18px;
+  width: 100%;
+  background: url(../../../public/img/Element.png) no-repeat center;
+  background-size: contain;
+  z-index: -1;
+}
+
 .services-section {
   background: #f4f7fb;
 }
@@ -50,7 +108,7 @@
   width: 60px;
   height: 60px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: #061067 !important;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -80,7 +138,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #444;
+  color: black;
   transition: all 0.4s ease;
 }
 
@@ -163,6 +221,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
 /* Same as before up to .list-item etc... */
 
 /* 👇 lg only: first 2 items show, rest on hover */

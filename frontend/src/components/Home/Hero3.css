@@ -78,8 +78,15 @@
 }
 
 .play-btnsss:hover {
-  background: #061067;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
+}
+
+.btn-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 @media (max-width: 768px) {
@@ -87,15 +94,14 @@
     font-size: 2rem;
   }
 
-  .btn-area {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .play-btnsss {
-    margin-top: 15px;
+    /* margin-top: 15px; */
     margin-left: 0;
   }
+
+  .biz-hero-section {
+  height: 105vh;
+}
 }
 
 .styled-form-containers {

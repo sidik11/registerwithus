@@ -21,18 +21,18 @@
     color: #fff;
   }
 
-  .btn-custom {
-    background-color: #4F9CF9 !important;
-    color: #fff;
+  .btn-customs {
+    background-color: #fff;
+    color: black;
     font-weight: 600;
     padding: 10px 30px;
     border-radius: 10px;
     transition: all 0.3s ease;
   }
 
-  .btn-custom:hover {
-    background-color: #4fa6f4;
-    color: #fff;
+  .btn-customs:hover {
+    background-color: #fff;
+    color: black;
   }
 
   @media (max-width: 992px) {

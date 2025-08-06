@@ -8,7 +8,7 @@ function Clients() {
     return (
         <section className="pb-5">
             <div className="container">
-                <h2 className="section-title text-center text-dark pb-5 d-block"><span className="overlap-conte" >Our Clients</span></h2>
+                <h2 className="section-title text-center text-dark d-block about-us-heading"><span className="overlap-conte" >Our Clients</span></h2>
 
                 <div className="logo-container text-center">
                     <img src="img/logos/spinny.jpeg" alt="Spinny" className="client-logo" />

@@ -7,14 +7,14 @@ import './Blogs.css';
 function Blogs() {
     return (
         <section className="container py-5">
-            <h2 className="section-title d-block">
+            <h2 className="section-title d-block about-us-heading">
                 <span>Our Blogs</span>
             </h2>
 
             <div className="row g-4 align-items-stretch">
                 {/* Blog Card 1 */}
                 <div className="col-md-6 d-flex">
-                    <a href="/blogs" className="text-decoration-none w-100 cursor-loader">
+                    <a href="/blogs" className="text-decoration-none w-100 ">
                         <div className="card blog-card w-100 d-flex flex-column justify-content-center blog-card1 h-100">
                             <img src="img/blog11.png" alt="Blog 1" className="blog-image mx-auto d-block" />
                             <div className="blog-text">
@@ -34,7 +34,7 @@ function Blogs() {
                 {/* Blog Cards 2 & 3 */}
                 <div className="col-md-6 d-flex flex-column justify-content-between">
                     {/* Blog Card 2 */}
-                    <a href="/blogs" className="text-decoration-none mb-4 flex-grow-1 cursor-loader">
+                    <a href="/blogs" className="text-decoration-none mb-4 flex-grow-1 ">
                         <div className="card blog-card blog-card2 h-100">
                             <div className="row align-items-center h-100">
                                 <div className="col-md-6 blog-text">
@@ -55,7 +55,7 @@ function Blogs() {
                     </a>
 
                     {/* Blog Card 3 */}
-                    <a href="/blogs" className="text-decoration-none flex-grow-1 cursor-loader">
+                    <a href="/blogs" className="text-decoration-none flex-grow-1 ">
                         <div className="card blog-card blog-card2 h-100">
                             <div className="row align-items-center h-100">
                                 <div className="col-md-6">

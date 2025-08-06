@@ -30,7 +30,7 @@ function Card() {
               Whether you're a startup or an established enterprise, we bring clarity, efficiency, and trust to every project we handle.
             </p>
 
-            <a href="#" className="btn about-us-btn mt-4">
+            <a href="/about" className="btn about-us-btn mt-4">
               Learn More <i className="fas fa-arrow-right ms-2"></i>
             </a>
           </div>

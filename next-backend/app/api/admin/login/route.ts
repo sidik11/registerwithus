@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     });
 
     const [rows] = await connection.query(
-        'SELECT * FROM admin WHERE email = ? AND password = ?',
+        'SELECT * FROM admin WHERE email = ? AND password = ? AND status = 1',
         [email, password]
     );
 
@@ -23,10 +23,10 @@ export async function POST(req: NextRequest) {
         res.cookies.set('admin_auth', 'true', {
             httpOnly: true,
             path: '/',
-            maxAge: 60 * 60 * 24,
+            maxAge: 60 * 60 * 24, // 1 day
         });
         return res;
     } else {
-        return NextResponse.json({ success: false, message: 'Invalid credentials' });
+        return NextResponse.json({ success: false, message: 'Invalid credentials or inactive account' });
     }
 }

@@ -131,3 +131,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, message: "Blog creation failed", error: String(error) }, { status: 500 });
   }
 }
+

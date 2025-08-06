@@ -186,7 +186,7 @@ Thanks!`;
                   <i className="fa-solid fa-r"></i>
                 </div> */}
                 {/* <h5 className="fw-bold mb-0">Register With Us</h5> */}
-                <img className="foot-logo" src="img/new-foot-logo (1).png" alt=""></img>
+                <img className="foot-logo" src="img/whitelogo.png" alt=""></img>
               </div>
               <p className="small mb-1">Register with us was created for<br /> the new ways we live and work.</p>
               <p className="small">We make a better register with<br /> us around the world</p>
@@ -226,7 +226,7 @@ Thanks!`;
             <div className="col-lg-3 col-sm-12 text-start">
               <h5 className="fw-bold mb-3">Try It Today</h5>
               <p className="small mb-3">Get started for free. Add your<br /> whole team as your needs grow.</p>
-              <a href="#" className="btn btn-info text-dark fw-semibold px-4 py-2 rounded-3">
+              <a href="/contact" className="btn btn-info text-white fw-semibold px-4 py-2 rounded-3">
                 Start today <i className="fa-solid fa-arrow-right ms-2"></i>
               </a>
             </div>
@@ -323,12 +323,12 @@ Thanks!`;
               <div className="col-12 mb-4">
                 <h6 className="section-title footer-heading">Labour Laws</h6>
                 <div className="row g-2">
-                  <div id="one-time-pf-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
+                  {/* <div id="one-time-pf-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
                     <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
                     <Link to="/epf-registration-online" className="text-light text-decoration-none">
                       One Time PF Registrations
                     </Link>
-                  </div>
+                  </div> */}
                   <div id="esic-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
                     <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
                     <Link to="/esic-registration-online" className="text-light text-decoration-none">

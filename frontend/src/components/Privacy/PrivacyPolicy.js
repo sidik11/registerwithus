@@ -7,9 +7,9 @@ function PrivacyPolicy() {
   return (
     <section className="privacy-policy py-5">
       <div className="container">
-        <h2 className="text-center mb-5">
+        {/* <h2 className="text-center mb-5">
           <i className="fas fa-user-shield me-2"></i>Privacy Policy
-        </h2>
+        </h2> */}
 
         <div className="section mb-5">
           <h4><i className="fas fa-info-circle me-2 text-primary"></i>Introduction</h4>
@@ -62,9 +62,9 @@ function PrivacyPolicy() {
           </ul>
         </div>
 
-        <div className="section text-center">
-          <p className="mb-2">Have questions?</p>
-          <a href="mailto:support@example.com" className="btn btn-primary">
+        <div className="section text-center bg-secondary p-5">
+          <h2 className="mb-2 text-white">Have questions?</h2>
+          <a href="mailto:info@registerwithus.in" className="btn btn-primary">
             <i className="fas fa-envelope me-2"></i>Contact Support
           </a>
         </div>

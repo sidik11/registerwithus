@@ -1,9 +1,10 @@
-// db.ts
-import mysql from 'mysql2/promise';
+import mysql from "mysql2/promise";
+
+const isProduction = process.env.NODE_ENV === "production";
 
 export const db = mysql.createPool({
-  host: 'localhost',
-  user: 'u728233529_rwe',
-  password: 'e~T=TG2B', // ya jo XAMPP credentials hain
-  database: 'u728233529_rwe', // apna DB naam daal
+  host: isProduction ? process.env.DB_HOST_LIVE : process.env.DB_HOST,
+  user: isProduction ? process.env.DB_USER_LIVE : process.env.DB_USER,
+  password: isProduction ? process.env.DB_PASS_LIVE : process.env.DB_PASS,
+  database: isProduction ? process.env.DB_NAME_LIVE : process.env.DB_NAME,
 });

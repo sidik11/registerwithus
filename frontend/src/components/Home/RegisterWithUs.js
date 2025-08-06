@@ -27,9 +27,9 @@ function RegisterWithUs() {
                             <strong>Register With Us</strong> teams up with your favourite software. Integrate with over 1000+ apps
                             with Zapier to have all the tools you need for your project success.
                         </p>
-                        <a href="#" className="btn btn-custom">
+                        {/* <a href="#" className="btn btn-customs">
                             Read more <i className="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
+                        </a> */}
                     </div>
                 </div>
             </div>

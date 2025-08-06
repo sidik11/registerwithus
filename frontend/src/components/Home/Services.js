@@ -19,7 +19,7 @@ function Services() {
   return (
     <section className="services-section pt-5">
       <div className="container">
-        <h2 className="section-title d-block mb-5"><span>Our Services</span></h2>
+        <h2 className="section-title d-block mb-5 about-us-heading"><span>Our Services</span></h2>
         <div className="row g-4">
 
           {/* Business Registration */}
@@ -30,11 +30,11 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Business Registration</h5>
               <ul className="animated-list">
-                <li className="list-item" onClick={() => scrollToId('solo-proprietorship')}>Solo Proprietorship <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item" onClick={() => scrollToId('partnership')}>Partnership <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('llp-registration')}>LLP Registration <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('foreign-company')}>Foreign Company <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('ngo-section8')}>NGO/Section 8 Company <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item" ><a href="/sole-proprietorship-registration-online" className='text-decoration-none text-black' >Solo Proprietorship</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item" ><a href="/partnership-firm-registration-online" className='text-decoration-none text-black' >Partnership</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra" ><a href="/llp-registration-services-online" className='text-decoration-none text-black' >LLP Registration</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra" ><a href="/Foreign Company" className='text-decoration-none text-black' >Foreign Company</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra" ><a href="/NGO / Section 8 Company" className='text-decoration-none text-black' >NGO / Section 8 Company</a> <i className="fas fa-chevron-right"></i></li>
               </ul>
             </div>
           </div>
@@ -47,11 +47,11 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Trade Licenses</h5>
               <ul className="animated-list">
-                <li className="list-item" onClick={() => scrollToId('pan')}>PAN <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item" onClick={() => scrollToId('gst')}>GST <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('iec')}>IEC <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('msme')}>MSME <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('apeda-registration')}>APEDA Registration <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/pan-card-registration-online" className='text-decoration-none text-black' >PAN</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/apply-gst-registration-online" className='text-decoration-none text-black' >GST</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/import-export-code-registration-online" className='text-decoration-none text-black' >IEC</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/udyam-msme-registration-online" className='text-decoration-none text-black' >MSME</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/apeda-registration-online" className='text-decoration-none text-black' >APEDA Registration</a> <i className="fas fa-chevron-right"></i></li>
               </ul>
             </div>
           </div>
@@ -64,11 +64,11 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Company Compliances</h5>
               <ul className="animated-list">
-                <li className="list-item" onClick={() => scrollToId('share-transfers')}>Share Transfers <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item" onClick={() => scrollToId('share-transmission')}>Share Transmission <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('share-allotments')}>Share Allotments <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('equity-debt-raising')}>Equity/Debt. Raising <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('annual-filing')}>Annual Filing <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/share-transfers-online-registration" className='text-decoration-none text-black' >Share Transfers</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/share-transmission-online-registration" className='text-decoration-none text-black' >Share Transmission</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/share-allotments-online-registration" className='text-decoration-none text-black' >Share Allotments</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="equity-debt-raising-online-registration" className='text-decoration-none text-black' >Equity / Debt. Raising</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/annual-fillings-online-registration" className='text-decoration-none text-black' >Annual Fillings</a> <i className="fas fa-chevron-right"></i></li>
               </ul>
             </div>
           </div>
@@ -81,10 +81,10 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Tax Fillings</h5>
               <ul className="animated-list">
-                <li className="list-item" onClick={() => scrollToId('individual-itr')}>Individual ITR Filling <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item" onClick={() => scrollToId('corporate-itr')}>Corporate ITR Filling <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('gst-returns')}>GST Returns <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" onClick={() => scrollToId('tds-fillings')}>TDS Fillings <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/individual-itr-fillings-online-registration" className='text-decoration-none text-black' >Individual ITR Filings</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/corporate-itr-fillings-online-registration" className='text-decoration-none text-black' >Corporate ITR Filings</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/gst-returns-online-registration" className='text-decoration-none text-black' >GST returns</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/tds-filings-online-registration" className='text-decoration-none text-black' >TDS Filings</a> <i className="fas fa-chevron-right"></i></li>
               </ul>
             </div>
           </div>

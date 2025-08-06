@@ -25,12 +25,12 @@ function Counter() {
     <section>
       <div className="container py-5 section-container">
         <div className="row d-flex align-items-center">
-          <div className="col-lg-5 mb-4 mb-lg-0 counter-content">
-            <h2 className="fw-bold mb-3" style={{ fontSize: '2.8rem' }}>
+          <div className="col-lg-5 mb-4 mb-lg-0 text-center">
+            <h2 className="fw-bold mb-3 counter-content">
               <span className="text-dark">Leading the way in</span>
               <span className=""> Compliance Solutions</span>
             </h2>
-            <a href="#" className="btn btn-custom mt-4">
+            <a href="/contact" className="btn btn-custom mt-4">
               Get Started <i className="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
