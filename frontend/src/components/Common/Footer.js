@@ -196,21 +196,21 @@ Thanks!`;
               <ul className="list-unstyled small">
                 <li className="mb-3">
                   <a href="https://maps.google.com/?q=Bhubaneshwar, Odisha, India" target="_blank" className="text-white text-decoration-none">
-                    <i className="fas fa-map-marker-alt fs-5 me-2 icon-color"></i> Bhubaneshwar, Odisha, India
+                    <i className="fas fa-map-marker-alt fs-5 me-2 icon-color text-white"></i> Bhubaneshwar, Odisha, India
                   </a>
                 </li>
                 <li className="mb-3">
                   <a href="tel:+919643981247" className="text-white text-decoration-none">
-                    <i className="fas fa-phone-alt fs-5 me-2 icon-color"></i> +919643981247
+                    <i className="fas fa-phone-alt fs-5 me-2 icon-color text-white"></i> +919643981247
                   </a>
                 </li>
                 <li className="mb-3">
                   <a href="mailto:info@registerwithus.in" className="text-white text-decoration-none">
-                    <i className="fas fa-envelope fs-5 me-2 icon-color"></i> info@registerwithus.in
+                    <i className="fas fa-envelope fs-5 me-2 icon-color text-white"></i> info@registerwithus.in
                   </a>
                 </li>
                 <li className="mb-3">
-                  <i className="fas fa-clock fs-5 me-2 icon-color"></i> Business Hours: Mon-Sat, 9:00 AM - 6:00 PM IST
+                  <i className="fas fa-clock fs-5 me-2 icon-color text-white"></i> Business Hours: Mon-Sat, 9:00 AM - 6:00 PM IST
                 </li>
               </ul>
             </div>
@@ -501,7 +501,7 @@ Thanks!`;
             <div className="mb-2 mb-md-0 text-start">
               <a href="/privacy" className="text-white me-4 text-decoration-none">Privacy Policy</a>
               <a href="/refund" className="text-white me-4 text-decoration-none">Refund Policy</a>
-              {/* <a href="#" className="text-white me-4 text-decoration-none">Status</a> */}
+              <a href="/termconditions" className="text-white me-4 text-decoration-none">Term & Conditions</a>
               <span>©2025 TECHGEERING</span>
               {/* <a href="/hero" className="ms-3 text-decoration-none text-white" >Hero Banner</a> */}
             </div>

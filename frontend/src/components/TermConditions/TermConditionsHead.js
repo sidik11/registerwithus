@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 // import './Bloghead.css';
 
-function PrivacyHead() {
+function TermConditionsHead() {
     return (
         // <section class="theme-bg-color py-5">
         //     <div class="container text-center">
@@ -29,9 +29,11 @@ function PrivacyHead() {
                     <div className="row align-items-center h-100">
                         {/* Left Side Content */}
                         <div className="col-lg-7 text-white about-hero-content">
-                            <h1 className="fw-bold mb-3">Privacy Policy</h1>
+                            <h1 className="fw-bold mb-3">Term & Conditions</h1>
                             <p className="fs-5">
-                                RWU India Private Limited (hereinafter referred to as the “Company”) recognizes the importance of privacy as well as the importance of maintaining the confidentiality of personal information. This Privacy Policy applies to all products and services provided by the Company and sets out how the Company may collect, use and disclose information in relation to Users of the Website.
+                                We thank you and appreciate your service or product purchase with us on our Website www.registerwithus.in
+                                (hereinafter referred to as “Register With Us” or “RWU”).
+                                Please read this policy and RWU terms and conditions carefully as they provide important information and guidelines about your rights and obligations as our customer with respect to any purchase or service we provide to you.
                             </p>
                             <a href="#" className="btn cta-btn-glass">
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
@@ -61,4 +63,4 @@ function PrivacyHead() {
     );
 }
 
-export default PrivacyHead;
+export default TermConditionsHead;

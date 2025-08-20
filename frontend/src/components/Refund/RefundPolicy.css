@@ -3,9 +3,9 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-.refund-policy h2 {
+.refund-policy h3 {
   font-weight: 600;
-  color: #ffc107;
+  /* color: #ffc107; */
 }
 
 .refund-box {
@@ -18,4 +18,8 @@
 
 .refund-box ol li {
   margin-bottom: 10px;
+}
+
+.icon-color {
+  color: #0a0a83;
 }

@@ -11,6 +11,7 @@ import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 import RefundPage from './pages/RefundPage';
+import TermConditionsPage from './pages/TermConditionsPage';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css'
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/refund" element={<RefundPage />} />
+        <Route path="/termconditions" element={<TermConditionsPage />} />
       </Routes>
     </Router>
   );

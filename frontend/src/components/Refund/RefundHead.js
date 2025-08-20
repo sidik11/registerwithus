@@ -31,7 +31,7 @@ function RefundHead() {
                         <div className="col-lg-7 text-white about-hero-content">
                             <h1 className="fw-bold mb-3">Refund Policy</h1>
                             <p className="fs-5">
-                                Our refund policy ensures transparency and customer satisfaction. If you're not fully satisfied with our service, you may request a refund within a specified time. Refund eligibility depends on the nature of the service and terms agreed upon during purchase. For any concerns, reach out to our support team.
+                                We thank you and appreciate your service or product purchase with us on our Website www.registerwithus.in (hereinafter referred to as “register with us” or “RWU”). Please read this policy and RWU terms and conditions carefully as they will give you important information and guidelines about your rights and obligations as our customer, with respect to any purchase or service we provide to you.
                             </p>
                             <a href="#" className="btn cta-btn-glass">
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
