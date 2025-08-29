@@ -388,292 +388,309 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
-
-
+    
+    
     <!-- Before closing </body> tag -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Include Quill JS -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+        <!-- SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/app.js"></script>
 
-    <script>
-        let editQuill;
+<script>
+let editQuill;
 
-        document.addEventListener("DOMContentLoaded", async () => {
-            // ✒️ Quill Initialization for EDIT Modal
-            editQuill = new Quill("#editQuillEditor", {
-                theme: "snow",
-                modules: {
-                    toolbar: [
-                        [{ header: [1, 2, 3, false] }],
-                        ["bold", "italic", "underline"],
-                        ["link", "image"],
-                        [{ list: "ordered" }, { list: "bullet" }],
-                        ["clean"]
-                    ]
-                }
-            });
+document.addEventListener("DOMContentLoaded", async () => {
+    // ✒️ Quill Initialization for EDIT Modal
+    editQuill = new Quill("#editQuillEditor", {
+        theme: "snow",
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ["bold", "italic", "underline"],
+                ["link", "image"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["clean"]
+            ]
+        }
+    });
 
-            // 📷 Base64 Image Handler for EDIT Quill
-            const editToolbar = editQuill.getModule("toolbar");
-            editToolbar.addHandler("image", () => {
-                const input = document.createElement("input");
-                input.type = "file";
-                input.accept = "image/*";
-                input.click();
+    // 📷 Base64 Image Handler for EDIT Quill
+    const editToolbar = editQuill.getModule("toolbar");
+    editToolbar.addHandler("image", () => {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.click();
 
-                input.onchange = () => {
-                    const file = input.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                            const base64Image = reader.result;
-                            const range = editQuill.getSelection();
-                            editQuill.insertEmbed(range.index, "image", base64Image);
-                        };
-                        reader.readAsDataURL(file);
-                    }
+        input.onchange = () => {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const base64Image = reader.result;
+                    const range = editQuill.getSelection();
+                    editQuill.insertEmbed(range.index, "image", base64Image);
                 };
-            });
+                reader.readAsDataURL(file);
+            }
+        };
+    });
 
-            // ✒️ Quill Initialization for ADD Blog
-            const quill = new Quill("#quillEditor", {
-                theme: "snow",
-                modules: {
-                    toolbar: [
-                        [{ header: [1, 2, 3, false] }],
-                        ["bold", "italic", "underline"],
-                        ["link", "image"],
-                        [{ list: "ordered" }, { list: "bullet" }],
-                        ["clean"]
-                    ]
-                }
-            });
+    // ✒️ Quill Initialization for ADD Blog
+    const quill = new Quill("#quillEditor", {
+        theme: "snow",
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ["bold", "italic", "underline"],
+                ["link", "image"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["clean"]
+            ]
+        }
+    });
 
-            // 📷 Base64 Image Handler for ADD Quill
-            const toolbar = quill.getModule("toolbar");
-            toolbar.addHandler("image", () => {
-                const input = document.createElement("input");
-                input.type = "file";
-                input.accept = "image/*";
-                input.click();
+    // 📷 Base64 Image Handler for ADD Quill
+    const toolbar = quill.getModule("toolbar");
+    toolbar.addHandler("image", () => {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.click();
 
-                input.onchange = () => {
-                    const file = input.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                            const base64Image = reader.result;
-                            const range = quill.getSelection();
-                            quill.insertEmbed(range.index, "image", base64Image);
-                        };
-                        reader.readAsDataURL(file);
-                    }
+        input.onchange = () => {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const base64Image = reader.result;
+                    const range = quill.getSelection();
+                    quill.insertEmbed(range.index, "image", base64Image);
                 };
-            });
+                reader.readAsDataURL(file);
+            }
+        };
+    });
 
-            // 🌐 Select DOM Elements
-            const blogsTableBody = document.getElementById("blogsTableBody");
-            const editModal = new bootstrap.Modal(document.getElementById("editBlogModal"));
-            const editForm = document.getElementById("editBlogForm");
-            const editMetaContainer = document.getElementById("editMetaContainer");
-            const updateBtn = document.getElementById("updateBlogBtn");
-            const addCategorySelect = document.getElementById("addCategory");
-            const editCategorySelect = document.getElementById("editCategory");
-            const addBlogForm = document.getElementById("addBlogForm");
+    // 🌐 Select DOM Elements
+    const blogsTableBody = document.getElementById("blogsTableBody");
+    const editModal = new bootstrap.Modal(document.getElementById("editBlogModal"));
+    const editForm = document.getElementById("editBlogForm");
+    const editMetaContainer = document.getElementById("editMetaContainer");
+    const updateBtn = document.getElementById("updateBlogBtn");
+    const addCategorySelect = document.getElementById("addCategory");
+    const editCategorySelect = document.getElementById("editCategory");
+    const addBlogForm = document.getElementById("addBlogForm");
+    const logoutBtn = document.getElementById("logoutBtn");
 
-            // 📦 Load Categories
-            async function loadCategories(selectEl) {
-                const res = await fetch("/api/categories");
-                const data = await res.json();
-                selectEl.innerHTML = "";
+    // 📦 Load Categories
+    async function loadCategories(selectEl) {
+        try {
+            const res = await fetch("/api/categories");
+            const data = await res.json();
+            selectEl.innerHTML = "";
+            if (data.success) {
+                const defaultOption = document.createElement("option");
+                defaultOption.textContent = "Select Category";
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                selectEl.appendChild(defaultOption);
 
-                if (data.success) {
-                    const defaultOption = document.createElement("option");
-                    defaultOption.textContent = "Select Category";
-                    defaultOption.disabled = true;
-                    defaultOption.selected = true;
-                    selectEl.appendChild(defaultOption);
+                data.categories.forEach((cat) => {
+                    const option = document.createElement("option");
+                    option.value = cat.id;
+                    option.textContent = cat.name;
+                    selectEl.appendChild(option);
+                });
+            }
+        } catch (err) {
+            Swal.fire("Error", "Failed to load categories", "error");
+            console.error(err);
+        }
+    }
 
-                    data.categories.forEach((cat) => {
-                        const option = document.createElement("option");
-                        option.value = cat.id;
-                        option.textContent = cat.name;
-                        selectEl.appendChild(option);
+    // 📰 Load Blogs into Table
+    async function loadBlogs() {
+        try {
+            const res = await fetch("/api/blogs/view");
+            const data = await res.json();
+            blogsTableBody.innerHTML = "";
+            if (data.success) {
+                data.blogs.forEach((blog, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+<td>${index + 1}</td>
+<td>${blog.title}</td>
+<td>${blog.category_name || "N/A"}</td>
+<td><img src="${blog.image}" width="60"></td>
+<td><span class="badge bg-success">Active</span></td>
+<td>
+    <button class="btn btn-warning btn-sm edit-btn" data-id="${blog.id}">Edit</button>
+    <button class="btn btn-danger btn-sm delete-btn" data-id="${blog.id}">Delete</button>
+</td>`;
+                    blogsTableBody.appendChild(row);
+                });
+            }
+        } catch (err) {
+            Swal.fire("Error", "Failed to load blogs", "error");
+            console.error(err);
+        }
+    }
+
+    // ➕ Submit New Blog
+    addBlogForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        try {
+            document.getElementById("hiddenDescription").value = quill.root.innerHTML;
+            const formData = new FormData(addBlogForm);
+            const res = await fetch("/api/blogs", { method: "POST", body: formData });
+            const result = await res.json();
+            if (result.success) {
+                await Swal.fire("Success", "Blog added successfully!", "success");
+                location.reload();
+            } else {
+                Swal.fire("Error", "Failed to add blog: " + (result.message || "Unknown error"), "error");
+            }
+        } catch (err) {
+            Swal.fire("Error", "Server error while submitting blog!", "error");
+            console.error(err);
+        }
+    });
+
+    // 📝 Handle Edit and Delete Buttons
+    blogsTableBody.addEventListener("click", async (e) => {
+        const target = e.target;
+
+        // ✏️ EDIT Button Click
+        if (target.classList.contains("edit-btn")) {
+            const blogId = target.dataset.id;
+            const res = await fetch(`/api/blogs/view?id=${blogId}`);
+            const data = await res.json();
+
+            if (data.success) {
+                const blog = data.blog;
+                await loadCategories(editCategorySelect);
+
+                document.getElementById("editBlogId").value = blog.id;
+                document.getElementById("editTitle").value = blog.title;
+                document.getElementById("editSlug").value = blog.slug;
+                document.getElementById("editDate").value = blog.date.split("T")[0];
+                editCategorySelect.value = blog.category_id;
+
+                const delta = editQuill.clipboard.convert(blog.description || "");
+                editQuill.setContents(delta, 'silent');
+
+                const previewImg = document.getElementById("editPreviewImage");
+                previewImg.src = blog.image;
+
+                editMetaContainer.innerHTML = "";
+                if (Array.isArray(blog.meta)) {
+                    blog.meta.forEach((meta) => {
+                        const div = document.createElement("div");
+                        div.className = "d-flex gap-2 mb-2";
+                        div.innerHTML = `
+<input type="text" name="metatag[]" value="${meta.meta_name}" class="form-control">
+<input type="text" name="metadesc[]" value="${meta.meta_content}" class="form-control">`;
+                        editMetaContainer.appendChild(div);
                     });
                 }
+
+                editModal.show();
+            } else {
+                Swal.fire("Error", "Failed to fetch blog details.", "error");
             }
+        }
 
-            // 📰 Load Blogs into Table
-            async function loadBlogs() {
-                const res = await fetch("/api/blogs/view");
-                const data = await res.json();
-                blogsTableBody.innerHTML = "";
-
-                if (data.success) {
-                    data.blogs.forEach((blog, index) => {
-                        const row = document.createElement("tr");
-                        row.innerHTML = `
-                        <td>${index + 1}</td>
-                        <td>${blog.title}</td>
-                        <td>${blog.category_name || "N/A"}</td>
-                        <td><img src="${blog.image}" width="60"></td>
-                        <td><span class="badge bg-success">Active</span></td>
-                        <td>
-                            <button class="btn btn-warning btn-sm edit-btn" data-id="${blog.id}">Edit</button>
-                            <button class="btn btn-danger btn-sm delete-btn" data-id="${blog.id}">Delete</button>
-                        </td>`;
-                        blogsTableBody.appendChild(row);
-                    });
-                }
-            }
-
-            // ➕ Submit New Blog
-            addBlogForm.addEventListener("submit", async (e) => {
-                e.preventDefault();
+        // 🗑️ DELETE Button Click
+        if (target.classList.contains("delete-btn")) {
+            const blogId = target.dataset.id;
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to delete this blog?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "Cancel",
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6"
+            });
+            if (result.isConfirmed) {
                 try {
-                    document.getElementById("hiddenDescription").value = quill.root.innerHTML;
-                    const formData = new FormData(addBlogForm);
-                    const res = await fetch("/api/blogs", {
-                        method: "POST",
-                        body: formData,
-                    });
+                    const res = await fetch(`/api/blogs/view?id=${blogId}`, { method: "DELETE" });
                     const result = await res.json();
                     if (result.success) {
-                        alert("✅ Blog added successfully!");
-                        location.reload();
+                        Swal.fire("Deleted!", "Blog deleted successfully", "success");
+                        loadBlogs();
                     } else {
-                        alert("❌ Failed to add blog: " + (result.message || "Unknown error"));
+                        Swal.fire("Error", "Delete failed", "error");
                     }
                 } catch (err) {
-                    alert("❌ Server error while submitting blog! " + err.message);
+                    Swal.fire("Error", "Something went wrong", "error");
+                    console.error(err);
                 }
-            });
+            }
+        }
+    });
 
-            // 📝 Handle Edit and Delete Buttons
-            blogsTableBody.addEventListener("click", async (e) => {
-                const target = e.target;
+    // 🔄 For Updating Blog
+    updateBtn.addEventListener("click", async () => {
+        document.getElementById("editHiddenDescription").value = editQuill.root.innerHTML;
+        const formData = new FormData(editForm);
+        try {
+            const res = await fetch("/api/blogs/view", { method: "PUT", body: formData });
+            const result = await res.json();
+            if (result.success) {
+                await Swal.fire("Success", "Blog updated!", "success");
+                editModal.hide();
+                loadBlogs();
+            } else {
+                Swal.fire("Error", "Update failed", "error");
+            }
+        } catch (err) {
+            Swal.fire("Error", "Something went wrong while updating", "error");
+            console.error(err);
+        }
+    });
 
-                // ✏️ EDIT Button Click
-                if (target.classList.contains("edit-btn")) {
-                    const blogId = target.dataset.id;
-                    const res = await fetch(`/api/blogs/view?id=${blogId}`);
-                    const data = await res.json();
+    // ✅ Logout
+    logoutBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("/api/admin/logout", { method: "POST" });
+            const result = await res.json();
+            if (result.success) {
+                window.location.replace("/admin/login.html");
+            } else {
+                Swal.fire("Error", "Logout failed!", "error");
+            }
+        } catch (err) {
+            Swal.fire("Error", "Logout failed: " + err.message, "error");
+            console.error(err);
+        }
+    });
 
-                    if (data.success) {
-                        const blog = data.blog;
+    // ✅ Check auth
+    (async () => {
+        try {
+            const res = await fetch('/api/admin/check-auth');
+            const data = await res.json();
+            if (!data.authenticated) {
+                window.location.replace('/admin/login.html');
+            }
+        } catch (err) {
+            Swal.fire("Error", "Auth check failed", "error");
+            console.error(err);
+        }
+    })();
 
-                        // 🔔 Alerts to check fetched data
-                        alert("🆔 ID: " + blog.id);
-                        alert("📝 Title: " + blog.title);
-                        alert("🔗 Slug: " + blog.slug);
-                        alert("📅 Date: " + blog.date);
-                        alert("📷 Image (base64): " + blog.image);
-                        alert("📄 Description HTML: " + blog.description);
+    // Initial load
+    await loadCategories(addCategorySelect);
+    loadBlogs();
+});
+</script>
 
-                        await loadCategories(editCategorySelect);
-
-                        document.getElementById("editBlogId").value = blog.id;
-                        document.getElementById("editTitle").value = blog.title;
-                        document.getElementById("editSlug").value = blog.slug;
-                        document.getElementById("editDate").value = blog.date.split("T")[0];
-                        editCategorySelect.value = blog.category_id;
-
-                        // ✅ Fill Quill correctly
-                        const delta = editQuill.clipboard.convert(blog.description || "");
-                        editQuill.setContents(delta, 'silent');
-
-                        // ✅ Preview Image
-                        const previewImg = document.getElementById("editPreviewImage");
-                        previewImg.src = blog.image;
-
-                        // 🏷️ Meta Tags
-                        editMetaContainer.innerHTML = "";
-                        if (Array.isArray(blog.meta)) {
-                            blog.meta.forEach((meta) => {
-                                alert(`🔖 Meta: ${meta.meta_name} = ${meta.meta_content}`);
-                                const div = document.createElement("div");
-                                div.className = "d-flex gap-2 mb-2";
-                                div.innerHTML = `
-                                <input type="text" name="metatag[]" value="${meta.meta_name}" class="form-control">
-                                <input type="text" name="metadesc[]" value="${meta.meta_content}" class="form-control">`;
-                                editMetaContainer.appendChild(div);
-                            });
-                        }
-
-                        editModal.show();
-                    } else {
-                        alert("❌ Failed to fetch blog details.");
-                    }
-                }
-
-                // 🗑️ DELETE Button Click
-                if (target.classList.contains("delete-btn")) {
-                    const blogId = target.dataset.id;
-                    if (confirm("Are you sure you want to delete this blog?")) {
-                        const res = await fetch(`/api/blogs/view?id=${blogId}`, { method: "DELETE" });
-                        const result = await res.json();
-                        if (result.success) {
-                            alert("✅ Blog deleted!");
-                            loadBlogs();
-                        } else {
-                            alert("❌ Delete failed");
-                        }
-                    }
-                }
-            });
-
-            // 🔄 For Updating Blog
-            updateBtn.addEventListener("click", async () => {
-                document.getElementById("editHiddenDescription").value = editQuill.root.innerHTML;
-                const formData = new FormData(editForm);
-                const res = await fetch("/api/blogs/view", {
-                    method: "PUT",
-                    body: formData,
-                });
-                const result = await res.json();
-                if (result.success) {
-                    alert("✅ Blog updated!");
-                    editModal.hide();
-                    loadBlogs();
-                } else {
-                    alert("❌ Update failed");
-                }
-            });
-
-            // 🌐 Initial Load
-            await loadCategories(addCategorySelect);
-            loadBlogs();
-        });
-    </script>
-
-	<script>
-		document.getElementById("logoutBtn").addEventListener("click", async (e) => {
-			e.preventDefault();
-
-			try {
-				const res = await fetch("/api/admin/logout", { method: "POST" });
-				const result = await res.json();
-
-				if (result.success) {
-					// Clear history and redirect to login.html
-					window.location.replace("/admin/login.html");
-				} else {
-					alert("Logout failed!");
-				}
-			} catch (err) {
-				console.error("Logout error:", err);
-				alert("Logout failed: " + err.message);
-			}
-		});
-		window.addEventListener("DOMContentLoaded", async () => {
-			const res = await fetch('/api/admin/check-auth');
-			const data = await res.json();
-			if (!data.authenticated) {
-				window.location.replace('/admin/login.html');
-			}
-		});
-	</script>
 
 
 </body>

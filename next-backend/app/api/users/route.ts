@@ -1,12 +1,5 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
-
-const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "registerwithus",
-});
+import db from "@/utils/db";   // ✅ Centralized DB import
 
 export async function GET() {
   try {
@@ -14,6 +7,9 @@ export async function GET() {
     return NextResponse.json(rows);
   } catch (err) {
     console.error("❌ Error fetching data:", err);
-    return NextResponse.json({ success: false, message: "Failed to fetch data" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, message: "Failed to fetch data" },
+      { status: 500 }
+    );
   }
 }

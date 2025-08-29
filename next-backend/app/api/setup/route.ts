@@ -1,24 +1,16 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
-
-// XAMPP MySQL details
-const connection = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-});
+import db from "@/utils/db";
 
 export async function GET() {
   try {
-    // Create Database
-    await connection.query(`CREATE DATABASE IF NOT EXISTS registerwithus`);
-    console.log("✅ Database created or already exists");
+    // Create Database (only runs if db not exists)
+    await db.query(`CREATE DATABASE IF NOT EXISTS registerwithus`);
 
-    // Use Database
-    await connection.query(`USE registerwithus`);
+    // Switch DB
+    await db.query(`USE registerwithus`);
 
-    // Create Table (without form_type initially)
-    await connection.query(`
+    // Create users table
+    await db.query(`
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_name VARCHAR(255) NOT NULL,
@@ -28,20 +20,20 @@ export async function GET() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
-    console.log("✅ Table created or already exists");
 
-    // Check if 'form_type' column exists
-    const [columns] = await connection.query(`SHOW COLUMNS FROM users LIKE 'form_type'`);
+    // Ensure `form_type` column exists
+    const [columns] = await db.query(`SHOW COLUMNS FROM users LIKE 'form_type'`);
     if ((columns as any[]).length === 0) {
-      await connection.query(`ALTER TABLE users ADD COLUMN form_type VARCHAR(50) DEFAULT 'Quick Contact' AFTER message`);
-      console.log("✅ 'form_type' column added");
-    } else {
-      console.log("ℹ️ 'form_type' column already exists");
+      await db.query(
+        `ALTER TABLE users ADD COLUMN form_type VARCHAR(50) DEFAULT 'Quick Contact' AFTER message`
+      );
     }
 
     return NextResponse.json({ success: true, message: "DB & Table setup complete ✅" });
   } catch (err) {
-    console.error("❌ Error in DB setup:", err);
-    return NextResponse.json({ success: false, message: "DB setup failed" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, message: "DB setup failed", error: String(err) },
+      { status: 500 }
+    );
   }
 }

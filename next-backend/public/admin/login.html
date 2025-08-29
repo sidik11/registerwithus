@@ -73,57 +73,66 @@
         </div>
     </main>
 
+        <!-- SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/app.js"></script>
 
-    <script>
-        const form = document.getElementById('loginForm');
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+<script>
+const form = document.getElementById('loginForm');
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-            alert("Step 1: Form submitted with\nEmail: " + email + "\nPassword: " + password);
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-            try {
-                const res = await fetch('/api/admin/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
-                });
-
-                alert("Step 2: Request sent. Waiting for response...");
-
-                const result = await res.json();
-                alert("Step 3: Response received:\n" + JSON.stringify(result));
-
-                if (result.success) {
-                    alert("✅ Step 4: Login successful. Redirecting...");
-                    window.location.replace('/admin/index.html');
-                } else {
-                    alert("❌ Step 4: Invalid credentials!");
-                }
-            } catch (err) {
-                alert("❌ Step 5: Error occurred: " + err.message);
-            }
+    try {
+        const res = await fetch('/api/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
         });
-        // If already authenticated (i.e., cookie present), redirect to index.html
-        window.addEventListener("DOMContentLoaded", async () => {
-            try {
-                const res = await fetch("/api/admin/check-auth");
-                const data = await res.json();
 
-                if (data.authenticated) {
-                    // Already logged in, redirect to index.html
-                    window.location.replace("/admin/index.html");
-                }
-            } catch (err) {
-                console.error("Auth check failed", err);
-            }
+        const result = await res.json();
+
+        if (result.success) {
+            await Swal.fire({
+                icon: 'success',
+                title: 'Login Successful',
+                text: 'Redirecting to dashboard...',
+                timer: 1500,
+                showConfirmButton: false
+            });
+            window.location.replace('/admin/index.html');
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: 'Invalid credentials!'
+            });
+        }
+    } catch (err) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Something went wrong: ' + err.message
         });
-    </script>
+    }
+});
+
+// If already authenticated, redirect to index.html
+window.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const res = await fetch("/api/admin/check-auth");
+        const data = await res.json();
+        if (data.authenticated) {
+            window.location.replace("/admin/index.html");
+        }
+    } catch (err) {
+        console.error("Auth check failed", err);
+    }
+});
+</script>
 
 
 </body>

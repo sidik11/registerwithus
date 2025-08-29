@@ -1,18 +1,9 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
-
-// ✅ MySQL pool config
-const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "registerwithus",
-});
+import db from "@/utils/db";   // ✅ Centralized DB import
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-
     const { user_name, user_phone, user_email, message, form_type } = body;
 
     // ✅ Validate required fields
@@ -29,10 +20,8 @@ export async function POST(req: Request) {
       [user_name, user_phone, user_email, message, form_type]
     );
 
-    console.log("✅ Data saved with form_type:", form_type);
     return NextResponse.json({ success: true, message: "Data saved ✅" });
   } catch (err) {
-    console.error("❌ Error saving data:", err);
     return NextResponse.json(
       { success: false, message: "Failed to save data" },
       { status: 500 }

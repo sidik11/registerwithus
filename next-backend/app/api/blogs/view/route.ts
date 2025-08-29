@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import db from "@/utils/db"; // centralized DB pool
 import path from "path";
 import fs from "fs/promises";
 
 const uploadDir = path.join(process.cwd(), "/public/uploads/blogs");
 
+// ✅ Save uploaded image file
 async function saveFile(file: File) {
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
@@ -18,60 +18,55 @@ async function saveFile(file: File) {
   return `/uploads/blogs/${filename}`;
 }
 
+// ✅ GET blogs (all or single with meta)
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
 
-    const connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
-      database: "registerwithus",
-    });
-
     if (id) {
-      const [blogs]: any = await connection.execute(
-        `SELECT *, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at FROM blogs WHERE id=?`,
+      const [blogs]: any = await db.query(
+        `SELECT *, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at 
+         FROM blogs WHERE id=?`,
         [id]
       );
 
       if (!blogs.length) {
-        await connection.end();
         return NextResponse.json({ success: false, message: "Blog not found" });
       }
 
-      const [meta]: any = await connection.execute(
+      const [meta]: any = await db.query(
         `SELECT meta_name, meta_content FROM blog_meta WHERE blog_id=?`,
         [id]
       );
 
-      await connection.end();
       return NextResponse.json({ success: true, blog: { ...blogs[0], meta } });
     } else {
-      const [rows]: any = await connection.execute(`
-  SELECT 
-    blogs.id, 
-    blogs.title, 
-    blogs.image, 
-    blogs.category_id, 
-    blogs.description AS blogDescription,  -- ✅ Yeh line add karo
-    DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
-    blog_categories.name AS category_name
-  FROM blogs
-  LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
-  ORDER BY blogs.id DESC
-`);
+      const [rows]: any = await db.query(`
+        SELECT 
+          blogs.id, 
+          blogs.title, 
+          blogs.image, 
+          blogs.category_id, 
+          blogs.description AS blogDescription,
+          DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
+          blog_categories.name AS category_name
+        FROM blogs
+        LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
+        ORDER BY blogs.id DESC
+      `);
 
-      await connection.end();
       return NextResponse.json({ success: true, blogs: rows });
     }
-  } catch (error) {
-    console.error("❌ Fetch blogs error:", error);
-    return NextResponse.json({ success: false, message: "Failed to fetch blogs" }, { status: 500 });
+  } catch {
+    return NextResponse.json(
+      { success: false, message: "Failed to fetch blogs" },
+      { status: 500 }
+    );
   }
 }
 
+// ✅ PUT (Update blog with meta + optional image)
 export async function PUT(req: NextRequest) {
   try {
     const data = await req.formData();
@@ -85,72 +80,55 @@ export async function PUT(req: NextRequest) {
     const metaContents = data.getAll("metadesc[]");
     const imageFile = data.get("image") as File | null;
 
-    const connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
-      database: "registerwithus",
-    });
-
-    // Get old image if no new image uploaded
     let imagePath = "";
     if (imageFile && imageFile.size > 0) {
       imagePath = await saveFile(imageFile);
     } else {
-      const [oldBlog]: any = await connection.execute(
-        "SELECT image FROM blogs WHERE id=?",
-        [id]
-      );
+      const [oldBlog]: any = await db.query("SELECT image FROM blogs WHERE id=?", [id]);
       imagePath = oldBlog[0]?.image || "";
     }
 
-    // ✅ Update blog
-    await connection.execute(
+    await db.query(
       "UPDATE blogs SET title=?, slug=?, description=?, category_id=?, date=?, image=? WHERE id=?",
       [title, slug, description, category_id, date, imagePath, id]
     );
 
-    // ✅ Update meta tags
-    await connection.execute("DELETE FROM blog_meta WHERE blog_id=?", [id]);
+    await db.query("DELETE FROM blog_meta WHERE blog_id=?", [id]);
 
     for (let i = 0; i < metaNames.length; i++) {
       const name = metaNames[i] as string;
       const content = (metaContents[i] as string) || "";
       if (name.trim()) {
-        await connection.execute(
+        await db.query(
           "INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)",
           [id, name, content]
         );
       }
     }
 
-    await connection.end();
     return NextResponse.json({ success: true, message: "Blog updated successfully" });
-  } catch (error) {
-    console.error("❌ Blog update error:", error);
-    return NextResponse.json({ success: false, message: "Failed to update blog" }, { status: 500 });
+  } catch {
+    return NextResponse.json(
+      { success: false, message: "Failed to update blog" },
+      { status: 500 }
+    );
   }
 }
 
+// ✅ DELETE blog (with meta)
 export async function DELETE(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
 
-    const connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
-      database: "registerwithus",
-    });
+    await db.query("DELETE FROM blog_meta WHERE blog_id=?", [id]);
+    await db.query("DELETE FROM blogs WHERE id=?", [id]);
 
-    await connection.execute("DELETE FROM blog_meta WHERE blog_id=?", [id]);
-    await connection.execute("DELETE FROM blogs WHERE id=?", [id]);
-
-    await connection.end();
     return NextResponse.json({ success: true, message: "Blog deleted successfully" });
-  } catch (error) {
-    console.error("❌ Blog delete error:", error);
-    return NextResponse.json({ success: false, message: "Failed to delete blog" }, { status: 500 });
+  } catch {
+    return NextResponse.json(
+      { success: false, message: "Failed to delete blog" },
+      { status: 500 }
+    );
   }
 }

@@ -19,9 +19,8 @@ export async function GET() {
 
     const [rows]: any = await db.query('SELECT * FROM blog_categories ORDER BY id DESC');
     return NextResponse.json({ success: true, categories: rows });
-  } catch (error) {
-    console.error('GET Error:', error);
-    return NextResponse.json({ success: false, message: 'Failed to fetch categories' });
+  } catch {
+    return NextResponse.json({ success: false, message: 'Failed to fetch categories' }, { status: 500 });
   }
 }
 
@@ -29,13 +28,12 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const { name } = await req.json();
-    if (!name) return NextResponse.json({ success: false, message: 'Name is required' });
+    if (!name) return NextResponse.json({ success: false, message: 'Name is required' }, { status: 400 });
 
     await db.execute('INSERT INTO blog_categories (name) VALUES (?)', [name]);
     return NextResponse.json({ success: true, message: 'Category added successfully' });
-  } catch (error) {
-    console.error('POST Error:', error);
-    return NextResponse.json({ success: false, message: 'Failed to add category' });
+  } catch {
+    return NextResponse.json({ success: false, message: 'Failed to add category' }, { status: 500 });
   }
 }
 
@@ -45,18 +43,16 @@ export async function PUT(req: Request) {
     const { id, name } = await req.json();
 
     if (!id || !name) {
-      return NextResponse.json({ success: false, message: 'ID and name are required' });
+      return NextResponse.json({ success: false, message: 'ID and name are required' }, { status: 400 });
     }
 
     await db.execute('UPDATE blog_categories SET name = ? WHERE id = ?', [name, id]);
     return NextResponse.json({ success: true, message: 'Category updated successfully' });
-  } catch (error) {
-    console.error('PUT Error:', error);
-    return NextResponse.json({ success: false, message: 'Failed to update category' });
+  } catch {
+    return NextResponse.json({ success: false, message: 'Failed to update category' }, { status: 500 });
   }
 }
 
-// ✅ DELETE: Remove category by ID
 // ✅ DELETE: Remove category and related blogs
 export async function DELETE(req: NextRequest) {
   try {
@@ -64,7 +60,7 @@ export async function DELETE(req: NextRequest) {
     const id = searchParams.get("id");
 
     if (!id) {
-      return NextResponse.json({ success: false, message: "ID is required" });
+      return NextResponse.json({ success: false, message: "ID is required" }, { status: 400 });
     }
 
     // ✅ Delete blogs' meta first
@@ -88,8 +84,7 @@ export async function DELETE(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, message: "Category and related blogs deleted successfully" });
-  } catch (error) {
-    console.error("DELETE Error:", error);
-    return NextResponse.json({ success: false, message: "Failed to delete category" });
+  } catch {
+    return NextResponse.json({ success: false, message: "Failed to delete category" }, { status: 500 });
   }
 }

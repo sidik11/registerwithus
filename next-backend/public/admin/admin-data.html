@@ -29,13 +29,13 @@
         .dropdown-menu {
             z-index: 1050;
         }
-        .nav-item.dropdown.show .dropdown-menu {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    position: absolute;
-}
 
+        .nav-item.dropdown.show .dropdown-menu {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            position: absolute;
+        }
     </style>
 </head>
 
@@ -48,9 +48,7 @@
                 </a>
 
                 <ul class="sidebar-nav">
-                    <li class="sidebar-header">
-
-                    </li>
+                    <li class="sidebar-header"></li>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
@@ -149,7 +147,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>Created At</th>
                                         <th>Status</th>
                                         <th>Actions</th>
@@ -167,8 +164,6 @@
                 </div>
             </main>
 
-
-
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
@@ -181,18 +176,6 @@
                         </div>
                         <div class="col-6 text-end">
                             <ul class="list-inline">
-                                <!-- <li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
-								</li> -->
                                 <li class="list-inline-item">
                                     <a class="text-muted" style="cursor:default;" href="javascript:void(0)"
                                         target="_blank">Version 1.0</a>
@@ -232,65 +215,49 @@
         </div>
     </div>
 
-
-
-    <!-- Before closing </body> tag -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
-    <!-- SweetAlert CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const dropdownToggle = document.querySelector('.nav-item.dropdown .dropdown-toggle');
-        const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
-        const dropdownParent = document.querySelector('.nav-item.dropdown');
-
-        if (dropdownToggle && dropdownMenu && dropdownParent) {
-            let isOpen = false;
-
-            dropdownToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                isOpen = !isOpen;
-
-                if (isOpen) {
-                    dropdownParent.classList.add('show');
-                    dropdownMenu.classList.add('show');
-                } else {
-                    dropdownParent.classList.remove('show');
-                    dropdownMenu.classList.remove('show');
-                }
-            });
-
-            // Optional: close if clicked outside
-            document.addEventListener('click', function (e) {
-                if (!dropdownParent.contains(e.target)) {
-                    dropdownParent.classList.remove('show');
-                    dropdownMenu.classList.remove('show');
-                    isOpen = false;
-                }
-            });
-        }
-    });
-</script>
-
 
     <script>
-        async function loadAdminData() {
-            // alert("🔹 Step 1: Starting to fetch admin table data...");
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggle = document.querySelector('.nav-item.dropdown .dropdown-toggle');
+            const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
+            const dropdownParent = document.querySelector('.nav-item.dropdown');
 
+            if (dropdownToggle && dropdownMenu && dropdownParent) {
+                let isOpen = false;
+
+                dropdownToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    isOpen = !isOpen;
+
+                    if (isOpen) {
+                        dropdownParent.classList.add('show');
+                        dropdownMenu.classList.add('show');
+                    } else {
+                        dropdownParent.classList.remove('show');
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!dropdownParent.contains(e.target)) {
+                        dropdownParent.classList.remove('show');
+                        dropdownMenu.classList.remove('show');
+                        isOpen = false;
+                    }
+                });
+            }
+        });
+
+        async function loadAdminData() {
             try {
                 const res = await fetch("/api/admin/admindata");
-                //   alert("🔹 Step 2: Response received");
-
                 const data = await res.json();
-                //   alert("🔹 Step 3: Parsed admin records: " + data.length);
-
                 const tbody = document.getElementById("adminTableBody");
-                if (!tbody) {
-                    //     alert("❌ Step 4: adminTableBody not found!");
-                    return;
-                }
+                if (!tbody) return;
 
                 tbody.innerHTML = "";
 
@@ -305,30 +272,26 @@
                     const statusBtnClass = admin.status === 1 ? 'btn-success' : 'btn-secondary';
 
                     tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${admin.email}</td>
-                    <td>${admin.password}</td>
-                    <td>${new Date(admin.created_at).toLocaleString()}</td>
-                    <td><span class="badge bg-${admin.status === 1 ? 'success' : 'danger'}">${isActive}</span></td>
-                    <td>
-                        <button class="btn btn-sm btn-warning me-1" onclick="updateAdmin(${admin.id}, '${admin.email}', '${admin.password}')">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger me-1" onclick="deleteAdmin(${admin.id})">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                        <button class="btn btn-sm ${statusBtnClass}" onclick="toggleStatus(${admin.id}, ${admin.status})">
-                            ${admin.status === 1 ? 'Deactivate' : 'Activate'}
-                        </button>
-                    </td>
-                `;
+                        <td>${index + 1}</td>
+                        <td>${admin.email}</td>
+                        <td>${new Date(admin.created_at).toLocaleString()}</td>
+                        <td><span class="badge bg-${admin.status === 1 ? 'success' : 'danger'}">${isActive}</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-warning me-1" onclick="updateAdmin(${admin.id}, '${admin.email}', '${admin.password}')">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger me-1" onclick="deleteAdmin(${admin.id})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <button class="btn btn-sm ${statusBtnClass}" onclick="toggleStatus(${admin.id}, ${admin.status})">
+                                ${admin.status === 1 ? 'Deactivate' : 'Activate'}
+                            </button>
+                        </td>
+                    `;
                     tbody.appendChild(tr);
                 });
-
-                //   alert("✅ Step 5: Admin data rendered!");
             } catch (error) {
-                alert("❌ Error fetching admin data!");
-                console.error("❌ Admin Data Error:", error);
+                Swal.fire('Error', 'Failed to load admin data', 'error');
                 document.getElementById("adminTableBody").innerHTML =
                     `<tr><td colspan="6" class="text-danger text-center">Failed to load admin data</td></tr>`;
             }
@@ -336,15 +299,13 @@
 
         document.addEventListener("DOMContentLoaded", loadAdminData);
 
-        // ✅ Add Admin Handler
         document.getElementById("addAdminForm").addEventListener("submit", async function (e) {
             e.preventDefault();
-
             const email = document.getElementById("adminEmail").value.trim();
             const password = document.getElementById("adminPassword").value.trim();
 
             if (!email || !password) {
-                alert("Please fill all fields");
+                Swal.fire('Warning', 'Please fill all fields', 'warning');
                 return;
             }
 
@@ -358,30 +319,36 @@
                 const result = await res.json();
 
                 if (res.ok) {
-                    alert("✅ Admin added successfully");
+                    Swal.fire('Success', 'Admin added successfully', 'success');
                     document.getElementById("addAdminForm").reset();
 
                     const modalEl = document.getElementById("addAdminModal");
                     const modal = bootstrap.Modal.getInstance(modalEl);
                     modal.hide();
 
-                    // Remove leftover backdrop
                     const backdrop = document.querySelector(".modal-backdrop");
                     if (backdrop) backdrop.remove();
 
                     loadAdminData();
                 } else {
-                    alert("❌ Failed to add admin: " + result.message);
+                    Swal.fire('Error', 'Failed to add admin: ' + result.message, 'error');
                 }
             } catch (error) {
-                alert("❌ Error adding admin");
-                console.error("Add Admin Error:", error);
+                Swal.fire('Error', 'Error adding admin', 'error');
             }
         });
 
-        // ✅ DELETE Admin
         async function deleteAdmin(id) {
-            if (!confirm("Are you sure you want to delete this admin?")) return;
+            const { isConfirmed } = await Swal.fire({
+                title: 'Are you sure?',
+                text: "This admin will be deleted permanently!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!'
+            });
+
+            if (!isConfirmed) return;
+
             try {
                 const res = await fetch("/api/admin/admindata", {
                     method: "DELETE",
@@ -389,17 +356,16 @@
                     body: JSON.stringify({ id })
                 });
                 if (res.ok) {
-                    alert("✅ Admin deleted");
+                    Swal.fire('Deleted!', 'Admin deleted successfully', 'success');
                     loadAdminData();
                 } else {
-                    alert("❌ Failed to delete admin");
+                    Swal.fire('Error', 'Failed to delete admin', 'error');
                 }
             } catch (err) {
-                alert("❌ Error deleting admin");
+                Swal.fire('Error', 'Error deleting admin', 'error');
             }
         }
 
-        // ✅ TOGGLE STATUS
         async function toggleStatus(id, currentStatus) {
             const newStatus = currentStatus === 1 ? 0 : 1;
             try {
@@ -410,59 +376,68 @@
                 });
                 const data = await res.json();
                 if (res.ok && data.success) {
-                    alert("✅ Status updated");
+                    Swal.fire('Success', 'Status updated', 'success');
                     loadAdminData();
                 } else {
-                    alert("❌ Failed to update status: " + data.message);
+                    Swal.fire('Error', 'Failed to update status: ' + data.message, 'error');
                 }
             } catch (err) {
-                alert("❌ Error updating status");
-                console.error(err);
+                Swal.fire('Error', 'Error updating status', 'error');
             }
         }
 
-        // ✅ UPDATE Admin
         function updateAdmin(id, email, password) {
-            const newEmail = prompt("Update email:", email);
-            const newPassword = prompt("Update password:", password);
-
-            if (!newEmail || !newPassword) return alert("❌ Both fields are required");
-
-            fetch("/api/admin/admindata", {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, email: newEmail, password: newPassword })
-            })
-                .then(res => res.json())
-                .then(data => {
-                    alert("✅ Admin updated");
-                    loadAdminData();
-                })
-                .catch(err => {
-                    alert("❌ Update failed");
-                    console.error(err);
-                });
+            Swal.fire({
+                title: 'Update Admin',
+                html: `
+            <label for="swalEmail" class="form-label text-start w-100">Email</label>
+            <input type="email" id="swalEmail" class="swal2-input" placeholder="Email" value="${email}">
+            <label for="swalPassword" class="form-label text-start w-100">Password</label>
+            <input type="text" id="swalPassword" class="swal2-input" placeholder="Password" value="${password}">
+        `,
+                focusConfirm: false,
+                preConfirm: () => {
+                    const newEmail = Swal.getPopup().querySelector('#swalEmail').value;
+                    const newPassword = Swal.getPopup().querySelector('#swalPassword').value;
+                    if (!newEmail || !newPassword) {
+                        Swal.showValidationMessage('Both fields are required');
+                        return false;
+                    }
+                    return { newEmail, newPassword };
+                }
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { newEmail, newPassword } = result.value;
+                    try {
+                        await fetch("/api/admin/admindata", {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ id, email: newEmail, password: newPassword })
+                        });
+                        Swal.fire('Success', 'Admin updated', 'success');
+                        loadAdminData();
+                    } catch {
+                        Swal.fire('Error', 'Update failed', 'error');
+                    }
+                }
+            });
         }
-    </script>
-    <script>
+
         document.getElementById("logoutBtn").addEventListener("click", async (e) => {
             e.preventDefault();
-
             try {
                 const res = await fetch("/api/admin/logout", { method: "POST" });
                 const result = await res.json();
-
                 if (result.success) {
-                    // Clear history and redirect to login.html
                     window.location.replace("/admin/login.html");
                 } else {
-                    alert("Logout failed!");
+                    Swal.fire('Error', 'Logout failed!', 'error');
                 }
-            } catch (err) {
-                console.error("Logout error:", err);
-                alert("Logout failed: " + err.message);
+            } catch {
+                Swal.fire('Error', 'Logout failed', 'error');
             }
         });
+
         window.addEventListener("DOMContentLoaded", async () => {
             const res = await fetch('/api/admin/check-auth');
             const data = await res.json();
@@ -471,8 +446,6 @@
             }
         });
     </script>
-
-
 </body>
 
 </html>
