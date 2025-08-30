@@ -376,7 +376,7 @@ function Servicedetails() {
         // Swal.fire("📌 Step 4", "Form data ready. Sending fetch request...", "info");
 
         try {
-            const response = await fetch("http://localhost:3001/api/submit/expert", {
+            const response = await fetch(`${API_BASE_URL}/api/submit/expert`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

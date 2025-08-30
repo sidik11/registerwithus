@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Contactus.css";
+import { API_BASE_URL } from "../../utils/api"; // ✅ use dynamic base URL
 
 function Contactus() {
   const [formData, setFormData] = useState({
@@ -22,45 +23,36 @@ function Contactus() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  // alert("Form submission started"); // Step 1
-  setResponseMsg("Sending...");
+    e.preventDefault();
+    setResponseMsg("Sending...");
 
-  try {
-    // alert("Preparing data to send..."); // Step 2
-    const payload = { ...formData, form_type: "ContactUs" };
-    // alert("Payload: " + JSON.stringify(payload)); // Step 3
+    try {
+      const payload = { ...formData, form_type: "ContactUs" };
 
-   const res = await fetch("http://localhost:3001/api/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    // alert("Fetch completed"); // Step 4
-
-    const result = await res.json();
-    // alert("Response: " + JSON.stringify(result)); // Step 5
-
-    if (res.ok && result.success) {
-      alert("Submission success"); // Step 6
-      setResponseMsg("Message sent successfully ✅");
-      setFormData({
-        user_name: "",
-        user_email: "",
-        user_phone: "",
-        message: "",
+      const res = await fetch(`${API_BASE_URL}/api/submit`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
-    } else {
-      alert("Server responded but failed: " + result.message); // Step 7
-      setResponseMsg("Failed to send message ❌");
+
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        setResponseMsg("Message sent successfully ✅");
+        setFormData({
+          user_name: "",
+          user_email: "",
+          user_phone: "",
+          message: "",
+        });
+      } else {
+        setResponseMsg("Failed to send message ❌");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setResponseMsg("Something went wrong ❌");
     }
-  } catch (err) {
-    alert("Catch block triggered: " + err.message); // Step 8
-    console.error("Submission error:", err);
-    setResponseMsg("Something went wrong ❌");
-  }
-};
+  };
 
   return (
     <section>

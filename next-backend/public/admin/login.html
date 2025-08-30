@@ -108,7 +108,7 @@ form.addEventListener('submit', async (e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Login Failed',
-                text: 'Invalid credentials!'
+                text: result.message || 'Invalid credentials!'
             });
         }
     } catch (err) {
@@ -120,8 +120,8 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-// If already authenticated, redirect to index.html
-window.addEventListener("DOMContentLoaded", async () => {
+// ✅ Login page me agar already logged in hai to index.html bhej do
+(async () => {
     try {
         const res = await fetch("/api/admin/check-auth");
         const data = await res.json();
@@ -131,8 +131,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     } catch (err) {
         console.error("Auth check failed", err);
     }
-});
+})();
 </script>
+
 
 
 </body>
