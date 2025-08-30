@@ -1,5 +1,8 @@
 // middleware.ts
 import { NextRequest, NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.JWT_SECRET!;
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -16,26 +19,33 @@ export function middleware(req: NextRequest) {
     pathname.endsWith('.ico') ||
     pathname.endsWith('.svg') ||
     pathname.endsWith('.webp') ||
-    pathname.startsWith('/admin/fonts') || // optional: allow fonts folder
-    pathname.startsWith('/admin/img')     // optional: allow image folder
+    pathname.startsWith('/admin/fonts') ||
+    pathname.startsWith('/admin/img')
   );
 
-  const isAuthenticated = req.cookies.get('admin_auth')?.value === 'true';
-
-  // Allow all static assets and login page without auth
+  // Allow static assets and login page without auth
   if (isStaticAsset || isLoginPage) {
     return NextResponse.next();
   }
 
-  // Redirect to login if not authenticated and accessing protected /admin route
-  if (isAdminRoute && !isAuthenticated) {
-    return NextResponse.redirect(new URL('/admin/login.html', req.url));
+  // Check JWT cookie
+  const token = req.cookies.get('admin_token')?.value;
+  if (isAdminRoute) {
+    if (!token) {
+      return NextResponse.redirect(new URL('/admin/login.html', req.url));
+    }
+
+    try {
+      jwt.verify(token, JWT_SECRET); // throws if invalid
+      return NextResponse.next();      // valid token → allow access
+    } catch (err) {
+      return NextResponse.redirect(new URL('/admin/login.html', req.url));
+    }
   }
 
   return NextResponse.next();
 }
 
-// ✅ Apply middleware to all admin-related routes
 export const config = {
   matcher: ['/admin/:path*'],
 };
