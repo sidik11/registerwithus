@@ -158,6 +158,25 @@ export async function POST(req: Request) {
       );
     }
 
+    const contentType = req.headers.get("content-type") || "";
+
+  // === Form Submission (JSON) ===
+  if (contentType.includes("application/json")) {
+    const body = await req.json();
+    const { user_name, user_phone, user_email, message, form_type } = body;
+
+    if (!user_name || !user_phone || !user_email || !message || !form_type) {
+      return NextResponse.json({ success: false, message: "Missing required fields" }, { status: 400 });
+    }
+
+    await db.query(
+      `INSERT INTO users (user_name, user_phone, user_email, message, form_type) VALUES (?, ?, ?, ?, ?)`,
+      [user_name, user_phone, user_email, message, form_type]
+    );
+
+    return NextResponse.json({ success: true, message: "Form submitted successfully ✅" });
+  }
+
     return NextResponse.json({ success: true, message: "Blog added successfully." });
   } catch (error) {
     return NextResponse.json({ success: false, message: "Blog creation failed", error: String(error) }, { status: 500 });
