@@ -211,48 +211,44 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-document.addEventListener('DOMContentLoaded', async () => {
-    const dropdownToggle = document.querySelector('.nav-item.dropdown .dropdown-toggle');
-    const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
-    const dropdownParent = document.querySelector('.nav-item.dropdown');
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggle = document.querySelector('.nav-item.dropdown .dropdown-toggle');
+            const dropdownMenu = document.querySelector('.nav-item.dropdown .dropdown-menu');
+            const dropdownParent = document.querySelector('.nav-item.dropdown');
 
-    if (dropdownToggle && dropdownMenu && dropdownParent) {
-        let isOpen = false;
-        dropdownToggle.addEventListener('click', e => {
-            e.preventDefault();
-            isOpen = !isOpen;
-            dropdownParent.classList.toggle('show', isOpen);
-            dropdownMenu.classList.toggle('show', isOpen);
-        });
-        document.addEventListener('click', e => {
-            if (!dropdownParent.contains(e.target)) {
-                dropdownParent.classList.remove('show');
-                dropdownMenu.classList.remove('show');
-                isOpen = false;
+            if (dropdownToggle && dropdownMenu && dropdownParent) {
+                let isOpen = false;
+
+                dropdownToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    isOpen = !isOpen;
+
+                    if (isOpen) {
+                        dropdownParent.classList.add('show');
+                        dropdownMenu.classList.add('show');
+                    } else {
+                        dropdownParent.classList.remove('show');
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!dropdownParent.contains(e.target)) {
+                        dropdownParent.classList.remove('show');
+                        dropdownMenu.classList.remove('show');
+                        isOpen = false;
+                    }
+                });
             }
         });
-    }
 
-    // ✅ Check authentication and superadmin
+        async function loadAdminData() {
     try {
-        const res = await fetch('/api/admin/check-auth');
-        const authData = await res.json();
+        // ✅ Fetch current logged-in admin
+        const authRes = await fetch('/api/admin/check-auth');
+        const authData = await authRes.json();
+        const isSuperAdmin = authData.superadmin === 1;
 
-        if (!authData.authenticated) {
-            window.location.replace('/admin/login.html');
-            return;
-        }
-
-        window.isSuperAdmin = authData.superadmin === 1; // global flag
-
-        loadAdminData();
-    } catch {
-        Swal.fire('Error', 'Failed to check authentication', 'error');
-    }
-});
-
-async function loadAdminData() {
-    try {
         const res = await fetch("/api/admin/admindata");
         const data = await res.json();
         const tbody = document.getElementById("adminTableBody");
@@ -269,12 +265,12 @@ async function loadAdminData() {
             <th>Email</th>
             <th>Created At</th>
             <th>Status</th>`;
-        if (window.isSuperAdmin) headers += `<th>Section</th>`; // show Section only if superadmin
-        if (window.isSuperAdmin) headers += `<th>Actions</th></tr>`; // show Actions only if superadmin
+        if (isSuperAdmin) headers += `<th>Section</th>`; // only superadmin sees this
+        headers += isSuperAdmin ? `<th>Actions</th></tr>` : `</tr>`;
         thead.innerHTML = headers;
 
         if (!Array.isArray(data) || data.length === 0) {
-            const colspan = window.isSuperAdmin ? 6 : 4;
+            const colspan = isSuperAdmin ? 6 : 4;
             tbody.innerHTML = `<tr><td colspan="${colspan}" class="text-center">No admin records found</td></tr>`;
             return;
         }
@@ -289,32 +285,184 @@ async function loadAdminData() {
                 <td>${new Date(admin.created_at).toLocaleString()}</td>
                 <td><span class="badge bg-${admin.status === 1 ? 'success' : 'danger'}">${isActive}</span></td>`;
 
-            if (window.isSuperAdmin) {
+            if (isSuperAdmin) {
                 trHTML += `<td>${admin.superadmin === 1 ? 'Super Admin' : ''}</td>`;
-                trHTML += `<td>
-                    <button class="btn btn-sm btn-warning me-1" onclick="updateAdmin(${admin.id}, '${admin.email}', '${admin.password}')">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <button class="btn btn-sm btn-danger me-1" onclick="deleteAdmin(${admin.id})">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                    <button class="btn btn-sm ${statusBtnClass}" onclick="toggleStatus(${admin.id}, ${admin.status})">
-                        ${admin.status === 1 ? 'Deactivate' : 'Activate'}
-                    </button>
-                </td>`;
+                trHTML += `
+                    <td>
+                        <button class="btn btn-sm btn-warning me-1" onclick="updateAdmin(${admin.id}, '${admin.email}', '${admin.password}')">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger me-1" onclick="deleteAdmin(${admin.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                        <button class="btn btn-sm ${statusBtnClass}" onclick="toggleStatus(${admin.id}, ${admin.status})">
+                            ${admin.status === 1 ? 'Deactivate' : 'Activate'}
+                        </button>
+                    </td>`;
             }
 
             const tr = document.createElement("tr");
             tr.innerHTML = trHTML;
             tbody.appendChild(tr);
         });
+
     } catch (error) {
         Swal.fire('Error', 'Failed to load admin data', 'error');
         document.getElementById("adminTableBody").innerHTML =
-            `<tr><td colspan="${window.isSuperAdmin ? 6 : 4}" class="text-danger text-center">Failed to load admin data</td></tr>`;
+            `<tr><td colspan="6" class="text-danger text-center">Failed to load admin data</td></tr>`;
     }
 }
-</script>
+
+
+        document.addEventListener("DOMContentLoaded", loadAdminData);
+
+        document.getElementById("addAdminForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const email = document.getElementById("adminEmail").value.trim();
+            const password = document.getElementById("adminPassword").value.trim();
+
+            if (!email || !password) {
+                Swal.fire('Warning', 'Please fill all fields', 'warning');
+                return;
+            }
+
+            try {
+                const res = await fetch("/api/admin/admindata", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    Swal.fire('Success', 'Admin added successfully', 'success');
+                    document.getElementById("addAdminForm").reset();
+
+                    const modalEl = document.getElementById("addAdminModal");
+                    const modal = bootstrap.Modal.getInstance(modalEl);
+                    modal.hide();
+
+                    const backdrop = document.querySelector(".modal-backdrop");
+                    if (backdrop) backdrop.remove();
+
+                    loadAdminData();
+                } else {
+                    Swal.fire('Error', 'Failed to add admin: ' + result.message, 'error');
+                }
+            } catch (error) {
+                Swal.fire('Error', 'Error adding admin', 'error');
+            }
+        });
+
+        async function deleteAdmin(id) {
+            const { isConfirmed } = await Swal.fire({
+                title: 'Are you sure?',
+                text: "This admin will be deleted permanently!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!'
+            });
+
+            if (!isConfirmed) return;
+
+            try {
+                const res = await fetch("/api/admin/admindata", {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id })
+                });
+                if (res.ok) {
+                    Swal.fire('Deleted!', 'Admin deleted successfully', 'success');
+                    loadAdminData();
+                } else {
+                    Swal.fire('Error', 'Failed to delete admin', 'error');
+                }
+            } catch (err) {
+                Swal.fire('Error', 'Error deleting admin', 'error');
+            }
+        }
+
+        async function toggleStatus(id, currentStatus) {
+            const newStatus = currentStatus === 1 ? 0 : 1;
+            try {
+                const res = await fetch(`/api/admin/admindata`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id, status: newStatus })
+                });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    Swal.fire('Success', 'Status updated', 'success');
+                    loadAdminData();
+                } else {
+                    Swal.fire('Error', 'Failed to update status: ' + data.message, 'error');
+                }
+            } catch (err) {
+                Swal.fire('Error', 'Error updating status', 'error');
+            }
+        }
+
+        function updateAdmin(id, email, password) {
+            Swal.fire({
+                title: 'Update Admin',
+                html: `
+            <label for="swalEmail" class="form-label text-start w-100">Email</label>
+            <input type="email" id="swalEmail" class="swal2-input" placeholder="Email" value="${email}">
+            <label for="swalPassword" class="form-label text-start w-100">Password</label>
+            <input type="text" id="swalPassword" class="swal2-input" placeholder="Password" value="${password}">
+        `,
+                focusConfirm: false,
+                preConfirm: () => {
+                    const newEmail = Swal.getPopup().querySelector('#swalEmail').value;
+                    const newPassword = Swal.getPopup().querySelector('#swalPassword').value;
+                    if (!newEmail || !newPassword) {
+                        Swal.showValidationMessage('Both fields are required');
+                        return false;
+                    }
+                    return { newEmail, newPassword };
+                }
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { newEmail, newPassword } = result.value;
+                    try {
+                        await fetch("/api/admin/admindata", {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ id, email: newEmail, password: newPassword })
+                        });
+                        Swal.fire('Success', 'Admin updated', 'success');
+                        loadAdminData();
+                    } catch {
+                        Swal.fire('Error', 'Update failed', 'error');
+                    }
+                }
+            });
+        }
+
+        document.getElementById("logoutBtn").addEventListener("click", async (e) => {
+            e.preventDefault();
+            try {
+                const res = await fetch("/api/admin/logout", { method: "POST" });
+                const result = await res.json();
+                if (result.success) {
+                    window.location.replace("/admin/login.html");
+                } else {
+                    Swal.fire('Error', 'Logout failed!', 'error');
+                }
+            } catch {
+                Swal.fire('Error', 'Logout failed', 'error');
+            }
+        });
+
+        window.addEventListener("DOMContentLoaded", async () => {
+            const res = await fetch('/api/admin/check-auth');
+            const data = await res.json();
+            if (!data.authenticated) {
+                window.location.replace('/admin/login.html');
+            }
+        });
+    </script>
 
 </body>
 

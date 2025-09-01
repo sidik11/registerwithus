@@ -386,7 +386,7 @@
     // Load Expert Data
     async function loadExpertData() {
         try {
-            const res = await fetch("/api/submit/expert");
+            const res = await fetch("/api/submit/");
             const data = await res.json();
             expertData = data;
             filteredExpertData = [...expertData];
