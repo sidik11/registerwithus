@@ -544,33 +544,44 @@
 			});
 		});
 	</script>
-	<script>
-		document.getElementById("logoutBtn").addEventListener("click", async (e) => {
-			e.preventDefault();
+<script>
+	// 🔹 Logout Button click
+	document.getElementById("logoutBtn").addEventListener("click", async (e) => {
+		e.preventDefault();
 
-			try {
-				const res = await fetch("/api/admin/logout", { method: "POST" });
-				const result = await res.json();
+		try {
+			const res = await fetch("/api/admin/logout", { method: "POST" });
+			const result = await res.json();
 
-				if (result.success) {
-					// Clear history and redirect to login.html
-					window.location.replace("/admin/login.html");
-				} else {
-					alert("Logout failed!");
-				}
-			} catch (err) {
-				console.error("Logout error:", err);
-				alert("Logout failed: " + err.message);
+			if (result.success) {
+				// ✅ JWT cookies clear ho jayenge backend se
+				window.location.replace("/admin/login.html");
+			} else {
+				alert("Logout failed!");
 			}
-		});
-		window.addEventListener("DOMContentLoaded", async () => {
+		} catch (err) {
+			console.error("Logout error:", err);
+			alert("Logout failed: " + err.message);
+		}
+	});
+
+	// 🔹 Page load par auth check
+	document.addEventListener("DOMContentLoaded", async () => {
+		try {
 			const res = await fetch('/api/admin/check-auth');
 			const data = await res.json();
+
 			if (!data.authenticated) {
+				// ✅ Token expire ya missing ho → force login
 				window.location.replace('/admin/login.html');
 			}
-		});
-	</script>
+		} catch (err) {
+			console.error("Auth check failed:", err);
+			window.location.replace('/admin/login.html');
+		}
+	});
+</script>
+
 
 </body>
 
