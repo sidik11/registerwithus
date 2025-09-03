@@ -85,9 +85,12 @@ function Contactus() {
                     placeholder="Enter your name"
                     value={formData.user_name}
                     onChange={handleChange}
+                    pattern="^[A-Za-z\s]+$"
+                    title="Only alphabets and spaces are allowed"
                     required
                   />
                 </div>
+
                 <div className="row">
                   <div className="col-6">
                     <div className="mb-3">
@@ -117,11 +120,15 @@ function Contactus() {
                         placeholder="Enter your number"
                         value={formData.user_phone}
                         onChange={handleChange}
+                        pattern="^[0-9+]{1,13}$"
+                        title="Only digits and + allowed, max 13 characters"
+                        maxLength="13"
                         required
                       />
                     </div>
                   </div>
                 </div>
+
                 <div className="mb-3">
                   <label htmlFor="message" className="form-label">
                     Your Message
@@ -136,6 +143,7 @@ function Contactus() {
                     required
                   ></textarea>
                 </div>
+
                 <button type="submit" className="btn btn-primary w-100">
                   Send Message
                 </button>

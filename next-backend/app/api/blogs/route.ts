@@ -9,13 +9,11 @@ export const config = { api: { bodyParser: false } };
 
 const uploadDir = path.join(process.cwd(), "/public/uploads/blogs");
 
-// ✅ Save uploaded image file
+// ✅ Save uploaded image
 async function saveFile(file: any) {
   const actualFile = Array.isArray(file) ? file[0] : file;
-
   if (!actualFile) throw new Error("File not found");
-  
-  // For formidable file upload
+
   if (actualFile.filepath) {
     const filename = Date.now() + "_" + actualFile.originalFilename;
     const filepath = path.join(uploadDir, filename);
@@ -24,10 +22,8 @@ async function saveFile(file: any) {
     return `/uploads/blogs/${filename}`;
   }
 
-  // For PUT / formData file upload (File object)
   if (actualFile instanceof File) {
-    const arrayBuffer = await actualFile.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+    const buffer = Buffer.from(await actualFile.arrayBuffer());
     const filename = Date.now() + "_" + actualFile.name;
     const filepath = path.join(uploadDir, filename);
     await fs.mkdir(uploadDir, { recursive: true });
@@ -38,29 +34,34 @@ async function saveFile(file: any) {
   throw new Error("Invalid file object");
 }
 
-// ✅ Format date to YYYY/MM/DD
+// ✅ Format date
 function formatDateToYYYYMMDD(date: Date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}/${month}/${day}`;
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}/${m}/${d}`;
 }
 
-// ✅ GET blogs (single or all)
+// ✅ GET Blogs OR Categories
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
+    const type = searchParams.get("type"); // "category" or "blog"
     const id = searchParams.get("id");
 
+    if (type === "category") {
+      const [rows]: any = await db.query("SELECT * FROM blog_categories ORDER BY id DESC");
+      return NextResponse.json({ success: true, categories: rows });
+    }
+
+    // --- BLOGS ---
     if (id) {
       const [blogs]: any = await db.query(
-        `SELECT *, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at FROM blogs WHERE id=?`,
+        `SELECT *, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at 
+         FROM blogs WHERE id=?`,
         [id]
       );
-
-      if (!blogs.length) {
-        return NextResponse.json({ success: false, message: "Blog not found" });
-      }
+      if (!blogs.length) return NextResponse.json({ success: false, message: "Blog not found" });
 
       const [meta]: any = await db.query(
         `SELECT meta_name, meta_content FROM blog_meta WHERE blog_id=?`,
@@ -71,10 +72,7 @@ export async function GET(req: NextRequest) {
     } else {
       const [rows]: any = await db.query(`
         SELECT 
-          blogs.id, 
-          blogs.title, 
-          blogs.image, 
-          blogs.category_id, 
+          blogs.id, blogs.title, blogs.image, blogs.category_id, 
           blogs.description AS blogDescription,
           DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
           blog_categories.name AS category_name
@@ -82,37 +80,43 @@ export async function GET(req: NextRequest) {
         LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
         ORDER BY blogs.id DESC
       `);
-
       return NextResponse.json({ success: true, blogs: rows });
     }
-  } catch {
-    return NextResponse.json({ success: false, message: "Failed to fetch blogs" }, { status: 500 });
+  } catch (e: any) {
+    return NextResponse.json({ success: false, message: e.message }, { status: 500 });
   }
 }
 
-// ✅ POST: Add new blog (with meta + image)
+// ✅ POST: Add Blog OR Category
 export async function POST(req: Request) {
   try {
+    const { searchParams } = new URL(req.url);
+    const type = searchParams.get("type");
+
+    if (type === "category") {
+      const { name } = await req.json();
+      if (!name) return NextResponse.json({ success: false, message: "Name is required" }, { status: 400 });
+      await db.execute("INSERT INTO blog_categories (name) VALUES (?)", [name]);
+      return NextResponse.json({ success: true, message: "Category added successfully" });
+    }
+
+    // --- BLOG ---
     const data = await req.arrayBuffer();
     const buffer = Buffer.from(data);
-
     const form = formidable({ multiples: true, keepExtensions: true });
 
     const [fields, files] = await new Promise<any>((resolve, reject) => {
       form.parse(
         Object.assign(Readable.from(buffer), { headers: Object.fromEntries(req.headers) }) as any,
-        (err, fields, files) => {
-          if (err) reject(err);
-          else resolve([fields, files]);
-        }
+        (err, f, fl) => (err ? reject(err) : resolve([f, fl]))
       );
     });
 
-    const title = Array.isArray(fields.title) ? fields.title[0] : fields.title;
-    const slug = Array.isArray(fields.slug) ? fields.slug[0] : fields.slug;
-    const description = Array.isArray(fields.description) ? fields.description[0] : fields.description;
-    const categoryId = Number(Array.isArray(fields.category_id) ? fields.category_id[0] : fields.category_id);
-    const dateValue = Array.isArray(fields.date) ? fields.date[0] : fields.date;
+    const title = fields.title?.[0] || fields.title;
+    const slug = fields.slug?.[0] || fields.slug;
+    const description = fields.description?.[0] || fields.description;
+    const categoryId = Number(fields.category_id?.[0] || fields.category_id);
+    const dateValue = fields.date?.[0] || fields.date;
 
     const metaNames = fields["metatag[]"] || [];
     const metaContents = fields["metadesc[]"] || [];
@@ -126,10 +130,7 @@ export async function POST(req: Request) {
     }
 
     const imageFile = files.image;
-    if (!imageFile) {
-      return NextResponse.json({ success: false, message: "Image is required" }, { status: 400 });
-    }
-
+    if (!imageFile) return NextResponse.json({ success: false, message: "Image is required" }, { status: 400 });
     const imagePath = await saveFile(imageFile);
 
     const [blogResult]: any = await db.execute(
@@ -139,53 +140,40 @@ export async function POST(req: Request) {
 
     const blogId = blogResult.insertId;
 
-    // Insert multiple meta tags
     if (Array.isArray(metaNames)) {
       for (let i = 0; i < metaNames.length; i++) {
         const name = metaNames[i];
         const content = metaContents[i] || "";
         if (name.trim()) {
-          await db.execute(
-            "INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)",
-            [blogId, name, content]
-          );
+          await db.execute("INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)", [
+            blogId,
+            name,
+            content,
+          ]);
         }
       }
-    } else if (typeof metaNames === "string" && metaNames.trim()) {
-      await db.execute(
-        "INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)",
-        [blogId, metaNames, metaContents || ""]
-      );
     }
-
-    const contentType = req.headers.get("content-type") || "";
-
-  // === Form Submission (JSON) ===
-  if (contentType.includes("application/json")) {
-    const body = await req.json();
-    const { user_name, user_phone, user_email, message, form_type } = body;
-
-    if (!user_name || !user_phone || !user_email || !message || !form_type) {
-      return NextResponse.json({ success: false, message: "Missing required fields" }, { status: 400 });
-    }
-
-    await db.query(
-      `INSERT INTO users (user_name, user_phone, user_email, message, form_type) VALUES (?, ?, ?, ?, ?)`,
-      [user_name, user_phone, user_email, message, form_type]
-    );
-
-    return NextResponse.json({ success: true, message: "Form submitted successfully ✅" });
-  }
 
     return NextResponse.json({ success: true, message: "Blog added successfully." });
-  } catch (error) {
-    return NextResponse.json({ success: false, message: "Blog creation failed", error: String(error) }, { status: 500 });
+  } catch (e: any) {
+    return NextResponse.json({ success: false, message: e.message }, { status: 500 });
   }
 }
 
-// ✅ PUT: Update blog (with meta + optional image)
+// ✅ PUT: Update Blog OR Category
 export async function PUT(req: NextRequest) {
   try {
+    const { searchParams } = new URL(req.url);
+    const type = searchParams.get("type");
+
+    if (type === "category") {
+      const { id, name } = await req.json();
+      if (!id || !name) return NextResponse.json({ success: false, message: "ID and name required" }, { status: 400 });
+      await db.execute("UPDATE blog_categories SET name=? WHERE id=?", [name, id]);
+      return NextResponse.json({ success: true, message: "Category updated successfully" });
+    }
+
+    // --- BLOG ---
     const data = await req.formData();
     const id = data.get("id") as string;
     const title = data.get("title") as string;
@@ -205,10 +193,15 @@ export async function PUT(req: NextRequest) {
       imagePath = oldBlog[0]?.image || "";
     }
 
-    await db.query(
-      "UPDATE blogs SET title=?, slug=?, description=?, category_id=?, date=?, image=? WHERE id=?",
-      [title, slug, description, category_id, date, imagePath, id]
-    );
+    await db.query("UPDATE blogs SET title=?, slug=?, description=?, category_id=?, date=?, image=? WHERE id=?", [
+      title,
+      slug,
+      description,
+      category_id,
+      date,
+      imagePath,
+      id,
+    ]);
 
     await db.query("DELETE FROM blog_meta WHERE blog_id=?", [id]);
 
@@ -216,30 +209,43 @@ export async function PUT(req: NextRequest) {
       const name = metaNames[i] as string;
       const content = (metaContents[i] as string) || "";
       if (name.trim()) {
-        await db.query(
-          "INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)",
-          [id, name, content]
-        );
+        await db.query("INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)", [id, name, content]);
       }
     }
 
     return NextResponse.json({ success: true, message: "Blog updated successfully" });
-  } catch {
-    return NextResponse.json({ success: false, message: "Failed to update blog" }, { status: 500 });
+  } catch (e: any) {
+    return NextResponse.json({ success: false, message: e.message }, { status: 500 });
   }
 }
 
-// ✅ DELETE blog (with meta)
+// ✅ DELETE Blog OR Category
 export async function DELETE(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
+    const type = searchParams.get("type");
     const id = searchParams.get("id");
 
+    if (!id) return NextResponse.json({ success: false, message: "ID is required" }, { status: 400 });
+
+    if (type === "category") {
+      await db.execute(
+        `DELETE bm FROM blog_meta bm 
+         INNER JOIN blogs b ON bm.blog_id = b.id 
+         WHERE b.category_id = ?`,
+        [id]
+      );
+      await db.execute("DELETE FROM blogs WHERE category_id=?", [id]);
+      await db.execute("DELETE FROM blog_categories WHERE id=?", [id]);
+
+      return NextResponse.json({ success: true, message: "Category and related blogs deleted" });
+    }
+
+    // --- BLOG ---
     await db.query("DELETE FROM blog_meta WHERE blog_id=?", [id]);
     await db.query("DELETE FROM blogs WHERE id=?", [id]);
-
     return NextResponse.json({ success: true, message: "Blog deleted successfully" });
-  } catch {
-    return NextResponse.json({ success: false, message: "Failed to delete blog" }, { status: 500 });
+  } catch (e: any) {
+    return NextResponse.json({ success: false, message: e.message }, { status: 500 });
   }
 }

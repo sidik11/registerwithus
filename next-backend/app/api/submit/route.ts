@@ -20,9 +20,28 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { user_name, user_phone, user_email, message, form_type } = body;
 
+    // ✅ Required fields check
     if (!user_name || !user_phone || !user_email || !form_type) {
       return NextResponse.json(
         { success: false, message: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    // ✅ Regex validation
+    const nameRegex = /^[A-Za-z\s]+$/;       // alphabets + whitespace only
+    const phoneRegex = /^[0-9+]{1,13}$/;     // only digits and +, max 13 chars
+
+    if (!nameRegex.test(user_name)) {
+      return NextResponse.json(
+        { success: false, message: "Invalid name: only alphabets and spaces allowed" },
+        { status: 400 }
+      );
+    }
+
+    if (!phoneRegex.test(user_phone)) {
+      return NextResponse.json(
+        { success: false, message: "Invalid phone: only digits and + allowed (max 13 chars)" },
         { status: 400 }
       );
     }

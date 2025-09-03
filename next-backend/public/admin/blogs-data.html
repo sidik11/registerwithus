@@ -480,7 +480,7 @@
             // 📦 Load Categories
             async function loadCategories(selectEl) {
                 try {
-                    const res = await fetch("/api/categories");
+                    const res = await fetch("/api/blogs?type=category");
                     const data = await res.json();
                     selectEl.innerHTML = "";
                     if (data.success) {
@@ -506,7 +506,7 @@
             // 📰 Load Blogs into Table
             async function loadBlogs() {
                 try {
-                    const res = await fetch("/api/blogs");
+                    const res = await fetch("/api/blogs?type=blogs");
                     const data = await res.json();
                     blogsTableBody.innerHTML = "";
                     if (data.success) {
@@ -537,7 +537,7 @@
                 try {
                     document.getElementById("hiddenDescription").value = quill.root.innerHTML;
                     const formData = new FormData(addBlogForm);
-                    const res = await fetch("/api/blogs", { method: "POST", body: formData });
+                    const res = await fetch("/api/blogs?type=blogs", { method: "POST", body: formData });
                     const result = await res.json();
                     if (result.success) {
                         await Swal.fire("Success", "Blog added successfully!", "success");
@@ -560,7 +560,7 @@ blogsTableBody.addEventListener("click", async (e) => {
         const blogId = target.dataset.id;
 
         try {
-            const res = await fetch(`/api/blogs?id=${blogId}`);
+            const res = await fetch(`/api/blogs?type=blogs&id=${blogId}`);
             const data = await res.json();
 
             if (data.success) {
@@ -623,7 +623,7 @@ blogsTableBody.addEventListener("click", async (e) => {
         });
         if (result.isConfirmed) {
             try {
-                const res = await fetch(`/api/blogs?id=${blogId}`, { method: "DELETE" });
+                const res = await fetch(`/api/blogs?type=blogs&id=${blogId}`, { method: "DELETE" });
                 const resultJson = await res.json();
                 if (resultJson.success) {
                     Swal.fire("Deleted!", "Blog deleted successfully", "success");
@@ -647,7 +647,7 @@ updateBtn.addEventListener("click", async () => {
     const blogIdFromInput = document.getElementById("editBlogId").value;
 
     try {
-        const res = await fetch(`/api/blogs?id=${blogIdFromInput}`, {
+        const res = await fetch(`/api/blogs?type=blogs&id=${blogIdFromInput}`, {
             method: "PUT",
             body: formData,
         });
