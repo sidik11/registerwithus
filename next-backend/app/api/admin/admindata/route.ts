@@ -16,12 +16,15 @@ async function ensureTable() {
     `);
 }
 
-// GET: Fetch all admins
+// GET: Fetch all admins (except soft-deleted)
 export async function GET() {
     try {
         await ensureTable();
-        const [rows] = await db.query(
-            `SELECT id, email, status, superadmin, created_at FROM admin ORDER BY created_at DESC`
+        const [rows]: any[] = await db.query(
+            `SELECT id, email, status, superadmin, created_at 
+             FROM admin 
+             WHERE status != -1 
+             ORDER BY created_at DESC`
         );
         return NextResponse.json(rows);
     } catch (err) {
@@ -32,7 +35,7 @@ export async function GET() {
     }
 }
 
-// POST: Add new admin
+// POST: Add new admin or reactivate soft-deleted admin
 export async function POST(req: NextRequest) {
     try {
         const { email, password, superadmin = 0 } = await req.json();
@@ -42,8 +45,38 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             );
 
-        const hashedPassword = await bcrypt.hash(password, 10);
         await ensureTable();
+
+        // Check if admin already exists
+        const [existingAdmins]: any[] = await db.query(
+            `SELECT id, status FROM admin WHERE email = ?`,
+            [email]
+        );
+
+        if (existingAdmins.length > 0) {
+            const admin = existingAdmins[0];
+            if (admin.status === 1) {
+                // Already active, cannot create
+                return NextResponse.json(
+                    { success: false, message: "Admin with this email already exists" },
+                    { status: 400 }
+                );
+            } else if (admin.status === -1) {
+                // Reactivate soft-deleted admin
+                const hashedPassword = await bcrypt.hash(password, 10);
+                await db.query(
+                    `UPDATE admin SET password = ?, status = 1 WHERE id = ?`,
+                    [hashedPassword, admin.id]
+                );
+                return NextResponse.json({
+                    success: true,
+                    message: "Admin reactivated successfully",
+                });
+            }
+        }
+
+        // Insert new admin if not exists
+        const hashedPassword = await bcrypt.hash(password, 10);
         await db.query(
             `INSERT INTO admin (email, password, status, superadmin) VALUES (?, ?, ?, ?)`,
             [email, hashedPassword, 1, superadmin]
@@ -51,6 +84,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json({ success: true, message: "Admin added successfully" });
     } catch (err) {
+        console.error("POST /admin/admindata error:", err);
         return NextResponse.json(
             { success: false, message: "Error adding admin" },
             { status: 500 }
@@ -93,7 +127,40 @@ export async function PUT(req: NextRequest) {
     }
 }
 
-// DELETE: Delete admin
+// PATCH: Toggle status or soft delete
+export async function PATCH(req: NextRequest) {
+    try {
+        const { id, status, softDelete } = await req.json();
+
+        if (!id)
+            return NextResponse.json(
+                { success: false, message: "ID is required" },
+                { status: 400 }
+            );
+
+        if (softDelete) {
+            // Soft delete: hide from UI
+            await db.query(`UPDATE admin SET status = -1 WHERE id = ?`, [id]);
+            return NextResponse.json({ success: true, message: "Admin hidden from UI" });
+        }
+
+        if (typeof status === "undefined")
+            return NextResponse.json(
+                { success: false, message: "Status is required" },
+                { status: 400 }
+            );
+
+        await db.query(`UPDATE admin SET status = ? WHERE id = ?`, [status, id]);
+        return NextResponse.json({ success: true, message: `Admin status updated to ${status}` });
+    } catch (err) {
+        return NextResponse.json(
+            { success: false, message: "Failed to update status" },
+            { status: 500 }
+        );
+    }
+}
+
+// DELETE: Hard delete (optional, direct DB removal)
 export async function DELETE(req: NextRequest) {
     try {
         const { id } = await req.json();
@@ -104,30 +171,10 @@ export async function DELETE(req: NextRequest) {
             );
 
         await db.query(`DELETE FROM admin WHERE id = ?`, [id]);
-        return NextResponse.json({ success: true, message: "Admin deleted successfully" });
+        return NextResponse.json({ success: true, message: "Admin deleted from DB" });
     } catch (err) {
         return NextResponse.json(
             { success: false, message: "Error deleting admin" },
-            { status: 500 }
-        );
-    }
-}
-
-// PATCH: Toggle status
-export async function PATCH(req: NextRequest) {
-    try {
-        const { id, status } = await req.json();
-        if (!id || typeof status === "undefined")
-            return NextResponse.json(
-                { success: false, message: "ID and status are required" },
-                { status: 400 }
-            );
-
-        await db.query(`UPDATE admin SET status = ? WHERE id = ?`, [status, id]);
-        return NextResponse.json({ success: true, message: `Admin status updated to ${status}` });
-    } catch (err) {
-        return NextResponse.json(
-            { success: false, message: "Failed to update status" },
             { status: 500 }
         );
     }

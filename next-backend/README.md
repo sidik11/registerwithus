@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Register With Us
 
-## Getting Started
+#overview
 
-First, run the development server:
+Customer-facing React app including services, products, blogs, contact forms etc.
+Next.js backend API for forms, blogs, and authentication.
+MySQL database integration.
+Admin panel for managing submissions and blogs.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+User Interactive Design Using React.js.
+Mega Dropdown Navigation.
+Backend Using Next.js To Control Form Submission Data And Blogs Data.
+Login Using Super Admin id:- pw:- After That U Can Have Access To The Admin Panel For Changes And Preview Data.
+Login system (cookie-based authentication) , With Hash Password.
+Manage users (Quick Contact + Contact Us).
+Manage Experts (Talk To Experts).
+Manage Blogs (CRUD with categories + meta tags).
+Separate dashboards for users and experts.
+MySQL integration with auto table creation with Image/file upload handling.
+.env.local file was there passing Base URL through utils/api.js On Frontend
+.env Is There At Backend To Create Environment And Have Own Secret Key Which Was Later Fetched And Used To Create Random JWT Token To Store In Cookies.
+Cookies Are Lasting For 15min , After That If Admin Was Not Logged Out Cookie Will Update For Next 15min, Once Logged Out And 15min Over, U Have To Login Again And Cookie Will Generate Again
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#technology
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Frontend: React, Bootstrap, CSS.
+Backend: Next.js API routes.
+Database: MySQL (XAMPP / phpMyAdmin).
+Authorization: Cookie-based (custom).
+Other: SweetAlert, Formidable (file upload), Quill (blog editor), etc.

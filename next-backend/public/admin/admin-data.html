@@ -356,32 +356,34 @@
         });
 
         async function deleteAdmin(id) {
-            const { isConfirmed } = await Swal.fire({
-                title: 'Are you sure?',
-                text: "This admin will be deleted permanently!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!'
-            });
+    const { isConfirmed } = await Swal.fire({
+        title: 'Are you sure?',
+        text: "This admin will be hidden from UI (soft delete)!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, hide it!'
+    });
 
-            if (!isConfirmed) return;
+    if (!isConfirmed) return;
 
-            try {
-                const res = await fetch("/api/admin/admindata", {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id })
-                });
-                if (res.ok) {
-                    Swal.fire('Deleted!', 'Admin deleted successfully', 'success');
-                    loadAdminData();
-                } else {
-                    Swal.fire('Error', 'Failed to delete admin', 'error');
-                }
-            } catch (err) {
-                Swal.fire('Error', 'Error deleting admin', 'error');
-            }
+    try {
+        const res = await fetch("/api/admin/admindata", {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id, softDelete: true }) // ✅ Soft delete flag
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+            Swal.fire('Hidden!', 'Admin hidden from panel', 'success');
+            loadAdminData(); // refresh table
+        } else {
+            Swal.fire('Error', 'Failed to hide admin: ' + data.message, 'error');
         }
+    } catch (err) {
+        Swal.fire('Error', 'Error hiding admin', 'error');
+    }
+}
 
         async function toggleStatus(id, currentStatus) {
             const newStatus = currentStatus === 1 ? 0 : 1;
