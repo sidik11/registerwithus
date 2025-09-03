@@ -9,6 +9,10 @@ export const config = { api: { bodyParser: false } };
 
 const uploadDir = path.join(process.cwd(), "/public/uploads/blogs");
 
+// ✅ Regex rules
+const nameRegex = /^[A-Za-z\s]+$/;
+const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
 // ✅ Save uploaded image
 async function saveFile(file: any) {
   const actualFile = Array.isArray(file) ? file[0] : file;
@@ -46,7 +50,7 @@ function formatDateToYYYYMMDD(date: Date) {
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const type = searchParams.get("type"); // "category" or "blog"
+    const type = searchParams.get("type"); 
     const id = searchParams.get("id");
 
     if (type === "category") {
@@ -95,8 +99,10 @@ export async function POST(req: Request) {
 
     if (type === "category") {
       const { name } = await req.json();
-      if (!name) return NextResponse.json({ success: false, message: "Name is required" }, { status: 400 });
-      await db.execute("INSERT INTO blog_categories (name) VALUES (?)", [name]);
+      if (!name || !nameRegex.test(name)) {
+        return NextResponse.json({ success: false, message: "Category name must contain only letters and spaces" }, { status: 400 });
+      }
+      await db.execute("INSERT INTO blog_categories (name) VALUES (?)", [name.trim()]);
       return NextResponse.json({ success: true, message: "Category added successfully" });
     }
 
@@ -118,16 +124,23 @@ export async function POST(req: Request) {
     const categoryId = Number(fields.category_id?.[0] || fields.category_id);
     const dateValue = fields.date?.[0] || fields.date;
 
-    const metaNames = fields["metatag[]"] || [];
-    const metaContents = fields["metadesc[]"] || [];
+    // ✅ Validations
+    if (!title || title.length < 3) {
+      return NextResponse.json({ success: false, message: "Title must be at least 3 characters" }, { status: 400 });
+    }
+    if (!slug || !slugRegex.test(slug)) {
+      return NextResponse.json({ success: false, message: "Slug must be lowercase letters, numbers and hyphens" }, { status: 400 });
+    }
+    if (!description || description.length < 10) {
+      return NextResponse.json({ success: false, message: "Description must be at least 10 characters" }, { status: 400 });
+    }
+    if (!categoryId || isNaN(categoryId)) {
+      return NextResponse.json({ success: false, message: "Valid category ID is required" }, { status: 400 });
+    }
 
     const formattedDate = dateValue
       ? formatDateToYYYYMMDD(new Date(dateValue))
       : formatDateToYYYYMMDD(new Date());
-
-    if (!title || !slug || !description || !categoryId || isNaN(categoryId)) {
-      return NextResponse.json({ success: false, message: "Missing required blog fields" }, { status: 400 });
-    }
 
     const imageFile = files.image;
     if (!imageFile) return NextResponse.json({ success: false, message: "Image is required" }, { status: 400 });
@@ -135,20 +148,22 @@ export async function POST(req: Request) {
 
     const [blogResult]: any = await db.execute(
       "INSERT INTO blogs (title, slug, image, date, description, category_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
-      [title, slug, imagePath, formattedDate, description, categoryId, new Date()]
+      [title.trim(), slug.trim(), imagePath, formattedDate, description.trim(), categoryId, new Date()]
     );
 
     const blogId = blogResult.insertId;
 
+    const metaNames = fields["metatag[]"] || [];
+    const metaContents = fields["metadesc[]"] || [];
     if (Array.isArray(metaNames)) {
       for (let i = 0; i < metaNames.length; i++) {
         const name = metaNames[i];
         const content = metaContents[i] || "";
-        if (name.trim()) {
+        if (name && name.trim()) {
           await db.execute("INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)", [
             blogId,
-            name,
-            content,
+            name.trim(),
+            content.trim(),
           ]);
         }
       }
@@ -168,8 +183,10 @@ export async function PUT(req: NextRequest) {
 
     if (type === "category") {
       const { id, name } = await req.json();
-      if (!id || !name) return NextResponse.json({ success: false, message: "ID and name required" }, { status: 400 });
-      await db.execute("UPDATE blog_categories SET name=? WHERE id=?", [name, id]);
+      if (!id || !name || !nameRegex.test(name)) {
+        return NextResponse.json({ success: false, message: "Valid ID and category name required" }, { status: 400 });
+      }
+      await db.execute("UPDATE blog_categories SET name=? WHERE id=?", [name.trim(), id]);
       return NextResponse.json({ success: true, message: "Category updated successfully" });
     }
 
@@ -181,6 +198,24 @@ export async function PUT(req: NextRequest) {
     const description = data.get("description") as string;
     const category_id = data.get("category_id") as string;
     const date = data.get("date") as string;
+
+    // ✅ Validations
+    if (!id) {
+      return NextResponse.json({ success: false, message: "Blog ID is required" }, { status: 400 });
+    }
+    if (!title || title.length < 3) {
+      return NextResponse.json({ success: false, message: "Title must be at least 3 characters" }, { status: 400 });
+    }
+    if (!slug || !slugRegex.test(slug)) {
+      return NextResponse.json({ success: false, message: "Slug must be lowercase letters, numbers and hyphens" }, { status: 400 });
+    }
+    if (!description || description.length < 10) {
+      return NextResponse.json({ success: false, message: "Description must be at least 10 characters" }, { status: 400 });
+    }
+    if (!category_id || isNaN(Number(category_id))) {
+      return NextResponse.json({ success: false, message: "Valid category ID is required" }, { status: 400 });
+    }
+
     const metaNames = data.getAll("metatag[]");
     const metaContents = data.getAll("metadesc[]");
     const imageFile = data.get("image") as File | null;
@@ -194,9 +229,9 @@ export async function PUT(req: NextRequest) {
     }
 
     await db.query("UPDATE blogs SET title=?, slug=?, description=?, category_id=?, date=?, image=? WHERE id=?", [
-      title,
-      slug,
-      description,
+      title.trim(),
+      slug.trim(),
+      description.trim(),
       category_id,
       date,
       imagePath,
@@ -208,8 +243,12 @@ export async function PUT(req: NextRequest) {
     for (let i = 0; i < metaNames.length; i++) {
       const name = metaNames[i] as string;
       const content = (metaContents[i] as string) || "";
-      if (name.trim()) {
-        await db.query("INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)", [id, name, content]);
+      if (name && name.trim()) {
+        await db.query("INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)", [
+          id,
+          name.trim(),
+          content.trim(),
+        ]);
       }
     }
 
