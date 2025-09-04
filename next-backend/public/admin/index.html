@@ -31,7 +31,7 @@
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						
+
 					</li>
 
 					<li class="sidebar-item active">
@@ -43,31 +43,36 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="admin-data.html">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Admin Data</span>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Admin
+								Data</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="blogs-category.html">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs Category</span>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
+								Category</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="blogs-data.html">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs Data</span>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
+								Data</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="quick-contact.html">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Contact Forms</span>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Contact
+								Forms</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="expert-requests.html">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Expert Requests</span>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Expert
+								Requests</span>
 						</a>
 					</li>
 				</ul>
@@ -178,7 +183,7 @@
 					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
 
 					<div class="row">
-						<div class="col-xl-6 col-xxl-5 d-flex">
+						<div class="col-xl-12 col-xxl-12 d-flex">
 							<div class="w-100">
 								<div class="row">
 									<div class="col-sm-6">
@@ -186,104 +191,88 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Sales</h5>
+														<h5 class="card-title">Admins</h5>
 													</div>
-
 													<div class="col-auto">
 														<div class="stat text-primary">
-															<i class="align-middle" data-feather="truck"></i>
+															<i class="align-middle" data-feather="user-check"></i>
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">2.382</h1>
+												<h1 class="mt-1 mb-3" id="adminCount">0</h1>
 												<div class="mb-0">
-													<span class="text-danger">-3.65%</span>
-													<span class="text-muted">Since last week</span>
+													<span class="text-muted">Total active admins</span>
 												</div>
 											</div>
 										</div>
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Visitors</h5>
-													</div>
 
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="users"></i>
+										<div class="col-sm-12">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col mt-0">
+															<h5 class="card-title">Blogs</h5>
+														</div>
+														<div class="col-auto">
+															<div class="stat text-primary">
+																<i class="align-middle" data-feather="book"></i>
+															</div>
 														</div>
 													</div>
-												</div>
-												<h1 class="mt-1 mb-3">14.212</h1>
-												<div class="mb-0">
-													<span class="text-success">5.25%</span>
-													<span class="text-muted">Since last week</span>
+													<h1 class="mt-1 mb-3" id="blogsCount">0</h1>
+													<div class="mb-0">
+														<span class="text-muted">Total Blogs in Database</span>
+													</div>
 												</div>
 											</div>
 										</div>
+
 									</div>
 									<div class="col-sm-6">
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Earnings</h5>
+														<h5 class="card-title">Expert Requests</h5>
 													</div>
-
 													<div class="col-auto">
 														<div class="stat text-primary">
-															<i class="align-middle" data-feather="dollar-sign"></i>
+															<i class="align-middle" data-feather="users"></i>
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">$21.300</h1>
+												<h1 id="expertCount" class="mt-1 mb-3">0</h1>
 												<div class="mb-0">
-													<span class="text-success">6.65%</span>
-													<span class="text-muted">Since last week</span>
+													<span class="text-muted">Total expert form submissions</span>
 												</div>
 											</div>
 										</div>
+
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Orders</h5>
+														<h5 class="card-title">Quick/Contact Us</h5>
 													</div>
-
 													<div class="col-auto">
 														<div class="stat text-primary">
-															<i class="align-middle" data-feather="shopping-cart"></i>
+															<i class="align-middle" data-feather="mail"></i>
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">64</h1>
+												<h1 id="userCount" class="mt-1 mb-3">0</h1>
 												<div class="mb-0">
-													<span class="text-danger">-2.25%</span>
-													<span class="text-muted">Since last week</span>
+													<span class="text-muted">Total contact form submissions</span>
 												</div>
 											</div>
 										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-xl-6 col-xxl-7">
-							<div class="card flex-fill w-100">
-								<div class="card-header">
-
-									<h5 class="card-title mb-0">Recent Movement</h5>
-								</div>
-								<div class="card-body py-3">
-									<div class="chart chart-sm">
-										<canvas id="chartjs-dashboard-line"></canvas>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+
 				</div>
 			</main>
 
@@ -292,8 +281,9 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="javascript:void(0)"><strong>Register With Us</strong></a> - <a class="text-muted"
-									href="https://techgeering.in/" target="_blank"><strong> &copy; Techgeering Solutions Private Limited</strong></a>
+								<a class="text-muted" href="javascript:void(0)"><strong>Register With Us</strong></a> -
+								<a class="text-muted" href="https://techgeering.in/" target="_blank"><strong> &copy;
+										Techgeering Solutions Private Limited</strong></a>
 							</p>
 						</div>
 						<div class="col-6 text-end">
@@ -311,7 +301,8 @@
 									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
 								</li> -->
 								<li class="list-inline-item">
-									<a class="text-muted" style="cursor:default;" href="javascript:void(0)" target="_blank">Version 1.0</a>
+									<a class="text-muted" style="cursor:default;" href="javascript:void(0)"
+										target="_blank">Version 1.0</a>
 								</li>
 							</ul>
 						</div>
@@ -324,237 +315,56 @@
 	<script src="js/app.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: "pie",
-				data: {
-					labels: ["Chrome", "Firefox", "IE"],
-					datasets: [{
-						data: [4306, 3801, 1689],
-						backgroundColor: [
-							window.theme.primary,
-							window.theme.warning,
-							window.theme.danger
-						],
-						borderWidth: 5
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Bar chart
-			new Chart(document.getElementById("chartjs-dashboard-bar"), {
-				type: "bar",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "This year",
-						backgroundColor: window.theme.primary,
-						borderColor: window.theme.primary,
-						hoverBackgroundColor: window.theme.primary,
-						hoverBorderColor: window.theme.primary,
-						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-						barPercentage: .75,
-						categoryPercentage: .5
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					scales: {
-						yAxes: [{
-							gridLines: {
-								display: false
-							},
-							stacked: false,
-							ticks: {
-								stepSize: 20
-							}
-						}],
-						xAxes: [{
-							stacked: false,
-							gridLines: {
-								color: "transparent"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			var markers = [{
-				coords: [31.230391, 121.473701],
-				name: "Shanghai"
-			},
-			{
-				coords: [28.704060, 77.102493],
-				name: "Delhi"
-			},
-			{
-				coords: [6.524379, 3.379206],
-				name: "Lagos"
-			},
-			{
-				coords: [35.689487, 139.691711],
-				name: "Tokyo"
-			},
-			{
-				coords: [23.129110, 113.264381],
-				name: "Guangzhou"
-			},
-			{
-				coords: [40.7127837, -74.0059413],
-				name: "New York"
-			},
-			{
-				coords: [34.052235, -118.243683],
-				name: "Los Angeles"
-			},
-			{
-				coords: [41.878113, -87.629799],
-				name: "Chicago"
-			},
-			{
-				coords: [51.507351, -0.127758],
-				name: "London"
-			},
-			{
-				coords: [40.416775, -3.703790],
-				name: "Madrid "
+	// 🔹 Admin Count
+	async function loadAdminCount() {
+		try {
+			const res = await fetch("/api/admin/admindata");
+			const data = await res.json();
+			const count = Array.isArray(data) ? data.length : (data.total || 0);
+			document.getElementById("adminCount").innerText = count;
+		} catch (err) {
+			console.error("Error loading admin count:", err);
+		}
+	}
+
+	// 🔹 Blogs Count
+	async function loadBlogsCount() {
+		try {
+			const res = await fetch("/api/blogs");
+			const data = await res.json();
+			if (data.success) {
+				document.getElementById("blogsCount").innerText =
+					data.count || data.blogs.length;
 			}
-			];
-			var map = new jsVectorMap({
-				map: "world",
-				selector: "#world_map",
-				zoomButtons: true,
-				markers: markers,
-				markerStyle: {
-					initial: {
-						r: 9,
-						strokeWidth: 7,
-						stokeOpacity: .4,
-						fill: window.theme.primary
-					},
-					hover: {
-						fill: window.theme.primary,
-						stroke: window.theme.primary
-					}
-				},
-				zoomOnScroll: false
-			});
-			window.addEventListener("resize", () => {
-				map.updateSize();
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
-			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
-			document.getElementById("datetimepicker-dashboard").flatpickr({
-				inline: true,
-				prevArrow: "<span title=\"Previous month\">&laquo;</span>",
-				nextArrow: "<span title=\"Next month\">&raquo;</span>",
-				defaultDate: defaultDate
-			});
-		});
-	</script>
-<script>
-	// 🔹 Logout Button click
+		} catch (err) {
+			console.error("Error fetching blogs count:", err);
+		}
+	}
+
+	// 🔹 Expert & Users Count
+	async function loadCounts() {
+		try {
+			// Expert Requests
+			const resExpert = await fetch("/api/submit?type=expert");
+			const expertData = await resExpert.json();
+			document.getElementById("expertCount").innerText = expertData.length;
+
+			// Users
+			const resUsers = await fetch("/api/submit");
+			const usersData = await resUsers.json();
+			document.getElementById("userCount").innerText = usersData.length;
+		} catch (err) {
+			console.error("Error loading counts:", err);
+		}
+	}
+
+	// 🔹 Logout Button
 	document.getElementById("logoutBtn").addEventListener("click", async (e) => {
 		e.preventDefault();
-
 		try {
 			const res = await fetch("/api/admin/logout", { method: "POST" });
 			const result = await res.json();
-
 			if (result.success) {
-				// ✅ JWT cookies clear ho jayenge backend se
 				window.location.replace("/admin/login.html");
 			} else {
 				alert("Logout failed!");
@@ -565,22 +375,27 @@
 		}
 	});
 
-	// 🔹 Page load par auth check
+	// 🔹 Page load par auth check + counts load
 	document.addEventListener("DOMContentLoaded", async () => {
 		try {
-			const res = await fetch('/api/admin/check-auth');
+			const res = await fetch("/api/admin/check-auth");
 			const data = await res.json();
 
 			if (!data.authenticated) {
-				// ✅ Token expire ya missing ho → force login
-				window.location.replace('/admin/login.html');
+				window.location.replace("/admin/login.html");
+			} else {
+				// ✅ Sirf authenticated hone ke baad hi sab counts load honge
+				await loadAdminCount();
+				await loadBlogsCount();
+				await loadCounts();
 			}
 		} catch (err) {
 			console.error("Auth check failed:", err);
-			window.location.replace('/admin/login.html');
+			window.location.replace("/admin/login.html");
 		}
 	});
 </script>
+
 
 
 </body>

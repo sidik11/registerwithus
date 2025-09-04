@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { API_BASE_URL } from '../../utils/api';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -11,7 +12,7 @@ function Blogmain() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/blogs/view')
+        fetch('${API_BASE_URL}/api/blogs/view')
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -19,7 +20,7 @@ function Blogmain() {
                 }
             });
 
-        fetch('http://localhost:3001/api/categories')
+        fetch('${API_BASE_URL}/api/categories')
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -61,7 +62,7 @@ function Blogmain() {
                             <div className="col-md-4" key={index}>
                                 <div className="card h-100 shadow-sm">
                                     <img
-                                        src={`http://localhost:3001${blog.image}`}
+                                        src={`${API_BASE_URL}${blog.image}`}
                                         className="card-img-top"
                                         alt={blog.title}
                                     />
