@@ -15,17 +15,16 @@ function RegisterWithUs() {
 
                     <div className="col-lg-6 text-lg-start text-center">
                         <h2 className="headline">
-                            Work with Your 
+                            Run Your Business 
                         </h2>
                         <h2 className="headline">
-                        Favourite Apps Using 
+                        Smoothly with Tools 
                         </h2>
                         <h2 className="headline">
-                        Register With Us 
+                       You Already Use 
                         </h2>
                         <p className="subtext icon-text">
-                            <strong>Register With Us</strong> teams up with your favourite software. Integrate with over 1000+ apps
-                            with Zapier to have all the tools you need for your project success.
+                            <strong>Register With Us</strong> connects with your favorite apps like Gmail, Drive, Stack, and more, so you can manage company filings and government registrations online without leaving your workflow. Get business compliance and tools in one place.
                         </p>
                         {/* <a href="#" className="btn btn-customs">
                             Read more <i className="fa-solid fa-arrow-right ms-2"></i>

@@ -20,11 +20,13 @@ const HomePage = () => {
       <Card />
       <Counter />
       <Services />
-      
+
       {/* Taskey with props for HomePage */}
       <Taskey
-        heading={`Let’s Get Your<br />Business All <span class="">Registered!</span>`}
-        subheading="Taskey helps entrepreneurs like you register your startup with ease and confidence."
+        heading={`Start Your <br />Business Legally in India — The <span class="">Smart Way!</span>`}
+        subheading="From startups to established enterprises, our Online Business Compliance Services in India
+help you register your company easily with full legal assurance, expert-backed support, and government-recognized documentation. No delays, no confusion, just fast, reliable registration
+from India's Trusted Compliance & Registration Partner."
         buttonText="Get Started"
         buttonLink="/contact"
         imageSrc="/img/consultant3.jpeg"

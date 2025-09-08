@@ -24,12 +24,9 @@ function Card() {
               About Us
             </h2>
             <p className="about-us-description">
-              We are not just a service provider — we are your strategic partners in achieving compliance and sustainable growth. Our passionate team is committed to delivering personalized business solutions that address the unique needs of every client.
+              Register With Us is India's go-to legal-tech hub for entrepreneurs, startups, and SMEs looking to set up and scale their businesses completely online. We cut the clutter, no repetitive office visits, no surprise or hidden charges, just simple registration and compliance handled by
+              experts.
             </p>
-            <p className="about-us-description">
-              Whether you're a startup or an established enterprise, we bring clarity, efficiency, and trust to every project we handle.
-            </p>
-
             <a href="/about" className="btn about-us-btn mt-4">
               Learn More <i className="fas fa-arrow-right ms-2"></i>
             </a>

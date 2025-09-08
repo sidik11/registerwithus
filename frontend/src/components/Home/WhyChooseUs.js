@@ -8,17 +8,20 @@ function WhyChooseUs() {
     return (
         <section class="whychooseus-section" >
             <div className="container py-5 text-center">
-                <h2 className="section-title">
-                    <span className="fw-bold text-white mb-4">Why Choose Us</span>
+                <h2 className="section-title mb-3">
+                    <span className="fw-bold text-white mb-2">Why Choose Us</span>
                 </h2>
-
+                <h5 className='text-center text-white my-4'>We're your reliable partner for business registrations and compliance. Our goal is simple: to make legal and tax processes easy so you can stay focused on growing your company. With a
+                    proven track record in online business services, we take the hassle out of staying compliant.</h5>
                 <div className="row g-4 justify-content-center mb-4">
                     {/* Feature 1 */}
                     <div className="col-md-3">
                         <div className="feature-card text-center p-4">
                             <i className="fas fa-shield-alt feature-icon mb-3"></i>
                             <h5 className='fw-bold' >Security & Trust</h5>
-                            <p>We ensure the highest level of security and reliability for all our services.</p>
+                            <p>Your data and registrations are secure with us. We follow strict
+                                protocols to ensure safe online business compliance services in India with complete
+                                transparency.</p>
                         </div>
                     </div>
 
@@ -27,7 +30,8 @@ function WhyChooseUs() {
                         <div className="feature-card text-center p-4">
                             <i className="fas fa-cogs feature-icon mb-3"></i>
                             <h5 className='fw-bold' >Seamless Integration</h5>
-                            <p>Effortlessly connect with various platforms and streamline your workflow.</p>
+                            <p> Our platform integrates with government portals and tools effortlessly, helping you apply for licenses and compliance online without the usual
+                                friction.</p>
                         </div>
                     </div>
 
@@ -36,7 +40,8 @@ function WhyChooseUs() {
                         <div className="feature-card text-center p-4">
                             <i className="fas fa-user-check feature-icon mb-3"></i>
                             <h5 className='fw-bold' >Customer Focus</h5>
-                            <p>We prioritize your needs and tailor solutions to enhance your experience.</p>
+                            <p>Every business is unique. As a company  compliance service provider
+                                in India, we tailor solutions to fit your sector, scale, and strategic vision.</p>
                         </div>
                     </div>
 
@@ -45,7 +50,8 @@ function WhyChooseUs() {
                         <div className="feature-card text-center p-4">
                             <i className="fas fa-lightbulb feature-icon mb-3"></i>
                             <h5 className='fw-bold' >Innovation & Growth</h5>
-                            <p>Constantly evolving to provide cutting-edge solutions that drive success.</p>
+                            <p>We constantly upgrade our offerings to meet India's evolving
+                                startup ecosystem, from business registration to tax filing experts, all in one place.</p>
                         </div>
                     </div>
                 </div>

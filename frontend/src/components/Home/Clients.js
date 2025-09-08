@@ -8,8 +8,9 @@ function Clients() {
     return (
         <section className="pb-5">
             <div className="container">
-                <h2 className="section-title text-center text-dark d-block about-us-heading"><span className="overlap-conte" >Our Clients</span></h2>
-
+                <h2 className="section-title text-center mb-4 text-dark d-block about-us-heading"><span className="overlap-conte" >Our Clients</span></h2>
+                <h5 className='text-center'>Our clients love how we simplify ontine business compliance services in India. We're proud to
+                    support their journey from startup to scale.</h5>
                 <div className="logo-container text-center">
                     <img src="img/logos/spinny.jpeg" alt="Spinny" className="client-logo" />
                     <img src="img/logos/marg.jpeg" alt="Marg" className="client-logo" />

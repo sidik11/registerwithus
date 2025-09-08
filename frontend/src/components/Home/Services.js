@@ -19,7 +19,9 @@ function Services() {
   return (
     <section className="services-section pt-5">
       <div className="container">
-        <h2 className="section-title d-block mb-5 about-us-heading"><span>Our Services</span></h2>
+        <h2 className="section-title d-block mb-3 about-us-heading"><span>Our Services</span></h2>
+        <h5 className='text-center' >Your one-stop AU-in-One Business Compliance Platform, from company setup to tax filings, we handle it all. As a leading Government Registration Service Provider for Business, we
+          ensure you stay compliant, certified, and growth-ready.</h5>
         <div className="row g-4">
 
           {/* Business Registration */}

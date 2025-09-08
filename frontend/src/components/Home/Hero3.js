@@ -74,21 +74,25 @@ function Hero3() {
                 <div className="container h-100">
                     <div className="row align-items-center h-100">
                         <div className="col-lg-7 text-white biz-hero-content">
+                            <h5 className="sub-head">Launch . Comply . Thrive</h5>
                             <h1 className="hero-title">
-                                We help you <br />
-                                <span className="highlight-yellow">Anyway</span> to rise, build, and lead.
+                                India's<br />
+                                <span className="highlight-yellow"> Trusted Compliance </span> & Registration Partner
                             </h1>
-                            <h5 className="sub-head">Ignite Possibilities</h5>
+                            <p>Get your business up and running with our expert-backed Online Business Compliance Services in India. Whether you're a startup, SME, or an established brand, we handle your legal groundwork so that you can focus on growth. From registrations to renewals, it's all digital, all simplified.
+                            </p>
                             <ul className="hero-features mt-4">
-                                <li><i className="fas fa-check-circle text-success me-2"></i> Empowering startups with seamless registration</li>
-                                <li><i className="fas fa-check-circle text-success me-2"></i> Compliance</li>
-                                <li><i className="fas fa-check-circle text-success me-2"></i> Business growth services</li>
+                                <li><i className="fas fa-check-circle text-success me-2"></i> Start your company legally in India</li>
+                                <li><i className="fas fa-check-circle text-success me-2"></i> Register your business easily</li>
+                                <li><i className="fas fa-check-circle text-success me-2"></i> Get your FSSAI license hassle-free</li>
+                                <li><i className="fas fa-check-circle text-success me-2"></i> Apply for a trademark in India</li>
+                                <li><i className="fas fa-check-circle text-success me-2"></i> Fast-track your company filings and certifications</li>
+                                <li><i className="fas fa-check-circle text-success me-2"></i> 100% online process with real expert support</li>
                             </ul>
                             <div className="btn-area my-4 d-flex align-items-center flex-wrap">
                                 <a href="#" className="btn btn-yellow" onClick={scrollToFooter}>Explore More</a>
                                 <button type="button" className="btn play-btnsss ms-3">
-                                    <i className="fas fa-play me-2 text-black"></i>
-                                    <a href="https://youtube.com" className='text-decoration-none text-black' target='_blank' rel="noopener noreferrer">Play Now</a>
+                                    <a href="/contact" className='text-decoration-none text-black' rel="noopener noreferrer">Start Registration</a>
                                 </button>
                             </div>
                         </div>
