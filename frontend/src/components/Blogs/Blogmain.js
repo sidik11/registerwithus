@@ -33,7 +33,6 @@ function Blogmain() {
             .catch(err => console.error("Categories API error:", err));
     }, []);
 
-
     const filteredBlogs = blogs.filter(blog =>
         blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         blog.category_name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -105,11 +104,11 @@ function Blogmain() {
                     )}
                 </div>
 
-                {filteredBlogs.length > 0 && (
+                {/* {filteredBlogs.length > 0 && (
                     <div className="text-center">
                         <button className="btn theme-bg-color text-white">Load More</button>
                     </div>
-                )}
+                )} */}
             </div>
         </section>
     );
