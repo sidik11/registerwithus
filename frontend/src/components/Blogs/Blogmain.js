@@ -12,22 +12,27 @@ function Blogmain() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        fetch('${API_BASE_URL}/api/blogs/view')
+        // ✅ Fetch blogs
+        fetch(`${API_BASE_URL}/api/blogs`)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
                     setBlogs(data.blogs);
                 }
-            });
+            })
+            .catch(err => console.error("Blogs API error:", err));
 
-        fetch('${API_BASE_URL}/api/categories')
+        // ✅ Fetch categories
+        fetch(`${API_BASE_URL}/api/categories`)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
                     setCategories(data.categories);
                 }
-            });
+            })
+            .catch(err => console.error("Categories API error:", err));
     }, []);
+
 
     const filteredBlogs = blogs.filter(blog =>
         blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
