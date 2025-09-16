@@ -154,13 +154,15 @@ function Contactus() {
             </div>
 
             <div className="col-lg-6 col-md-6 map-wrapper">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.084078243192!2d-122.41990668468298!3d37.77492977975995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c8ddf5dcd%3A0x5c2b210dfb71252f!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1689615907759!5m2!1sen!2sus"
-                width="100%"
-                height="520"
-                allowFullScreen=""
-                loading="lazy"
-              ></iframe>
+               <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.084078243192!2d-122.41990668468298!3d37.77492977975995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c8ddf5dcd%3A0x5c2b210dfb71252f!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1689615907759!5m2!1sen!2sus"
+        width="100%"
+        height="520"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        title="San Francisco Map"
+      ></iframe>
             </div>
           </div>
         </div>
@@ -190,7 +192,7 @@ function Contactus() {
               <div className="icon-circle mb-2">
                 <i className="fas fa-map-marker-alt fs-2"></i>
               </div>
-              <div className="info-text mt-2">Bhubaneswar, Odisha</div>
+              <div className="info-text mt-2">944, Block-c, Sushant Lok Phase-1, Gurgaon, Gurgaon, Sadar Bazar, Haryana, India, 122001</div>
             </div>
           </div>
         </div>

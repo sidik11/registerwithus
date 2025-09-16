@@ -196,7 +196,7 @@ Thanks!`;
               <ul className="list-unstyled small">
                 <li className="mb-3">
                   <a href="https://maps.google.com/?q=Bhubaneshwar, Odisha, India" target="_blank" className="text-white text-decoration-none">
-                    <i className="fas fa-map-marker-alt fs-5 me-2 icon-color text-white"></i> Bhubaneshwar, Odisha, India
+                    <i className="fas fa-map-marker-alt fs-5 me-2 icon-color text-white"></i> 944, Block-c, Sushant Lok Phase-1, Gurgaon, Sadar Bazar, Haryana, India, 122001
                   </a>
                 </li>
                 <li className="mb-3">
