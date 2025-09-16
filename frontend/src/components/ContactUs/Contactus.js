@@ -154,16 +154,16 @@ function Contactus() {
             </div>
 
             <div className="col-lg-6 col-md-6 map-wrapper">
-               <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6823.8387529554575!2d77.0721488423675!3d28.45433598584143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19e4978a13e3%3A0xb150cb3ee50752ef!2sBlock%20C%2C%20Sushant%20lok%2C%20Phase%201!5e1!3m2!1sen!2sin!4v1758010904098!5m2!1sen!2sin"
-        width="100%"
-        height="450"
-        style={{ border: 0 }}
-        allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        title="Office Location Map"
-      ></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6823.8387529554575!2d77.0721488423675!3d28.45433598584143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19e4978a13e3%3A0xb150cb3ee50752ef!2sBlock%20C%2C%20Sushant%20lok%2C%20Phase%201!5e1!3m2!1sen!2sin!4v1758010904098!5m2!1sen!2sin"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Office Location Map"
+              ></iframe>
             </div>
           </div>
         </div>

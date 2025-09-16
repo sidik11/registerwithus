@@ -195,7 +195,7 @@ Thanks!`;
               <h5 className="fw-bold mb-3">Contact Info</h5>
               <ul className="list-unstyled small">
                 <li className="mb-3">
-                  <a href="https://maps.google.com/?q=Bhubaneshwar, Odisha, India" target="_blank" className="text-white text-decoration-none">
+                  <a href="https://maps.app.goo.gl/5Bw2aZ3sX1MrEgYw7" target="_blank" className="text-white text-decoration-none">
                     <i className="fas fa-map-marker-alt fs-5 me-2 icon-color text-white"></i> 944, Block-c, Sushant Lok Phase-1, Gurgaon, Sadar Bazar, Haryana, India, 122001
                   </a>
                 </li>
