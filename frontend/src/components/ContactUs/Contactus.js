@@ -155,13 +155,14 @@ function Contactus() {
 
             <div className="col-lg-6 col-md-6 map-wrapper">
                <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.084078243192!2d-122.41990668468298!3d37.77492977975995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c8ddf5dcd%3A0x5c2b210dfb71252f!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1689615907759!5m2!1sen!2sus"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6823.8387529554575!2d77.0721488423675!3d28.45433598584143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19e4978a13e3%3A0xb150cb3ee50752ef!2sBlock%20C%2C%20Sushant%20lok%2C%20Phase%201!5e1!3m2!1sen!2sin!4v1758010904098!5m2!1sen!2sin"
         width="100%"
-        height="520"
+        height="450"
         style={{ border: 0 }}
         allowFullScreen
         loading="lazy"
-        title="San Francisco Map"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Office Location Map"
       ></iframe>
             </div>
           </div>
