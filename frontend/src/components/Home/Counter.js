@@ -14,7 +14,7 @@ function Counter() {
       new window.PureCounter();
     };
     document.body.appendChild(script);
-    
+
     // Cleanup if needed
     return () => {
       document.body.removeChild(script);
@@ -22,10 +22,10 @@ function Counter() {
   }, []);
 
   return (
-    <section>
+    <section className="counter-bg">
       <div className="container py-5 section-container">
         <div className="row d-flex align-items-center">
-          <div className="col-lg-5 mb-4 mb-lg-0 text-center">
+          <div className="col-lg-5 mb-4 mb-lg-0 text-start">
             <h2 className="fw-bold mb-3 counter-content">
               <span className="text-dark">Leading the way in</span>
               <span className=""> Compliance Solutions</span>

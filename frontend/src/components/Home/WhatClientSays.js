@@ -7,37 +7,37 @@ import { Navigation } from 'swiper/modules';
 
 const testimonials = [
   {
-    text: "Register With Us is designed as a collaboration tool for businesses that is a full project management solution.",
+    text: "Register With Us has simplified our hiring process and made team collaboration much smoother.",
     img: "img/portraits/f-2.jpeg",
     name: "Trupti Jena",
-    title: "Head of Talent Acquisition, North America"
+    title: "Head of Talent Acquisition, India"
   },
   {
-    text: "Register With Us is designed as a collaboration tool for businesses that is a full project management solution.",
+    text: "The platform helped us manage projects seamlessly and improved coordination across departments.",
     img: "img/portraits/m-1.jpeg",
     name: "Rajesh Dhala",
-    title: "Head of Talent Acquisition, North America"
+    title: "Senior HR Manager, Mumbai"
   },
   {
-    text: "Register With Us is designed as a collaboration tool for businesses that is a full project management solution.",
+    text: "Using Register With Us, we are now able to track progress and assign tasks more efficiently.",
     img: "img/portraits/m-4.jpeg",
     name: "Mukesh Patra",
-    title: "Head of Talent Acquisition, North America"
+    title: "Project Manager, Bengaluru"
   },
   {
-    text: "Register With Us helped streamline our operations and improved our team’s collaboration dramatically.",
+    text: "It has been a game-changer in simplifying daily operations and increasing productivity.",
     img: "img/portraits/m-5.jpeg",
     name: "Anita Kumar",
-    title: "Operations Manager, Europe"
+    title: "Operations Manager, Delhi"
   },
   {
-    text: "Register With Us is the most intuitive platform we’ve used for project tracking and communication.",
+    text: "Register With Us is one of the easiest tools we’ve adopted for project management and communication.",
     img: "img/portraits/m-6.jpeg",
     name: "Sanjay Raut",
-    title: "Project Lead, Asia Pacific"
+    title: "Team Lead, Pune"
   },
   {
-    text: "Register With Us gave us better visibility into tasks and progress across teams.",
+    text: "The platform has given us better visibility into our workflow and made HR management effortless.",
     img: "img/portraits/f-3.jpeg",
     name: "Nikita Agarwal",
     title: "HR Director, India"

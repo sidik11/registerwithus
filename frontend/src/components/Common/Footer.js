@@ -234,7 +234,7 @@ Thanks!`;
 
           <hr className="border-secondary my-4" />
 
-          <div className="footer-service-dark text-white">
+          {/* <div className="footer-service-dark text-white">
             <div className="row">
               <div className="col-12 mb-4" id="business-registration" >
                 <h6 className="section-title footer-heading">Business Registration</h6>
@@ -270,7 +270,6 @@ Thanks!`;
                 </div>
               </div>
 
-              {/* Trade Licenses */}
               <div className="col-12 mb-4">
                 <h6 id="trade-licenses" className="section-title footer-heading">Trade Licenses</h6>
                 <div className="row g-2">
@@ -323,12 +322,6 @@ Thanks!`;
               <div className="col-12 mb-4">
                 <h6 className="section-title footer-heading">Labour Laws</h6>
                 <div className="row g-2">
-                  {/* <div id="one-time-pf-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
-                    <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
-                    <Link to="/epf-registration-online" className="text-light text-decoration-none">
-                      One Time PF Registrations
-                    </Link>
-                  </div> */}
                   <div id="esic-registrations" className="col-lg-3 srvc-footer col-md-6 col-sm-12">
                     <i className="fa-solid fa-angles-right fa-icons me-2 text-light"></i>
                     <Link to="/esic-registration-online" className="text-light text-decoration-none">
@@ -493,9 +486,7 @@ Thanks!`;
               </div>
 
             </div>
-          </div>
-
-          <hr className="border-secondary my-4" />
+          </div> */}
 
           <div className="d-flex flex-wrap justify-content-between align-items-center text-center text-md-start small">
             <div className="mb-2 mb-md-0 text-start">
@@ -503,7 +494,6 @@ Thanks!`;
               <a href="/refund" className="text-white me-4 text-decoration-none">Refund Policy</a>
               <a href="/termconditions" className="text-white me-4 text-decoration-none">Term & Conditions</a>
               <span>©2025 TECHGEERING</span>
-              {/* <a href="/hero" className="ms-3 text-decoration-none text-white" >Hero Banner</a> */}
             </div>
             <div className="text-start">
               <a href="#" className="text-white me-3"><i className="fab fa-facebook-f"></i></a>

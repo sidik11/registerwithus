@@ -4,7 +4,6 @@
         linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
         /* Black overlay */
         url('../../../public/img/a852b6e8-6b91-4957-b31a-c7082a74b56e_large.webp');
-    /* Replace with actual image path */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -12,6 +11,7 @@
     color: white;
 }
 
+/* Styled form */
 .styled-form-container {
     background: linear-gradient(145deg, #f0f8ff, #ffffff);
     padding: 2rem;
@@ -50,6 +50,7 @@
     background: linear-gradient(to right, #0072ff, #00c6ff);
 }
 
+/* Tabs wrapper */
 .tab-wrapper {
     position: relative;
     overflow: hidden;
@@ -64,10 +65,8 @@
     white-space: nowrap;
     flex-wrap: nowrap;
     gap: 0.5rem;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE 10+ */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
 }
 
 .scroll-tabs::-webkit-scrollbar {
@@ -77,8 +76,18 @@
 .scroll-tabs .nav-link {
     white-space: nowrap;
     flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
 }
 
+.scroll-tabs .nav-link:hover {
+    background: #f0f0ff;
+    border-color: #061067;
+    color: #061067;
+}
+
+/* Arrows */
 .tab-arrow {
     position: absolute;
     top: 50%;
@@ -103,6 +112,7 @@
     right: 5px;
 }
 
+/* Nav link styles */
 .nav-link {
     border-radius: 20px !important;
     padding: 8px 20px;
@@ -116,6 +126,7 @@
     color: white !important;
 }
 
+/* Fixed tabs */
 .fixed-tabs {
     position: fixed;
     top: 77px;
@@ -126,7 +137,7 @@
     padding: 10px 40px;
     border-bottom: 1px solid #ddd;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    animation: slideDown 0.3s forwards ease-in-out;
+    animation: slideDown 0.0s forwards ease-in-out;
 }
 
 @keyframes slideDown {
@@ -134,13 +145,13 @@
         transform: translateY(-20px);
         opacity: 0;
     }
-
     to {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
+/* Sticky form */
 .sticky-form {
     position: relative;
     transition: top 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
@@ -149,12 +160,11 @@
 .fixed-form {
     position: fixed;
     top: 190px;
-    /* right: 74px; */
     width: 414px;
     z-index: 999;
     transform: translateY(-10px);
     opacity: 0;
-    animation: fadeSlideIn 0.3s forwards ease-in-out;
+    animation: fadeSlideIn 0.0s forwards ease-in-out;
 }
 
 @keyframes fadeSlideIn {
@@ -162,7 +172,6 @@
         transform: translateY(-20px);
         opacity: 0;
     }
-
     to {
         transform: translateY(0);
         opacity: 1;
@@ -183,20 +192,21 @@
     }
 }
 
-.at-bottom {
-    position: absolute;
-    bottom: -20px;
-    right: 0;
-    width: 100%;
-}
-
-/* Common fixed dimensions */
+/* Common sticky form dimensions */
 .sticky-form,
 .fixed-form,
 .at-bottom {
     width: 100% !important;
     max-width: 414px !important;
     box-sizing: border-box !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.at-bottom {
+    position: absolute;
+    bottom: -29px;   /* -20px hatao */
+    /* right: 0; */
+    width: 100%;
 }
 
 .btn-request {
@@ -246,4 +256,19 @@
 
 .startup-info-item i {
     color: #0d6efd;
+}
+
+/* Fix for container after id change */
+#tab-content-container {
+    padding-top: 1rem;
+}
+
+/* Responsive fix for form full width */
+@media (max-width: 991px) {
+    .sticky-form,
+    .fixed-form,
+    .at-bottom {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
 }

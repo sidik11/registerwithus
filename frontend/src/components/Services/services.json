@@ -619,21 +619,21 @@
       ]
     },
     "faqs": [
-          "1. Can I register a partnership firm online?",
-          "→ Yes, many states allow an online form for partnership registration through their Registrar portals.",
-          "",
-          "2. What is the difference between LLP and a partnership?",
-          "→ An LLP offers limited liability and has a separate legal identity, while a partnership does not. LLPs are more structured and legally regulated, whereas partnerships are simpler with fewer formalities.",
-          "",
-          "3. What are the documents required for partnership firm registration?",
-          "→ You'll need a partnership deed, PAN, address proof, and photos of all partners.",
-          "",
-          "4. How much do partnership firm registration charges typically cost?",
-          "→ Depending on your location and professional support, charges range from ₹3,000 to ₹15,000.",
-          "",
-          "5. Do I need a GST registration for a partnership firm?",
-          "→ Only if your turnover exceeds ₹20 lakh (₹10 lakh in some states). We offer complete PAN and TAN registration support too."
-        ]
+      "1. Can I register a partnership firm online?",
+      "→ Yes, many states allow an online form for partnership registration through their Registrar portals.",
+      "",
+      "2. What is the difference between LLP and a partnership?",
+      "→ An LLP offers limited liability and has a separate legal identity, while a partnership does not. LLPs are more structured and legally regulated, whereas partnerships are simpler with fewer formalities.",
+      "",
+      "3. What are the documents required for partnership firm registration?",
+      "→ You'll need a partnership deed, PAN, address proof, and photos of all partners.",
+      "",
+      "4. How much do partnership firm registration charges typically cost?",
+      "→ Depending on your location and professional support, charges range from ₹3,000 to ₹15,000.",
+      "",
+      "5. Do I need a GST registration for a partnership firm?",
+      "→ Only if your turnover exceeds ₹20 lakh (₹10 lakh in some states). We offer complete PAN and TAN registration support too."
+    ]
   },
   {
     "service": "epf-registration-online",
@@ -771,21 +771,21 @@
       ]
     },
     "faqs": [
-          "1. How to get EPF code for company?",
-          "→ Complete EPF registration on EPFO portal to receive your unique 17-digit establishment code.",
-          "",
-          "2. Who needs to do EPF registration in India?",
-          "→ Mandatory for businesses with 20+ employees. Optional for those below threshold.",
-          "",
-          "3. What documents are required?",
-          "→ PAN, GST, address proof, cancelled cheque, incorporation certificate, employee list.",
-          "",
-          "4. Is there a government fee?",
-          "→ No government fee. Only professional service charges apply.",
-          "",
-          "5. Can EPF be registered voluntarily?",
-          "→ Yes, businesses with <20 employees can register with employee consent."
-        ]
+      "1. How to get EPF code for company?",
+      "→ Complete EPF registration on EPFO portal to receive your unique 17-digit establishment code.",
+      "",
+      "2. Who needs to do EPF registration in India?",
+      "→ Mandatory for businesses with 20+ employees. Optional for those below threshold.",
+      "",
+      "3. What documents are required?",
+      "→ PAN, GST, address proof, cancelled cheque, incorporation certificate, employee list.",
+      "",
+      "4. Is there a government fee?",
+      "→ No government fee. Only professional service charges apply.",
+      "",
+      "5. Can EPF be registered voluntarily?",
+      "→ Yes, businesses with <20 employees can register with employee consent."
+    ]
   },
   {
     "service": "fssai-registration-online-india",
@@ -1115,24 +1115,24 @@
       ]
     },
     "faqs": [
-          "1. How to register for a trademark?",
-          "→ Apply online at IP India portal with required documents.",
-          "",
-          "2. What is the cost?",
-          "→ Govt fees ₹4,500–₹9,000 per class; filing fees extra.",
-          "",
-          "3. How long does it take?",
-          "→ Usually 6–8 months with no objections.",
-          "",
-          "4. Validity of trademark?",
-          "→ 10 years, renewable forever.",
-          "",
-          "5. Can I register name and logo together?",
-          "→ Yes, either as one or separate filings.",
-          "",
-          "6. What if someone contests it?",
-          "→ You must reply with evidence within 2 months."
-        ]
+      "1. How to register for a trademark?",
+      "→ Apply online at IP India portal with required documents.",
+      "",
+      "2. What is the cost?",
+      "→ Govt fees ₹4,500–₹9,000 per class; filing fees extra.",
+      "",
+      "3. How long does it take?",
+      "→ Usually 6–8 months with no objections.",
+      "",
+      "4. Validity of trademark?",
+      "→ 10 years, renewable forever.",
+      "",
+      "5. Can I register name and logo together?",
+      "→ Yes, either as one or separate filings.",
+      "",
+      "6. What if someone contests it?",
+      "→ You must reply with evidence within 2 months."
+    ]
   },
   {
     "service": "import-export-code-registration-online",
@@ -1304,24 +1304,24 @@
       ]
     },
     "faqs": [
-          "1. How to get IEC code in India?",
-          "→ Apply on DGFT portal with PAN and docs. Approval in 1–2 days.",
-          "",
-          "2. What are IEC code benefits?",
-          "→ Legal trading, credibility, DGFT incentives, customs clearance.",
-          "",
-          "3. Is IEC mandatory for all exporters?",
-          "→ Yes, except for a few exempted services.",
-          "",
-          "4. Can I get IEC without GST?",
-          "→ Yes. GST is optional but recommended.",
-          "",
-          "5. Difference between IEC & APEDA?",
-          "→ IEC is universal; APEDA is only for agri exports.",
-          "",
-          "6. How do I update/cancel my IEC?",
-          "→ Login to DGFT portal > update/cancel with required docs."
-        ]
+      "1. How to get IEC code in India?",
+      "→ Apply on DGFT portal with PAN and docs. Approval in 1–2 days.",
+      "",
+      "2. What are IEC code benefits?",
+      "→ Legal trading, credibility, DGFT incentives, customs clearance.",
+      "",
+      "3. Is IEC mandatory for all exporters?",
+      "→ Yes, except for a few exempted services.",
+      "",
+      "4. Can I get IEC without GST?",
+      "→ Yes. GST is optional but recommended.",
+      "",
+      "5. Difference between IEC & APEDA?",
+      "→ IEC is universal; APEDA is only for agri exports.",
+      "",
+      "6. How do I update/cancel my IEC?",
+      "→ Login to DGFT portal > update/cancel with required docs."
+    ]
   },
   {
     "service": "udyam-msme-registration-online",
@@ -1502,23 +1502,193 @@
       ]
     },
     "faqs": [
-          "1. How to register Udyam in India?",
-          "→ Apply on the Udyam portal using Aadhaar, PAN, and business info. It’s fully online.",
+      "1. How to register Udyam in India?",
+      "→ Apply on the Udyam portal using Aadhaar, PAN, and business info. It’s fully online.",
+      "",
+      "2. Is MSME registration compulsory?",
+      "→ Not compulsory, but highly beneficial for availing schemes, subsidies, and loans.",
+      "",
+      "3. What is the difference between Udyog Aadhaar and Udyam?",
+      "→ Udyam is the upgraded version with PAN & GST validation replacing Udyog Aadhaar.",
+      "",
+      "4. Is the MSME certificate valid for life?",
+      "→ Yes. Lifetime validity unless key business details change.",
+      "",
+      "5. Can I register without PAN or GST?",
+      "→ PAN is mandatory for most entities. Micro units can register without GST.",
+      "",
+      "6. Do MSMEs get tax benefits?",
+      "→ Yes. Tax exemptions and subsidies are available under various government policies."
+    ]
+  },
+  {
+    "service": "professional-tax-registration-online",
+    "intro": "Looking to ensure compliance while expanding your business in India? Professional Tax Registration Online is a mandatory registration for employers and self-employed professionals in states that impose professional tax. A timely setup ensures legal compliance, helps in payroll structuring, and enhances your organisation's credibility.",
+    "tabs": [
+      {
+        "id": "Overview",
+        "title": "What is Professional Tax ?",
+        "content": [
+          "Professional Tax (PT) is a state-imposed tax on income from salaries and professional earnings. It's governed under various state-specific PT Acts, such as Maharashtra’s Professional Tax Act or Karnataka’s KTPT Act. Employers deduct PT each month and remit it to the government authorities.",
+          "Schemes Covered:",
+          "• Employer Registration – Required when you hire employees in PT states",
+          "• Self/Professional Registration – For individuals earning from professional activity",
+          "You must register within 30 days of hiring staff, or if you voluntarily opt in below the mandated employee limits.",
+          "Types of Professional Tax",
+          "• Employer registration – For organizations deducting PT from employees",
+          "• Self-employed registration – For individuals like freelancers or consultants",
+          "• Occupation-based categorization – Some states specify different fees for CA, medical practitioners, architects, etc.",
           "",
-          "2. Is MSME registration compulsory?",
-          "→ Not compulsory, but highly beneficial for availing schemes, subsidies, and loans.",
-          "",
-          "3. What is the difference between Udyog Aadhaar and Udyam?",
-          "→ Udyam is the upgraded version with PAN & GST validation replacing Udyog Aadhaar.",
-          "",
-          "4. Is the MSME certificate valid for life?",
-          "→ Yes. Lifetime validity unless key business details change.",
-          "",
-          "5. Can I register without PAN or GST?",
-          "→ PAN is mandatory for most entities. Micro units can register without GST.",
-          "",
-          "6. Do MSMEs get tax benefits?",
-          "→ Yes. Tax exemptions and subsidies are available under various government policies."
+          "Rules and Regulations",
+          "• State-based, each following its own PT Act",
+          "• Must register within 30 days of employing staff",
+          "• Deduction deadline: typically the 15th of each month",
+          "• Slab-wise deduction depending on salary or occupation",
+          "• Annual cap often around ₹2,500 per employee",
+          "• Requires PT certificate after successful registration",
+          "Applicable for Madhya Pradesh, Rajasthan, Punjab, and many others, except Delhi, Goa, Haryana, etc.",
+          "Features of Professional Tax",
+          "• State Specific – Laws, slabs, and compliances vary by state",
+          "• Mandatory Deduction – Employers must deduct and remit PT",
+          "• Slab-based – Income slabs or profession-based flat rates",
+          "• Annual Capped Amount – Usually ₹2,500 for salaried individuals",
+          "• Penalty Mechanism – Penalties vary based on delay or defaults"
         ]
+      },
+      {
+        "id": "Benefits",
+        "title": "Benefits of Professional Tax Registration",
+        "content": [
+          "• Ensures your business complies with LLP and company obligations, especially for payroll and employee tax management.",
+          "• Improves your brand's trust with banks, investors, and government authorities during financial evaluations.",
+          "• Boosts employee confidence by showcasing structured and lawful employee compliance in India.",
+          "• Enables tax savings as the professional tax amount is fully deductible under the Income Tax Act.",
+          "• Helps secure tenders, licenses, and approvals requiring PT registration, such as shop establishment certificates.",
+          "• Streamlines documentation for PAN, TAN, and GST formalities, reducing errors and rejections.",
+          "• Aids in smooth hiring and onboarding, particularly in PT-compliant states like Maharashtra and Karnataka.",
+          "• Keeps your organization protected from notices, fines, and audits due to non-compliance.",
+          "• Adds to legal transparency, which is essential for MSMEs applying for loans or subsidies.",
+          "• Required for businesses availing benefits under schemes like online MSME registration or Startup India.",
+          "• Useful for registering e-commerce or gig workers on platforms that ask for a professional tax status.",
+          "• Useful for registering e-commerce or gig workers on platforms that ask for a professional tax status.",
+          "• Acts as a compliance credential when expanding operations into multiple PT-mandated states."
+        ]
+      },
+      {
+        "id": "Eligibility",
+        "title": "Eligibility for Professional Tax Registration",
+        "content": [
+          "• Employers must register if they employ 20+ individuals in PT-applicable states",
+          "• Self-employed professionals must register if practicing in PT-applicable states",
+          "• Applicable to all business forms: proprietary, partnership, LLP, company",
+          "• PT-applicable states include Maharashtra, Karnataka, West Bengal, etc.",
+          "• States like Delhi, Haryana, and Goa do not currently impose PT",
+          "• Employer must start enrollment within one month of meeting the criteria",
+          ""
+        ]
+      },
+      {
+        "id": "Documents",
+        "title": "Documents Required Professional Tax Registration",
+        "content": [
+          "Employer / Business Registration",
+          "• PAN Card of the entity",
+          "• Certificate of Incorporation or Shop License",
+          "• Registered business address proof (utility bill/rent agreement)",
+          "• Canceled cheque or bank passbook",
+          "• Details of employees (salary, joining date)",
+          "• Board resolution for corporations",
+          "• Identity and address proof of authorized signatory",
+          "",
+          "Self-employed / Professional Registration",
+          "• PAN and Aadhaar",
+          "• Address proof (electricity bill or passport)",
+          "• Proof of professional qualification & business activity",
+          "• Details of earnings or invoices",
+          ""
+        ]
+      },
+      {
+        "id": "Process",
+        "title": "Professional Tax Registration Process",
+        "content": [
+          "• Confirm State Applicability – Check if PT applies in your operational state",
+          "• Gather Documents – Employer and self-employed categories require specific documents",
+          "• Complete Online Application – Through the state PT portal (Maharashtra MST/Bengal WPTO/EPS)",
+          "• Upload Attachments – PAN, address, employee list, board resolution",
+          "• Authority Verification – Desk level verification or field inspection if applicable",
+          "• Receive Registration Certificate – Usually within  4–7  working days",
+          "• Start Regular Compliance – Monthly filings and payments thereafter"
+        ]
+      },
+      {
+        "id": "Fees",
+        "title": "Fees & Penalties for Professional Tax Registration",
+        "content": [
+          "Cost Breakdown",
+          "• PT Application Fee: ₹100 – ₹500 (state-wise)",
+          "• Certificate Charges (Printed Copy): ₹200 – ₹1,000",
+          "• Professional Assistance: ₹999 – ₹5,000 one-time",
+          "",
+          "Penalty Structure",
+          "• Late Registration: ₹5 – ₹20 per day",
+          "• Late Monthly Payment: 1.25% – 2% monthly interest",
+          "• False Information Submission: Up to ₹5,000 fine",
+          "• Late Return Filing: ₹1,000 per month",
+          "State regulations often vary, always verify for Maharashtra, Gujarat, Karnataka, etc."
+        ]
+      },
+      {
+        "id": "Compliance",
+        "title": "Compliance Requirements",
+        "content": [
+          "Monthly Tasks",
+          "• Deduct PT from salaries by the 15th",
+          "• Deposit PT with the government authorities by the due date",
+          "• File monthly/quarterly PT returns (varies by state)",
+          "On Occasion",
+          "• Reconcile the employee list and salary slabs annually",
+          "• Renew or update the PT certificate when required",
+          "Update employee count and salary details with the municipal bodies",
+          "Stay updated with changes to the professional tax slab in India via state notifications",
+          "Annual Compliance Requirements",
+          "• File employee registration annually (varies by state)",
+          "• Update spousal or nominee details if applicable",
+          "• Submit annual salary reconciliation and slab variation details",
+          "• Pay any additional tax considering full-year slabs",
+          "• Renew the certificate if suggested by the local PT department"
+        ]
+      }
+    ],
+    "whyChooseUs": {
+      "heading": "Why Choose Registering With Us for Professional Tax Registration?",
+      "points": [
+        "When you choose us, you’re entrusting your professional tax compliance to a team that treats every step as mission-critical. We make PT registration online easy, reliable, and tailored to your business:",
+        "• Expert guidance on LLP and company obligations",
+        "• State-aware solutions with slab monitoring and document checks",
+        "• Transparent plans, with no hidden costs for add-ons",
+        "• Quick turnaround built-in for startup payroll and freelancer launches",
+        "• Assistance on PAN, TAN, GST setups, and regular compliance alerts"
+      ]
+    },
+    "faqs": [
+      "1. Is professional tax mandatory for a solo freelancer?",
+      "→ Yes, in states where professional tax is applicable, freelancers, consultants, and independent professionals are required to register and pay based on state-specific income slabs. Non-compliance could lead to penalties even if you're not a traditional employer.",
+      "",
+      "2. How is professional tax different from income tax?",
+      "→ Professional tax is a state-level tax levied on income from profession, trade, or employment, while income tax is levied by the central government on total annual income. PT is paid monthly or annually, and it’s deductible while calculating your income tax liability.",
+      "",
+      "3. Can PT registration be done online?",
+      "→ Yes, most states like Maharashtra, Karnataka, and West Bengal offer full online registration portals for PT. You can upload documents, track status, and receive certificates digitally without visiting any government office.",
+      "",
+      "4. What are the consequences of not deducting professional tax?",
+      "→ Employers who fail to deduct and remit PT can face monetary fines, interest, and legal action under state laws. In some cases, it can even affect your eligibility for licenses or renewals from government departments.",
+      "",
+      "5. How can I stay updated on PT slab changes?",
+      "→ You can regularly check your respective state’s commercial taxes department or subscribe to government gazettes. Platforms like Register With Us also keep businesses informed with automated compliance alerts and updates.",
+      "",
+      "6. Does PT registration impact PAN or TAN?",
+      "→ While PT is governed separately by state authorities, being compliant with it helps streamline your PAN, TAN, and GST setup and avoids rejection during statutory checks. It’s especially important when you’re about to register a private limited company, as professional tax compliance is often required for business registration formalities."
+    ]
   }
 ]

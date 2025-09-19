@@ -12,7 +12,7 @@ function Blogdetails() {
     const [recentPosts, setRecentPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/blogs/view')
+        fetch('http://localhost:3001/api/blogs')
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
