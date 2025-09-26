@@ -1,21 +1,27 @@
+// ========================== Imports ==========================
 import React, { useEffect, useRef } from 'react';
 import { API_BASE_URL } from '../../utils/api';
-import { useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+
 import Swal from 'sweetalert2';
 import './Servicedetails.css';
 import tabData from './services.json';
+import { Collapse } from 'bootstrap';
 
+// ========================== Component ==========================
 function Servicedetails() {
     const location = useLocation();
-
     const { serviceSlug } = useParams();
+    const form = useRef();
+
+    // ====================== useEffect (Dynamic Content + Scroll) ======================
     useEffect(() => {
         const params = new URLSearchParams(location.search);
-        const serviceName = params.get("name") || serviceSlug; // 👈 fallback
+        const serviceName = params.get("name") || serviceSlug; // fallback
 
         if (serviceName) {
             const matched = tabData.find(
@@ -23,6 +29,7 @@ function Servicedetails() {
             );
 
             if (matched) {
+                // ---------- Hero Section Injection ----------
                 const heroHeading = document.querySelector(".hero-gradient-bg h1");
                 const heroSubtext = document.querySelector(".hero-gradient-bg p.mb-3");
                 const heroList = document.querySelector(".hero-gradient-bg ul");
@@ -30,9 +37,7 @@ function Servicedetails() {
                 const trustText = document.querySelector(".hero-gradient-bg .d-flex p");
 
                 if (heroHeading) heroHeading.innerText = matched?.tabs?.[0]?.title || matched.service || "Business Service";
-                if (heroSubtext) {
-                    heroSubtext.innerText = matched?.intro || matched?.tabs?.[0]?.intro || "Start your journey with our professional services.";
-                }
+                if (heroSubtext) heroSubtext.innerText = matched?.intro || matched?.tabs?.[0]?.intro || "Start your journey with our professional services.";
                 if (heroList && Array.isArray(matched.tabs)) {
                     heroList.innerHTML = matched.tabs
                         .map(tab => tab.title)
@@ -41,14 +46,12 @@ function Servicedetails() {
                         .map(title => `<li><i class="fa-solid fa-check-double me-2"></i> ${title}</li>`)
                         .join("");
                 }
-
                 if (trustLogo) trustLogo.src = "https://cdn.trustpilot.net/brand-assets/4.4.0/logo-white.svg";
                 if (trustText) trustText.innerText = "4.1 out of 5 based on 1,886 reviews";
 
-                // 🛠 Delay DOM injection
+                // ---------- Inject Tab Content ----------
                 setTimeout(() => {
                     matched.tabs.forEach(tab => {
-                        // alert(tab.id);
                         const container = document.getElementById(tab.id);
                         if (!container) return;
 
@@ -56,30 +59,23 @@ function Servicedetails() {
 
                         // Title
                         if (tab.title) html += `<h4>${tab.title}</h4>`;
-
                         // Intro
                         if (tab.intro) html += `<p>${tab.intro}</p>`;
-
                         // Content
                         if (Array.isArray(tab.content)) {
                             html += tab.content.map(p => {
-                                // If line ends with ":" or looks like section heading
                                 if (p.trim().endsWith(":")) {
                                     return `<h4>${p.replace("•", "").trim()}</h4>`;
-                                }
-                                // If it has colon and is a definition-type line
-                                else if (p.includes(":")) {
+                                } else if (p.includes(":")) {
                                     const parts = p.split(":");
                                     return `<p><strong>${parts[0].replace("•", "").trim()}:</strong>${parts.slice(1).join(":")}</p>`;
-                                }
-                                // Normal paragraph
-                                else {
+                                } else {
                                     return `<p>${p}</p>`;
                                 }
                             }).join("");
                         }
 
-                        // Helper to render li with bolded label before colon
+                        // Helper for list rendering
                         const renderList = items => items.map(item => {
                             if (item.includes(":")) {
                                 const parts = item.split(":");
@@ -92,24 +88,26 @@ function Servicedetails() {
                         if (Array.isArray(tab.points)) {
                             html += tab.points.map(point => `
                 <div class="mb-3">
-                    <h5>${point.title}</h5>
-                    <p>${point.description}</p>
-                    ${Array.isArray(point.subpoints) ? `<ul>${renderList(point.subpoints)}</ul>` : ""}
+                  <h5>${point.title}</h5>
+                  <p>${point.description}</p>
+                  ${Array.isArray(point.subpoints) ? `<ul>${renderList(point.subpoints)}</ul>` : ""}
                 </div>
-            `).join("");
+              `).join("");
                         }
 
                         // Types
                         if (Array.isArray(tab.types)) {
-                            html += `<div class="mb-4">` +
-                                tab.types.map(type => `
+                            html += `
+                <div class="mb-4">
+                  ${tab.types.map(type => `
                     <div class="mb-3">
-                        <h5 class="fw-semibold">${type.heading}</h5>
-                        <p>${type.description}</p>
-                        <p class="text-muted"><em>${type.example}</em></p>
+                      <h5 class="fw-semibold">${type.heading}</h5>
+                      <p>${type.description}</p>
+                      <p class="text-muted"><em>${type.example}</em></p>
                     </div>
-                `).join("") +
-                                `</div>`;
+                  `).join("")}
+                </div>
+              `;
                         }
 
                         // Identity Documents
@@ -133,9 +131,7 @@ function Servicedetails() {
                         }
 
                         // Note
-                        if (tab.note) {
-                            html += `<p class="fst-italic">${tab.note}</p>`;
-                        }
+                        if (tab.note) html += `<p class="fst-italic">${tab.note}</p>`;
 
                         // Details
                         if (Array.isArray(tab.details)) {
@@ -144,43 +140,68 @@ function Servicedetails() {
 
                         container.innerHTML = html;
                     });
-                    // 👉 Add this block BELOW matched.tabs.forEach
+
+                    // ---------- FAQs ----------
                     if (matched?.faqs) {
                         const faqSection = document.querySelector("#faqAccordion");
                         if (faqSection) {
-                            faqSection.innerHTML = matched.faqs
-                                .filter(q => q.trim() !== "")
-                                .map((faq, index) => {
-                                    const isQuestion = !faq.startsWith("→");
+                            let html = "";
+                            let currentQuestion = null;
+
+                            matched.faqs.forEach((faq, index) => {
+                                if (!faq.startsWith("→")) {
+                                    // it's a question
+                                    currentQuestion = faq;
+                                } else if (currentQuestion) {
+                                    // it's the answer
                                     const id = `faq-${index}`;
-                                    if (isQuestion) {
-                                        return `
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading${id}">
-                                <button class="accordion-button ${index !== 0 ? "collapsed" : ""}" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse${id}" aria-expanded="${index === 0}" aria-controls="collapse${id}">
-                                    ${faq}
-                                </button>
-                            </h2>
-                    `;
-                                    } else {
-                                        return `
-                            <div id="collapse${id}" class="accordion-collapse collapse ${index === 1 ? "show" : ""}" aria-labelledby="heading${id}"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <i class="fa fa-arrow-right me-2" aria-hidden="true"></i>${faq.replace("→", "").trim()}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                                    }
-                                })
-                                .join("");
+                                    html += `
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading${id}">
+              <button class="accordion-button collapsed" 
+                      type="button" 
+                      data-bs-toggle="collapse" 
+                      data-bs-target="#collapse${id}" 
+                      aria-expanded="false" 
+                      aria-controls="collapse${id}">
+                ${currentQuestion}
+              </button>
+            </h2>
+            <div id="collapse${id}" 
+                 class="accordion-collapse collapse" 
+                 aria-labelledby="heading${id}" 
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <i class="fa fa-arrow-right me-2" aria-hidden="true"></i>${faq.replace("→", "").trim()}
+              </div>
+            </div>
+          </div>
+        `;
+                                    currentQuestion = null; // reset for next question
+                                }
+                            });
+
+                            faqSection.innerHTML = html;
+                        }
+                    }
+
+                    // ---------- Scroll to hash if present ----------
+                    if (location.hash) {
+                        const id = location.hash.replace("#", "");
+                        const el = document.getElementById(id);
+                        if (el) {
+                            const navHeight = document.querySelector(".navbar")?.offsetHeight || 0;
+                            const tabHeight = document.querySelector(".tab-wrapper")?.offsetHeight || 0;
+                            const offset = navHeight + tabHeight + 20; // adjust if needed
+
+                            window.scrollTo({
+                                top: el.offsetTop - offset,
+                                behavior: "smooth"
+                            });
                         }
                     }
 
                 }, 100);
-
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -190,17 +211,16 @@ function Servicedetails() {
             }
         }
 
+        // ---------- Sticky Form + Tabs + Scroll Spy ----------
         const form = document.querySelector(".sticky-form");
         const section = document.getElementById("tab-content-section");
         const tabs = document.querySelector(".tab-wrapper");
         const pills = document.querySelectorAll(".nav-pills .nav-link");
-
         const buffer = 20;
         let lastFormState = "";
 
         const handleScroll = () => {
             if (!form || !section) return;
-
             const sectionTop = section.offsetTop;
             const sectionBottom = sectionTop + section.offsetHeight;
             const scrollY = window.scrollY;
@@ -209,10 +229,7 @@ function Servicedetails() {
             const scrollBottom = scrollY + formHeight + fixedTop;
 
             // Sticky form logic
-            if (
-                scrollY + fixedTop >= sectionTop &&
-                scrollBottom + buffer < sectionBottom
-            ) {
+            if (scrollY + fixedTop >= sectionTop && scrollBottom + buffer < sectionBottom) {
                 if (lastFormState !== "fixed") {
                     form.classList.add("fixed-form");
                     form.classList.remove("at-bottom");
@@ -238,16 +255,14 @@ function Servicedetails() {
                 tabs?.classList.remove("fixed-tabs");
             }
 
-            // Scroll spy logic
+            // Scroll spy
             const offsetMargin = 220;
             pills.forEach(pill => {
                 const id = pill.getAttribute("href")?.replace("#", "") || pill.getAttribute("data-bs-target")?.replace("#", "");
                 const target = document.getElementById(id);
                 if (!target) return;
-
                 const targetTop = target.offsetTop - offsetMargin;
                 const targetBottom = targetTop + target.offsetHeight;
-
                 if (scrollY >= targetTop && scrollY < targetBottom) {
                     pills.forEach(p => p.classList.remove("active"));
                     pill.classList.add("active");
@@ -284,16 +299,17 @@ function Servicedetails() {
         };
     }, [location.pathname, location.search]);
 
+    // ====================== Handlers ======================
+
+    // Scroll tabs
     const scrollTabs = (offset) => {
         const tabList = document.querySelector('.scroll-tabs');
         if (tabList) tabList.scrollLeft += offset;
     };
 
-    const form = useRef();
-
+    // Quick Contact Form Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!form.current) return;
 
         const formData = {
@@ -307,14 +323,11 @@ function Servicedetails() {
         try {
             const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
 
             const result = await response.json();
-
             if (result.success) {
                 Swal.fire({
                     icon: 'success',
@@ -339,57 +352,26 @@ function Servicedetails() {
         }
     };
 
-    const scrollToFooter = (e) => {
-        e.preventDefault();
-        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
-    };
-
-    const scrollToId = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
+    // Talk to Expert Form Submit
     const handleExpertSubmit = async (e) => {
         e.preventDefault();
-
-        // Swal.fire("📌 Step 1", "Submission triggered", "info");
-
         const expertForm = e.target;
 
-        // Swal.fire("📌 Step 2", "Accessing form elements", "info");
-
-        const userName = expertForm.expert_name?.value;
-        const userPhone = expertForm.expert_phone?.value;
-        const userEmail = expertForm.expert_email?.value;
-
-        // Swal.fire("📌 Step 3", `Collected values:<br>Name: ${userName}<br>Phone: ${userPhone}<br>Email: ${userEmail}`, "info");
-
         const formData = {
-            user_name: userName,
-            user_phone: userPhone,
-            user_email: userEmail,
+            user_name: expertForm.expert_name?.value,
+            user_phone: expertForm.expert_phone?.value,
+            user_email: expertForm.expert_email?.value,
             form_type: "Talk To Expert"
         };
-
-        // Swal.fire("📌 Step 4", "Form data ready. Sending fetch request...", "info");
 
         try {
             const response = await fetch(`${API_BASE_URL}/api/submit/expert`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             });
 
-            // Swal.fire("📌 Step 5", "Got response from server", "info");
-
             const result = await response.json();
-
-            // Swal.fire("📌 Step 6", "Parsed response JSON", "info");
-
             if (result.success) {
                 Swal.fire("✅ Success", "Expert form submitted successfully!", "success");
                 expertForm.reset();
@@ -402,8 +384,21 @@ function Servicedetails() {
         }
     };
 
+    // Scroll helpers
+    const scrollToFooter = (e) => {
+        e.preventDefault();
+        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToId = (id) => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // ====================== JSX ======================
     return (
         <>
+
             {/* Hero Section */}
             <section className="py-4 bg-light hero-gradient-bg">
                 <div className="container">

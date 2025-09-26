@@ -109,100 +109,106 @@ function Navbar() {
               <div className="dropdown-menu w-100 mega-dropdown mt-0 border-0 shadow-lg" ref={menuRef}>
                 <div className="container">
                   <div className="row gy-4">
-                    {/* Column 1 */}
+                    {/* Column 1 Company Registration & Tax Filling Services */}
                     <div className="col-md-3">
-                      <h4 className="mega-heading"><i className="fas fa-briefcase me-2"></i>Business Registration</h4>
+                      <h4 className="mega-heading"><i className="fas fa-balance-scale me-2"></i>Labour Laws</h4>
+                      <ul className="mega-list">
+                        <li><Link to="/online-epf-registration-india">PF Registration</Link></li>
+                        <li><Link to="/online-esic-registration-india">ESIC Registration</Link></li>
+                      </ul>
+                      <h4 className="mega-heading"><i className="fas fa-briefcase me-2"></i>Company Registration</h4>
                       <ul className="mega-list">
                         <li><Link to="/sole-proprietorship-registration-online">Solo Proprietorship</Link></li>
                         <li><Link to="/partnership-firm-registration-online">Partnership</Link></li>
                         <li><Link to="/llp-registration-services-online">LLP Registration</Link></li>
-                        <li>
-                          <Link to="/Company Registration">Company Registration</Link>
-                          <ul className="sub-list">
-                            <li><Link to="/private-limited-company-registration-online">Private Limited Company</Link></li>
-                            <li><Link to="/public-limited-company-registration-online">Public Company Limited</Link></li>
-                            <li><Link to="/Foreign Company">Foreign Company</Link></li>
-                            <li><Link to="/NGO / Section 8 Company">NGO / Section 8 Company</Link></li>
-                          </ul>
-                        </li>
+                        <li><Link to="/private-limited-company-registration-online">Private Limited Company</Link></li>
+                        <li><Link to="/public-limited-company-registration-online">Public Limited Company</Link></li>
+                        <li><Link to="/">Foreign Company Registration</Link></li>
                       </ul>
-                      <h4 className="mega-heading"><i className="fas fa-calculator me-2"></i>Tax Filings</h4>
+                      <h4 className="mega-heading"><i className="fas fa-id-card-alt me-2"></i>Food License (FSSAI)</h4>
                       <ul className="mega-list">
                         <li>
-                          <Link to="/ITR Filing">ITR Filing</Link>
-                          <ul className="sub-list">
-                            <li><Link to="/Individual">Individual</Link></li>
-                            <li><Link to="/Corporate">Corporate</Link></li>
-                          </ul>
+                          <Link to="/fssai-license-registration-india">FSSAI Registration</Link>
+                          <Link to="/fssai-license-registration-india">FSSAI License - State</Link>
+                          <Link to="/fssai-license-registration-india">FSSAI License - Central</Link>
                         </li>
-                        <li><Link to="/GST Returns">GST Returns</Link></li>
-                        <li><Link to="/TDS Filings">TDS Filings</Link></li>
                       </ul>
                     </div>
 
-                    {/* Column 2 */}
+                    {/* Column 2 Trade Licenses & Food License (FSSAI)*/}
                     <div className="col-md-3">
+                      
                       <h4 className="mega-heading"><i className="fas fa-id-card-alt me-2"></i>Trade Licenses</h4>
                       <ul className="mega-list">
-                        <li><Link to="/pan-card-registration-online">PAN</Link></li>
-                        <li><Link to="/apply-gst-registration-online">GST</Link></li>
-                        <li><Link to="/import-export-code-registration-online">IEC</Link></li>
                         <li>
-                          <Link to="/fssai-registration-online-india">Food Licenses / FSSAI</Link>
-                          <ul className="sub-list">
-                            <li><Link to="/Private Limited Company">Manufactures</Link></li>
-                            <li><Link to="/Private Limited Company">Wholesale / Retail</Link></li>
-                            <li><Link to="/Foreign Company">Relabeler</Link></li>
-                          </ul>
+                          <Link to="/online-esic-registration-india">PF / ESIC Registration</Link>
+                          <Link to="/business-pan-card-registration-india">PAN card</Link>
+                          <Link to="/gst-registration-india">GST Registration</Link>
+                          <Link to="/import-export-code-registration-online">Import Export Code (IEC)</Link>
+                          <Link to="/professional-tax-registration-online">Professional Tax Registration</Link>
+                          <Link to="/udyam-msme-registration-online">MSME / Udyam Registration</Link>
+                          <Link to="/startup-india-registration-online">Start-up India Registration</Link>
+                          <Link to="/shop-establishment-registration-india">Shops & Establishment Licenses</Link>
+                          <Link to="/apeda-registration-india">APEDA Registration</Link>
                         </li>
-                        <li><Link to="/professional-tax-registration-online">Professional Tax Registration</Link></li>
-                        <li><Link to="/udyam-msme-registration-online">MSME</Link></li>
-                        <li><Link to="/startup-india-registration-online">Start-up Registration</Link></li>
-                        <li><Link to="/shop-and-establishment-act-registration">Shops & Establishment</Link></li>
-                        <li><Link to="/apeda-registration-online">APEDA Registration</Link></li>
+                      </ul>
+                      <h4 className="mega-heading mt-4"><i className="fas fa-award me-2"></i>Trademark Services</h4>
+                      <ul className="mega-list">
+                        <li><Link to="/online-trademark-registration-india">Trademark Registration</Link></li>
+                        <li><Link to="/online-trademark-registration-india">Trademark Renewal</Link></li>
+                        <li><Link to="/online-trademark-registration-india">Trademark Assignment / Transfers</Link></li>
+                        <li><Link to="/online-trademark-registration-india">Change In Trademark Details</Link></li>
                       </ul>
                     </div>
 
-                    {/* Column 3 */}
-                    <div className="col-md-3">
-                      <h4 className="mega-heading"><i className="fas fa-balance-scale me-2"></i>Labour Laws</h4>
-                      <ul className="mega-list">
-                        <li><Link to="/esic-registration-online">ESIC Registration</Link></li>
-                      </ul>
-                      <h4 className="mega-heading mt-4"><i className="fas fa-award me-2"></i>Trademarks</h4>
-                      <ul className="mega-list">
-                        <li><Link to="/online-trademark-registration-india">TM Registration</Link></li>
-                        <li><Link to="/TM Renewal">TM Renewal</Link></li>
-                        <li><Link to="/TM Assignment">TM Assignment / Transfers</Link></li>
-                        <li><Link to="/TM Amendment">TM Amendments</Link></li>
-                      </ul>
-                    </div>
-
-                    {/* Column 4 */}
+                    {/* Column 3 Labour Laws & Trademark Services*/}
                     <div className="col-md-3">
                       <h4 className="mega-heading"><i className="fas fa-building me-2"></i>Company Compliances</h4>
                       <ul className="mega-list">
-                        <li>
+                        <li><Link to="/online-compliance-india">Share Transfers</Link></li>
+                        <li><Link to="/online-compliance-india">Share Transmission</Link></li>
+                        <li><Link to="/online-compliance-india">Share Allotments</Link></li>
+                        <li><Link to="/online-compliance-india">Equity / Debt Raising</Link></li>
+                        <li><Link to="/online-compliance-india">Raise Funds (Equity / Debt)</Link></li>
+                        <li><Link to="/online-compliance-india">Change Services</Link></li>
+                        <li><Link to="/online-compliance-india">Change in Directors / KMP</Link></li>
+                        <li><Link to="/online-compliance-india">Change in Auditors</Link></li>
+                        <li> <Link to="/online-compliance-india">Change in Address / Shifting of Office</Link></li>
+                        <li><Link to="/online-compliance-india">MSME Filings</Link></li>
+                        <li><Link to="/online-compliance-india">Return of Deposit</Link></li>
+                        <li><Link to="/online-compliance-india">Event Based ROC Filings</Link></li>
+                        <li><Link to="/online-compliance-india">Annunal Filings</Link></li>
+                      </ul>
+                      <h4 className="mega-heading"><i className="fas fa-calculator me-2"></i>Tax Filings Services</h4>
+                      <ul className="mega-list">
+                        <li><Link to="/itr-gst-return-filing-india">ITR For Individuals</Link></li>
+                        <li><Link to="/itr-gst-return-filing-india">ITR For Corporate</Link></li>
+                        <li><Link to="/itr-gst-return-filing-india">GST Returns</Link></li>
+                        <li><Link to="/itr-gst-return-filing-india">TDS Filings</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* Column 4 Company Compliances */}
+                    <div className="col-md-3">
+
+                      <h4 className="mega-heading"><i className="fas fa-building me-2"></i>ISO Certificates</h4>
+                      <ul className="mega-list">
+                        {/* <li>
                           <Link to="/Company Registration">Transfers</Link>
                           <ul className="sub-list">
                             <li><Link to="/Private Limited Company">Share Transfers</Link></li>
                             <li><Link to="/Private Limited Company">Share Transmission</Link></li>
                           </ul>
-                        </li>
-                        <li><Link to="/Allotments">Share Allotments</Link></li>
-                        <li><Link to="/Equity / Debt Raising">Equity / Debt Raising</Link></li>
-                        <li>
-                          <Link to="/Changes">Change</Link>
-                          <ul className="sub-list">
-                            <li><Link to="/MSME Filing">Change in Directors / KMP</Link></li>
-                            <li><Link to="/Fund Raising">Change in Auditors</Link></li>
-                            <li><Link to="/Return of Deposit">Change in Address / Shifting of Office</Link></li>
-                          </ul>
-                        </li>
-                        <li><Link to="/Allotments">MSME Fillings</Link></li>
-                        <li><Link to="/Allotments">Return Of Deposit</Link></li>
-                        <li><Link to="/Allotments">Fund Raise</Link></li>
-                        <li><Link to="/Allotments">Annual Filling</Link></li>
+                        </li> */}
+                        <li><Link to="/iso-certification-services-india#tab-content-section">ISO 9001, ISO 14001</Link></li>
+                        <li><Link to="/iso-certification-services-india#tab-content-section">ISO 45001</Link></li>
+                        <li><Link to="iso-certification-services-india#tab-content-section">Other ISO Certificates</Link></li>
+                        <li><Link to="/iso-certification-services-india#tab-content-section">HACPP</Link></li>
+                        <li><Link to="/iso-certification-services-india#tab-content-section">GMP, GAP, GDP, GLP, cGMP, GHP</Link></li>
+                        <li><Link to="/iso-certification-services-india#tab-content-section">CE, RoHS, EN, IEC</Link></li>
+                        <li><Link to="/iso-certification-services-india#tab-content-section">FDA, ANSI, ASTM, GOTS, FSSC</Link></li>
+                        <li><Link to="/iso-certification-services-india#tab-content-section">22000, BIFMA, Greenguard, Greenpro, GRS, RCS , HALAL, KOSHER,SEDEX, FSC, FCC, CMMI</Link></li>
+                        <li><Link to="/iso-certification-services-india#tab-content-section">Other Certifications</Link></li>
                       </ul>
                     </div>
                   </div>
