@@ -118,7 +118,7 @@ function Navbar() {
                       </ul>
                       <h4 className="mega-heading"><i className="fas fa-briefcase me-2"></i>Company Registration</h4>
                       <ul className="mega-list">
-                        <li><Link to="/sole-proprietorship-registration-online">Solo Proprietorship</Link></li>
+                        <li><Link to="/sole-proprietorship-registration-online">Sole Proprietorship</Link></li>
                         <li><Link to="/partnership-firm-registration-online">Partnership</Link></li>
                         <li><Link to="/llp-registration-services-online">LLP Registration</Link></li>
                         <li><Link to="/private-limited-company-registration-online">Private Limited Company</Link></li>
