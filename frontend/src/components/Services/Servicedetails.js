@@ -29,6 +29,22 @@ function Servicedetails() {
             );
 
             if (matched) {
+
+                 if (matched.metaTitle) document.title = matched.metaTitle;
+
+            const setMeta = (name, content) => {
+                let element = document.querySelector(`meta[name="${name}"]`);
+                if (!element) {
+                    element = document.createElement("meta");
+                    element.name = name;
+                    document.head.appendChild(element);
+                }
+                element.content = content;
+            };
+
+            if (matched.metaDescription) setMeta("description", matched.metaDescription);
+            if (matched.metaKeywords) setMeta("keywords", matched.metaKeywords);
+
                 // ---------- Hero Section Injection ----------
                 const heroHeading = document.querySelector(".hero-gradient-bg h1");
                 const heroSubtext = document.querySelector(".hero-gradient-bg p.mb-3");
