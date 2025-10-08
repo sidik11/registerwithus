@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Hero3 from '../components/Home/Hero3';
 import Counter from '../components/Home/Counter';
 import Clients from '../components/Home/Clients';
@@ -14,6 +14,40 @@ import Footer from '../components/Common/Footer';
 import '../pages/Homepage.css';
 
 const HomePage = () => {
+
+  useEffect(() => {
+    // ✅ Set page title
+    document.title = "Start Your Business Legally in India | Trusted Compliance Partner";
+
+    // ✅ Set meta description
+    const metaDescription = document.querySelector("meta[name='description']");
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Start your business legally in India with expert-backed registration, government-recognized documentation, and fast compliance services from India's trusted partner."
+      );
+    } else {
+      const desc = document.createElement("meta");
+      desc.name = "description";
+      desc.content = "Start your business legally in India with expert-backed registration, government-recognized documentation, and fast compliance services from India's trusted partner.";
+      document.head.appendChild(desc);
+    }
+
+    // ✅ Set meta keywords
+    const metaKeywords = document.querySelector("meta[name='keywords']");
+    if (metaKeywords) {
+      metaKeywords.setAttribute(
+        "content",
+        "business registration, company incorporation, startup India, legal compliance, company formation, gst registration, msme registration"
+      );
+    } else {
+      const keywords = document.createElement("meta");
+      keywords.name = "keywords";
+      keywords.content = "business registration, company incorporation, startup India, legal compliance, company formation, gst registration, msme registration";
+      document.head.appendChild(keywords);
+    }
+  }, []);
+
   return (
     <>
       <Hero3 />

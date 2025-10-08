@@ -219,11 +219,7 @@ function Servicedetails() {
 
                 }, 100);
             } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'No Service Found',
-                    text: 'Sorry, we could not found any service from the data.'
-                });
+               window.location.href = "/Error404";
             }
         }
 
