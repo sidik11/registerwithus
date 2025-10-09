@@ -4,6 +4,7 @@
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100% !important;
 }
 
 .feature-card:hover {

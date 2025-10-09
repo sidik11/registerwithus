@@ -23,6 +23,13 @@ function Servicedetails() {
         const params = new URLSearchParams(location.search);
         const serviceName = params.get("name") || serviceSlug; // fallback
 
+        const startupSection = document.querySelector(".startup-info-section");
+        if (window.location.pathname === "/startup-india-registration-online") {
+            if (startupSection) startupSection.style.display = "block";
+        } else {
+            if (startupSection) startupSection.style.display = "none";
+        }
+
         if (serviceName) {
             const matched = tabData.find(
                 item => item.service.toLowerCase().trim() === serviceName.toLowerCase().trim()
@@ -30,20 +37,20 @@ function Servicedetails() {
 
             if (matched) {
 
-                 if (matched.metaTitle) document.title = matched.metaTitle;
+                if (matched.metaTitle) document.title = matched.metaTitle;
 
-            const setMeta = (name, content) => {
-                let element = document.querySelector(`meta[name="${name}"]`);
-                if (!element) {
-                    element = document.createElement("meta");
-                    element.name = name;
-                    document.head.appendChild(element);
-                }
-                element.content = content;
-            };
+                const setMeta = (name, content) => {
+                    let element = document.querySelector(`meta[name="${name}"]`);
+                    if (!element) {
+                        element = document.createElement("meta");
+                        element.name = name;
+                        document.head.appendChild(element);
+                    }
+                    element.content = content;
+                };
 
-            if (matched.metaDescription) setMeta("description", matched.metaDescription);
-            if (matched.metaKeywords) setMeta("keywords", matched.metaKeywords);
+                if (matched.metaDescription) setMeta("description", matched.metaDescription);
+                if (matched.metaKeywords) setMeta("keywords", matched.metaKeywords);
 
                 // ---------- Hero Section Injection ----------
                 const heroHeading = document.querySelector(".hero-gradient-bg h1");
@@ -219,7 +226,7 @@ function Servicedetails() {
 
                 }, 100);
             } else {
-               window.location.href = "/Error404";
+                window.location.href = "/Error404";
             }
         }
 
@@ -233,6 +240,7 @@ function Servicedetails() {
 
         const handleScroll = () => {
             if (!form || !section) return;
+
             const sectionTop = section.offsetTop;
             const sectionBottom = sectionTop + section.offsetHeight;
             const scrollY = window.scrollY;
@@ -240,7 +248,7 @@ function Servicedetails() {
             const fixedTop = 190;
             const scrollBottom = scrollY + formHeight + fixedTop;
 
-            // Sticky form logic
+            // ---------- Sticky Form Logic ----------
             if (scrollY + fixedTop >= sectionTop && scrollBottom + buffer < sectionBottom) {
                 if (lastFormState !== "fixed") {
                     form.classList.add("fixed-form");
@@ -260,26 +268,34 @@ function Servicedetails() {
                 }
             }
 
-            // Tabs fixed logic
-            if (scrollY >= sectionTop && scrollY + 150 <= sectionBottom) {
+            // ---------- Tabs Fixed + Show/Hide Logic ----------
+            if (scrollY + fixedTop >= sectionTop && scrollBottom + buffer < sectionBottom) {
+                // section ke beech → visible + fixed
                 tabs?.classList.add("fixed-tabs");
-            } else {
+                tabs?.classList.remove("d-none");
+            } else if (scrollBottom + buffer >= sectionBottom || scrollY + fixedTop < sectionTop) {
+                // section ke bahar → hide completely
                 tabs?.classList.remove("fixed-tabs");
+                tabs?.classList.add("d-none");
             }
 
-            // Scroll spy
-            const offsetMargin = 220;
-            pills.forEach(pill => {
-                const id = pill.getAttribute("href")?.replace("#", "") || pill.getAttribute("data-bs-target")?.replace("#", "");
-                const target = document.getElementById(id);
-                if (!target) return;
-                const targetTop = target.offsetTop - offsetMargin;
-                const targetBottom = targetTop + target.offsetHeight;
-                if (scrollY >= targetTop && scrollY < targetBottom) {
-                    pills.forEach(p => p.classList.remove("active"));
-                    pill.classList.add("active");
-                }
-            });
+            // ---------- Scroll Spy ----------
+            if (!tabs?.classList.contains("d-none")) {
+                const offsetMargin = 220;
+                pills.forEach(pill => {
+                    const id = pill.getAttribute("href")?.replace("#", "") || pill.getAttribute("data-bs-target")?.replace("#", "");
+                    const target = document.getElementById(id);
+                    if (!target) return;
+
+                    const targetTop = target.offsetTop - offsetMargin;
+                    const targetBottom = targetTop + target.offsetHeight;
+
+                    if (scrollY >= targetTop && scrollY < targetBottom) {
+                        pills.forEach(p => p.classList.remove("active"));
+                        pill.classList.add("active");
+                    }
+                });
+            }
         };
 
         pills.forEach(pill => {

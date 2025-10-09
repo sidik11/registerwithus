@@ -159,17 +159,17 @@
 
 .fixed-form {
     position: fixed;
-    top: 190px;
+    top: 231px;
     width: 414px;
     z-index: 999;
     transform: translateY(-10px);
     opacity: 0;
-    animation: fadeSlideIn 0.3s forwards ease-in-out;
+    animation: fadeSlideIn 0.0s forwards ease-in-out;
 }
 
 @keyframes fadeSlideIn {
     from {
-        transform: translateY(-20px);
+        transform: translateY(0px);
         opacity: 0;
     }
     to {
@@ -197,7 +197,7 @@
 .fixed-form,
 .at-bottom {
     width: 100% !important;
-    max-width: 414px !important;
+    max-width: 336px !important;
     box-sizing: border-box !important;
     /* transition: all 0.3s ease-in-out; */
 }
