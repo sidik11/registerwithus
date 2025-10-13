@@ -7,66 +7,66 @@ import './Bloghead.css';
 
 function Bloghead() {
     const form = useRef();
-    
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-    
-            if (!form.current) return;
-    
-            const formData = {
-                user_name: form.current.user_name.value.trim(),
-                user_phone: form.current.user_phone.value.trim(),
-                user_email: form.current.user_email.value.trim(),
-                message: form.current.message.value.trim(),
-                form_type: "Quick Contact"
-            };
-    
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/submit`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!form.current) return;
+
+        const formData = {
+            user_name: form.current.user_name.value.trim(),
+            user_phone: form.current.user_phone.value.trim(),
+            user_email: form.current.user_email.value.trim(),
+            message: form.current.message.value.trim(),
+            form_type: "Quick Contact"
+        };
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/submit`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '✅ Form Submitted Successfully!',
+                    text: 'We will connect with you soon.'
                 });
-    
-                const result = await response.json();
-    
-                if (result.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: '✅ Form Submitted Successfully!',
-                        text: 'We will connect with you soon.'
-                    });
-                    form.current.reset();
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: '❌ Form Submission Failed!',
-                        text: 'Under Maintenance. Please try again later.'
-                    });
-                }
-            } catch (error) {
-                console.error('Error:', error);
+                form.current.reset();
+            } else {
                 Swal.fire({
                     icon: 'error',
-                    title: '❌ Server Error!',
-                    text: 'Something went wrong. Please try again later.'
+                    title: '❌ Form Submission Failed!',
+                    text: 'Under Maintenance. Please try again later.'
                 });
             }
-        };
-    
-        const scrollToFooter = (e) => {
-            e.preventDefault();
-            document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
-        };
-    
-        const scrollToId = (id) => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-            }
-        };
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: '❌ Server Error!',
+                text: 'Something went wrong. Please try again later.'
+            });
+        }
+    };
+
+    const scrollToFooter = (e) => {
+        e.preventDefault();
+        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToId = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     return (
         // <section class="theme-bg-color py-5">
         //     <div class="container text-center">
@@ -95,8 +95,13 @@ function Bloghead() {
                             <p className="fs-5">
                                 Here are some blogs related to our company and all details including blog details.
                             </p>
-                            <a href="#" className="btn cta-btn-glass">
-                                <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
+                            <a
+                                href="tel:+919643981247"
+                                className="btn cta-btn-glass border text-dark"
+                            >
+                                <i className="fa-solid fa-phone me-2"></i>
+                                Call Now
+                                <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>
 

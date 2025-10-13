@@ -17,7 +17,7 @@ function Services() {
   };
 
   return (
-    <section className="services-section pt-5">
+    <section className="services-section py-5">
       <div className="container">
         <h2 className="section-title d-block mb-3 about-us-heading"><span>Our Services</span></h2>
         <h5 className='text-center py-3' >Your one-stop AU-in-One Business Compliance Platform, from company setup to tax filings, we handle it all. As a leading Government Registration Service Provider for Business, we
@@ -92,7 +92,7 @@ function Services() {
           </div>
         </div>
 
-        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100px' }}>
+        {/* <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100px' }}>
           <a
             href="#"
             className="btn about-us-btn text-decoration-none"
@@ -101,7 +101,7 @@ function Services() {
           >
             View All Services <i className="fas fa-arrow-right ms-2"></i>
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

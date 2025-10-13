@@ -81,31 +81,28 @@ function ChatWidget() {
   };
 
   const handleWhatsAppRedirect = () => {
-    const phone = "919643981247";
+    const phone = "919643981247"; // full international format without +
 
     const message = selectedOption === "Others"
-      ? `Hi, my name is ${name}. I selected "Others".
-Here is my view: ${viewText}
-You can contact me at: ${number}.
-Thanks!`
-      : `Hi, my name is ${name}. I'm interested in ${selectedOption}.
-Please share the details regarding the process, documents required, and charges.
-You can contact me at: ${number}.
-Thanks!`;
+      ? `👋 Hi, my name is ${name}.
+📝 I selected "Others".
+💬 Here is my view: ${viewText}
+📞 You can contact me at: ${number}.
+🙏 Thanks!`
+      : `👋 Hi, my name is ${name}.
+💼 I'm interested in ${selectedOption}.
+📄 Please share the details regarding the process, documents required, and charges.
+📞 You can contact me at: ${number}.
+🙏 Thanks!`;
 
+    // Encode the message for URL
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
 
-    const newWindow = window.open(whatsappURL, '_blank');
+    // WhatsApp URL
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
 
-    if (!newWindow) {
-      alert("❌ Failed to open WhatsApp. Please ensure popup is allowed.");
-    } else {
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    }
-
+    // Open in a new tab
+    window.open(whatsappURL, "_blank");
   };
 
   return (
@@ -128,8 +125,12 @@ Thanks!`;
                 <div key={i} className={`chat-bubble ${msg.from}`}>{msg.text}</div>
               ))}
               {loading && (
-                <div className="chat-bubble bot">
-                  Typing<span className="dots">...</span>
+                <div className="chat-bubble bot typing">
+                  <div className="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
                 </div>
               )}
               {step === 1 && !loading && (
@@ -493,7 +494,9 @@ Thanks!`;
               <a href="/privacy" className="text-white me-4 text-decoration-none">Privacy Policy</a>
               <a href="/refund" className="text-white me-4 text-decoration-none">Refund Policy</a>
               <a href="/termconditions" className="text-white me-4 text-decoration-none">Term & Conditions</a>
-              <span>©2025 TECHGEERING</span>
+              <span>
+                ©2025 <a href="https://techgeering.in" target="_blank" rel="noopener noreferrer" className="text-white text-decoration-none">TECHGEERING</a>
+              </span>
             </div>
             <div className="text-start">
               <a href="#" className="text-white me-3"><i className="fab fa-facebook-f"></i></a>

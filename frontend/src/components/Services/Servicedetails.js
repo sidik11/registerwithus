@@ -441,14 +441,14 @@ function Servicedetails() {
                                 <li><i className="fa-solid fa-check-double me-2"></i> Expert MCA-Approved Professionals</li>
                                 <li><i className="fa-solid fa-check-double me-2"></i> Trusted by 20,000+ Businesses</li>
                             </ul>
-                            <div className="d-flex align-items-center mt-3">
+                            {/* <div className="d-flex align-items-center mt-3">
                                 <img
                                     src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
                                     alt="Google Reviews"
                                     height="24"
                                 />
                                 <p className="mb-0 ms-2">4.7 out of 5 based on 2,345 reviews</p>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-lg-5">
                             <div className="styled-form-containers">

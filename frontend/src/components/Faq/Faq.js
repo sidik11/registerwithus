@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function Faq() {
     return (
-        <section>
+        <section className='py-5' >
             <div className="container my-5">
                 {/* <h2 className="text-center text-primary fw-bold mb-4">Frequently Asked Questions</h2> */}
                 <h2 className="section-title text-center text-dark d-block"><span className="about-us-heading" >Frequently Asked Questions</span></h2>

@@ -32,10 +32,12 @@
 
 .testimonial-card {
   border-radius: 15px;
+  margin: 10px;
   background-color: #fff;
   padding: 25px;
-  box-shadow: 3px 4px 20px -4px #8b8686;
+  /* box-shadow: 3px 4px 20px -4px #8b8686; */
   transition: all 0.3s ease;
+  border: 1px solid #0000001f;
   height: 100%;
 }
 
