@@ -110,27 +110,27 @@ function Servicedetails() {
                         // Points with subpoints
                         if (Array.isArray(tab.points)) {
                             html += tab.points.map(point => `
-                <div class="mb-3">
-                  <h5>${point.title}</h5>
-                  <p>${point.description}</p>
-                  ${Array.isArray(point.subpoints) ? `<ul>${renderList(point.subpoints)}</ul>` : ""}
-                </div>
-              `).join("");
+                                <div class="mb-3">
+                                  <h5>${point.title}</h5>
+                                  <p>${point.description}</p>
+                                  ${Array.isArray(point.subpoints) ? `<ul>${renderList(point.subpoints)}</ul>` : ""}
+                                </div>
+                            `).join("");
                         }
 
                         // Types
                         if (Array.isArray(tab.types)) {
                             html += `
-                <div class="mb-4">
-                  ${tab.types.map(type => `
-                    <div class="mb-3">
-                      <h5 class="fw-semibold">${type.heading}</h5>
-                      <p>${type.description}</p>
-                      <p class="text-muted"><em>${type.example}</em></p>
-                    </div>
-                  `).join("")}
-                </div>
-              `;
+                                <div class="mb-4">
+                                  ${tab.types.map(type => `
+                                    <div class="mb-3">
+                                      <h5 class="fw-semibold">${type.heading}</h5>
+                                      <p>${type.description}</p>
+                                      <p class="text-muted"><em>${type.example}</em></p>
+                                    </div>
+                                  `).join("")}
+                                </div>
+                            `;
                         }
 
                         // Identity Documents
@@ -173,54 +173,36 @@ function Servicedetails() {
 
                             matched.faqs.forEach((faq, index) => {
                                 if (!faq.startsWith("→")) {
-                                    // it's a question
                                     currentQuestion = faq;
                                 } else if (currentQuestion) {
-                                    // it's the answer
                                     const id = `faq-${index}`;
                                     html += `
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="heading${id}">
-              <button class="accordion-button collapsed" 
-                      type="button" 
-                      data-bs-toggle="collapse" 
-                      data-bs-target="#collapse${id}" 
-                      aria-expanded="false" 
-                      aria-controls="collapse${id}">
-                ${currentQuestion}
-              </button>
-            </h2>
-            <div id="collapse${id}" 
-                 class="accordion-collapse collapse" 
-                 aria-labelledby="heading${id}" 
-                 data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                <i class="fa fa-arrow-right me-2" aria-hidden="true"></i>${faq.replace("→", "").trim()}
-              </div>
-            </div>
-          </div>
-        `;
-                                    currentQuestion = null; // reset for next question
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="heading${id}">
+                                                <button class="accordion-button collapsed" 
+                                                        type="button" 
+                                                        data-bs-toggle="collapse" 
+                                                        data-bs-target="#collapse${id}" 
+                                                        aria-expanded="false" 
+                                                        aria-controls="collapse${id}">
+                                                    ${currentQuestion}
+                                                </button>
+                                            </h2>
+                                            <div id="collapse${id}" 
+                                                 class="accordion-collapse collapse" 
+                                                 aria-labelledby="heading${id}" 
+                                                 data-bs-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    <i class="fa fa-arrow-right me-2" aria-hidden="true"></i>${faq.replace("→", "").trim()}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                    currentQuestion = null;
                                 }
                             });
 
                             faqSection.innerHTML = html;
-                        }
-                    }
-
-                    // ---------- Scroll to hash if present ----------
-                    if (location.hash) {
-                        const id = location.hash.replace("#", "");
-                        const el = document.getElementById(id);
-                        if (el) {
-                            const navHeight = document.querySelector(".navbar")?.offsetHeight || 0;
-                            const tabHeight = document.querySelector(".tab-wrapper")?.offsetHeight || 0;
-                            const offset = navHeight + tabHeight + 20; // adjust if needed
-
-                            window.scrollTo({
-                                top: el.offsetTop - offset,
-                                behavior: "smooth"
-                            });
                         }
                     }
 
@@ -231,7 +213,7 @@ function Servicedetails() {
         }
 
         // ---------- Sticky Form + Tabs + Scroll Spy ----------
-        const form = document.querySelector(".sticky-form");
+        const formEl = document.querySelector(".sticky-form");
         const section = document.getElementById("tab-content-section");
         const tabs = document.querySelector(".tab-wrapper");
         const pills = document.querySelectorAll(".nav-pills .nav-link");
@@ -239,47 +221,45 @@ function Servicedetails() {
         let lastFormState = "";
 
         const handleScroll = () => {
-            if (!form || !section) return;
+            if (!formEl || !section) return;
 
             const sectionTop = section.offsetTop;
             const sectionBottom = sectionTop + section.offsetHeight;
             const scrollY = window.scrollY;
-            const formHeight = form.offsetHeight;
+            const formHeight = formEl.offsetHeight;
             const fixedTop = 190;
             const scrollBottom = scrollY + formHeight + fixedTop;
 
-            // ---------- Sticky Form Logic ----------
+            // Sticky Form Logic
             if (scrollY + fixedTop >= sectionTop && scrollBottom + buffer < sectionBottom) {
                 if (lastFormState !== "fixed") {
-                    form.classList.add("fixed-form");
-                    form.classList.remove("at-bottom");
+                    formEl.classList.add("fixed-form");
+                    formEl.classList.remove("at-bottom");
                     lastFormState = "fixed";
                 }
             } else if (scrollBottom + buffer >= sectionBottom) {
                 if (lastFormState !== "bottom") {
-                    form.classList.remove("fixed-form");
-                    form.classList.add("at-bottom");
+                    formEl.classList.remove("fixed-form");
+                    formEl.classList.add("at-bottom");
                     lastFormState = "bottom";
                 }
             } else {
                 if (lastFormState !== "static") {
-                    form.classList.remove("fixed-form", "at-bottom");
+                    formEl.classList.remove("fixed-form", "at-bottom");
                     lastFormState = "static";
                 }
             }
 
-            // ---------- Tabs Fixed + Show/Hide Logic ----------
+            // Tabs Fixed + Show/Hide Logic
             if (scrollY + fixedTop >= sectionTop && scrollBottom + buffer < sectionBottom) {
-                // section ke beech → visible + fixed
                 tabs?.classList.add("fixed-tabs");
                 tabs?.classList.remove("d-none");
             } else if (scrollBottom + buffer >= sectionBottom || scrollY + fixedTop < sectionTop) {
-                // section ke bahar → hide completely
                 tabs?.classList.remove("fixed-tabs");
                 tabs?.classList.add("d-none");
             }
 
-            // ---------- Scroll Spy ----------
+            // Scroll Spy
             if (!tabs?.classList.contains("d-none")) {
                 const offsetMargin = 220;
                 pills.forEach(pill => {
@@ -298,36 +278,53 @@ function Servicedetails() {
             }
         };
 
-        pills.forEach(pill => {
-            pill.addEventListener("click", function (e) {
-                e.preventDefault();
-                const id = this.getAttribute("href")?.replace("#", "") || this.getAttribute("data-bs-target")?.replace("#", "");
-                const target = document.getElementById(id);
-                if (!target) return;
-
-                const navHeight = document.querySelector(".navbar")?.offsetHeight || 0;
-                const tabHeight = tabs?.offsetHeight || 0;
-                const offset = navHeight + tabHeight + 20;
-
-                window.scrollTo({
-                    top: target.offsetTop - offset,
-                    behavior: "smooth"
-                });
-
-                pills.forEach(p => p.classList.remove("active"));
-                this.classList.add("active");
-            });
-        });
-
         window.addEventListener("scroll", handleScroll);
         handleScroll();
 
+        // Tab Link Click Scroll (smooth)
+        const handleTabClick = (e) => {
+            e.preventDefault();
+            const id = e.currentTarget.getAttribute("href")?.replace("#", "");
+            const target = document.getElementById(id);
+            if (!target) return;
+
+            const navHeight = document.querySelector(".navbar")?.offsetHeight || 0;
+            const tabHeight = tabs?.offsetHeight || 0;
+            const offset = navHeight + tabHeight + 20;
+
+            window.scrollTo({
+                top: target.offsetTop - offset,
+                behavior: "smooth"
+            });
+
+            pills.forEach(p => p.classList.remove("active"));
+            e.currentTarget.classList.add("active");
+        };
+
+        pills.forEach(pill => pill.addEventListener("click", handleTabClick));
+
+        // Initial scroll on hash
+        if (location.hash) {
+            const id = location.hash.replace("#", "");
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const navHeight = document.querySelector(".navbar")?.offsetHeight || 0;
+                    const tabHeight = tabs?.offsetHeight || 0;
+                    const offset = navHeight + tabHeight + 20;
+                    window.scrollTo({
+                        top: el.offsetTop - offset,
+                        behavior: "smooth"
+                    });
+                }
+            }, 200);
+        }
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            pills.forEach(pill => pill.removeEventListener("click", handleTabClick));
         };
-    }, [location.pathname, location.search]);
-
-    // ====================== Handlers ======================
+    }, [location.pathname, location.search, serviceSlug]);
 
     // Scroll tabs
     const scrollTabs = (offset) => {
@@ -393,7 +390,7 @@ function Servicedetails() {
         };
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/submit/expert`, {
+            const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
@@ -412,19 +409,7 @@ function Servicedetails() {
         }
     };
 
-    // Scroll helpers
-    const scrollToFooter = (e) => {
-        e.preventDefault();
-        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
-    };
-
-    const scrollToId = (id) => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-    };
-
-    // ====================== JSX ======================
-    return (
+     return (
         <>
 
             {/* Hero Section */}
