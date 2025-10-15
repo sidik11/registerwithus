@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Blogdetails.css';
+import { API_BASE_URL } from '../../utils/api'; // ✅ Add this
 
 function Blogdetails() {
     const { id } = useParams();
@@ -12,7 +13,7 @@ function Blogdetails() {
     const [recentPosts, setRecentPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/blogs')
+        fetch(`${API_BASE_URL}/api/blogs`) // ✅ use API_BASE_URL
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -63,7 +64,7 @@ function Blogdetails() {
                     {/* Left Side */}
                     <div className="col-lg-8">
                         <img
-                            src={`http://localhost:3001${blog.image}`}
+                            src={`${API_BASE_URL}${blog.image}`} // ✅ use API_BASE_URL
                             className="img-fluid blog-img mb-4"
                             alt={blog.title}
                         />
@@ -81,7 +82,7 @@ function Blogdetails() {
                             relatedPosts.map((post) => (
                                 <div className="related-post d-flex mb-3" key={post.id}>
                                     <img
-                                        src={`http://localhost:3001${post.image}`}
+                                        src={`${API_BASE_URL}${post.image}`} // ✅ use API_BASE_URL
                                         className="me-3 rounded"
                                         alt={post.title}
                                         style={{ width: '80px', height: '80px', objectFit: 'cover' }}
@@ -110,7 +111,7 @@ function Blogdetails() {
                             recentPosts.map((post) => (
                                 <div className="related-post d-flex mb-3" key={post.id}>
                                     <img
-                                        src={`http://localhost:3001${post.image}`}
+                                        src={`${API_BASE_URL}${post.image}`} // ✅ use API_BASE_URL
                                         className="me-3 rounded"
                                         alt={post.title}
                                         style={{ width: '80px', height: '80px', objectFit: 'cover' }}
