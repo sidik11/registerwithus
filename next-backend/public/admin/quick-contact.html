@@ -321,7 +321,7 @@
     // Load Data with pagination
     async function loadData() {
         try {
-            const res = await fetch(`${API_BASE_URL}api/submit`);
+            const res = await fetch(`${API_BASE_URL}/api/submit`);
             const data = await res.json();
             tableData = data;
             filteredData = [...tableData]; // Initially show all data

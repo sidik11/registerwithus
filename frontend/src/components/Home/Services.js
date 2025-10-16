@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Services.css';
 
 function Services() {
+  const [modalTitle, setModalTitle] = useState("");
+
+  const services = [
+    "Share Transfers",
+    "Share Transmission",
+    "Share Allotments",
+    "Equity / Debt Raising",
+    "Annual Fillings",
+  ];
   const scrollToFooter = (e) => {
     e.preventDefault();
     document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
@@ -35,8 +44,8 @@ function Services() {
                 <li className="list-item" ><a href="/sole-proprietorship-registration-online" className='text-decoration-none text-black' >Solo Proprietorship</a> <i className="fas fa-chevron-right"></i></li>
                 <li className="list-item" ><a href="/partnership-firm-registration-online" className='text-decoration-none text-black' >Partnership</a> <i className="fas fa-chevron-right"></i></li>
                 <li className="list-item extra" ><a href="/llp-registration-services-online" className='text-decoration-none text-black' >LLP Registration</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" ><a href="/Foreign Company" className='text-decoration-none text-black' >Foreign Company</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" ><a href="/NGO / Section 8 Company" className='text-decoration-none text-black' >NGO / Section 8 Company</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra" ><a href="/private-limited-company-registration-online" className='text-decoration-none text-black' >Private Limited Company</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra" ><a href="public-limited-company-registration-online" className='text-decoration-none text-black' >Public Limited Company</a> <i className="fas fa-chevron-right"></i></li>
               </ul>
             </div>
           </div>
@@ -49,11 +58,11 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Trade Licenses</h5>
               <ul className="animated-list">
-                <li className="list-item"><a href="/pan-card-registration-online" className='text-decoration-none text-black' >PAN</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item"><a href="/apply-gst-registration-online" className='text-decoration-none text-black' >GST</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/business-pan-card-registration-india" className='text-decoration-none text-black' >PAN</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item"><a href="/gst-registration-india" className='text-decoration-none text-black' >GST</a> <i className="fas fa-chevron-right"></i></li>
                 <li className="list-item extra"><a href="/import-export-code-registration-online" className='text-decoration-none text-black' >IEC</a> <i className="fas fa-chevron-right"></i></li>
                 <li className="list-item extra"><a href="/udyam-msme-registration-online" className='text-decoration-none text-black' >MSME</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/apeda-registration-online" className='text-decoration-none text-black' >APEDA Registration</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item extra"><a href="/apeda-registration-india" className='text-decoration-none text-black' >APEDA Registration</a> <i className="fas fa-chevron-right"></i></li>
               </ul>
             </div>
           </div>
@@ -66,11 +75,87 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Company Compliances</h5>
               <ul className="animated-list">
-                <li className="list-item"><a href="/share-transfers-online-registration" className='text-decoration-none text-black' >Share Transfers</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item"><a href="/share-transmission-online-registration" className='text-decoration-none text-black' >Share Transmission</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/share-allotments-online-registration" className='text-decoration-none text-black' >Share Allotments</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="equity-debt-raising-online-registration" className='text-decoration-none text-black' >Equity / Debt. Raising</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/annual-fillings-online-registration" className='text-decoration-none text-black' >Annual Fillings</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">
+  <a
+    href="#"
+    className="text-decoration-none text-black"
+    data-bs-toggle="modal"
+    data-bs-target="#serviceModal"
+    onClick={(e) => {
+      e.preventDefault();
+      setModalTitle("Share Transfers"); // ✅ fixed
+    }}
+  >
+    Share Transfers
+  </a>
+  <i className="fas fa-chevron-right"></i>
+</li>
+
+<li className="list-item">
+  <a
+    href="#"
+    className="text-decoration-none text-black"
+    data-bs-toggle="modal"
+    data-bs-target="#serviceModal"
+    onClick={(e) => {
+      e.preventDefault();
+      setModalTitle("Share Transmission"); // ✅ fixed
+    }}
+  >
+    Share Transmission
+  </a>
+  <i className="fas fa-chevron-right"></i>
+</li>
+
+<li className="list-item extra">
+  <a
+    href="#"
+    className="text-decoration-none text-black"
+    data-bs-toggle="modal"
+    data-bs-target="#serviceModal"
+    onClick={(e) => {
+      e.preventDefault();
+      setModalTitle("Share Allotments"); // ✅ fixed
+    }}
+  >
+    Share Allotments
+  </a>
+  <i className="fas fa-chevron-right"></i>
+</li>
+
+<li className="list-item extra">
+  <a
+    href="#"
+    className="text-decoration-none text-black"
+    data-bs-toggle="modal"
+    data-bs-target="#serviceModal"
+    onClick={(e) => {
+      e.preventDefault();
+      setModalTitle("Equity / Debt Raising"); // ✅ fixed
+    }}
+  >
+    Equity / Debt Raising
+  </a>
+  <i className="fas fa-chevron-right"></i>
+</li>
+
+<li className="list-item extra">
+  <a
+    href="#"
+    className="text-decoration-none text-black"
+    data-bs-toggle="modal"
+    data-bs-target="#serviceModal"
+    onClick={(e) => {
+      e.preventDefault();
+      setModalTitle("Annual Fillings"); // ✅ fixed
+    }}
+  >
+    Annual Fillings
+  </a>
+  <i className="fas fa-chevron-right"></i>
+</li>
+
+
               </ul>
             </div>
           </div>
