@@ -97,7 +97,7 @@ function Bloghead() {
                             </p>
                             <a
                                 href="tel:+919643981247"
-                                className="btn cta-btn-glass border text-dark"
+                                className="btn cta-btn-glass border text-white"
                             >
                                 <i className="fa-solid fa-phone me-2"></i>
                                 Call Now
