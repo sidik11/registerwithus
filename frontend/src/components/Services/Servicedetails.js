@@ -382,11 +382,22 @@ function Servicedetails() {
         e.preventDefault();
         const expertForm = e.target;
 
+        // ---------- Generate message from URL slug ----------
+        const rawSlug = serviceSlug || window.location.pathname.split("/").pop() || "";
+        const messageFromSlug = rawSlug
+            .split("-")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+
+        // ✅ Alert the message before sending
+        // alert("Message to send: " + messageFromSlug);
+
         const formData = {
-            user_name: expertForm.expert_name?.value,
-            user_phone: expertForm.expert_phone?.value,
-            user_email: expertForm.expert_email?.value,
-            form_type: "Talk To Expert"
+            user_name: expertForm.expert_name?.value.trim(),
+            user_phone: expertForm.expert_phone?.value.trim(),
+            user_email: expertForm.expert_email?.value.trim(),
+            form_type: "Expert",
+            message: messageFromSlug // dynamically generated
         };
 
         try {
@@ -401,7 +412,7 @@ function Servicedetails() {
                 Swal.fire("✅ Success", "Expert form submitted successfully!", "success");
                 expertForm.reset();
             } else {
-                Swal.fire("❌ Failed", "Server responded with failure", "error");
+                Swal.fire("❌ Failed", result.message || "Server responded with failure", "error");
             }
         } catch (error) {
             console.error("❌ Error caught in catch block:", error);
@@ -409,7 +420,7 @@ function Servicedetails() {
         }
     };
 
-     return (
+    return (
         <>
 
             {/* Hero Section */}

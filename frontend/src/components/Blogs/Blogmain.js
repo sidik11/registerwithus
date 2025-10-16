@@ -23,7 +23,7 @@ function Blogmain() {
             .catch(err => console.error("Blogs API error:", err));
 
         // ✅ Fetch categories
-        fetch(`${API_BASE_URL}/api/categories`)
+        fetch(`${API_BASE_URL}/api/blogs`)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {

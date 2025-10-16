@@ -44,53 +44,47 @@
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
                 <a class="sidebar-brand" href="index.html">
-                    <span class="align-middle">AdminKit</span>
+                    <span class="align-middle">Register With US</span>
                 </a>
-
                 <ul class="sidebar-nav">
-                    <li class="sidebar-header"></li>
-
+                    <li class="sidebar-header">
+                    </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
                             <i class="align-middle" data-feather="sliders"></i> <span
                                 class="align-middle">Dashboard</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item active">
                         <a class="sidebar-link" href="admin-data.html">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Admin
                                 Data</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="blogs-category.html">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
                                 Category</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="blogs-data.html">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
                                 Data</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="quick-contact.html">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Contact
                                 Forms</span>
                         </a>
                     </li>
-
-                    <li class="sidebar-item">
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="expert-requests.html">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Expert
                                 Requests</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -243,51 +237,51 @@
         });
 
         async function loadAdminData() {
-    try {
-        // ✅ Fetch current logged-in admin
-        const authRes = await fetch('/api/admin/check-auth');
-        const authData = await authRes.json();
-        const isSuperAdmin = authData.superadmin === 1;
+            try {
+                // ✅ Fetch current logged-in admin
+                const authRes = await fetch('/api/admin/check-auth');
+                const authData = await authRes.json();
+                const isSuperAdmin = authData.superadmin === 1;
 
-        const res = await fetch("/api/admin/admindata");
-        const data = await res.json();
-        const tbody = document.getElementById("adminTableBody");
-        const thead = document.getElementById("adminTableHead");
+                const res = await fetch("/api/admin/admindata");
+                const data = await res.json();
+                const tbody = document.getElementById("adminTableBody");
+                const thead = document.getElementById("adminTableHead");
 
-        if (!tbody || !thead) return;
+                if (!tbody || !thead) return;
 
-        tbody.innerHTML = "";
-        thead.innerHTML = "";
+                tbody.innerHTML = "";
+                thead.innerHTML = "";
 
-        // Table headers
-        let headers = `<tr>
+                // Table headers
+                let headers = `<tr>
             <th>#</th>
             <th>Email</th>
             <th>Created At</th>
             <th>Status</th>`;
-        if (isSuperAdmin) headers += `<th>Section</th>`; // only superadmin sees this
-        headers += isSuperAdmin ? `<th>Actions</th></tr>` : `</tr>`;
-        thead.innerHTML = headers;
+                if (isSuperAdmin) headers += `<th>Section</th>`; // only superadmin sees this
+                headers += isSuperAdmin ? `<th>Actions</th></tr>` : `</tr>`;
+                thead.innerHTML = headers;
 
-        if (!Array.isArray(data) || data.length === 0) {
-            const colspan = isSuperAdmin ? 6 : 4;
-            tbody.innerHTML = `<tr><td colspan="${colspan}" class="text-center">No admin records found</td></tr>`;
-            return;
-        }
+                if (!Array.isArray(data) || data.length === 0) {
+                    const colspan = isSuperAdmin ? 6 : 4;
+                    tbody.innerHTML = `<tr><td colspan="${colspan}" class="text-center">No admin records found</td></tr>`;
+                    return;
+                }
 
-        data.forEach((admin, index) => {
-            const isActive = admin.status === 1 ? 'Active' : 'Deactivated';
-            const statusBtnClass = admin.status === 1 ? 'btn-success' : 'btn-secondary';
+                data.forEach((admin, index) => {
+                    const isActive = admin.status === 1 ? 'Active' : 'Deactivated';
+                    const statusBtnClass = admin.status === 1 ? 'btn-success' : 'btn-secondary';
 
-            let trHTML = `
+                    let trHTML = `
                 <td>${index + 1}</td>
                 <td>${admin.email}</td>
                 <td>${new Date(admin.created_at).toLocaleString()}</td>
                 <td><span class="badge bg-${admin.status === 1 ? 'success' : 'danger'}">${isActive}</span></td>`;
 
-            if (isSuperAdmin) {
-                trHTML += `<td>${admin.superadmin === 1 ? 'Super Admin' : ''}</td>`;
-                trHTML += `
+                    if (isSuperAdmin) {
+                        trHTML += `<td>${admin.superadmin === 1 ? 'Super Admin' : ''}</td>`;
+                        trHTML += `
                     <td>
                         <button class="btn btn-sm btn-warning me-1" onclick="updateAdmin(${admin.id}, '${admin.email}', '${admin.password}')">
                             <i class="bi bi-pencil-square"></i>
@@ -299,19 +293,19 @@
                             ${admin.status === 1 ? 'Deactivate' : 'Activate'}
                         </button>
                     </td>`;
+                    }
+
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = trHTML;
+                    tbody.appendChild(tr);
+                });
+
+            } catch (error) {
+                Swal.fire('Error', 'Failed to load admin data', 'error');
+                document.getElementById("adminTableBody").innerHTML =
+                    `<tr><td colspan="6" class="text-danger text-center">Failed to load admin data</td></tr>`;
             }
-
-            const tr = document.createElement("tr");
-            tr.innerHTML = trHTML;
-            tbody.appendChild(tr);
-        });
-
-    } catch (error) {
-        Swal.fire('Error', 'Failed to load admin data', 'error');
-        document.getElementById("adminTableBody").innerHTML =
-            `<tr><td colspan="6" class="text-danger text-center">Failed to load admin data</td></tr>`;
-    }
-}
+        }
 
 
         document.addEventListener("DOMContentLoaded", loadAdminData);
@@ -356,34 +350,34 @@
         });
 
         async function deleteAdmin(id) {
-    const { isConfirmed } = await Swal.fire({
-        title: 'Are you sure?',
-        text: "This admin will be hidden from UI (soft delete)!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, hide it!'
-    });
+            const { isConfirmed } = await Swal.fire({
+                title: 'Are you sure?',
+                text: "This admin will be hidden from UI (soft delete)!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, hide it!'
+            });
 
-    if (!isConfirmed) return;
+            if (!isConfirmed) return;
 
-    try {
-        const res = await fetch("/api/admin/admindata", {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id, softDelete: true }) // ✅ Soft delete flag
-        });
+            try {
+                const res = await fetch("/api/admin/admindata", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id, softDelete: true }) // ✅ Soft delete flag
+                });
 
-        const data = await res.json();
-        if (res.ok && data.success) {
-            Swal.fire('Hidden!', 'Admin hidden from panel', 'success');
-            loadAdminData(); // refresh table
-        } else {
-            Swal.fire('Error', 'Failed to hide admin: ' + data.message, 'error');
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    Swal.fire('Hidden!', 'Admin hidden from panel', 'success');
+                    loadAdminData(); // refresh table
+                } else {
+                    Swal.fire('Error', 'Failed to hide admin: ' + data.message, 'error');
+                }
+            } catch (err) {
+                Swal.fire('Error', 'Error hiding admin', 'error');
+            }
         }
-    } catch (err) {
-        Swal.fire('Error', 'Error hiding admin', 'error');
-    }
-}
 
         async function toggleStatus(id, currentStatus) {
             const newStatus = currentStatus === 1 ? 0 : 1;

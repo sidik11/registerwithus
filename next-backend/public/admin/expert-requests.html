@@ -308,7 +308,7 @@
 		async function loadExpertData() {
 
 			try {
-				const res = await fetch("/api/submit/expert");
+				const res = await fetch(`${API_BASE_URL}/api/submit`);
 
 				const data = await res.json();
 
