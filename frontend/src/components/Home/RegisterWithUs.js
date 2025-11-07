@@ -10,7 +10,7 @@ function RegisterWithUs() {
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6 d-flex justify-content-center mb-5 mb-lg-0">
-                        <img src="img/Apps (1).png" alt="" className="img-fluid left-img" />
+                        <img src="img/app-1x.png" alt="service" className="img-fluid left-img" />
                     </div>
 
                     <div className="col-lg-6 text-lg-start text-center">

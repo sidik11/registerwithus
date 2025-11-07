@@ -187,7 +187,7 @@ function ChatWidget() {
                   <i className="fa-solid fa-r"></i>
                 </div> */}
                 {/* <h5 className="fw-bold mb-0">Register With Us</h5> */}
-                <img className="foot-logo" src="img/whitelogo.png" alt=""></img>
+                <img className="foot-logo" src="img/Register-With-Us-03.png" alt=""></img>
               </div>
               <p className="small mb-1">Register with us was created for<br /> the new ways we live and work.</p>
               <p className="small">We make a better register with<br /> us around the world</p>

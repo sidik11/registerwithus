@@ -159,7 +159,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg py-3 fixed-top">
         <div className="container">
           <Link className="navbar-brand d-flex align-items-center" to="/">
-            <img src="img/mainlogo.png" alt="Logo" className="main-lg me-2 bg-white" />
+            <img src="img/Register-With-Us-01.png" alt="Logo" className="main-lg me-2 bg-white" />
           </Link>
 
           <button
