@@ -573,12 +573,11 @@ function Servicedetails() {
                                         serviceSlug?.toLowerCase().trim()
                                     )
                                     ?.tabs?.map((tab, index) => (
-                                        <div id={tab.id} className="mb-5" key={index}>
+                                        <div id={tab.id}  style={{ paddingTop: '5rem' }} key={index}>
                                             {/* tab content will be injected here dynamically */}
                                         </div>
                                     ))}
                             </div>
-
                         </div>
 
                         {/* Sticky Form Right */}
