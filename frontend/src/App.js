@@ -13,6 +13,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import RefundPage from './pages/RefundPage';
 import TermConditionsPage from './pages/TermConditionsPage';
 import ScrollToTop from './components/ScrollToTop';
+import Error404 from './pages//Error404Page';
 import GoToTop from './components/GoToTop/GoToTop'; // ✅ Import your new GoToTop component
 import './App.css';
 
@@ -33,6 +34,8 @@ function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/refund" element={<RefundPage />} />
         <Route path="/termconditions" element={<TermConditionsPage />} />
+        <Route path="/Error404" element={<Error404 />} />
+
       </Routes>
 
       {/* ✅ Add GoToTop button so it appears on every page */}
