@@ -1,28 +1,8 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-// import './Bloghead.css';
-
 function PrivacyHead() {
     return (
-        // <section class="theme-bg-color py-5">
-        //     <div class="container text-center">
-        //         <h2 class="text-white fw-bold m-0">Our Blogs</h2>
-        //     </div>
-        // </section>
-        // <section className="about-section">
-        //     <div className="about-overlay"></div>
-        //     <div className="about-content px-3">
-        //         <h1 className="fw-bold mb-3">Blogs</h1>
-        //         <p className="fs-5">
-        //             Here are some blogs related to our company and all details including blog details.
-        //         </p>
-        //         <a href="#" className="btn cta-btn-glass">
-        //             <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i> 
-        //         </a>
-        //     </div>
-        // </section>
         <section className="about-section mt-5">
             <div className="about-overlay">
                 <div className="container h-100">
@@ -37,7 +17,6 @@ function PrivacyHead() {
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>
-
                         {/* Right Side Form */}
                         <div className="col-lg-5">
                             <div className="styled-form-containers">
@@ -60,5 +39,4 @@ function PrivacyHead() {
         </section>
     );
 }
-
 export default PrivacyHead;

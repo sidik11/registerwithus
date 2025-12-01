@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Title({ collegeName, rollNumber, schoolName, rollNo }) {
     return (
         <div>
@@ -10,5 +8,4 @@ function Title({ collegeName, rollNumber, schoolName, rollNo }) {
         </div>
     )
 }
-
 export default Title

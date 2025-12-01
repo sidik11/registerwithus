@@ -1,10 +1,7 @@
-// src/components/GoToTop/GoToTop.js
 import React, { useState, useEffect } from 'react';
 import './GoToTop.css';
-
 const GoToTop = () => {
   const [visible, setVisible] = useState(false);
-
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) setVisible(true);
@@ -13,11 +10,9 @@ const GoToTop = () => {
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
   return (
     visible && (
       <button className="go-to-top-btn" onClick={scrollToTop}>
@@ -26,5 +21,4 @@ const GoToTop = () => {
     )
   );
 };
-
 export default GoToTop;

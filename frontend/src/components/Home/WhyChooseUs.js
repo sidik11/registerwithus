@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './WhyChooseUs.css';
-
 function WhyChooseUs() {
     return (
         <section class="whychooseus-section" >
@@ -24,7 +23,6 @@ function WhyChooseUs() {
                                 transparency.</p>
                         </div>
                     </div>
-
                     {/* Feature 2 */}
                     <div className="col-md-3">
                         <div className="feature-card text-center p-4">
@@ -34,7 +32,6 @@ function WhyChooseUs() {
                                 friction.</p>
                         </div>
                     </div>
-
                     {/* Feature 3 */}
                     <div className="col-md-3">
                         <div className="feature-card text-center p-4">
@@ -44,7 +41,6 @@ function WhyChooseUs() {
                                 in India, we tailor solutions to fit your sector, scale, and strategic vision.</p>
                         </div>
                     </div>
-
                     {/* Feature 4 */}
                     <div className="col-md-3">
                         <div className="feature-card text-center p-4">
@@ -57,8 +53,6 @@ function WhyChooseUs() {
                 </div>
             </div>
         </section>
-
     );
 }
-
 export default WhyChooseUs;

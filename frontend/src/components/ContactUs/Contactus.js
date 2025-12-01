@@ -4,7 +4,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Contactus.css";
 import { API_BASE_URL } from "../../utils/api"; // ✅ use dynamic base URL
-
 function Contactus() {
   const [formData, setFormData] = useState({
     user_name: "",
@@ -12,31 +11,24 @@ function Contactus() {
     user_phone: "",
     message: "",
   });
-
   const [responseMsg, setResponseMsg] = useState("");
-
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.id]: e.target.value,
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setResponseMsg("Sending...");
-
     try {
       const payload = { ...formData, form_type: "ContactUs" };
-
       const res = await fetch(`${API_BASE_URL}/api/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-
       const result = await res.json();
-
       if (res.ok && result.success) {
         setResponseMsg("Message sent successfully ✅");
         setFormData({
@@ -53,7 +45,6 @@ function Contactus() {
       setResponseMsg("Something went wrong ❌");
     }
   };
-
   return (
     <section>
       <div className="container py-5">
@@ -64,7 +55,6 @@ function Contactus() {
             possible.
           </p>
         </div>
-
         <div className="mb-5">
           <div className="row g-4 d-flex align-items-center justify-content-center">
             <div className="col-lg-6 col-md-6 form-section border">
@@ -90,7 +80,6 @@ function Contactus() {
                     required
                   />
                 </div>
-
                 <div className="row">
                   <div className="col-6">
                     <div className="mb-3">
@@ -128,7 +117,6 @@ function Contactus() {
                     </div>
                   </div>
                 </div>
-
                 <div className="mb-3">
                   <label htmlFor="message" className="form-label">
                     Your Message
@@ -143,7 +131,6 @@ function Contactus() {
                     required
                   ></textarea>
                 </div>
-
                 <button type="submit" className="btn btn-primary w-100">
                   Send Message
                 </button>
@@ -152,7 +139,6 @@ function Contactus() {
                 )}
               </form>
             </div>
-
             <div className="col-lg-6 col-md-6 map-wrapper">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6823.8387529554575!2d77.0721488423675!3d28.45433598584143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19e4978a13e3%3A0xb150cb3ee50752ef!2sBlock%20C%2C%20Sushant%20lok%2C%20Phase%201!5e1!3m2!1sen!2sin!4v1758010904098!5m2!1sen!2sin"
@@ -167,7 +153,6 @@ function Contactus() {
             </div>
           </div>
         </div>
-
         <div className="text-center py-4">
           <div className="row justify-content-center g-4">
             <div className="col-12 col-md-4 d-flex flex-column align-items-center">
@@ -201,5 +186,4 @@ function Contactus() {
     </section>
   );
 }
-
 export default Contactus;

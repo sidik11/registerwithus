@@ -3,15 +3,10 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './TermConditionsPolicy.css';
-
 function TermConditionsPolicy() {
   return (
     <section className="privacy-policy py-5">
       <div className="container">
-        {/* <h2 className="text-center mb-5">
-          <i className="icon-color fas fa-user-shield me-2"></i>Privacy Policy
-        </h2> */}
-
         <div className="section mb-5 border-bottom pb-4">
           <h3>1. INTRODUCTION AND ACKNOWLEDGMENT</h3>
           <ul className='list-unstyled'>
@@ -134,5 +129,4 @@ function TermConditionsPolicy() {
     </section>
   );
 }
-
 export default TermConditionsPolicy;

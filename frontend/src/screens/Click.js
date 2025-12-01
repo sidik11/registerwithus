@@ -1,9 +1,6 @@
-import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// Optional if you use modals, dropdowns, tooltips, etc.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
 function Click() {
     return (
         <div className="container mt-4">
@@ -15,5 +12,4 @@ function Click() {
         </div>
     )
 }
-
 export default Click

@@ -2,43 +2,34 @@
 import React, { useEffect, useRef } from 'react';
 import { API_BASE_URL } from '../../utils/api';
 import { useLocation, useParams } from 'react-router-dom';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
 import Swal from 'sweetalert2';
 import './Servicedetails.css';
 import tabData from './services.json';
 import { Collapse } from 'bootstrap';
-
 // ========================== Component ==========================
 function Servicedetails() {
     const location = useLocation();
     const { serviceSlug } = useParams();
     const form = useRef();
-
     // ====================== useEffect (Dynamic Content + Scroll) ======================
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const serviceName = params.get("name") || serviceSlug; // fallback
-
         const startupSection = document.querySelector(".startup-info-section");
         if (window.location.pathname === "/startup-india-registration-online") {
             if (startupSection) startupSection.style.display = "block";
         } else {
             if (startupSection) startupSection.style.display = "none";
         }
-
         if (serviceName) {
             const matched = tabData.find(
                 item => item.service.toLowerCase().trim() === serviceName.toLowerCase().trim()
             );
-
             if (matched) {
-
                 if (matched.metaTitle) document.title = matched.metaTitle;
-
                 const setMeta = (name, content) => {
                     let element = document.querySelector(`meta[name="${name}"]`);
                     if (!element) {
@@ -48,17 +39,14 @@ function Servicedetails() {
                     }
                     element.content = content;
                 };
-
                 if (matched.metaDescription) setMeta("description", matched.metaDescription);
                 if (matched.metaKeywords) setMeta("keywords", matched.metaKeywords);
-
                 // ---------- Hero Section Injection ----------
                 const heroHeading = document.querySelector(".hero-gradient-bg h1");
                 const heroSubtext = document.querySelector(".hero-gradient-bg p.mb-3");
                 const heroList = document.querySelector(".hero-gradient-bg ul");
                 const trustLogo = document.querySelector(".hero-gradient-bg img");
                 const trustText = document.querySelector(".hero-gradient-bg .d-flex p");
-
                 if (heroHeading) heroHeading.innerText = matched?.tabs?.[0]?.title || matched.service || "Business Service";
                 if (heroSubtext) heroSubtext.innerText = matched?.intro || matched?.tabs?.[0]?.intro || "Start your journey with our professional services.";
                 if (heroList && Array.isArray(matched.tabs)) {
@@ -71,15 +59,12 @@ function Servicedetails() {
                 }
                 if (trustLogo) trustLogo.src = "https://cdn.trustpilot.net/brand-assets/4.4.0/logo-white.svg";
                 if (trustText) trustText.innerText = "4.1 out of 5 based on 1,886 reviews";
-
                 // ---------- Inject Tab Content ----------
                 setTimeout(() => {
                     matched.tabs.forEach(tab => {
                         const container = document.getElementById(tab.id);
                         if (!container) return;
-
                         let html = "";
-
                         // Title
                         if (tab.title) html += `<h4>${tab.title}</h4>`;
                         // Intro
@@ -97,7 +82,6 @@ function Servicedetails() {
                                 }
                             }).join("");
                         }
-
                         // Helper for list rendering
                         const renderList = items => items.map(item => {
                             if (item.includes(":")) {
@@ -106,7 +90,6 @@ function Servicedetails() {
                             }
                             return `<li>${item}</li>`;
                         }).join("");
-
                         // Points with subpoints
                         if (Array.isArray(tab.points)) {
                             html += tab.points.map(point => `
@@ -117,7 +100,6 @@ function Servicedetails() {
                                 </div>
                             `).join("");
                         }
-
                         // Types
                         if (Array.isArray(tab.types)) {
                             html += `
@@ -132,45 +114,36 @@ function Servicedetails() {
                                 </div>
                             `;
                         }
-
                         // Identity Documents
                         if (Array.isArray(tab.identityDocuments)) {
                             html += `<h5 class="mt-3">Identity Documents</h5><ul>${renderList(tab.identityDocuments)}</ul>`;
                         }
-
                         // Address Proof
                         if (Array.isArray(tab.addressProof)) {
                             html += `<h5 class="mt-3">Address Proof</h5><ul>${renderList(tab.addressProof)}</ul>`;
                         }
-
                         // Charges
                         if (Array.isArray(tab.charges)) {
                             html += `<h5 class="mt-3">Charges</h5><ul>${renderList(tab.charges)}</ul>`;
                         }
-
                         // Steps
                         if (Array.isArray(tab.steps)) {
                             html += `<h5 class="mt-3">Steps</h5><ol>${tab.steps.map(step => `<li>${step}</li>`).join("")}</ol>`;
                         }
-
                         // Note
                         if (tab.note) html += `<p class="fst-italic">${tab.note}</p>`;
-
                         // Details
                         if (Array.isArray(tab.details)) {
                             html += tab.details.map(d => `<p>${d}</p>`).join("");
                         }
-
                         container.innerHTML = html;
                     });
-
                     // ---------- FAQs ----------
                     if (matched?.faqs) {
                         const faqSection = document.querySelector("#faqAccordion");
                         if (faqSection) {
                             let html = "";
                             let currentQuestion = null;
-
                             matched.faqs.forEach((faq, index) => {
                                 if (!faq.startsWith("→")) {
                                     currentQuestion = faq;
@@ -201,17 +174,14 @@ function Servicedetails() {
                                     currentQuestion = null;
                                 }
                             });
-
                             faqSection.innerHTML = html;
                         }
                     }
-
                 }, 100);
             } else {
                 window.location.href = "/Error404";
             }
         }
-
         // ---------- Sticky Form + Tabs + Scroll Spy ----------
         const formEl = document.querySelector(".sticky-form");
         const section = document.getElementById("tab-content-section");
@@ -219,17 +189,14 @@ function Servicedetails() {
         const pills = document.querySelectorAll(".nav-pills .nav-link");
         const buffer = 20;
         let lastFormState = "";
-
         const handleScroll = () => {
             if (!formEl || !section) return;
-
             const sectionTop = section.offsetTop;
             const sectionBottom = sectionTop + section.offsetHeight;
             const scrollY = window.scrollY;
             const formHeight = formEl.offsetHeight;
             const fixedTop = 190;
             const scrollBottom = scrollY + formHeight + fixedTop;
-
             // Sticky Form Logic
             if (scrollY + fixedTop >= sectionTop && scrollBottom + buffer < sectionBottom) {
                 if (lastFormState !== "fixed") {
@@ -249,7 +216,6 @@ function Servicedetails() {
                     lastFormState = "static";
                 }
             }
-
             // Tabs Fixed + Show/Hide Logic
             if (scrollY + fixedTop >= sectionTop && scrollBottom + buffer < sectionBottom) {
                 tabs?.classList.add("fixed-tabs");
@@ -258,7 +224,6 @@ function Servicedetails() {
                 tabs?.classList.remove("fixed-tabs");
                 tabs?.classList.add("d-none");
             }
-
             // Scroll Spy
             if (!tabs?.classList.contains("d-none")) {
                 const offsetMargin = 220;
@@ -266,10 +231,8 @@ function Servicedetails() {
                     const id = pill.getAttribute("href")?.replace("#", "") || pill.getAttribute("data-bs-target")?.replace("#", "");
                     const target = document.getElementById(id);
                     if (!target) return;
-
                     const targetTop = target.offsetTop - offsetMargin;
                     const targetBottom = targetTop + target.offsetHeight;
-
                     if (scrollY >= targetTop && scrollY < targetBottom) {
                         pills.forEach(p => p.classList.remove("active"));
                         pill.classList.add("active");
@@ -277,32 +240,25 @@ function Servicedetails() {
                 });
             }
         };
-
         window.addEventListener("scroll", handleScroll);
         handleScroll();
-
         // Tab Link Click Scroll (smooth)
         const handleTabClick = (e) => {
             e.preventDefault();
             const id = e.currentTarget.getAttribute("href")?.replace("#", "");
             const target = document.getElementById(id);
             if (!target) return;
-
             const navHeight = document.querySelector(".navbar")?.offsetHeight || 0;
             const tabHeight = tabs?.offsetHeight || 0;
             const offset = navHeight + tabHeight + 20;
-
             window.scrollTo({
                 top: target.offsetTop - offset,
                 behavior: "smooth"
             });
-
             pills.forEach(p => p.classList.remove("active"));
             e.currentTarget.classList.add("active");
         };
-
         pills.forEach(pill => pill.addEventListener("click", handleTabClick));
-
         // Initial scroll on hash
         if (location.hash) {
             const id = location.hash.replace("#", "");
@@ -319,24 +275,20 @@ function Servicedetails() {
                 }
             }, 200);
         }
-
         return () => {
             window.removeEventListener("scroll", handleScroll);
             pills.forEach(pill => pill.removeEventListener("click", handleTabClick));
         };
     }, [location.pathname, location.search, serviceSlug]);
-
     // Scroll tabs
     const scrollTabs = (offset) => {
         const tabList = document.querySelector('.scroll-tabs');
         if (tabList) tabList.scrollLeft += offset;
     };
-
     // Quick Contact Form Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!form.current) return;
-
         const formData = {
             user_name: form.current.user_name.value.trim(),
             user_phone: form.current.user_phone.value.trim(),
@@ -344,14 +296,12 @@ function Servicedetails() {
             message: form.current.message.value.trim(),
             form_type: "Quick Contact"
         };
-
         try {
             const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-
             const result = await response.json();
             if (result.success) {
                 Swal.fire({
@@ -376,22 +326,18 @@ function Servicedetails() {
             });
         }
     };
-
     // Talk to Expert Form Submit
     const handleExpertSubmit = async (e) => {
         e.preventDefault();
         const expertForm = e.target;
-
         // ---------- Generate message from URL slug ----------
         const rawSlug = serviceSlug || window.location.pathname.split("/").pop() || "";
         const messageFromSlug = rawSlug
             .split("-")
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(" ");
-
         // ✅ Alert the message before sending
         // alert("Message to send: " + messageFromSlug);
-
         const formData = {
             user_name: expertForm.expert_name?.value.trim(),
             user_phone: expertForm.expert_phone?.value.trim(),
@@ -399,14 +345,12 @@ function Servicedetails() {
             form_type: "Expert",
             message: messageFromSlug // dynamically generated
         };
-
         try {
             const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             });
-
             const result = await response.json();
             if (result.success) {
                 Swal.fire("✅ Success", "Expert form submitted successfully!", "success");
@@ -419,11 +363,8 @@ function Servicedetails() {
             Swal.fire("❌ Error", "Server/network error caught. See console.", "error");
         }
     };
-
     return (
         <>
-
-            {/* Hero Section */}
             <section className="py-4 bg-light hero-gradient-bg">
                 <div className="container">
                     <div className="row align-items-center banner-vh">
@@ -436,15 +377,7 @@ function Servicedetails() {
                                 <li><i className="fa-solid fa-check-double me-2"></i> Name Approval</li>
                                 <li><i className="fa-solid fa-check-double me-2"></i> Expert MCA-Approved Professionals</li>
                                 <li><i className="fa-solid fa-check-double me-2"></i> Trusted by 20,000+ Businesses</li>
-                            </ul>
-                            {/* <div className="d-flex align-items-center mt-3">
-                                <img
-                                    src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
-                                    alt="Google Reviews"
-                                    height="24"
-                                />
-                                <p className="mb-0 ms-2">4.7 out of 5 based on 2,345 reviews</p>
-                            </div> */}
+                            </ul>                            
                         </div>
                         <div className="col-lg-5">
                             <div className="styled-form-containers">
@@ -463,7 +396,6 @@ function Servicedetails() {
                                         placeholder="Your Name"
                                         required
                                     />
-
                                     <div className="input-group mb-3">
                                         <span className="input-group-text custom-addons">+91</span>
                                         <input
@@ -478,7 +410,6 @@ function Servicedetails() {
                                             required
                                         />
                                     </div>
-
                                     <input
                                         type="email"
                                         name="user_email"
@@ -486,7 +417,6 @@ function Servicedetails() {
                                         placeholder="Email"
                                         required
                                     />
-
                                     <textarea
                                         name="message"
                                         className="form-control custom-inputs mb-3"
@@ -494,7 +424,6 @@ function Servicedetails() {
                                         rows="3"
                                         required
                                     ></textarea>
-
                                     <button type="submit" className="btn btn-gradients w-100 fw-bold">
                                         Register Now →
                                     </button>
@@ -504,7 +433,6 @@ function Servicedetails() {
                     </div>
                 </div>
             </section>
-
             <section className="startup-info-section py-5">
                 <div className="container">
                     <h2 className="startup-info-heading fw-bold mb-3">
@@ -536,7 +464,6 @@ function Servicedetails() {
                     </ul>
                 </div>
             </section>
-
             {/* Tab Content Section */}
             <section id="tab-content-section" className="py-5 bg-light">
                 <div className="container">
@@ -565,7 +492,6 @@ function Servicedetails() {
                                     <i className="fa fa-chevron-right"></i>
                                 </div>
                             </div>
-
                             <div className="tab-content" id="tab-content-section">
                                 {tabData
                                     .find(item =>
@@ -579,7 +505,6 @@ function Servicedetails() {
                                     ))}
                             </div>
                         </div>
-
                         {/* Sticky Form Right */}
                         <div className="col-lg-4 position-relative">
                             <div className="bg-white p-4 rounded shadow sticky-form">
@@ -599,7 +524,6 @@ function Servicedetails() {
                     </div>
                 </div>
             </section>
-
             <section>
                 <div className="container py-5">
                     <h2 className="section-title text-center text-dark d-block">
@@ -608,9 +532,7 @@ function Servicedetails() {
                     <div className="accordion" id="faqAccordion"></div>
                 </div>
             </section>
-
         </>
     );
 }
-
 export default Servicedetails;

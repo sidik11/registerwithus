@@ -16,7 +16,6 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 999;
 }
-
 .go-to-top-btn:hover {
   background-color: #030b3f;
   transform: translateY(-3px);

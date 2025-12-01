@@ -1,16 +1,13 @@
 .bg-dark-blue {
   background-color: #040f6d;
 }
-
 footer a:hover {
   text-decoration: underline;
 }
-
 .foot-icon {
   width: 36px;
   height: 36px;
 }
-
 .main-footer {
   position: relative;
   background-image: url('../../../public/img/a852b6e8-6b91-4957-b31a-c7082a74b56e_large.webp');
@@ -18,9 +15,7 @@ footer a:hover {
   background-position: center;
   z-index: 1;
   color: white;
-  /* Optional: ensures content text is readable */
 }
-
 .main-footer::before {
   content: "";
   position: absolute;
@@ -29,16 +24,11 @@ footer a:hover {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
-  /* Adjust 0.6 for darker/lighter overlay */
   z-index: -1;
 }
-
 .icon-color {
   border: #fff !important;
 }
-
-/* ChatWidget.css */
-
 .whatsapp-float {
   position: fixed;
   bottom: 83px;
@@ -58,35 +48,30 @@ footer a:hover {
   cursor: pointer;
   overflow: visible;
 }
-
-/* Rotating border */
 .whatsapp-float::before {
   content: '';
   position: absolute;
   top: -5px; 
   left: -5px;
-  width: 60px; /* circle slightly bigger than button */
+  width: 60px; 
   height: 60px;
   border: 2px solid #25D366;
   border-radius: 50%;
   border-top-color: transparent;
   border-bottom-color: transparent;
   animation: spin 1.5s linear infinite;
-  z-index: 998; /* behind the button */
+  z-index: 998; 
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 .chat-popup {
   position: fixed;
   bottom: 90px;
   right: 20px;
   width: 320px;
   height: 440px;
-  /* Fixed height */
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -95,7 +80,6 @@ footer a:hover {
   flex-direction: column;
   overflow: hidden;
 }
-
 .chat-header {
   background-color: #075E54;
   color: white;
@@ -106,30 +90,25 @@ footer a:hover {
   font-weight: bold;
   position: relative;
 }
-
 .chat-header .agent-pic {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   object-fit: cover;
 }
-
 .chat-header .close-btn {
   position: absolute;
   right: 15px;
   cursor: pointer;
   font-size: 20px;
 }
-
 .chat-content-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
   background-color: #ece5dd;
   overflow: hidden;
-  /* prevent auto-overflow outside */
 }
-
 .chat-body {
   flex: 1;
   overflow-y: auto;
@@ -137,26 +116,16 @@ footer a:hover {
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
-  /* Hide scrollbar but keep scroll */
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE 10+ */
 }
-
-/* Hide scrollbar but allow scroll */
 .chat-body::-webkit-scrollbar {
   display: none;
-  /* Chrome/Safari */
 }
-
 .chat-body {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
-
 .chat-bubble {
   max-width: 75%;
   padding: 10px 12px;
@@ -166,19 +135,16 @@ footer a:hover {
   line-height: 1.4;
   word-break: break-word;
 }
-
 .chat-bubble.bot {
   background-color: white;
   align-self: flex-start;
   border-radius: 8px 8px 8px 0;
 }
-
 .chat-bubble.user {
   background-color: #DCF8C6;
   align-self: flex-end;
   border-radius: 8px 8px 0 8px;
 }
-
 .input-bar {
   padding: 10px;
   background: #fff;
@@ -186,23 +152,19 @@ footer a:hover {
   display: flex;
   gap: 8px;
 }
-
 .input-bar input {
   flex: 1;
   border-radius: 4px;
 }
-
 .input-bar button {
   white-space: nowrap;
 }
-
 .options {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
 }
-
 .option-btn {
   background-color: #fff;
   border: 1px solid #075E54;
@@ -213,19 +175,16 @@ footer a:hover {
   cursor: pointer;
   transition: 0.2s;
 }
-
 .option-btn:hover {
   background-color: #075E54;
   color: white;
 }
-
 .typing-dots {
   display: flex;
   align-items: center;
   gap: 4px;
   height: 14px;
 }
-
 .typing-dots span {
   display: block;
   width: 4px;
@@ -234,7 +193,6 @@ footer a:hover {
   border-radius: 50%;
   animation: bounce 1.4s infinite ease-in-out both;
 }
-
 .typing-dots span:nth-child(1) {
   animation-delay: 0s;
 }
@@ -244,7 +202,6 @@ footer a:hover {
 .typing-dots span:nth-child(3) {
   animation-delay: 0.4s;
 }
-
 @keyframes bounce {
   0%, 80%, 100% {
     transform: scale(0);
@@ -253,13 +210,10 @@ footer a:hover {
     transform: scale(1);
   }
 }
-
 .footer-service-dark {
-  /* background-color: #0d1b2a; */
   padding: 1rem 1rem;
   border-radius: 10px;
 }
-
 .footer-heading {
   color: #fff;
   font-weight: bold;
@@ -269,20 +223,15 @@ footer a:hover {
   display: inline-block;
   margin-bottom: 1rem;
 }
-
 .footer-service-dark .srvc-footer {
   font-size: 13px;
   color: #fff;
   line-height: 1.8;
 }
-
 .fa-icons {
-  /* background-color: white;
-    color: #061067; */
   padding: 5px;
   border-radius: 50%;
 }
-
 .foot-logo {
   height: 70px;
 }

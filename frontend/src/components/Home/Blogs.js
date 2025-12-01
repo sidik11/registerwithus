@@ -5,10 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Blogs.css';
-
 function Blogs() {
     const [blogs, setBlogs] = useState([]);
-
     useEffect(() => {
         fetch(`${API_BASE_URL}/api/blogs`)
             .then(res => res.json())
@@ -16,14 +14,12 @@ function Blogs() {
                 if (data.success) {
                     // ✅ Take only the first 3 blogs
                     const fetched = data.blogs.slice(0, 3);
-
                     // ✅ Alert if description missing
                     const missingDesc = fetched.filter(b => !b.blogDescription || b.blogDescription.trim() === "");
                     if (missingDesc.length > 0) {
                         alert(`⚠️ ${missingDesc.length} blog(s) have missing description content!`);
                         console.warn("Blogs missing description:", missingDesc);
                     }
-
                     setBlogs(fetched);
                 } else {
                     alert("⚠️ Failed to fetch blogs from API.");
@@ -34,7 +30,6 @@ function Blogs() {
                 alert("❌ Error fetching blogs. Check console for details.");
             });
     }, []);
-
     // ✅ Helper function: remove HTML tags and shorten text
     const getPlainDescription = (htmlText = "", limit = 120) => {
         const tempDiv = document.createElement("div");
@@ -42,13 +37,11 @@ function Blogs() {
         const plainText = tempDiv.textContent || tempDiv.innerText || "";
         return plainText.length > limit ? plainText.slice(0, limit) + "..." : plainText;
     };
-
     return (
         <section className="container py-5">
             <h2 className="section-title d-block about-us-heading">
                 <span>Our Blogs</span>
             </h2>
-
             <div className="row g-4 align-items-stretch">
                 {blogs.length > 0 ? (
                     <>
@@ -71,7 +64,6 @@ function Blogs() {
                                 </div>
                             </Link>
                         </div>
-
                         {/* ✅ Blog Cards 2 & 3 */}
                         <div className="col-md-6 d-flex flex-column justify-content-between">
                             {/* Blog Card 2 */}
@@ -97,7 +89,6 @@ function Blogs() {
                                     </div>
                                 </Link>
                             )}
-
                             {/* Blog Card 3 */}
                             {blogs[2] && (
                                 <Link to={`/blogdetails/${blogs[2].id}`} className="text-decoration-none flex-grow-1">
@@ -137,5 +128,4 @@ function Blogs() {
         </section>
     );
 }
-
 export default Blogs;

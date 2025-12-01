@@ -1,14 +1,11 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Whychooseus.css'
-
 function Whychooseus() {
     return (
         <section className="py-5 container">
             <h2 className="why-heading"><span className="bg-conten" >Why Choose Us?</span></h2>
-            {/* <h2 className="section-title text-center text-dark pb-5 d-block"><span className="bg-conten" >Why Choose Us?</span></h2> */}
             <div className="row d-flex justify-content-center align-items-center">
                 <div className="col-lg-5 col-sm-12 text-center">
                     <div className="why-image">
@@ -32,7 +29,6 @@ function Whychooseus() {
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-md-6">
                             <div className="why-card">
                                 <div className="why-card-top">
@@ -48,7 +44,6 @@ function Whychooseus() {
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-md-6">
                             <div className="why-card">
                                 <div className="why-card-top">
@@ -64,7 +59,6 @@ function Whychooseus() {
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-md-6">
                             <div className="why-card">
                                 <div className="why-card-top">
@@ -80,12 +74,10 @@ function Whychooseus() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
     );
 }
-
 export default Whychooseus;

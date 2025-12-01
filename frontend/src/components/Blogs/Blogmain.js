@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../../utils/api';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Blogmain.css';
-
 function Blogmain() {
     const [blogs, setBlogs] = useState([]);
     const [categories, setCategories] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-
     useEffect(() => {
         // ✅ Fetch blogs
         fetch(`${API_BASE_URL}/api/blogs`)
@@ -21,7 +19,6 @@ function Blogmain() {
                 }
             })
             .catch(err => console.error("Blogs API error:", err));
-
         // ✅ Fetch categories
         fetch(`${API_BASE_URL}/api/blogs`)
             .then(res => res.json())
@@ -32,22 +29,18 @@ function Blogmain() {
             })
             .catch(err => console.error("Categories API error:", err));
     }, []);
-
     const filteredBlogs = blogs.filter(blog =>
         blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         blog.category_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     return (
         <section className="services-section py-5">
             <div className="container">
                 <div className="text-center mb-4">
                     <div>
                         <h2 className="fw-bold theme-color">Blogs And Theories</h2>
-                        {/* <p className="text-muted fs-5">The latest industry news, interviews, technologies, and resources.</p> */}
                     </div>
                 </div>
-
                 <div className="d-flex justify-content-center mb-4">
                     <div className="search-container w-100" style={{ maxWidth: "400px" }}>
                         <span className="icon"><i className="fa fa-search"></i></span>
@@ -59,7 +52,6 @@ function Blogmain() {
                         />
                     </div>
                 </div>
-
                 <div className="row g-4">
                     {filteredBlogs.length > 0 ? (
                         filteredBlogs.map((blog, index) => (
@@ -103,15 +95,8 @@ function Blogmain() {
                         </div>
                     )}
                 </div>
-
-                {/* {filteredBlogs.length > 0 && (
-                    <div className="text-center">
-                        <button className="btn theme-bg-color text-white">Load More</button>
-                    </div>
-                )} */}
             </div>
         </section>
     );
 }
-
 export default Blogmain;

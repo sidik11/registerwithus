@@ -4,15 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Swal from 'sweetalert2';
 import './Hero3.css';
-
 function Hero3() {
     const form = useRef();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!form.current) return;
-
         const formData = {
             user_name: form.current.user_name.value.trim(),
             user_phone: form.current.user_phone.value.trim(),
@@ -20,7 +16,6 @@ function Hero3() {
             message: form.current.message.value.trim(),
             form_type: "Quick Contact"
         };
-
         try {
             const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: 'POST',
@@ -29,9 +24,7 @@ function Hero3() {
                 },
                 body: JSON.stringify(formData)
             });
-
             const result = await response.json();
-
             if (result.success) {
                 Swal.fire({
                     icon: 'success',
@@ -55,19 +48,16 @@ function Hero3() {
             });
         }
     };
-
     const scrollToFooter = (e) => {
         e.preventDefault();
         document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
     };
-
     const scrollToId = (id) => {
         const el = document.getElementById(id);
         if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
         }
     };
-
     return (
         <section className="biz-hero-section mt-5">
             <div className="biz-hero-overlay">
@@ -96,7 +86,6 @@ function Hero3() {
                                 </button>
                             </div>
                         </div>
-
                         <div className="col-lg-5">
                             <div className="styled-form-containers">
                                 <p className='text-white'>
@@ -114,7 +103,6 @@ function Hero3() {
                                         placeholder="Your Name"
                                         required
                                     />
-
                                     <div className="input-group mb-3">
                                         <span className="input-group-text custom-addons">+91</span>
                                         <input
@@ -129,7 +117,6 @@ function Hero3() {
                                             required
                                         />
                                     </div>
-
                                     <input
                                         type="email"
                                         name="user_email"
@@ -137,7 +124,6 @@ function Hero3() {
                                         placeholder="Email"
                                         required
                                     />
-
                                     <textarea
                                         name="message"
                                         className="form-control custom-inputs mb-3"
@@ -145,7 +131,6 @@ function Hero3() {
                                         rows="3"
                                         required
                                     ></textarea>
-
                                     <button type="submit" className="btn btn-gradients w-100 fw-bold">
                                         Register Now →
                                     </button>
@@ -158,5 +143,4 @@ function Hero3() {
         </section>
     );
 }
-
 export default Hero3;

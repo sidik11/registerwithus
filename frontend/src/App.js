@@ -1,5 +1,3 @@
-// src/App.js
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'; 
 import HomePage from './pages/HomePage';
@@ -16,13 +14,11 @@ import ScrollToTop from './components/ScrollToTop';
 import Error404 from './pages//Error404Page';
 import GoToTop from './components/GoToTop/GoToTop'; // ✅ Import your new GoToTop component
 import './App.css';
-
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Navbar /> 
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
@@ -35,13 +31,10 @@ function App() {
         <Route path="/refund" element={<RefundPage />} />
         <Route path="/termconditions" element={<TermConditionsPage />} />
         <Route path="/Error404" element={<Error404 />} />
-
       </Routes>
-
       {/* ✅ Add GoToTop button so it appears on every page */}
       <GoToTop />
     </Router>
   );
 }
-
 export default App;

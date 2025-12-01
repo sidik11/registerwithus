@@ -3,7 +3,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './RefundPolicy.css';
-
 function RefundPolicy() {
   return (
     <section className="refund-policy text-white py-5">
@@ -48,5 +47,4 @@ function RefundPolicy() {
     </section>
   );
 }
-
 export default RefundPolicy;

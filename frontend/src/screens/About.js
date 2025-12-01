@@ -1,6 +1,4 @@
-import React from "react";
 import Title from "../components/Title";
-
 function About() {
     return (
         <div>
@@ -9,5 +7,4 @@ function About() {
         </div>
     );
 }
-
 export default About;

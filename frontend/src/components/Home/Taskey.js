@@ -1,9 +1,7 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Taskey.css';
-
 function Taskey(props) {
   return (
     <section className="cta-split-section">
@@ -22,7 +20,6 @@ function Taskey(props) {
               </a>
             </div>
           </div>
-
           {/* Right Image */}
           <div className="col-md-6 cta-image d-none d-md-block">
             <img
@@ -36,5 +33,4 @@ function Taskey(props) {
     </section>
   );
 }
-
 export default Taskey;

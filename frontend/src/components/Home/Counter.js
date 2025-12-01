@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Counter.css';
-
 function Counter() {
   useEffect(() => {
     // Load the PureCounter CDN script
@@ -14,13 +13,11 @@ function Counter() {
       new window.PureCounter();
     };
     document.body.appendChild(script);
-
     // Cleanup if needed
     return () => {
       document.body.removeChild(script);
     };
   }, []);
-
   return (
     <section className="counter-bg">
       <div className="container py-5 section-container">
@@ -34,7 +31,6 @@ function Counter() {
               Get Started <i className="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
-
           <div className="col-lg-7">
             <div className="row text-center">
               <div className="col-lg-4 col-md-4 col-sm-6 mb-4 mb-md-0">
@@ -65,5 +61,4 @@ function Counter() {
     </section>
   );
 }
-
 export default Counter;

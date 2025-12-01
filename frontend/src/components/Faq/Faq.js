@@ -1,17 +1,12 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
 function Faq() {
     return (
         <section className='py-5' >
-            <div className="container my-5">
-                {/* <h2 className="text-center text-primary fw-bold mb-4">Frequently Asked Questions</h2> */}
+            <div className="container my-5">                
                 <h2 className="section-title text-center text-dark d-block"><span className="about-us-heading" >Frequently Asked Questions</span></h2>
-
                 <div className="accordion" id="faqAccordion">
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                             <button className="accordion-button" type="button" data-bs-toggle="collapse"
@@ -27,7 +22,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingTwo">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -43,7 +37,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingThree">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -59,7 +52,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingFour">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -75,7 +67,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingFive">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -91,7 +82,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingSix">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -107,7 +97,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingSeven">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -123,7 +112,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingEight">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -139,7 +127,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingNine">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -155,7 +142,6 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingTen">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -171,11 +157,9 @@ function Faq() {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
     );
 }
-
 export default Faq;

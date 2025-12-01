@@ -1,4 +1,3 @@
-import React from 'react';
 import Slider from 'react-slick';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -6,21 +5,18 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Clients.css';
-
 // Custom Prev Button
 const PrevArrow = ({ onClick }) => (
   <button className="slick-prev-btn" onClick={onClick}>
     <i className="fas fa-chevron-left"></i>
   </button>
 );
-
 // Custom Next Button
 const NextArrow = ({ onClick }) => (
   <button className="slick-next-btn" onClick={onClick}>
     <i className="fas fa-chevron-right"></i>
   </button>
 );
-
 function Clients() {
   const settings = {
     dots: false,
@@ -50,7 +46,6 @@ function Clients() {
       },
     ],
   };
-
   return (
     <section className="py-5 client-bg">
       <div className="container">
@@ -61,7 +56,6 @@ function Clients() {
           Our clients love how we simplify online business compliance services in India.
           We're proud to support their journey from startup to scale.
         </h5>
-
         <Slider {...settings}>
           <div><img src="img/logos/spinny.jpeg" alt="Spinny" className="client-logo" /></div>
           <div><img src="img/logos/marg.jpeg" alt="Marg" className="client-logo" /></div>
@@ -75,5 +69,4 @@ function Clients() {
     </section>
   );
 }
-
 export default Clients;

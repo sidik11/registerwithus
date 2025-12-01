@@ -5,12 +5,10 @@
     margin-bottom: 60px;
     position: relative;
   }
-
   .section-title span {
     position: relative;
     display: inline-block;
   }
-
   .blog-head {
     font-weight: 800;
     font-size: 2.5rem;
@@ -18,7 +16,6 @@
     margin-bottom: 60px;
     position: relative;
   }
-
   .section-title span::after {
     content: '';
     position: absolute;
@@ -30,30 +27,25 @@
     background-size: contain;
     z-index: -1;
   }
-
   .blog-card {
     border: none;
     border-radius: 0;
     padding: 30px;
     height: 100%;
   }
-
   .blog-text h5 {
     font-weight: 700;
   }
-
   .blog-text p {
     font-size: 0.95rem;
     color: #333;
   }
-
   .blog-image {
     max-height: 180px;
     width: auto;
     object-fit: cover;
     margin-bottom: 20px;
   }
-
   @media (max-width: 767px) {
     .blog-text {
       text-align: center;

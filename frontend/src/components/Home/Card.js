@@ -1,9 +1,7 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Card.css';
-
 function Card() {
   return (
     <section className="about-us-section py-5">
@@ -17,7 +15,6 @@ function Card() {
               className="about-us-image img-fluid"
             />
           </div>
-
           {/* Right Side Content */}
           <div className="col-lg-6 about-us-content">
             <h2 className="about-us-heading mb-3">
@@ -36,5 +33,4 @@ function Card() {
     </section>
   );
 }
-
 export default Card;

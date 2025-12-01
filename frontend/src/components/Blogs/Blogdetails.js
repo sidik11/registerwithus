@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Blogdetails.css';
 import { API_BASE_URL } from '../../utils/api'; // ✅ Add this
-
 function Blogdetails() {
     const { id } = useParams();
     const [blog, setBlog] = useState(null);
     const [relatedPosts, setRelatedPosts] = useState([]);
     const [recentPosts, setRecentPosts] = useState([]);
-
     useEffect(() => {
         fetch(`${API_BASE_URL}/api/blogs`) // ✅ use API_BASE_URL
             .then(res => res.json())
@@ -19,7 +17,6 @@ function Blogdetails() {
                 if (data.success) {
                     const matchedBlog = data.blogs.find(item => item.id.toString() === id);
                     setBlog(matchedBlog);
-
                     if (matchedBlog) {
                         // Related posts (same category, excluding current)
                         const related = data.blogs
@@ -30,7 +27,6 @@ function Blogdetails() {
                             .slice(0, 5); // Max 5
                         setRelatedPosts(related);
                     }
-
                     // Recent posts (excluding current, sorted by date)
                     const recent = data.blogs
                         .filter(item => item.id.toString() !== id)
@@ -40,7 +36,6 @@ function Blogdetails() {
                 }
             });
     }, [id]);
-
     if (!blog) {
         return (
             <div className="container py-5 mt-5 text-center">
@@ -48,7 +43,6 @@ function Blogdetails() {
             </div>
         );
     }
-
     return (
         <section>
             <div className="container py-5 mt-5">
@@ -73,7 +67,6 @@ function Blogdetails() {
                             <strong>Category:</strong> {blog.category_name}
                         </div>
                     </div>
-
                     {/* Right Sidebar */}
                     <div className="col-lg-4 mt-5 mt-lg-0">
                         {/* Related Posts */}
@@ -104,7 +97,6 @@ function Blogdetails() {
                         ) : (
                             <p className="text-muted small">No related posts found.</p>
                         )}
-
                         {/* Recent Posts */}
                         <h5 className="fw-bold mt-4 mb-3">Recent Posts</h5>
                         {recentPosts.length > 0 ? (
@@ -139,5 +131,4 @@ function Blogdetails() {
         </section>
     );
 }
-
 export default Blogdetails;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Contactbanner from '../components/ContactUs/Contactbanner';
 import Contactus from '../components/ContactUs/Contactus';
 import Footer from '../components/Common/Footer';

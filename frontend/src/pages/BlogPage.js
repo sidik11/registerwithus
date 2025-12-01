@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Bloghead from '../components/Blogs/Bloghead';
 import Blogmain from '../components/Blogs/Blogmain';
 import Footer from '../components/Common/Footer';
-
 const BlogPage = () => {
-
   useEffect(() => {
     // ✅ Set page title
     document.title = "Blogs | Business Tips, Compliance Updates & Startup Guides";
-
     // ✅ Set meta description
     const metaDescription = document.querySelector("meta[name='description']");
     if (metaDescription) {
@@ -23,7 +20,6 @@ const BlogPage = () => {
         "Explore our latest blogs covering business registration, GST, compliance tips, startup advice, and more to help you grow your business legally and efficiently.";
       document.head.appendChild(desc);
     }
-
     // ✅ Set meta keywords
     const metaKeywords = document.querySelector("meta[name='keywords']");
     if (metaKeywords) {
@@ -39,7 +35,6 @@ const BlogPage = () => {
       document.head.appendChild(keywords);
     }
   }, []);
-
   return (
     <>
       <Bloghead />
@@ -48,5 +43,4 @@ const BlogPage = () => {
     </>
   );
 };
-
 export default BlogPage;

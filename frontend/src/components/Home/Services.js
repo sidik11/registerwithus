@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Services.css';
-
 function Services() {
   const [modalTitle, setModalTitle] = useState("");
-
   const services = [
     "Share Transfers",
     "Share Transmission",
@@ -17,14 +15,12 @@ function Services() {
     e.preventDefault();
     document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
   };
-
   const scrollToId = (id) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
   return (
     <section className="services-section py-5">
       <div className="container">
@@ -32,7 +28,6 @@ function Services() {
         <h5 className='text-center py-3' >Your one-stop AU-in-One Business Compliance Platform, from company setup to tax filings, we handle it all. As a leading Government Registration Service Provider for Business, we
           ensure you stay compliant, certified, and growth-ready.</h5>
         <div className="row g-4">
-
           {/* Business Registration */}
           <div className="col-md-6 col-lg-3">
             <div className="modern-card text-center">
@@ -49,7 +44,6 @@ function Services() {
               </ul>
             </div>
           </div>
-
           {/* Trade Licenses */}
           <div className="col-md-6 col-lg-3">
             <div className="modern-card text-center">
@@ -66,7 +60,6 @@ function Services() {
               </ul>
             </div>
           </div>
-
           {/* Company Compliances */}
           <div className="col-md-6 col-lg-3">
             <div className="modern-card text-center">
@@ -90,7 +83,6 @@ function Services() {
   </a>
   <i className="fas fa-chevron-right"></i>
 </li>
-
 <li className="list-item">
   <a
     href="#"
@@ -106,7 +98,6 @@ function Services() {
   </a>
   <i className="fas fa-chevron-right"></i>
 </li>
-
 <li className="list-item extra">
   <a
     href="#"
@@ -122,7 +113,6 @@ function Services() {
   </a>
   <i className="fas fa-chevron-right"></i>
 </li>
-
 <li className="list-item extra">
   <a
     href="#"
@@ -138,7 +128,6 @@ function Services() {
   </a>
   <i className="fas fa-chevron-right"></i>
 </li>
-
 <li className="list-item extra">
   <a
     href="#"
@@ -154,11 +143,9 @@ function Services() {
   </a>
   <i className="fas fa-chevron-right"></i>
 </li>
-
               </ul>
             </div>
           </div>
-
           {/* Tax Fillings */}
           <div className="col-md-6 col-lg-3">
             <div className="modern-card text-center">
@@ -175,20 +162,8 @@ function Services() {
             </div>
           </div>
         </div>
-
-        {/* <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100px' }}>
-          <a
-            href="#"
-            className="btn about-us-btn text-decoration-none"
-            style={{ height: 'auto', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-            onClick={scrollToFooter}
-          >
-            View All Services <i className="fas fa-arrow-right ms-2"></i>
-          </a>
-        </div> */}
       </div>
     </section>
   );
 }
-
 export default Services;

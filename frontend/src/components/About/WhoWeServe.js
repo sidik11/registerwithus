@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './WhoWeServe.css';
-
 function WhoWeServe() {
     const data = [
         {
@@ -31,7 +30,6 @@ function WhoWeServe() {
             desc: 'Set up payroll, EPF, and ESIC systems with ease.',
         }
     ];
-
     return (
         <section className="whoweserve-modern py-5">
             <div className="container">
@@ -53,5 +51,4 @@ function WhoWeServe() {
         </section>
     );
 }
-
 export default WhoWeServe;

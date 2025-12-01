@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
-// import Abouthero from '../components/About/Abouthero';
+import { useEffect } from 'react';
 import PrivacyHead from '../components/Privacy/PrivacyHead';
 import PrivacyPolicy from '../components/Privacy/PrivacyPolicy';
 import Footer from '../components/Common/Footer';
-
 const PrivacyPage = () => {
-
   useEffect(() => {
     // ✅ Set page title
     document.title = "Privacy Policy | Your Data & Privacy Protection";
-
     // ✅ Set meta description
     const metaDescription = document.querySelector("meta[name='description']");
     if (metaDescription) {
@@ -24,7 +20,6 @@ const PrivacyPage = () => {
         "Read our Privacy Policy to understand how we collect, use, and protect your personal data. Your privacy and trust are our top priorities.";
       document.head.appendChild(desc);
     }
-
     // ✅ Set meta keywords
     const metaKeywords = document.querySelector("meta[name='keywords']");
     if (metaKeywords) {
@@ -40,7 +35,6 @@ const PrivacyPage = () => {
       document.head.appendChild(keywords);
     }
   }, []);
-
   return (
     <>
       {/* <Abouthero /> */}
@@ -50,5 +44,4 @@ const PrivacyPage = () => {
     </>
   );
 };
-
 export default PrivacyPage;

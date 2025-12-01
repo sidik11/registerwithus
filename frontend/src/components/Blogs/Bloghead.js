@@ -1,18 +1,14 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { API_BASE_URL } from '../../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Swal from 'sweetalert2';
 import './Bloghead.css';
-
 function Bloghead() {
     const form = useRef();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!form.current) return;
-
         const formData = {
             user_name: form.current.user_name.value.trim(),
             user_phone: form.current.user_phone.value.trim(),
@@ -20,7 +16,6 @@ function Bloghead() {
             message: form.current.message.value.trim(),
             form_type: "Quick Contact"
         };
-
         try {
             const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: 'POST',
@@ -29,9 +24,7 @@ function Bloghead() {
                 },
                 body: JSON.stringify(formData)
             });
-
             const result = await response.json();
-
             if (result.success) {
                 Swal.fire({
                     icon: 'success',
@@ -55,12 +48,10 @@ function Bloghead() {
             });
         }
     };
-
     const scrollToFooter = (e) => {
         e.preventDefault();
         document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
     };
-
     const scrollToId = (id) => {
         const el = document.getElementById(id);
         if (el) {
@@ -68,23 +59,6 @@ function Bloghead() {
         }
     };
     return (
-        // <section class="theme-bg-color py-5">
-        //     <div class="container text-center">
-        //         <h2 class="text-white fw-bold m-0">Our Blogs</h2>
-        //     </div>
-        // </section>
-        // <section className="about-section">
-        //     <div className="about-overlay"></div>
-        //     <div className="about-content px-3">
-        //         <h1 className="fw-bold mb-3">Blogs</h1>
-        //         <p className="fs-5">
-        //             Here are some blogs related to our company and all details including blog details.
-        //         </p>
-        //         <a href="#" className="btn cta-btn-glass">
-        //             <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i> 
-        //         </a>
-        //     </div>
-        // </section>
         <section className="about-section">
             <div className="about-overlay">
                 <div className="container h-100">
@@ -104,7 +78,6 @@ function Bloghead() {
                                 <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>
-
                         {/* Right Side Form */}
                         <div className="col-lg-5">
                             <div className="styled-form-containers">
@@ -123,7 +96,6 @@ function Bloghead() {
                                         placeholder="Your Name"
                                         required
                                     />
-
                                     <div className="input-group mb-3">
                                         <span className="input-group-text custom-addons">+91</span>
                                         <input
@@ -138,7 +110,6 @@ function Bloghead() {
                                             required
                                         />
                                     </div>
-
                                     <input
                                         type="email"
                                         name="user_email"
@@ -146,7 +117,6 @@ function Bloghead() {
                                         placeholder="Email"
                                         required
                                     />
-
                                     <textarea
                                         name="message"
                                         className="form-control custom-inputs mb-3"
@@ -154,7 +124,6 @@ function Bloghead() {
                                         rows="3"
                                         required
                                     ></textarea>
-
                                     <button type="submit" className="btn btn-gradients w-100 fw-bold">
                                         Register Now →
                                     </button>
@@ -167,5 +136,4 @@ function Bloghead() {
         </section>
     );
 }
-
 export default Bloghead;

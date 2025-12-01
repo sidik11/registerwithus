@@ -1,15 +1,12 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './OurApproach.css';
-
 function OurApproach() {
     return (
         <section className="our-approach-section">
             <div className="container py-5">
                 <h2 className="section-title text-center fw-bold text-white mb-5">Our Approach</h2>
-
                 <div className="row gy-4">
                     <div className="col-md-4 col-lg-4 col-sm-12">
                         <div className="feature-cards d-flex">
@@ -20,7 +17,6 @@ function OurApproach() {
                             </div>
                         </div>
                     </div>
-
                     <div className="col-md-4 col-lg-4 col-sm-12">
                         <div className="feature-cards d-flex">
                             <i className="fas fa-user-tie feature-icons me-3"></i>
@@ -30,7 +26,6 @@ function OurApproach() {
                             </div>
                         </div>
                     </div>
-
                     <div className="col-md-4 col-lg-4 col-sm-12">
                         <div className="feature-cards d-flex">
                             <i className="fas fa-rupee-sign feature-icons me-3"></i>
@@ -40,7 +35,6 @@ function OurApproach() {
                             </div>
                         </div>
                     </div>
-
                     <div className="col-md-4 col-lg-4 col-sm-12">
                         <div className="feature-cards d-flex">
                             <i className="fas fa-briefcase feature-icons me-3"></i>
@@ -50,7 +44,6 @@ function OurApproach() {
                             </div>
                         </div>
                     </div>
-
                     <div className="col-md-4 col-lg-4 col-sm-12">
                         <div className="feature-cards d-flex">
                             <i className="fas fa-clock feature-icons me-3"></i>
@@ -60,7 +53,6 @@ function OurApproach() {
                             </div>
                         </div>
                     </div>
-
                     <div className="col-md-4 col-lg-4 col-sm-12">
                         <div className="feature-cards d-flex">
                             <i className="fas fa-layer-group feature-icons me-3"></i>
@@ -75,5 +67,4 @@ function OurApproach() {
         </section>
     );
 }
-
 export default OurApproach;

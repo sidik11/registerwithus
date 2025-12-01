@@ -4,15 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Swal from 'sweetalert2';
 import './Abouthero.css';
-
 function Abouthero() {
     const form = useRef();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!form.current) return;
-
         const formData = {
             user_name: form.current.user_name.value.trim(),
             user_phone: form.current.user_phone.value.trim(),
@@ -20,7 +16,6 @@ function Abouthero() {
             message: form.current.message.value.trim(),
             form_type: "Quick Contact"
         };
-
         try {
             const response = await fetch(`${API_BASE_URL}/api/submit`, {
                 method: 'POST',
@@ -29,9 +24,7 @@ function Abouthero() {
                 },
                 body: JSON.stringify(formData)
             });
-
             const result = await response.json();
-
             if (result.success) {
                 Swal.fire({
                     icon: 'success',
@@ -55,19 +48,16 @@ function Abouthero() {
             });
         }
     };
-
     const scrollToFooter = (e) => {
         e.preventDefault();
         document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
     };
-
     const scrollToId = (id) => {
         const el = document.getElementById(id);
         if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
         }
     };
-
     return (
         <section className="about-section">
             <div className="about-overlay">
@@ -78,16 +68,13 @@ function Abouthero() {
                             <h1 className="hero-title">
                                 About <span className="highlight-yellow">Register With Us</span>
                             </h1>
-
                             <p className="fs-5 mt-3">
                                 <span className='fw-bold'>Register With Us</span> is India’s go-to legal-tech hub for entrepreneurs, startups, and SMEs looking to set up and scale their businesses completely online. We cut the clutter, no repetitive office visits, no surprise or hidden charges, just simple registration and compliance handled by experts.
                             </p>
-
                             <a href="#" className="btn cta-btn-glass">
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>
-
                         {/* Right Side Form */}
                         <div className="col-lg-5">
                             <div className="styled-form-containers">
@@ -106,7 +93,6 @@ function Abouthero() {
                                         placeholder="Your Name"
                                         required
                                     />
-
                                     <div className="input-group mb-3">
                                         <span className="input-group-text custom-addons">+91</span>
                                         <input
@@ -121,7 +107,6 @@ function Abouthero() {
                                             required
                                         />
                                     </div>
-
                                     <input
                                         type="email"
                                         name="user_email"
@@ -129,7 +114,6 @@ function Abouthero() {
                                         placeholder="Email"
                                         required
                                     />
-
                                     <textarea
                                         name="message"
                                         className="form-control custom-inputs mb-3"
@@ -137,7 +121,6 @@ function Abouthero() {
                                         rows="3"
                                         required
                                     ></textarea>
-
                                     <button type="submit" className="btn btn-gradients w-100 fw-bold">
                                         Register Now →
                                     </button>
@@ -150,5 +133,4 @@ function Abouthero() {
         </section>
     );
 }
-
 export default Abouthero;

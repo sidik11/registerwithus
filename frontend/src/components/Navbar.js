@@ -7,54 +7,45 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import Swal from "sweetalert2";
 import { API_BASE_URL } from "../utils/api";
 import "./Navbar.css";
-
 function Navbar() {
   const dropdownRef = useRef(null);
   const menuRef = useRef(null);
   const formRef = useRef(null);
   const [selectedService, setSelectedService] = useState("Service Title");
-
   // 🧠 Hide navbar collapse after click
   const handleNavLinkClick = () => {
     const navbar = document.getElementById("navbarNav");
     const bsCollapse = Collapse.getInstance(navbar);
     if (bsCollapse) bsCollapse.hide();
   };
-
   const handleCloseSidebar = () => {
     const navbar = document.getElementById("navbarNav");
     const bsCollapse = Collapse.getInstance(navbar);
     if (bsCollapse) bsCollapse.hide();
   };
-
   // 🧠 Dropdown hover & toggle logic
   useEffect(() => {
     const dropdown = dropdownRef.current;
     const menu = menuRef.current;
     let timeoutId;
-
     const handleClick = (e) => {
       e.preventDefault();
       dropdown.classList.toggle("show");
       menu.classList.toggle("show");
     };
-
     const handleMouseLeave = () => {
       timeoutId = setTimeout(() => {
         dropdown.classList.remove("show");
         menu.classList.remove("show");
       }, 300);
     };
-
     const handleMouseEnter = () => {
       clearTimeout(timeoutId);
     };
-
     const link = dropdown.querySelector(".dropdown-toggle");
     link.addEventListener("click", handleClick);
     menu.addEventListener("mouseleave", handleMouseLeave);
     menu.addEventListener("mouseenter", handleMouseEnter);
-
     const serviceLinks = menu.querySelectorAll("a");
     const closeDropdown = () => {
       dropdown.classList.remove("show");
@@ -63,7 +54,6 @@ function Navbar() {
     serviceLinks.forEach((serviceLink) =>
       serviceLink.addEventListener("click", closeDropdown)
     );
-
     return () => {
       link.removeEventListener("click", handleClick);
       menu.removeEventListener("mouseleave", handleMouseLeave);
@@ -73,12 +63,10 @@ function Navbar() {
       );
     };
   }, []);
-
   // 🧠 Service Modal Title Handling
   useEffect(() => {
     const serviceLinks = document.querySelectorAll('[data-bs-target="#serviceModal"]');
     const modalTitle = document.getElementById("serviceModalLabel");
-
     serviceLinks.forEach((link) => {
       link.addEventListener("click", () => {
         const title = link.getAttribute("data-title");
@@ -86,23 +74,19 @@ function Navbar() {
         if (modalTitle) modalTitle.textContent = title;
       });
     });
-
     return () => {
       serviceLinks.forEach((link) => {
         link.removeEventListener("click", () => { });
       });
     };
   }, []);
-
   // 📨 Form Submit
   // 📨 Form Submit with Debugging
   // 📨 Form Submit with Full Debugging & Disabled Service Field
   // 📨 Form Submit with Full Debugging & Disabled Service Field
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!formRef.current) return;
-
     const formData = {
       user_name: formRef.current.user_name.value.trim(),
       user_phone: formRef.current.user_phone.value.trim(),
@@ -111,7 +95,6 @@ function Navbar() {
       company_name: selectedService,
       form_type: "Enquiry Form"
     };
-
     if (!formData.user_name || !formData.user_email || !formData.user_phone) {
       Swal.fire({
         icon: "warning",
@@ -120,28 +103,19 @@ function Navbar() {
       });
       return;
     }
-
     try {
       await fetch(`${API_BASE_URL}/api/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-
       // ✅ Only success alert
       Swal.fire({
         icon: "success",
         title: "✅ Successfully Saved!",
         showConfirmButton: true
       });
-
       formRef.current.reset();
-
-      // ❌ Modal close is optional, comment out if crashes
-      // const modalEl = document.getElementById("serviceModal");
-      // const modalInstance = window.bootstrap?.Modal?.getInstance(modalEl);
-      // modalInstance?.hide();
-
     } catch (error) {
       // Still show success
       Swal.fire({
@@ -152,7 +126,6 @@ function Navbar() {
       formRef.current.reset();
     }
   };
-
   return (
     <>
       {/* 🧭 Navbar Start */}
@@ -161,7 +134,6 @@ function Navbar() {
           <Link className="navbar-brand d-flex align-items-center" to="/">
             <img src="img/Register-With-Us-01.png" alt="Logo" className="main-lg me-2 bg-white" />
           </Link>
-
           <button
             className="navbar-toggler"
             type="button"
@@ -170,7 +142,6 @@ function Navbar() {
           >
             <i className="fas fa-bars"></i>
           </button>
-
           <div className="collapse navbar-collapse mobile-sidebar" id="navbarNav">
             <div className="d-lg-none d-flex justify-content-between align-items-center px-3 pt-3">
               <span className="fs-5 fw-bold">Register With Us</span>
@@ -178,7 +149,6 @@ function Navbar() {
                 <i className="fas fa-times"></i>
               </button>
             </div>
-
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={handleNavLinkClick}>Home</Link>
@@ -186,7 +156,6 @@ function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/about" onClick={handleNavLinkClick}>About Us</Link>
               </li>
-
               <li className="nav-item dropdown position-static" ref={dropdownRef}>
                 <a className="nav-link dropdown-toggle fw-semibold" href="#" id="megaDropdown" role="button">
                   Services
@@ -194,7 +163,6 @@ function Navbar() {
                 <div className="dropdown-menu w-100 mega-dropdown mt-0 border-0 shadow-lg" ref={menuRef}>
                   <div className="container">
                     <div className="row gy-4">
-                      {/* Column 1 Company Registration & Tax Filling Services */}
                       <div className="col-md-3">
                         <h4 className="mega-heading"><i className="fas fa-balance-scale me-2"></i>Labour Laws</h4>
                         <ul className="mega-list">
@@ -229,14 +197,10 @@ function Navbar() {
                           </li>
                         </ul>
                       </div>
-
-                      {/* Column 2 Trade Licenses & Food License (FSSAI)*/}
                       <div className="col-md-3">
-
                         <h4 className="mega-heading"><i className="fas fa-id-card-alt me-2"></i>Trade Licenses</h4>
                         <ul className="mega-list">
                           <li>
-                            {/* <Link to="/online-esic-registration-india">PF / ESIC Registration</Link> */}
                             <Link to="/business-pan-card-registration-india">PAN card</Link>
                             <Link to="/gst-registration-india">GST Registration</Link>
                             <Link to="/import-export-code-registration-online">Import Export Code (IEC)</Link>
@@ -262,7 +226,6 @@ function Navbar() {
                               Trademark Assignment / Transfers
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -276,7 +239,6 @@ function Navbar() {
                           </li>
                         </ul>
                       </div>
-
                       {/* Column 3 Labour Laws & Trademark Services*/}
                       <div className="col-md-3">
                         <h4 className="mega-heading"><i className="fas fa-building me-2"></i>Company Compliances</h4>
@@ -292,7 +254,6 @@ function Navbar() {
                               Share Transfers
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -304,7 +265,6 @@ function Navbar() {
                               Share Transmission
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -316,7 +276,6 @@ function Navbar() {
                               Share Allotments
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -328,7 +287,6 @@ function Navbar() {
                               Equity / Debt Raising
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -355,7 +313,6 @@ function Navbar() {
                               MSME Filings
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -367,7 +324,6 @@ function Navbar() {
                               Return of Deposit
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -379,7 +335,6 @@ function Navbar() {
                               Event Based ROC Filings
                             </a>
                           </li>
-
                           <li>
                             <a
                               href="#"
@@ -393,7 +348,6 @@ function Navbar() {
                           </li>
                         </ul>
                       </div>
-
                       {/* Column 4 Company Compliances */}
                       <div className="col-md-3">
                         <h4 className="mega-heading"><i className="fas fa-calculator me-2"></i>Tax Filings Services</h4>
@@ -415,13 +369,6 @@ function Navbar() {
                         </ul>
                         <h4 className="mega-heading"><i className="fas fa-building me-2"></i>ISO Certificates</h4>
                         <ul className="mega-list">
-                          {/* <li>
-                          <Link to="/Company Registration">Transfers</Link>
-                          <ul className="sub-list">
-                            <li><Link to="/Private Limited Company">Share Transfers</Link></li>
-                            <li><Link to="/Private Limited Company">Share Transmission</Link></li>
-                          </ul>
-                        </li> */}
                           <li><Link to="/iso-certification-services-india#tab-content-section">ISO 9001, ISO 14001</Link></li>
                           <li><Link to="/iso-certification-services-india#tab-content-section">ISO 45001</Link></li>
                           <li><Link to="/iso-certification-services-india#tab-content-section">Other ISO Certificates</Link></li>
@@ -437,7 +384,6 @@ function Navbar() {
                   </div>
                 </div>
               </li>
-
               <li className="nav-item">
                 <Link className="nav-link" to="/blogs" onClick={handleNavLinkClick}>Blogs</Link>
               </li>
@@ -453,96 +399,88 @@ function Navbar() {
           </div>
         </div>
       </nav>
-
       {/* 🧾 Universal Modal for All Services */}
-<div
-  className="modal fade"
-  id="serviceModal"
-  tabIndex="-1"
-  aria-labelledby="serviceModalLabel"
-  aria-hidden="true"
->
-  <div className="modal-dialog modal-dialog-centered">
-    <div className="modal-content border-0 shadow-lg rounded-4">
-      {/* Header */}
-      <div className="modal-header border-0 pb-0">
-        <h5 className="modal-title fw-bold" id="serviceModalLabel">
-          {selectedService}
-        </h5>
-        <button
-          type="button"
-          className="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+      <div
+        className="modal fade"
+        id="serviceModal"
+        tabIndex="-1"
+        aria-labelledby="serviceModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content border-0 shadow-lg rounded-4">
+            {/* Header */}
+            <div className="modal-header border-0 pb-0">
+              <h5 className="modal-title fw-bold" id="serviceModalLabel">
+                {selectedService}
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            {/* Body */}
+            <div className="modal-body p-4 pt-2">
+              <form ref={formRef} onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="user_name"
+                    id="user_name"
+                    placeholder=" "
+                    onInput={(e) =>
+                      (e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, ""))
+                    }
+                    required
+                  />
+                  <label htmlFor="user_name">Full Name</label>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    name="user_email"
+                    id="user_email"
+                    placeholder=" "
+                    required
+                  />
+                  <label htmlFor="user_email">Email Address</label>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="tel"
+                    name="user_phone"
+                    id="user_phone"
+                    placeholder=" "
+                    maxLength="10"
+                    onInput={(e) =>
+                      (e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 10))
+                    }
+                    required
+                  />
+                  <label htmlFor="user_phone">Phone Number</label>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="company_name"
+                    id="company_name"
+                    placeholder=" "
+                    value={selectedService}
+                    disabled
+                  />
+                  <label htmlFor="company_name">Service Name</label>
+                </div>
+                <button type="submit" className="btn btn-animated w-100 mt-2">
+                  Submit Enquiry →
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* Body */}
-      <div className="modal-body p-4 pt-2">
-        <form ref={formRef} onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              name="user_name"
-              id="user_name"
-              placeholder=" "
-              onInput={(e) =>
-                (e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, ""))
-              }
-              required
-            />
-            <label htmlFor="user_name">Full Name</label>
-          </div>
-
-          <div className="form-group">
-            <input
-              type="email"
-              name="user_email"
-              id="user_email"
-              placeholder=" "
-              required
-            />
-            <label htmlFor="user_email">Email Address</label>
-          </div>
-
-          <div className="form-group">
-            <input
-              type="tel"
-              name="user_phone"
-              id="user_phone"
-              placeholder=" "
-              maxLength="10"
-              onInput={(e) =>
-                (e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 10))
-              }
-              required
-            />
-            <label htmlFor="user_phone">Phone Number</label>
-          </div>
-
-          <div className="form-group">
-            <input
-              type="text"
-              name="company_name"
-              id="company_name"
-              placeholder=" "
-              value={selectedService}
-              disabled
-            />
-            <label htmlFor="company_name">Service Name</label>
-          </div>
-
-          <button type="submit" className="btn btn-animated w-100 mt-2">
-            Submit Enquiry →
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
     </>
   );
 }
-
 export default Navbar;

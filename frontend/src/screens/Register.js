@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Register() {
     function submitForm() {
         console.log("Hello World")
@@ -11,5 +9,4 @@ function Register() {
     </div>
   )
 }
-
 export default Register

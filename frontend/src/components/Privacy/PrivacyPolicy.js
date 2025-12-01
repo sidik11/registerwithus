@@ -1,23 +1,16 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './PrivacyPolicy.css';
-
 function PrivacyPolicy() {
   return (
     <section className="privacy-policy py-5">
       <div className="container">
-        {/* <h2 className="text-center mb-5">
-          <i className="icon-color fas fa-user-shield me-2"></i>Privacy Policy
-        </h2> */}
-
         <div className="section mb-5 border-bottom pb-4">
          <h3><i class="icon-color fas fa-book-open me-2"></i>Introduction</h3>
           <p className="fs-5">
             All capitalized terms not defined in this document shall have the meanings ascribed to them in the Terms of Use of the Website, which can be found here (Terms and Conditions). Contracting entity shall be RWU India Private Limited (herein after referred to as ‘RWU’, ‘registerwithus.in’, ‘the Company’, or ‘us’ or ‘our’). The terms You, Your, User refer to the users of the website of the Company.
           </p>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
          <h3><i class="icon-color fas fa-user me-2"></i>1. Information provided by you</h3>
           <ul className="custom-list ms-4">
@@ -37,7 +30,6 @@ function PrivacyPolicy() {
             <li className='fs-5 ms-2' ><span className='fw-bold' >1.2 :</span>	We may require you to provide additional details, as and when required, in order to comply with any applicable regulatory requirement or for additional services/products via the Website, as and when offered, and may also utilise data lawfully obtained from third party service providers authorised by you, including but not limited to data pertaining to your credit score, to provide the services to you, subject to the terms of this Privacy Policy.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-database me-2"></i>2. Collection of Information</h3>
           <ul className="custom-list ms-4">
@@ -49,14 +41,12 @@ function PrivacyPolicy() {
             <li className='fs-5 ms-2' ><span className='fw-bold' >2.6 :</span>	It is mandatory for Users of the Website to provide certain categories of Personal Data (as specified at the time of collection). In the event that Users do not provide any or sufficient Personal Data marked as mandatory, the Company may not be able to complete the registration process or provide such Users with the Company’s products or services.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-globe me-2"></i>3. Information obtained from data aggregators on your behalf</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >3.1 :</span>	We may obtain your personal indefinable information (using API tool or otherwise) from third party data aggregators including but not limited to Credit Information Companies (CICs), directories on your behalf. In order to view your credit information / report, you hereby consent without any undue influence, coercion that we are authorised to share / obtain your personal identifiable with / from said data aggregators. For availing your information / report, you agree that the Company shall be entitled to rely on your authorisation and consent granted by you to us unless expressly revoked by you.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-cogs me-2"></i>4. Use of Personal Information</h3>
           <ul className="custom-list ms-4">
@@ -77,7 +67,6 @@ function PrivacyPolicy() {
             <li className='fs-5 ms-2' ><span className='fw-bold' >4.3 : </span>	If User voluntarily submit User information or other information to the Website for publication on the Website through the publishing tools, then Users are deemed to have given consent to the publication of such information on the Website; and making such disclosures as may be required for any of the above purposes or as required by law, regulations and guidelines or in respect of any investigations, claims or potential claims brought on or against us or against third parties.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-hourglass-half me-2"></i>5. Data Retention</h3>
           <ul className="custom-list ms-4">
@@ -86,7 +75,6 @@ function PrivacyPolicy() {
             <li className='fs-5 ms-2' ><span className='fw-bold' >5.3 :</span>	The Credit Information Aggregates shared by you, or received on your behalf shall be destroyed, purged, erased or returned to the Credit Information Companies promptly either when you expressly seek to do so and/or seek to revoke the consent or if it is mandated or intimated by regulators.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-unlock me-2"></i>6. Disclosure of Personal Data</h3>
           <ul className="custom-list ms-4">
@@ -99,14 +87,12 @@ function PrivacyPolicy() {
             <li className='fs-5 ms-2' ><span className='fw-bold' >6.7 :</span>	The Company may establish relationships with other parties and websites to offer User the benefit of products and services which the Company does not offer. The Company may offer you access to these other parties and/or their websites. This Privacy Policy does not apply to the products and services enabled or facilitated by such third parties. The privacy policies of those other parties may differ from the Company, and it has no control over the information that User may submit to those third parties. User should read the relevant privacy policy for those third parties before responding to and availing any offers, products or services advertised or provided by those third parties.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-user-edit me-2"></i>7. Right to Update Personal Data</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >7.1 :</span>	Under the applicable laws, User have the right of access to personal information held by the Company and to request updating / correcting the information.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-cookie-bite me-2"></i>8. Cookies</h3>
           <ul className="custom-list ms-4">
@@ -115,92 +101,44 @@ function PrivacyPolicy() {
             <li className='fs-5 ms-2' ><span className='fw-bold' >8.3 :</span>	User can determine if and how a cookie will be accepted by configuring the browser which is installed in User’s device. If User chooses, User can change those configurations. If User reject all cookies by choosing the cookie-disabling function, User may be required to re-enter information on the Website more often and certain features of the Website may be unavailable.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-lock me-2"></i>9. Security Measures</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >9.1 :</span>	The Company employ commercially reasonable security methods to prevent unauthorized access to the Website, to maintain data accuracy and to ensure the correct use of the information the Company holds. No data transmission over the internet or any wireless network can be guaranteed to be perfectly secure. As a result, while the Company try to protect the information the Company holds, it cannot guarantee the security of any information User transmits to the Company and Users do so at their own risk.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-sync-alt me-2"></i>10. Updates / Changes</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >10.1 :</span>	Any changes to this Privacy Policy will be communicated by us posting an amended and/or restated Privacy Policy on the Website. Once posted on the Website the new Privacy Policy will be effective immediately. User agree that any information the Company hold about User (as described in this Privacy Policy and whether or not collected prior to or after the new Privacy Policy became effective) will be governed by the latest version of the Privacy Policy.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-phone-alt me-2"></i>11. Contact Us</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >11.1 :</span>	In the event you have any complaints or concerns with respect to the Website or if you have any questions about this Policy, please feel free to contact us on +91 9643981247 (between 10 am – 7 pm) or reach out to our customer support at info@registerwithus.in</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i class="icon-color fas fa-tools me-2"></i>12. Grievance Redressal</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >12.1 :</span>	In the event you have any grievance relating to the processing of Information provided by you, you may contact our Grievance Redressal Officer Mr. Tushar Rai Sharma at info@registerwithus.in with the following subject line “Attention: Grievance Redressal Officer” or write to us at 944, Block-C, Sushant Lok Phase-1, Gurgaon, Gurgaon, Sadar Bazar, Haryana, India, 122001.</li>
           </ul>
         </div>
-
         <div className="section mb-5 border-bottom pb-4">
           <h3><i className="icon-color fas fa-user-lock me-2"></i>13.	Disclaimer</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >13.1 :</span>	In case any personal information is shared by you with us, which is not requested by us during registration, (whether mandatorily or optionally), we will not be liable for any information security breach or disclosure in relation to such information. If you have any questions regarding this Policy or the protection of your personal information, please contact our Grievance Officer.</li>
           </ul>
         </div>
-
         <div className="section">
           <h3><i className="icon-color fas fa-user-lock me-2"></i>14.	Deleting your information</h3>
           <ul className="custom-list ms-4">
             <li className='fs-5 ms-2' ><span className='fw-bold' >14.1 :</span>	If you wish to delete your account or personal information or withdraw your consent for processing or retaining your personal sensitive information, you may submit a request at info@registerwithus.in</li>
           </ul>
         </div>
-
-        {/* <div className="section mb-5">
-          <h4><i className="icon-color fas fa-user-lock me-2"></i>How We Use Your Data</h4>
-          <ul className="custom-list">
-            <li><i className="icon-color fas fa-check-circle me-2"></i>To deliver services you request.</li>
-            <li><i className="icon-color fas fa-check-circle me-2"></i>To improve user experience and platform performance.</li>
-            <li><i className="icon-color fas fa-check-circle me-2"></i>For legal compliance and fraud prevention.</li>
-          </ul>
-        </div>
-
-        <div className="section mb-5">
-          <h4><i className="icon-color fas fa-lock me-2 text-danger"></i>Data Security</h4>
-          <p>
-            We use industry-standard encryption and strict internal procedures to safeguard your data. Access is limited
-            to authorized personnel only.
-          </p>
-        </div>
-
-        <div className="section mb-5">
-          <h4><i className="icon-color fas fa-exchange-alt me-2 text-info"></i>Third-Party Sharing</h4>
-          <p>
-            We do not sell or rent your data. Limited sharing may occur with trusted partners for service delivery (e.g.,
-            payment gateways), all of whom are bound by confidentiality agreements.
-          </p>
-        </div>
-
-        <div className="section mb-5">
-          <h4><i className="icon-color fas fa-edit me-2 text-secondary"></i>Your Rights</h4>
-          <ul className="custom-list">
-            <li><i className="icon-color fas fa-check-circle text-secondary me-2"></i>Right to access or update your information.</li>
-            <li><i className="icon-color fas fa-check-circle text-secondary me-2"></i>Right to request deletion of your data.</li>
-            <li><i className="icon-color fas fa-check-circle text-secondary me-2"></i>Right to withdraw consent at any time.</li>
-          </ul>
-        </div>
-
-        <div className="section text-center bg-secondary p-5">
-          <h2 className="mb-2 text-white">Have questions?</h2>
-          <a href="mailto:info@registerwithus.in" className="btn btn-primary">
-            <i className="icon-color fas fa-envelope me-2"></i>Contact Support
-          </a>
-        </div> */}
       </div>
     </section>
   );
 }
-
 export default PrivacyPolicy;

@@ -4,7 +4,6 @@ import 'swiper/css/navigation';
 import './WhatClientSays.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-
 const testimonials = [
   {
     text: "Register With Us has simplified our hiring process and made team collaboration much smoother.",
@@ -43,11 +42,9 @@ const testimonials = [
     title: "HR Director, India"
   }
 ];
-
 function WhatClientSays() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-
   return (
     <div className="container py-5 text-center">
       <h2 className="section-title d-block mb-0">
@@ -55,9 +52,7 @@ function WhatClientSays() {
           What Our Clients Says
         </span>
       </h2>
-
       <div className="swiper-wrapper-relative">
-        {/* Arrows directly on top-right inside slider area */}
         <div className="swiper-custom-nav-inside">
           <button ref={prevRef} className="swiper-button-custom prev-btn">
             <i className="fas fa-chevron-left"></i>
@@ -66,7 +61,6 @@ function WhatClientSays() {
             <i className="fas fa-chevron-right"></i>
           </button>
         </div>
-
         <Swiper
           modules={[Navigation]}
           navigation={{
@@ -107,5 +101,4 @@ function WhatClientSays() {
     </div>
   );
 }
-
 export default WhatClientSays;

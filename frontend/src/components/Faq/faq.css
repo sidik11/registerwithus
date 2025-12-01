@@ -5,7 +5,6 @@
     margin-bottom: 60px;
     position: relative;
   }
-
   .section-title .overlap-conte::after {
     content: '';
     position: absolute;
@@ -17,7 +16,6 @@
     background-size: contain;
     z-index: -1;
   }
-
   .section-title span {
     position: relative;
     display: inline-block;

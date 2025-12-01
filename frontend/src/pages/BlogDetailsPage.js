@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Blogdetails from '../components/Blogs/Blogdetails';
 import Footer from '../components/Common/Footer';
-
 const BlogDetailsPage = () => {
-
   useEffect(() => {
     // ✅ Set page title
     document.title = "Blog Details | Expert Insights and Business Tips";
-
     // ✅ Set meta description
     const metaDescription = document.querySelector("meta[name='description']");
     if (metaDescription) {
@@ -22,7 +19,6 @@ const BlogDetailsPage = () => {
         "Read our detailed blog articles to gain expert insights, business strategies, and the latest updates on company registration, compliance, and legal services in India.";
       document.head.appendChild(desc);
     }
-
     // ✅ Set meta keywords
     const metaKeywords = document.querySelector("meta[name='keywords']");
     if (metaKeywords) {
@@ -38,7 +34,6 @@ const BlogDetailsPage = () => {
       document.head.appendChild(keywords);
     }
   }, []);
-
   return (
     <>
       <Blogdetails />
@@ -46,5 +41,4 @@ const BlogDetailsPage = () => {
     </>
   );
 };
-
 export default BlogDetailsPage;

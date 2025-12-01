@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Abouthero from '../components/About/Abouthero';
 import Aboutmain from '../components/About/Aboutmain';
 import OurApproach from '../components/About/OurApproach';
@@ -6,13 +6,10 @@ import Missionvision from '../components/About/Missionvision';
 import WhoWeServe from '../components/About/WhoWeServe';
 import CompanyHighlights from '../components/About/CompanyHighlights';
 import Footer from '../components/Common/Footer';
-
 const AboutPage = () => {
-
   useEffect(() => {
     // ✅ Set page title
     document.title = "About Us | Learn More About Our Mission, Vision & Team";
-
     // ✅ Set meta description
     const metaDescription = document.querySelector("meta[name='description']");
     if (metaDescription) {
@@ -27,7 +24,6 @@ const AboutPage = () => {
         "Discover who we are, our mission, vision, and the passionate team behind our success. Learn why businesses trust us as their compliance and registration partner in India.";
       document.head.appendChild(desc);
     }
-
     // ✅ Set meta keywords
     const metaKeywords = document.querySelector("meta[name='keywords']");
     if (metaKeywords) {
@@ -43,7 +39,6 @@ const AboutPage = () => {
       document.head.appendChild(keywords);
     }
   }, []);
-
   return (
     <>
       <Abouthero />
@@ -56,5 +51,4 @@ const AboutPage = () => {
     </>
   );
 };
-
 export default AboutPage;

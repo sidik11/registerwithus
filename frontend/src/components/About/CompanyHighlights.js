@@ -2,12 +2,10 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './CompanyHighlights.css';
-
 function CompanyHighlights() {
     return (
         <section className="section-highlights py-5">
             <div className="container">
-
                 <div className='row' >
                     <div className='col-lg-4 col-md-4 col-sm-12' >
                         {/* Block 1 */}
@@ -57,5 +55,4 @@ function CompanyHighlights() {
         </section>
     );
 }
-
 export default CompanyHighlights;
