@@ -11,7 +11,6 @@ import WhyChooseUs from '../components/Home/WhyChooseUs';
 import Card from '../components/Home/Card';
 import Faq from '../components/Faq/Faq';
 import Footer from '../components/Common/Footer';
-import '../pages/Homepage.css';
 const HomePage = () => {
   useEffect(() => {
     // ✅ Set page title

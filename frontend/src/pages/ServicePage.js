@@ -4,7 +4,6 @@ import Servicedetails from '../components/Services/Servicedetails';
 import Taskey from '../components/Home/Taskey';
 import Footer from '../components/Common/Footer';
 import servicesData from '../components/Services/services.json';
-import '../pages/Homepage.css';
 const ServicePage = () => {
   const location = useLocation();
   const [matchedService, setMatchedService] = useState(null);

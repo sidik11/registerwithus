@@ -1,6 +1,6 @@
 // ========================== Imports ==========================
 import React, { useEffect, useRef } from 'react';
-import { API_BASE_URL } from '../../utils/api';
+import { API_BASE_URL } from '../../utils/api.js';
 import { useLocation, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';

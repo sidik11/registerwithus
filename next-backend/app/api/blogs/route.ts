@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+// app/api/blogs/route.ts
+export const dynamic = "force-dynamic";
+
 import path from "path";
 import fs from "fs/promises";
 import formidable from "formidable";

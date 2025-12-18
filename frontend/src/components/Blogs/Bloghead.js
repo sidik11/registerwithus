@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { API_BASE_URL } from '../../utils/api';
+import { API_BASE_URL } from '../../utils/api.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Swal from 'sweetalert2';

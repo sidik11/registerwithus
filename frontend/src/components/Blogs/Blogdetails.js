@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Blogdetails.css';
-import { API_BASE_URL } from '../../utils/api'; // ✅ Add this
+import { API_BASE_URL } from '../../utils/api.js'; // ✅ Add this
 function Blogdetails() {
     const { id } = useParams();
     const [blog, setBlog] = useState(null);

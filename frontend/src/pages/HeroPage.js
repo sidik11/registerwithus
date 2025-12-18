@@ -3,7 +3,6 @@ import Hero1 from '../components/Home/Hero1';
 import Hero2 from '../components/Home/Hero2';
 import Hero4 from '../components/Home/Hero4';
 import Hero from '../components/Home/Hero';
-import '../pages/Homepage.css'
 const HeroPage = () => {
     return (
         <>

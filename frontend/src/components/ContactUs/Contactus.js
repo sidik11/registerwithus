@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Contactus.css";
-import { API_BASE_URL } from "../../utils/api"; // ✅ use dynamic base URL
+import { API_BASE_URL } from "../../utils/api.js"; // ✅ use dynamic base URL
 function Contactus() {
   const [formData, setFormData] = useState({
     user_name: "",
