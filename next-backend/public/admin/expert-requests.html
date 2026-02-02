@@ -11,7 +11,7 @@
 		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/logo.png" />
+	<link rel="shortcut icon" href="./img/logo.png" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
@@ -517,6 +517,32 @@
         }
         await loadExpertData();
     });
+</script>
+<script>
+(function () {
+  function checkAuthOnRestore() {
+    fetch("/api/admin/check-auth", { credentials: "include" })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.authenticated) {
+          window.location.replace("/admin/login.html");
+        }
+      })
+      .catch(() => {
+        window.location.replace("/admin/login.html");
+      });
+  }
+
+  // Normal load
+  document.addEventListener("DOMContentLoaded", checkAuthOnRestore);
+
+  // 🔥 Back/Forward cache restore
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+      checkAuthOnRestore();
+    }
+  });
+})();
 </script>
 
 </body>

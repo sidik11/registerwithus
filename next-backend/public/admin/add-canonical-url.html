@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>RWU | Canonical URLs & Meta Tags</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- AdminKit / Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="css/app.css" rel="stylesheet" />
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+	<link rel="shortcut icon" href="./img/logo.png" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- 🔹 SIDEBAR -->
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <a class="sidebar-brand" href="index.html">
+            <span class="align-middle">Register With Us</span>
+          </a>
+
+          <ul class="sidebar-nav">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="index.html">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="admin-data.html">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Admin Data</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="blogs-category.html">
+                <i class="align-middle" data-feather="list"></i>
+                <span class="align-middle">Blogs Category</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="blogs-data.html">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Blogs Data</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="quick-contact.html">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Contact Forms</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item active">
+              <a class="sidebar-link" href="add-canonical-url.html">
+                <i class="align-middle" data-feather="link"></i>
+                <span class="align-middle">Canonical URL/Meta-Tag</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- 🔹 MAIN -->
+      <div class="main">
+        <!-- TOP NAV -->
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="img/avatars/new-admin-logo.png"
+                    class="avatar img-fluid rounded me-1"
+                  />
+                  <span class="text-dark">Admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="#" id="logoutBtn">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- CONTENT -->
+        <main class="content">
+          <div class="container-fluid p-0">
+            <!-- Canonical URL Section -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h1 class="h3">Canonical URLs</h1>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#canonicalModal"
+              >
+                + Add Canonical
+              </button>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Page Name</th>
+                      <th>Canonical URL</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="canonicalTable">
+                    <tr>
+                      <td colspan="4" class="text-center">Loading...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Meta Tag Section -->
+            <div
+              class="d-flex justify-content-between align-items-center mt-5 mb-3"
+            >
+              <h1 class="h3">Meta Tags</h1>
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#metaTagModal"
+              >
+                + Add Meta Tag
+              </button>
+            </div>
+
+            <div class="card mb-5">
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Page Name</th>
+                      <th>Meta Title</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="metaTagTable">
+                    <tr>
+                      <td colspan="4" class="text-center">Loading...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                <p class="mb-0">
+                  <strong>Register With Us</strong><a class="text-muted" href="https://techgeering.in/" target="_blank"><strong> &copy;
+                                        Techgeering Solutions Private Limited</strong></a>
+                </p>
+              </div>
+              <div class="col-6 text-end">
+                <span>Version 1.0</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ===== CANONICAL MODAL ===== -->
+    <div class="modal fade" id="canonicalModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="canonicalForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Add / Update Canonical</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Page Name</label>
+                <select class="form-control" id="pageName" required>
+                  <option value="">Select a page</option>
+                  <option value="home">home</option>
+                  <option value="about">about</option>
+                  <option value="blog">blog</option>
+                  <option value="contact">contact</option>
+                  <option value="privacy">privacy</option>
+                  <option value="refund">refund</option>
+                  <option value="termsAndConditions">termsAndConditions</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Canonical URL</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="canonicalUrl"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== META TAG MODAL ===== -->
+    <div class="modal fade" id="metaTagModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form id="metaTagForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Add / Update Meta Tags</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Page Name</label>
+                <select class="form-control" id="metaPageName" required>
+                  <option value="">Select a page</option>
+                  <option value="home">home</option>
+                  <option value="about">about</option>
+                  <option value="blog">blog</option>
+                  <option value="contact">contact</option>
+                  <option value="privacy">privacy</option>
+                  <option value="refund">refund</option>
+                  <option value="termsAndConditions">termsAndConditions</option>
+                </select>
+              </div>
+
+              <div id="metaInputsWrapper">
+                <!-- First meta input row will be added dynamically -->
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button class="btn btn-primary" type="submit">
+                Save Meta Tags
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      const API_BASE = "http://localhost:3001";
+
+      // ================= CANONICAL CODE =================
+      const canonicalTable = document.getElementById("canonicalTable");
+      const canonicalForm = document.getElementById("canonicalForm");
+      const pageNameInput = document.getElementById("pageName");
+      const canonicalUrlInput = document.getElementById("canonicalUrl");
+      const canonicalModalEl = document.getElementById("canonicalModal");
+      const bsCanonicalModal = new bootstrap.Modal(canonicalModalEl);
+      let canonicalMode = "add";
+
+      // Function to update dropdown options based on existing pages
+      function updateCanonicalDropdownOptions() {
+        const existingPages = Array.from(canonicalTable.querySelectorAll('tr[data-page]'))
+          .map(row => row.dataset.page.toLowerCase());
+        
+        Array.from(pageNameInput.options).forEach(option => {
+          if (option.value && option.value !== '') {
+            option.disabled = existingPages.includes(option.value.toLowerCase()) && canonicalMode === 'add';
+          }
+        });
+      }
+
+      // Function to update meta dropdown options
+      function updateMetaDropdownOptions() {
+        const existingMetaPages = Array.from(metaTagTable.querySelectorAll('tr[data-page]'))
+          .map(row => row.dataset.page.toLowerCase());
+        
+        Array.from(metaPageNameInput.options).forEach(option => {
+          if (option.value && option.value !== '') {
+            option.disabled = existingMetaPages.includes(option.value.toLowerCase()) && metaMode === 'add';
+          }
+        });
+      }
+
+      async function fetchCanonicals() {
+        try {
+          const res = await fetch(`${API_BASE}/api/canonical`);
+          const data = await res.json();
+          canonicalTable.innerHTML = "";
+          if (!data.success || data.data.length === 0) {
+            canonicalTable.innerHTML = `<tr><td colspan="4" class="text-center">No records found</td></tr>`;
+            updateCanonicalDropdownOptions();
+            return;
+          }
+          data.data.forEach((row, i) => {
+            canonicalTable.innerHTML += `
+            <tr data-page="${row.page_name}" data-url="${row.canonical_url}">
+                <td>${i + 1}</td>
+                <td>${row.page_name}</td>
+                <td>${row.canonical_url}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning edit-btn">Edit</button>
+                    <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+                </td>
+            </tr>`;
+          });
+          updateCanonicalDropdownOptions();
+        } catch (err) {
+          console.error(err);
+          Swal.fire("Error", "Failed to load canonicals", "error");
+        }
+      }
+
+      // Add/Edit/Delete
+      canonicalForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const payload = {
+          page_name: pageNameInput.value.trim().toLowerCase(),
+          canonical_url: canonicalUrlInput.value.trim(),
+        };
+        try {
+          const res = await fetch(`${API_BASE}/api/canonical`, {
+            method: canonicalMode === "add" ? "POST" : "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json();
+          if (!data.success)
+            return Swal.fire(
+              "Error",
+              data.message || "Operation failed",
+              "error"
+            );
+          bsCanonicalModal.hide();
+          canonicalForm.reset();
+          fetchCanonicals();
+          canonicalMode = "add";
+          pageNameInput.disabled = false;
+          Swal.fire("Success", "Canonical saved", "success");
+        } catch (err) {
+          console.error(err);
+          Swal.fire("Error", "Request failed", "error");
+        }
+      });
+
+      canonicalTable.addEventListener("click", async (e) => {
+        const row = e.target.closest("tr");
+        if (!row) return;
+        const page = row.dataset.page,
+          url = row.dataset.url;
+        if (e.target.classList.contains("edit-btn")) {
+          canonicalMode = "edit";
+          pageNameInput.value = page;
+          canonicalUrlInput.value = url;
+          pageNameInput.disabled = true;
+          bsCanonicalModal.show();
+        }
+        if (e.target.classList.contains("delete-btn")) {
+          const confirm = await Swal.fire({
+            title: "Are you sure?",
+            text: "Delete canonical?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            confirmButtonText: "Yes",
+          });
+          if (!confirm.isConfirmed) return;
+          try {
+            const res = await fetch(`${API_BASE}/api/canonical`, {
+              method: "DELETE",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ page_name: page }),
+            });
+            const data = await res.json();
+            if (data.success) {
+              fetchCanonicals();
+              Swal.fire("Deleted!", "Canonical removed", "success");
+            } else Swal.fire("Error", data.message || "Delete failed", "error");
+          } catch (err) {
+            console.error(err);
+            Swal.fire("Error", "Delete failed", "error");
+          }
+        }
+      });
+
+      canonicalModalEl.addEventListener("hidden.bs.modal", () => {
+        canonicalForm.reset();
+        pageNameInput.disabled = false;
+        canonicalMode = "add";
+        updateCanonicalDropdownOptions();
+      });
+
+      // When modal is shown, update dropdown options
+      canonicalModalEl.addEventListener('show.bs.modal', () => {
+        updateCanonicalDropdownOptions();
+      });
+
+      fetchCanonicals();
+
+      // ================= META TAG CODE =================
+     
+const metaTagTable = document.getElementById("metaTagTable");
+const metaTagForm = document.getElementById("metaTagForm");
+const metaPageNameInput = document.getElementById("metaPageName");
+const metaInputsWrapper = document.getElementById("metaInputsWrapper");
+const metaTagModal = document.getElementById("metaTagModal");
+const bsMetaModal = new bootstrap.Modal(metaTagModal);
+
+let metaMode = "add";
+let editPageName = null;
+
+const ALLOWED_META_NAMES = [
+  "title",
+  "description",
+  "keywords",
+  "author",
+  "robots",
+];
+
+const ROBOTS_OPTIONS = [
+  "index, follow",
+  "noindex, follow",
+  "noindex, nofollow",
+];
+
+// ============================
+// CREATE META ROW
+// ============================
+function createMetaRow(metaName = "", metaContent = "") {
+  const row = document.createElement("div");
+  row.className = "row mb-2 meta-input-row";
+
+  let contentInput = `
+    <input type="text" class="form-control metaContent"
+      placeholder="Content"
+      value="${metaContent}">
+  `;
+
+  if (metaName === "robots") {
+    contentInput = `
+      <select class="form-select metaContent">
+        ${ROBOTS_OPTIONS.map(
+          r => `<option value="${r}" ${metaContent === r ? "selected" : ""}>${r}</option>`
+        ).join("")}
+      </select>
+    `;
+  }
+  if (metaName === "description") {
+  contentInput = `
+    <textarea class="form-control metaContent" rows="3"
+      placeholder="Meta description">${metaContent}</textarea>
+  `;
+}
+
+  const optionsHTML = ALLOWED_META_NAMES.map(
+    n => `<option value="${n}" ${metaName === n ? "selected" : ""}>${n}</option>`
+  ).join("");
+
+  row.innerHTML = `
+    <div class="col">
+      <select class="form-select metaName">
+        <option value="">Select Meta</option>
+        ${optionsHTML}
+      </select>
+    </div>
+
+    <div class="col">
+      ${contentInput}
+    </div>
+
+    <div class="col-auto d-flex gap-1 actionBtns"></div>
+  `;
+
+  metaInputsWrapper.appendChild(row);
+  refreshRowButtons();
+  syncMetaNameOptions(); // ✅ added
+}
+
+// ============================
+// REFRESH PLUS / MINUS BUTTONS
+// ============================
+function refreshRowButtons() {
+  const rows = document.querySelectorAll(".meta-input-row");
+
+  rows.forEach((row, index) => {
+    const btnCol = row.querySelector(".actionBtns");
+    btnCol.innerHTML = "";
+
+    const minusBtn = document.createElement("button");
+    minusBtn.type = "button";
+    minusBtn.className = "btn btn-danger removeMetaRow";
+    minusBtn.textContent = "-";
+    minusBtn.disabled = rows.length === 1;
+
+    const plusBtn = document.createElement("button");
+    plusBtn.type = "button";
+    plusBtn.className = "btn btn-success addMetaRow";
+    plusBtn.textContent = "+";
+
+    btnCol.appendChild(minusBtn);
+
+    if (index === rows.length - 1) {
+      btnCol.appendChild(plusBtn);
+    }
+  });
+}
+
+// ============================
+// PREVENT DUPLICATE META NAMES ✅
+// ============================
+function syncMetaNameOptions() {
+  const selected = Array.from(
+    document.querySelectorAll(".metaName")
+  )
+    .map(sel => sel.value)
+    .filter(Boolean);
+
+  document.querySelectorAll(".metaName").forEach(select => {
+    const current = select.value;
+
+    Array.from(select.options).forEach(opt => {
+      if (!opt.value) return;
+      opt.disabled = selected.includes(opt.value) && opt.value !== current;
+    });
+  });
+}
+
+// ============================
+// ADD / REMOVE ROW
+// ============================
+metaInputsWrapper.addEventListener("click", (e) => {
+  const row = e.target.closest(".meta-input-row");
+
+  if (e.target.classList.contains("addMetaRow")) {
+    createMetaRow();
+  }
+
+  if (e.target.classList.contains("removeMetaRow")) {
+    row.remove();
+    refreshRowButtons();
+    syncMetaNameOptions(); // ✅ added
+  }
+});
+
+// ============================
+// META NAME CHANGE
+// ============================
+metaInputsWrapper.addEventListener("change", (e) => {
+  if (!e.target.classList.contains("metaName")) return;
+
+  const row = e.target.closest(".meta-input-row");
+  const contentCol = row.children[1];
+
+  if (e.target.value === "robots") {
+    contentCol.innerHTML = `
+      <select class="form-select metaContent">
+        ${ROBOTS_OPTIONS.map(r => `<option value="${r}">${r}</option>`).join("")}
+      </select>
+    `;
+  }
+else  if (e.target.value === "description") {
+    contentCol.innerHTML = `
+      <textarea class="form-control metaContent" rows="3"
+        placeholder="Meta description"></textarea>
+    `;
+  }
+
+
+
+  else {
+    contentCol.innerHTML = `
+      <input type="text" class="form-control metaContent" placeholder="Content">
+    `;
+  }
+
+  syncMetaNameOptions(); // ✅ added
+});
+// 🔹 Logout Button
+		document.getElementById("logoutBtn").addEventListener("click", async (e) => {
+			e.preventDefault();
+			try {
+				const res = await fetch("/api/admin/logout", { method: "POST" });
+				const result = await res.json();
+				if (result.success) {
+					window.location.replace("/admin/login.html");
+				} else {
+					alert("Logout failed!");
+				}
+			} catch (err) {
+				console.error("Logout error:", err);
+				alert("Logout failed: " + err.message);
+			}
+		});
+
+// ============================
+// FETCH META TAGS
+// ============================
+async function fetchMetaTags() {
+  const res = await fetch(`${API_BASE}/api/meta-tags`);
+  const data = await res.json();
+
+  metaTagTable.innerHTML = "";
+
+  if (!data.success || data.data.length === 0) {
+    metaTagTable.innerHTML = `<tr><td colspan="4" class="text-center">No records</td></tr>`;
+    updateMetaDropdownOptions();
+    return;
+  }
+
+  const grouped = {};
+  data.data.forEach(tag => {
+    if (!grouped[tag.page_name]) grouped[tag.page_name] = [];
+    grouped[tag.page_name].push(tag);
+  });
+
+  let i = 1;
+  for (const page in grouped) {
+    const title =
+      grouped[page].find(t => t.meta_name === "title")?.meta_content || "-";
+
+    metaTagTable.innerHTML += `
+      <tr data-page="${page}">
+        <td>${i++}</td>
+        <td>${page}</td>
+        <td>${Array.isArray(title) ? title.join(", ") : title}</td>
+        <td>
+          <button class="btn btn-sm btn-warning editMetaBtn">Edit</button>
+          <button class="btn btn-sm btn-danger deleteMetaBtn">Delete</button>
+        </td>
+      </tr>
+    `;
+  }
+  updateMetaDropdownOptions();
+}
+
+// ============================
+// SAVE META TAGS
+// ============================
+metaTagForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const page_name = metaPageNameInput.value.trim().toLowerCase();
+  if (!page_name) return;
+
+  const meta_tags = [];
+
+  document.querySelectorAll(".meta-input-row").forEach(row => {
+    const meta_name = row.querySelector(".metaName").value;
+    let meta_content = row.querySelector(".metaContent").value.trim();
+
+    if (!meta_name || !meta_content) return;
+
+    if (meta_name === "keywords") {
+      meta_content = meta_content.split(",").map(s => s.trim());
+    }
+
+    meta_tags.push({ meta_name, meta_content });
+  });
+
+  const res = await fetch(`${API_BASE}/api/meta-tags`, {
+    method: metaMode === "add" ? "POST" : "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ page_name, meta_tags }),
+  });
+
+  const data = await res.json();
+  if (!data.success) return;
+
+  Swal.fire("Success", "Meta tags saved successfully", "success");
+  bsMetaModal.hide();
+  fetchMetaTags();
+});
+
+// ============================
+// EDIT / DELETE
+// ============================
+metaTagTable.addEventListener("click", async (e) => {
+  const row = e.target.closest("tr");
+  if (!row) return;
+
+  const page = row.dataset.page;
+
+  if (e.target.classList.contains("editMetaBtn")) {
+    metaMode = "edit";
+    editPageName = page;
+    metaPageNameInput.value = page;
+    metaPageNameInput.disabled = true;
+    metaInputsWrapper.innerHTML = "";
+
+    const res = await fetch(`${API_BASE}/api/meta-tags?page_name=${page}`);
+    const data = await res.json();
+
+    data.data.forEach(tag => {
+      const content = Array.isArray(tag.meta_content)
+        ? tag.meta_content.join(", ")
+        : tag.meta_content;
+      createMetaRow(tag.meta_name, content);
+    });
+
+    bsMetaModal.show();
+  }
+
+  if (e.target.classList.contains("deleteMetaBtn")) {
+    const confirm = await Swal.fire({
+      title: "Delete all meta tags?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+    });
+
+    if (!confirm.isConfirmed) return;
+
+    const res = await fetch(`${API_BASE}/api/meta-tags`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ page_name: page }),
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      Swal.fire("Deleted", "All meta tags deleted", "success");
+      fetchMetaTags();
+    }
+  }
+});
+
+// ============================
+// MODAL RESET
+// ============================
+metaTagModal.addEventListener("hidden.bs.modal", () => {
+  metaMode = "add";
+  editPageName = null;
+  metaPageNameInput.disabled = false;
+  metaTagForm.reset();
+  metaInputsWrapper.innerHTML = "";
+  createMetaRow();
+  updateMetaDropdownOptions();
+});
+
+// When meta modal is shown, update dropdown options
+metaTagModal.addEventListener('show.bs.modal', () => {
+  updateMetaDropdownOptions();
+});
+
+// ============================
+// INIT
+// ============================
+createMetaRow();
+fetchMetaTags();
+
+
+
+    </script>
+    <script>
+(function () {
+  function checkAuthOnRestore() {
+    fetch("/api/admin/check-auth", { credentials: "include" })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.authenticated) {
+          window.location.replace("/admin/login.html");
+        }
+      })
+      .catch(() => {
+        window.location.replace("/admin/login.html");
+      });
+  }
+
+  // Normal load
+  document.addEventListener("DOMContentLoaded", checkAuthOnRestore);
+
+  // 🔥 Back/Forward cache restore
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+      checkAuthOnRestore();
+    }
+  });
+})();
+</script>
+  </body>
+</html>

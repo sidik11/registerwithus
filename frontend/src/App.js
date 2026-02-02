@@ -20,18 +20,26 @@ function App() {
       <ScrollToTop />
       <Navbar /> 
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/:serviceSlug" element={<ServicePage />} />
-        <Route path="/blogs" element={<BlogPage />} />
-        <Route path="/blogdetails/:id" element={<BlogDetailsPage />} />
-        <Route path="/faqs" element={<FaqPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/refund" element={<RefundPage />} />
-        <Route path="/termconditions" element={<TermConditionsPage />} />
-        <Route path="/Error404" element={<Error404 />} />
-      </Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/about" element={<AboutPage />} />
+  <Route path="/blogs" element={<BlogPage />} />
+
+  {/* BLOG DETAILS — MUST BE ABOVE serviceSlug */}
+  <Route path="/blogdetails/:slug" element={<BlogDetailsPage />} />
+
+  <Route path="/faqs" element={<FaqPage />} />
+  <Route path="/contact" element={<ContactPage />} />
+  <Route path="/privacy" element={<PrivacyPage />} />
+  <Route path="/refund" element={<RefundPage />} />
+  <Route path="/termconditions" element={<TermConditionsPage />} />
+
+  {/* SERVICE PAGE — KEEP THIS NEAR THE END */}
+  <Route path="/:serviceSlug" element={<ServicePage />} />
+
+  {/* 404 */}
+  <Route path="*" element={<Error404 />} />
+</Routes>
+
       {/* ✅ Add GoToTop button so it appears on every page */}
       <GoToTop />
     </Router>

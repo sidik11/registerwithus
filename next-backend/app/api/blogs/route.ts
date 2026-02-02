@@ -49,19 +49,21 @@ function formatDateToYYYYMMDD(date: Date) {
   return `${y}/${m}/${d}`;
 }
 
+
 // ✅ GET Blogs OR Categories
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const type = searchParams.get("type"); 
     const id = searchParams.get("id");
+    const slug = searchParams.get("slug"); // ✅ get slug
 
     if (type === "category") {
       const [rows]: any = await db.query("SELECT * FROM blog_categories ORDER BY id DESC");
       return NextResponse.json({ success: true, categories: rows });
     }
 
-    // --- BLOGS ---
+    // --- Fetch by ID ---
     if (id) {
       const [blogs]: any = await db.query(
         `SELECT *, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at 
@@ -76,23 +78,48 @@ export async function GET(req: NextRequest) {
       );
 
       return NextResponse.json({ success: true, blog: { ...blogs[0], meta } });
-    } else {
-      const [rows]: any = await db.query(`
-        SELECT 
-          blogs.id, blogs.title, blogs.image, blogs.category_id, 
-          blogs.description AS blogDescription,
-          DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
-          blog_categories.name AS category_name
-        FROM blogs
-        LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
-        ORDER BY blogs.id DESC
-      `);
-      return NextResponse.json({ success: true, blogs: rows });
     }
+
+    // --- Fetch by SLUG ---
+    if (slug) {
+      const [blogs]: any = await db.query(
+        `SELECT blogs.id, blogs.title, blogs.image, blogs.category_id, blogs.description AS blogDescription,
+         DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
+         blog_categories.name AS category_name
+         FROM blogs
+         LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
+         WHERE blogs.slug=?`,
+        [slug]
+      );
+
+      if (!blogs.length) return NextResponse.json({ success: false, message: "Blog not found" });
+
+      const [meta]: any = await db.query(
+        `SELECT meta_name, meta_content FROM blog_meta WHERE blog_id=?`,
+        [blogs[0].id]
+      );
+
+      return NextResponse.json({ success: true, blog: { ...blogs[0], meta } });
+    }
+
+    // --- Fetch all blogs ---
+    const [rows]: any = await db.query(`
+      SELECT 
+        blogs.id, blogs.title, blogs.image, blogs.category_id, 
+        blogs.description AS blogDescription,
+        DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
+        blog_categories.name AS category_name,
+        blogs.slug
+      FROM blogs
+      LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
+      ORDER BY blogs.id DESC
+    `);
+    return NextResponse.json({ success: true, blogs: rows });
   } catch (e: any) {
     return NextResponse.json({ success: false, message: e.message }, { status: 500 });
   }
 }
+
 
 // ✅ POST: Add Blog OR Category
 export async function POST(req: Request) {

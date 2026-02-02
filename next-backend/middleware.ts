@@ -1,35 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import { jwtVerify } from "jose";
 
-export function middleware(req: NextRequest) {
+const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // 🔥 Allow API routes always
-  if (req.nextUrl.pathname.startsWith("/api/")) {
+  if (pathname.startsWith("/api/")) {
     return NextResponse.next();
   }
 
-  const isAdminRoute = pathname.startsWith("/admin");
   const isLoginPage = pathname === "/admin/login.html";
 
-  // ✅ Skip static assets (anything with a dot) + login page
   const isStaticAsset =
-    pathname.includes(".") ||
-    pathname.startsWith("/admin/fonts") ||
-    pathname.startsWith("/admin/img");
+    pathname.startsWith("/admin/css") ||
+    pathname.startsWith("/admin/js") ||
+    pathname.startsWith("/admin/img") ||
+    pathname.startsWith("/admin/fonts");
 
-  if (isStaticAsset || isLoginPage) {
+  if (isLoginPage || isStaticAsset) {
     return NextResponse.next();
   }
 
-  if (isAdminRoute) {
-    const accessToken = req.cookies.get("access_token")?.value;
-    if (!accessToken) {
+  if (pathname.startsWith("/admin")) {
+    const token = req.cookies.get("access_token")?.value;
+
+    if (!token) {
       return NextResponse.redirect(new URL("/admin/login.html", req.url));
     }
 
     try {
-      jwt.verify(accessToken, process.env.JWT_SECRET!);
+      await jwtVerify(token, secret);
       return NextResponse.next();
     } catch {
       return NextResponse.redirect(new URL("/admin/login.html", req.url));
@@ -39,7 +40,6 @@ export function middleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-// ✅ Apply middleware only for /admin/*
 export const config = {
   matcher: ["/admin/:path*"],
 };

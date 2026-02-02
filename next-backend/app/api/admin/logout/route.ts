@@ -1,14 +1,23 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export async function POST() {
-  const response = NextResponse.json({ success: true });
+  const res = NextResponse.json({ success: true });
 
-  // Remove the auth cookie
-  response.cookies.set('admin_auth', '', {
+  res.cookies.set("access_token", "", {
     httpOnly: true,
-    path: '/',
-    maxAge: 0
+    path: "/",
+    sameSite: "lax",
+    secure: false,
+    maxAge: 0,
   });
 
-  return response;
+  res.cookies.set("refresh_token", "", {
+    httpOnly: true,
+    path: "/",
+    sameSite: "lax",
+    secure: false,
+    maxAge: 0,
+  });
+
+  return res;
 }

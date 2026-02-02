@@ -47,7 +47,7 @@ function Blogs() {
                     <>
                         {/* ✅ Blog Card 1 */}
                         <div className="col-md-6 d-flex">
-                            <Link to={`/blogdetails/${blogs[0].id}`} className="text-decoration-none w-100">
+                            <Link to={`/blogdetails/${blogs[0].slug}`} className="text-decoration-none w-100">
                                 <div className="card blog-card w-100 d-flex flex-column justify-content-center blog-card1 h-100">
                                     <img
                                         src={`${API_BASE_URL}${blogs[0].image}`}
@@ -68,7 +68,7 @@ function Blogs() {
                         <div className="col-md-6 d-flex flex-column justify-content-between">
                             {/* Blog Card 2 */}
                             {blogs[1] && (
-                                <Link to={`/blogdetails/${blogs[1].id}`} className="text-decoration-none mb-4 flex-grow-1">
+                                <Link to={`/blogdetails/${blogs[1].slug}`} className="text-decoration-none mb-4 flex-grow-1">
                                     <div className="card blog-card blog-card2 h-100">
                                         <div className="row align-items-center h-100">
                                             <div className="col-md-6 blog-text">
@@ -91,7 +91,7 @@ function Blogs() {
                             )}
                             {/* Blog Card 3 */}
                             {blogs[2] && (
-                                <Link to={`/blogdetails/${blogs[2].id}`} className="text-decoration-none flex-grow-1">
+                                <Link to={`/blogdetails/${blogs[2].slug}`} className="text-decoration-none flex-grow-1">
                                     <div className="card blog-card blog-card2 h-100">
                                         <div className="row align-items-center h-100">
                                             <div className="col-md-6">

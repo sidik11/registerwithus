@@ -20,3 +20,42 @@
     font-size: 14px;
     color: gray;
 }
+/* --- Fix Table Display in Blog Content --- */
+
+/* Ensure the table takes full width and collapses borders */
+.blog-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    table-layout: auto; /* Lets columns adjust automatically */
+}
+
+/* Style the cells (td) and headers (th) */
+.blog-content th,
+.blog-content td {
+    border: 1px solid #dee2e6; /* Standard gray border */
+    padding: 10px 15px;
+    vertical-align: top;
+    display: table-cell !important; /* Critical: Prevents stacking */
+}
+
+/* Style Table Headers specifically */
+.blog-content th {
+    background-color: #f8f9fa;
+    font-weight: 700;
+    color: #212529;
+}
+
+/* If you want explicit black borders like the admin panel */
+.blog-content table[border="1"] td,
+.blog-content table[border="1"] th {
+    border: 1px solid #000;
+}
+
+/* Fix Images inside content */
+.blog-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 10px 0;
+}

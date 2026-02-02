@@ -7,27 +7,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
     <meta name="author" content="AdminKit">
-    <meta name="keywords"
-        content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="img/logo.png" />
-
-    <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
-
     <title>RWU | Blog's Data</title>
 
-    <!-- In your <head> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    	<link rel="shortcut icon" href="./img/logo.png" />
 
-    <!-- Include Quill stylesheet -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
-
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <!-- Add Cropper.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
+    
     <link href="css/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+<script src="js/app.js"></script>
+
+    <style>
+        .table-config-modal .modal-dialog {
+            max-width: 500px;
+        }
+        .table-preview {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin-top: 10px;
+            background: white;
+            overflow-x: auto;
+        }
+        .ql-table-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            width: 28px;
+        }
+        .ql-table-btn:hover {
+            color: #0d6efd; 
+        }
+
+        /* --- CRITICAL CSS FIXES FOR TABLES --- */
+        .ql-editor table, 
+        #previewDescription table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin-bottom: 1rem;
+        }
+        
+        .ql-editor th, .ql-editor td, 
+        #previewDescription th, #previewDescription td {
+            border: 1px solid #dee2e6;
+            padding: 0.75rem;
+            vertical-align: top;
+            display: table-cell !important;
+        }
+        
+        .ql-editor th, #previewDescription th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        .ql-editor table[border="1"] td,
+        .ql-editor table[border="1"] th {
+            border: 1px solid #000;
+        }
+
+        .ql-editor img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        /* Cropper Modal Styles */
+        .crop-modal .modal-dialog {
+            max-width: 800px;
+        }
+        .cropper-container {
+            max-height: 500px;
+        }
+        .crop-preview {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin: 10px auto;
+            border: 1px solid #dee2e6;
+            background: #f8f9fa;
+        }
+        .crop-controls {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .crop-slider {
+            width: 100%;
+        }
+        .btn-group-resize {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .btn-resize {
+            padding: 3px 8px;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,51 +128,37 @@
                 </a>
 
                 <ul class="sidebar-nav">
-                    <li class="sidebar-header">
-
-                    </li>
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
-                            <i class="align-middle" data-feather="sliders"></i> <span
-                                class="align-middle">Dashboard</span>
+                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="admin-data.html">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Admin
-                                Data</span>
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Admin Data</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="blogs-category.html">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
-                                Category</span>
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs Category</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item active">
                         <a class="sidebar-link" href="blogs-data.html">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs
-                                Data</span>
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blogs Data</span>
                         </a>
                     </li>
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="quick-contact.html">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Contact
-                                Forms</span>
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Contact Forms</span>
                         </a>
                     </li>
-
-                    <!-- <li class="sidebar-item">
-                        <a class="sidebar-link" href="expert-requests.html">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Expert
-                                Requests</span>
-                        </a>
-                    </li> -->
+                    <li class="sidebar-item ">
+              <a class="sidebar-link" href="add-canonical-url.html">
+                <i class="align-middle" data-feather="link"></i>
+                <span class="align-middle">Canonical URL/Meta-Tag</span>
+              </a>
+            </li>
                 </ul>
             </div>
         </nav>
@@ -93,90 +168,11 @@
                 <a class="sidebar-toggle js-sidebar-toggle">
                     <i class="hamburger align-self-center"></i>
                 </a>
-
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
                         <li class="nav-item dropdown">
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-                                aria-labelledby="messagesDropdown">
-                                <div class="dropdown-menu-header">
-                                    <div class="position-relative">
-                                        4 New Messages
-                                    </div>
-                                </div>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-5.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">Vanessa Tucker</div>
-                                                <div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
-                                                    tortor.</div>
-                                                <div class="text-muted small mt-1">15m ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-2.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="William Harris">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">William Harris</div>
-                                                <div class="text-muted small mt-1">Curabitur ligula sapien euismod
-                                                    vitae.</div>
-                                                <div class="text-muted small mt-1">2h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-4.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Christina Mason">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">Christina Mason</div>
-                                                <div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
-                                                </div>
-                                                <div class="text-muted small mt-1">4h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-2">
-                                                <img src="img/avatars/avatar-3.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-                                            </div>
-                                            <div class="col-10 ps-2">
-                                                <div class="text-dark">Sharon Lessman</div>
-                                                <div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
-                                                    posuere ac, mattis non.</div>
-                                                <div class="text-muted small mt-1">5h ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="dropdown-menu-footer">
-                                    <a href="#" class="text-muted">Show all messages</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
-                                data-bs-toggle="dropdown">
-                                <i class="align-middle" data-feather="settings"></i>
-                            </a>
-
-                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
-                                data-bs-toggle="dropdown">
-                                <img src="img/avatars/new-admin-logo.png" class="avatar img-fluid rounded me-1"
-                                    alt="Admin" /> <span class="text-dark">Admin</span>
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                                <img src="img/avatars/new-admin-logo.png" class="avatar img-fluid rounded me-1" alt="Admin" /> <span class="text-dark">Admin</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#" id="logoutBtn">Log out</a>
@@ -188,7 +184,6 @@
 
             <main class="content">
                 <div class="container-fluid p-0">
-
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h1 class="h3">All Blogs</h1>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBlogModal">
@@ -214,19 +209,14 @@
                         </div>
                     </div>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-labelledby="addBlogModalLabel"
-                        aria-hidden="true">
+                    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-xl">
                             <div class="modal-content">
-                                <!-- Bootstrap 5 Modal Form -->
                                 <form id="addBlogForm" enctype="multipart/form-data">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="addBlogModalLabel">Add New Blog</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <h5 class="modal-title">Add New Blog</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
-
                                     <div class="modal-body">
                                         <div class="row g-3">
                                             <div class="col-md-4">
@@ -235,46 +225,34 @@
                                                     <option selected disabled>Select Category</option>
                                                 </select>
                                             </div>
-
                                             <div class="col-md-4">
                                                 <label>Blog Title</label>
-                                                <input type="text" class="form-control" name="title"
-                                                    placeholder="Enter blog title" />
+                                                <input type="text" class="form-control" name="title" placeholder="Enter blog title" />
                                             </div>
-
                                             <div class="col-md-4">
                                                 <label>Slug</label>
-                                                <input type="text" class="form-control" name="slug"
-                                                    placeholder="Auto-generated from title..." />
+                                                <input type="text" class="form-control" name="slug" placeholder="Auto-generated..." />
                                             </div>
-
                                             <div class="col-md-8">
                                                 <label>Blog Image</label>
                                                <input type="file" class="form-control" name="image" accept="image/*" />
                                             </div>
-
                                             <div class="col-md-4">
                                                 <label>Date</label>
-                                                <input type="text" class="form-control" name="date"
-                                                    value="07/28/2025" />
+                                                <input type="text" class="form-control" name="date" value="07/28/2025" />
                                             </div>
-
-                                            <!-- 🔥 Dynamic Meta Fields -->
                                             <div class="col-12">
                                                 <label class="form-label d-block">Meta Tags</label>
                                                 <div id="metaContainer">
                                                     <div class="d-flex align-items-center gap-2 mb-2 meta-row">
-                                                        <input type="text" name="metatag[]" class="form-control me-1"
-                                                            placeholder="Meta Name" />
-                                                        <input type="text" name="metadesc[]" class="form-control me-1"
-                                                            placeholder="Meta Content" />
-                                                        <!-- <button type="button" class="btn btn-success btn-sm add-meta">
-                                                            <i class="bi bi-plus-lg"></i> -->
+                                                        <input type="text" name="metatag[]" class="form-control" placeholder="Meta Name">
+                                                        <input type="text" name="metadesc[]" class="form-control" placeholder="Meta Description">
+                                                        <button type="button" class="btn btn-success btn-sm add-meta">
+                                                            <i class="bi bi-plus"></i>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="col-12">
                                                 <label>Blog Description</label>
                                                 <div id="quillEditor" style="height: 300px;"></div>
@@ -282,10 +260,9 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-outline-info" id="previewAddBtn">Preview</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save Blog</button>
                                     </div>
                                 </form>
@@ -295,36 +272,13 @@
                 </div>
             </main>
 
-
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
                         <div class="col-6 text-start">
                             <p class="mb-0">
-                                <a class="text-muted" href="javascript:void(0)"><strong>Register With Us</strong></a> -
-                                <a class="text-muted" href="https://techgeering.in/" target="_blank"><strong> &copy;
-                                        Techgeering Solutions Private Limited</strong></a>
+                                <a class="text-muted" href="javascript:void(0)"><strong>Register With Us</strong></a>
                             </p>
-                        </div>
-                        <div class="col-6 text-end">
-                            <ul class="list-inline">
-                                <!-- <li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
-								</li> -->
-                                <li class="list-inline-item">
-                                    <a class="text-muted" style="cursor:default;" href="javascript:void(0)"
-                                        target="_blank">Version 1.0</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -332,7 +286,7 @@
         </div>
     </div>
 
-    <!-- Edit Modal -->
+    <!-- Edit Blog Modal -->
     <div class="modal fade" id="editBlogModal" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -369,343 +323,927 @@
                             <input type="file" class="form-control" name="image" id="editImage" accept="image/*" />
                             <img id="editPreviewImage" src="" alt="Current Image" width="80" class="mt-2">
                         </div>
-
-                        <div id="editMetaContainer"></div>
+                        <div class="mb-2">
+                            <label class="form-label d-block">Meta Tags</label>
+                            <div id="editMetaContainer">
+                                <!-- Meta rows will be dynamically added here -->
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" id="previewEditBtn">Preview</button>
                     <button type="button" class="btn btn-primary" id="updateBlogBtn">Update</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Table Insert Modal -->
+    <div class="modal fade table-config-modal" id="tableInsertModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Insert Table</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Rows</label>
+                            <input type="number" id="tableRows" class="form-control" min="1" max="20" value="3">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Columns</label>
+                            <input type="number" id="tableColumns" class="form-control" min="1" max="10" value="3">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Header</label>
+                            <select id="tableHeader" class="form-select">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-preview mt-3" id="tablePreview"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="insertTableBtn">Insert Table</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Image Crop Modal -->
+    <div class="modal fade crop-modal" id="imageCropModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Crop & Resize Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div id="cropperImageContainer" style="max-height: 500px;">
+                                <img id="cropperImage" src="" alt="Crop me" style="max-width: 100%;">
+                            </div>
+                            <div class="crop-controls">
+                                <label class="form-label">Zoom</label>
+                                <input type="range" class="crop-slider" id="zoomSlider" min="0.1" max="3" step="0.1" value="1">
+                                <div class="btn-group-resize">
+                                    <strong class="w-100">Quick Resize:</strong>
+                                    <button type="button" class="btn btn-outline-secondary btn-resize" data-width="800" data-height="600">800×600</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-resize" data-width="600" data-height="400">600×400</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-resize" data-width="400" data-height="300">400×300</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-resize" data-width="300" data-height="200">300×200</button>
+                                </div>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-outline-info btn-sm" id="rotateLeftBtn">
+                                        <i class="bi bi-arrow-counterclockwise"></i> Rotate Left
+                                    </button>
+                                    <button type="button" class="btn btn-outline-info btn-sm" id="rotateRightBtn">
+                                        <i class="bi bi-arrow-clockwise"></i> Rotate Right
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="resetCropBtn">
+                                        <i class="bi bi-arrow-clockwise"></i> Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <h6>Preview</h6>
+                                <div class="crop-preview">
+                                    <div id="cropPreview"></div>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="form-label">Aspect Ratio</label>
+                                    <select class="form-select form-select-sm" id="aspectRatio">
+                                        <option value="free">Free</option>
+                                        <option value="1">1:1 (Square)</option>
+                                        <option value="4/3">4:3</option>
+                                        <option value="16/9">16:9</option>
+                                        <option value="3/2">3:2</option>
+                                    </select>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="form-label">Quality</label>
+                                    <select class="form-select form-select-sm" id="imageQuality">
+                                        <option value="1.0">High (100%)</option>
+                                        <option value="0.8" selected>Good (80%)</option>
+                                        <option value="0.6">Medium (60%)</option>
+                                        <option value="0.4">Low (40%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="insertCroppedImageBtn">Insert Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Preview Modal -->
+    <div class="modal fade" id="previewBlogModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Blog Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <section class="container py-4">
+                        <h2 class="fw-bold" id="previewTitle"></h2>
+                        <p class="text-muted" id="previewDate"></p>
+                        <img id="previewImage" class="img-fluid mb-4">
+                        <div id="previewDescription"></div>
+                        <div class="mt-3">
+                            <strong>Category:</strong> <span id="previewCategory"></span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Before closing </body> tag -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Include Quill JS -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-    <!-- SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/app.js"></script>
-
+    
     <script>
-        let editQuill;
+        // ==============================================
+        // AUTHENTICATION MANAGEMENT
+        // ==============================================
+        
+        async function checkAuth() {
+            try {
+                const response = await fetch("/api/admin/check-auth", {
+                    credentials: 'include'
+                });
+                
+                if (response.status === 401 || response.status === 403) {
+                    window.location.href = "/admin/login.html";
+                    return false;
+                }
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (!data.authenticated) {
+                    window.location.href = "/admin/login.html";
+                    return false;
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('Auth check failed:', error);
+                window.location.href = "/admin/login.html";
+                return false;
+            }
+        }
+        
+        async function authFetch(url, options = {}) {
+            if (!options.credentials) {
+                options.credentials = 'include';
+            }
+            
+            const response = await fetch(url, options);
+            
+            if (response.status === 401 || response.status === 403) {
+                window.location.href = "/admin/login.html";
+                throw new Error('Authentication required');
+            }
+            
+            return response;
+        }
+        
+        // ==============================================
+        // IMAGE CROPPER & RESIZE FUNCTIONALITY
+        // ==============================================
+        
+        let cropper = null;
+        let currentQuill = null;
+        let currentCropCallback = null;
+        
+        function initImageCropper(imageSrc) {
+            const image = document.getElementById('cropperImage');
+            image.src = imageSrc;
+            
+            // Destroy previous cropper instance if exists
+            if (cropper) {
+                cropper.destroy();
+            }
+            
+            // Initialize new cropper
+            cropper = new Cropper(image, {
+                viewMode: 2,
+                dragMode: 'crop',
+                autoCropArea: 0.8,
+                restore: false,
+                guides: true,
+                center: true,
+                highlight: false,
+                cropBoxMovable: true,
+                cropBoxResizable: true,
+                toggleDragModeOnDblclick: false,
+                preview: '#cropPreview',
+                ready: function() {
+                    // Set up zoom slider
+                    const zoomSlider = document.getElementById('zoomSlider');
+                    zoomSlider.addEventListener('input', function() {
+                        cropper.zoomTo(parseFloat(this.value));
+                    });
+                    
+                    // Set up aspect ratio
+                    const aspectRatioSelect = document.getElementById('aspectRatio');
+                    aspectRatioSelect.addEventListener('change', function() {
+                        if (this.value === 'free') {
+                            cropper.setAspectRatio(NaN);
+                        } else {
+                            const ratio = eval(this.value);
+                            cropper.setAspectRatio(ratio);
+                        }
+                    });
+                    
+                    // Rotate buttons
+                    document.getElementById('rotateLeftBtn').addEventListener('click', function() {
+                        cropper.rotate(-90);
+                    });
+                    
+                    document.getElementById('rotateRightBtn').addEventListener('click', function() {
+                        cropper.rotate(90);
+                    });
+                    
+                    // Reset button
+                    document.getElementById('resetCropBtn').addEventListener('click', function() {
+                        cropper.reset();
+                        zoomSlider.value = 1;
+                    });
+                    
+                    // Quick resize buttons
+                    document.querySelectorAll('.btn-resize').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const width = parseInt(this.dataset.width);
+                            const height = parseInt(this.dataset.height);
+                            cropper.setAspectRatio(width / height);
+                        });
+                    });
+                }
+            });
+        }
+        
+        function handleImageUpload(quillInstance) {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.click();
+            
+            input.onchange = () => {
+                const file = input.files[0];
+                if (!file) return;
+                
+                if (!file.type.match('image.*')) {
+                    Swal.fire('Error', 'Please select an image file', 'error');
+                    return;
+                }
+                
+                // Check file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    Swal.fire('Error', 'Image size should be less than 10MB', 'error');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    // Store current quill instance and callback
+                    currentQuill = quillInstance;
+                    
+                    // Show crop modal
+                    const cropModal = new bootstrap.Modal(document.getElementById('imageCropModal'));
+                    cropModal.show();
+                    
+                    // Initialize cropper with the image
+                    initImageCropper(e.target.result);
+                    
+                    // Set up insert button
+                    document.getElementById('insertCroppedImageBtn').onclick = () => {
+                        if (!cropper) return;
+                        
+                        // Get crop data
+                        const canvas = cropper.getCroppedCanvas({
+                            imageSmoothingEnabled: true,
+                            imageSmoothingQuality: 'high'
+                        });
+                        
+                        // Get quality setting
+                        const quality = parseFloat(document.getElementById('imageQuality').value);
+                        
+                        // Convert to data URL
+                        const croppedDataURL = canvas.toDataURL('image/jpeg', quality);
+                        
+                        // Insert into editor
+                        const range = currentQuill.getSelection();
+                        currentQuill.insertEmbed(range.index, 'image', croppedDataURL);
+                        
+                        // Close modal
+                        cropModal.hide();
+                        
+                        // Clean up
+                        if (cropper) {
+                            cropper.destroy();
+                            cropper = null;
+                        }
+                    };
+                };
+                
+                reader.readAsDataURL(file);
+            };
+        }
+        
+        // ==============================================
+        // TABLE GENERATION & EDITOR FUNCTIONS
+        // ==============================================
+        
+        let addQuill, editQuill;
+        let currentEditor = null;
+        
+        function generateTableHTML(rows, cols, hasHeader) {
+            let html = '<table class="table table-bordered" border="1" style="width: 100%; border-collapse: collapse;">';
+            
+            if (hasHeader === 'yes') {
+                html += '<thead><tr>';
+                for (let j = 1; j <= cols; j++) {
+                    html += `<th style="border: 1px solid #000; padding: 8px; background-color: #f8f9fa;">Header ${j}</th>`;
+                }
+                html += '</tr></thead>';
+            }
+            
+            html += '<tbody>';
+            for (let i = 1; i <= rows; i++) {
+                html += '<tr>';
+                for (let j = 1; j <= cols; j++) {
+                    html += `<td style="border: 1px solid #000; padding: 8px;">Cell ${i}.${j}</td>`;
+                }
+                html += '</tr>';
+            }
+            html += '</tbody></table>';
+            return html;
+        }
 
+        function updateTablePreview() {
+            const rows = parseInt(document.getElementById('tableRows').value) || 3;
+            const cols = parseInt(document.getElementById('tableColumns').value) || 3;
+            const hasHeader = document.getElementById('tableHeader').value;
+            
+            const html = generateTableHTML(rows, cols, hasHeader);
+            document.getElementById('tablePreview').innerHTML = '<p class="small text-muted mb-2">Preview:</p>' + html;
+        }
+
+        function insertTableIntoEditor() {
+            if (!currentEditor) return;
+            
+            const rows = parseInt(document.getElementById('tableRows').value) || 3;
+            const cols = parseInt(document.getElementById('tableColumns').value) || 3;
+            const hasHeader = document.getElementById('tableHeader').value;
+            
+            const tableHTML = generateTableHTML(rows, cols, hasHeader);
+            
+            const selection = currentEditor.getSelection();
+            let index = selection ? selection.index : currentEditor.getLength();
+            
+            currentEditor.insertText(index, '\n');
+            index += 1;
+            
+            currentEditor.clipboard.dangerouslyPasteHTML(index, tableHTML);
+            currentEditor.setSelection(index + tableHTML.length + 1);
+            
+            const modal = bootstrap.Modal.getInstance(document.getElementById('tableInsertModal'));
+            if (modal) modal.hide();
+        }
+
+        function addTableButtonToQuill(quill) {
+            const toolbar = quill.getModule('toolbar');
+            const container = toolbar.container;
+            
+            const btn = document.createElement('button');
+            btn.className = 'ql-table-btn';
+            btn.innerHTML = '<i class="bi bi-table"></i>';
+            btn.title = 'Insert Table';
+            btn.type = 'button';
+            btn.onclick = (e) => {
+                e.preventDefault();
+                currentEditor = quill;
+                new bootstrap.Modal(document.getElementById('tableInsertModal')).show();
+                updateTablePreview();
+            };
+            
+            container.appendChild(btn);
+        }
+
+        function decodeHtmlEntities(str) {
+            if (!str) return '';
+            if (str.includes('&lt;table') || str.includes('&lt;p')) {
+                const txt = document.createElement("textarea");
+                txt.innerHTML = str;
+                return txt.value;
+            }
+            return str;
+        }
+
+        // ==============================================
+        // META TAGS MANAGEMENT - CORRECTED VERSION
+        // ==============================================
+        
+        function normalizeMetaButtons(container) {
+            const rows = container.querySelectorAll('.meta-row');
+
+            rows.forEach((row, index) => {
+                // Remove all existing buttons in the row
+                row.querySelectorAll('button').forEach(btn => btn.remove());
+
+                // Decide which button to add
+                if (index === rows.length - 1) {
+                    // LAST ROW → +
+                    row.insertAdjacentHTML('beforeend', `
+                        <button type="button" class="btn btn-success btn-sm add-meta">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    `);
+                } else {
+                    // OTHER ROWS → −
+                    row.insertAdjacentHTML('beforeend', `
+                        <button type="button" class="btn btn-danger btn-sm remove-meta">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                    `);
+                }
+            });
+        }
+
+        function initializeMetaHandler(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            // Clear existing event listeners by cloning
+            const newContainer = container.cloneNode(true);
+            container.parentNode.replaceChild(newContainer, container);
+
+            newContainer.addEventListener('click', (e) => {
+                // ADD
+                if (e.target.closest('.add-meta')) {
+                    const row = document.createElement('div');
+                    row.className = 'd-flex align-items-center gap-2 mb-2 meta-row';
+                    row.innerHTML = `
+                        <input type="text" name="metatag[]" class="form-control" placeholder="Meta Name">
+                        <input type="text" name="metadesc[]" class="form-control" placeholder="Meta Description">
+                    `;
+                    newContainer.appendChild(row);
+
+                    normalizeMetaButtons(newContainer);
+                }
+
+                // REMOVE
+                if (e.target.closest('.remove-meta')) {
+                    e.target.closest('.meta-row').remove();
+
+                    // Ensure at least one row exists
+                    if (newContainer.querySelectorAll('.meta-row').length === 0) {
+                        const row = document.createElement('div');
+                        row.className = 'd-flex align-items-center gap-2 mb-2 meta-row';
+                        row.innerHTML = `
+                            <input type="text" name="metatag[]" class="form-control" placeholder="Meta Name">
+                            <input type="text" name="metadesc[]" class="form-control" placeholder="Meta Description">
+                        `;
+                        newContainer.appendChild(row);
+                    }
+
+                    normalizeMetaButtons(newContainer);
+                }
+            });
+        }
+
+        // Function to load meta tags into edit modal
+        function loadMetaTagsIntoEditModal(metaTags, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            if (!metaTags || metaTags.length === 0) {
+                // Add one empty row if no meta tags
+                container.innerHTML = `
+                    <div class="d-flex align-items-center gap-2 mb-2 meta-row">
+                        <input type="text" name="metatag[]" class="form-control" placeholder="Meta Name">
+                        <input type="text" name="metadesc[]" class="form-control" placeholder="Meta Description">
+                    </div>
+                `;
+            } else {
+                // Add existing meta tags
+                metaTags.forEach((meta, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'd-flex align-items-center gap-2 mb-2 meta-row';
+                    row.innerHTML = `
+                        <input type="text" name="metatag[]" class="form-control" placeholder="Meta Name" value="${meta.meta_name || ''}">
+                        <input type="text" name="metadesc[]" class="form-control" placeholder="Meta Description" value="${meta.meta_content || ''}">
+                    `;
+                    container.appendChild(row);
+                });
+            }
+            
+            // NEW: Call normalizeMetaButtons here
+            normalizeMetaButtons(container);
+            
+            // Re-initialize the handler for this container
+            initializeMetaHandler(containerId);
+        }
+
+        // ==============================================
+        // MAIN APPLICATION INITIALIZATION
+        // ==============================================
+        
         document.addEventListener("DOMContentLoaded", async () => {
-            // ✒️ Quill Initialization for EDIT Modal
+            // FIRST: Check authentication before anything else
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) {
+                return;
+            }
+            
+            // Initialize table modal
+            ['tableRows', 'tableColumns', 'tableHeader'].forEach(id => {
+                document.getElementById(id).addEventListener('change', updateTablePreview);
+                document.getElementById(id).addEventListener('input', updateTablePreview);
+            });
+            document.getElementById('insertTableBtn').addEventListener('click', insertTableIntoEditor);
+
+            // Initialize Quill editors with custom image handler
+            const commonModules = {
+                table: true,
+                toolbar: [
+                    [{ font: [] }],
+                    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                    ["bold", "italic", "underline", "strike", "blockquote"],
+                    [{ color: [] }, { background: [] }],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                    ["link", "image"],
+                    ["clean"]
+                ]
+            };
+
+            addQuill = new Quill("#quillEditor", {
+                theme: "snow",
+                modules: commonModules
+            });
+
             editQuill = new Quill("#editQuillEditor", {
                 theme: "snow",
-                modules: {
-                    toolbar: [
-                        [{ header: [1, 2, 3,4,5,6, false] }],
-                        ["bold", "italic", "underline"],
-                        ["link", "image"],
-                        [{ list: "ordered" }, { list: "bullet" }],
-                        ["clean"]
-                    ]
-                }
+                modules: commonModules
             });
 
-            // 📷 Base64 Image Handler for EDIT Quill
-            const editToolbar = editQuill.getModule("toolbar");
-            editToolbar.addHandler("image", () => {
-                const input = document.createElement("input");
-                input.type = "file";
-                input.accept = "image/*";
-                input.click();
+            // Replace default image handler with cropping handler
+            const customImageHandler = (quillInstance) => {
+                handleImageUpload(quillInstance);
+            };
 
-                input.onchange = () => {
-                    const file = input.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                            const base64Image = reader.result;
-                            const range = editQuill.getSelection();
-                            editQuill.insertEmbed(range.index, "image", base64Image);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                };
-            });
+            // Override image handler in both editors
+            const addToolbar = addQuill.getModule('toolbar');
+            addToolbar.addHandler('image', () => customImageHandler(addQuill));
 
-            // ✒️ Quill Initialization for ADD Blog
-            const quill = new Quill("#quillEditor", {
-                theme: "snow",
-                modules: {
-                    toolbar: [
-                        [{ header: [1, 2, 3, false] }],
-                        ["bold", "italic", "underline"],
-                        ["link", "image"],
-                        [{ list: "ordered" }, { list: "bullet" }],
-                        ["clean"]
-                    ]
-                }
-            });
+            const editToolbar = editQuill.getModule('toolbar');
+            editToolbar.addHandler('image', () => customImageHandler(editQuill));
 
-            // 📷 Base64 Image Handler for ADD Quill
-            const toolbar = quill.getModule("toolbar");
-            toolbar.addHandler("image", () => {
-                const input = document.createElement("input");
-                input.type = "file";
-                input.accept = "image/*";
-                input.click();
+            addTableButtonToQuill(addQuill);
+            addTableButtonToQuill(editQuill);
 
-                input.onchange = () => {
-                    const file = input.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                            const base64Image = reader.result;
-                            const range = quill.getSelection();
-                            quill.insertEmbed(range.index, "image", base64Image);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                };
-            });
-
-            // 🌐 Select DOM Elements
+            // DOM elements
             const blogsTableBody = document.getElementById("blogsTableBody");
             const editModal = new bootstrap.Modal(document.getElementById("editBlogModal"));
             const editForm = document.getElementById("editBlogForm");
-            const editMetaContainer = document.getElementById("editMetaContainer");
-            const updateBtn = document.getElementById("updateBlogBtn");
-            const addCategorySelect = document.getElementById("addCategory");
-            const editCategorySelect = document.getElementById("editCategory");
             const addBlogForm = document.getElementById("addBlogForm");
             const logoutBtn = document.getElementById("logoutBtn");
 
-            // 📦 Load Categories
+            // Initialize meta handlers for both modals
+            initializeMetaHandler("metaContainer");
+
+            // Load categories
             async function loadCategories(selectEl) {
                 try {
-                    const res = await fetch("/api/blogs?type=category");
+                    const res = await authFetch("/api/blogs?type=category");
                     const data = await res.json();
-                    selectEl.innerHTML = "";
+                    selectEl.innerHTML = '<option disabled selected>Select Category</option>';
                     if (data.success) {
-                        const defaultOption = document.createElement("option");
-                        defaultOption.textContent = "Select Category";
-                        defaultOption.disabled = true;
-                        defaultOption.selected = true;
-                        selectEl.appendChild(defaultOption);
-
-                        data.categories.forEach((cat) => {
-                            const option = document.createElement("option");
-                            option.value = cat.id;
-                            option.textContent = cat.name;
-                            selectEl.appendChild(option);
+                        data.categories.forEach(cat => {
+                            selectEl.innerHTML += `<option value="${cat.id}">${cat.name}</option>`;
                         });
                     }
-                } catch (err) {
-                    Swal.fire("Error", "Failed to load categories", "error");
-                    console.error(err);
+                } catch(e) { 
+                    console.error("Failed to load categories:", e);
                 }
             }
 
-            // 📰 Load Blogs into Table
+            // Load blogs
             async function loadBlogs() {
                 try {
-                    const res = await fetch("/api/blogs?type=blogs");
+                    const res = await authFetch("/api/blogs?type=blogs");
                     const data = await res.json();
                     blogsTableBody.innerHTML = "";
                     if (data.success) {
                         data.blogs.forEach((blog, index) => {
-                            const row = document.createElement("tr");
-                            row.innerHTML = `
-<td>${index + 1}</td>
-<td>${blog.title}</td>
-<td>${blog.category_name || "N/A"}</td>
-<td><img src="${blog.image}" width="60"></td>
-<td><span class="badge bg-success">Active</span></td>
-<td>
-    <button class="btn btn-warning btn-sm edit-btn" data-id="${blog.id}">Edit</button>
-    <button class="btn btn-danger btn-sm delete-btn" data-id="${blog.id}">Delete</button>
-</td>`;
-                            blogsTableBody.appendChild(row);
+                            blogsTableBody.innerHTML += `
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td>${blog.title}</td>
+                                    <td>${blog.category_name || "N/A"}</td>
+                                    <td><img src="${blog.image}" width="60"></td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm edit-btn" data-id="${blog.id}">Edit</button>
+                                        <button class="btn btn-danger btn-sm delete-btn" data-id="${blog.id}">Delete</button>
+                                    </td>
+                                </tr>`;
                         });
                     }
-                } catch (err) {
-                    Swal.fire("Error", "Failed to load blogs", "error");
-                    console.error(err);
+                } catch(e) { 
+                    console.error("Failed to load blogs:", e);
                 }
             }
 
-            // ➕ Submit New Blog
+            // Add blog form submit
             addBlogForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
+                document.getElementById("hiddenDescription").value = addQuill.getSemanticHTML();
+                const formData = new FormData(addBlogForm);
                 try {
-                    document.getElementById("hiddenDescription").value = quill.root.innerHTML;
-                    const formData = new FormData(addBlogForm);
-                    const res = await fetch("/api/blogs?type=blogs", { method: "POST", body: formData });
+                    const res = await authFetch("/api/blogs?type=blogs", { 
+                        method: "POST", 
+                        body: formData
+                    });
                     const result = await res.json();
                     if (result.success) {
-                        await Swal.fire("Success", "Blog added successfully!", "success");
-                        location.reload();
+                        Swal.fire("Success", "Blog added successfully!", "success").then(() => {
+                            location.reload();
+                        });
                     } else {
-                        Swal.fire("Error", "Failed to add blog: " + (result.message || "Unknown error"), "error");
+                        Swal.fire("Error", result.message || "Failed to add blog", "error");
                     }
-                } catch (err) {
-                    Swal.fire("Error", "Server error while submitting blog!", "error");
-                    console.error(err);
+                } catch(err) { 
+                    console.error("Add blog error:", err);
+                    Swal.fire("Error", "Failed to add blog", "error");
                 }
             });
 
-          // 📝 Handle Edit and Delete Buttons
-blogsTableBody.addEventListener("click", async (e) => {
-    const target = e.target;
-
-    // ✏️ EDIT Button Click
-    if (target.classList.contains("edit-btn")) {
-        const blogId = target.dataset.id;
-
-        try {
-            const res = await fetch(`/api/blogs?type=blogs&id=${blogId}`);
-            const data = await res.json();
-
-            if (data.success) {
-                const blog = data.blog;
-
-                await loadCategories(editCategorySelect);
-
-                document.getElementById("editBlogId").value = blog.id;
-                document.getElementById("editTitle").value = blog.title;
-                document.getElementById("editSlug").value = blog.slug;
-
-                try {
-                    document.getElementById("editDate").value = (blog.date || "").split("T")[0] || "";
-                } catch (err) {
-                    document.getElementById("editDate").value = "";
+            // Edit and delete handlers
+            blogsTableBody.addEventListener("click", async (e) => {
+                if (e.target.classList.contains("edit-btn")) {
+                    const id = e.target.dataset.id;
+                    try {
+                        const res = await authFetch(`/api/blogs?type=blogs&id=${id}`);
+                        const data = await res.json();
+                        if (data.success) {
+                            const b = data.blog;
+                            await loadCategories(document.getElementById("editCategory"));
+                            
+                            document.getElementById("editBlogId").value = b.id;
+                            document.getElementById("editTitle").value = b.title;
+                            document.getElementById("editSlug").value = b.slug;
+                            document.getElementById("editCategory").value = b.category_id;
+                            try { 
+                                document.getElementById("editDate").value = b.date.split("T")[0]; 
+                            } catch(e){}
+                            document.getElementById("editPreviewImage").src = b.image;
+                            
+                            const cleanHtml = decodeHtmlEntities(b.description || '');
+                            editQuill.clipboard.dangerouslyPasteHTML(cleanHtml);
+                            
+                            // Load meta tags into edit modal
+                            loadMetaTagsIntoEditModal(b.meta || [], "editMetaContainer");
+                            
+                            editModal.show();
+                        }
+                    } catch (error) {
+                        console.error("Failed to load blog for edit:", error);
+                    }
                 }
-
-                editCategorySelect.value = blog.category_id;
-
-                const delta = editQuill.clipboard.convert(blog.description || "");
-                editQuill.setContents(delta, 'silent');
-
-                const previewImg = document.getElementById("editPreviewImage");
-                previewImg.src = blog.image;
-
-                editMetaContainer.innerHTML = "";
-                if (Array.isArray(blog.meta)) {
-                    blog.meta.forEach((meta) => {
-                        const div = document.createElement("div");
-                        div.className = "d-flex gap-2 mb-2";
-                        div.innerHTML = `
-<input type="text" name="metatag[]" value="${meta.meta_name}" class="form-control">
-<input type="text" name="metadesc[]" value="${meta.meta_content}" class="form-control">`;
-                        editMetaContainer.appendChild(div);
+                
+                if (e.target.classList.contains("delete-btn")) {
+                    const blogId = e.target.dataset.id;
+                    Swal.fire({ 
+                        title: "Are you sure?", 
+                        text: "This action cannot be undone!",
+                        icon: "warning",
+                        showCancelButton: true, 
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "Cancel"
+                    }).then(async (result) => {
+                        if (result.isConfirmed) {
+                            try {
+                                await authFetch(`/api/blogs?type=blogs&id=${blogId}`, { 
+                                    method: "DELETE" 
+                                });
+                                Swal.fire("Deleted!", "Blog has been deleted.", "success");
+                                loadBlogs();
+                            } catch (error) {
+                                Swal.fire("Error", "Failed to delete blog", "error");
+                            }
+                        }
                     });
                 }
+            });
 
-                editModal.show();
-            } else {
-                Swal.fire("Error", "Failed to fetch blog details.", "error");
-            }
-        } catch (err) {
-            console.error(err);
-            Swal.fire("Error", "Failed to fetch blog details (see console).", "error");
-        }
-    }
-
-    // 🗑️ DELETE Button Click
-    if (target.classList.contains("delete-btn")) {
-        const blogId = target.dataset.id;
-        const result = await Swal.fire({
-            title: "Are you sure?",
-            text: "Do you want to delete this blog?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "Cancel",
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6"
-        });
-        if (result.isConfirmed) {
-            try {
-                const res = await fetch(`/api/blogs?type=blogs&id=${blogId}`, { method: "DELETE" });
-                const resultJson = await res.json();
-                if (resultJson.success) {
-                    Swal.fire("Deleted!", "Blog deleted successfully", "success");
-                    loadBlogs();
-                } else {
-                    Swal.fire("Error", "Delete failed", "error");
-                }
-            } catch (err) {
-                console.error(err);
-                Swal.fire("Error", "Something went wrong", "error");
-            }
-        }
-    }
-});
-
-// 🔄 For Updating Blog
-updateBtn.addEventListener("click", async () => {
-    document.getElementById("editHiddenDescription").value = editQuill.root.innerHTML;
-    const formData = new FormData(editForm);
-
-    const blogIdFromInput = document.getElementById("editBlogId").value;
-
-    try {
-        const res = await fetch(`/api/blogs?type=blogs&id=${blogIdFromInput}`, {
-            method: "PUT",
-            body: formData,
-        });
-
-        const result = await res.json();
-
-        if (result.success) {
-            await Swal.fire("Success", "Blog updated!", "success");
-            editModal.hide();
-            loadBlogs();
-        } else {
-            Swal.fire("Error", "Update failed", "error");
-        }
-    } catch (err) {
-        console.error(err);
-        Swal.fire("Error", "Something went wrong while updating", "error");
-    }
-});
-
-            // ✅ Logout
-            logoutBtn.addEventListener("click", async (e) => {
-                e.preventDefault();
+            // Update blog
+            document.getElementById("updateBlogBtn").addEventListener("click", async () => {
+                document.getElementById("editHiddenDescription").value = editQuill.getSemanticHTML();
+                const fd = new FormData(editForm);
+                const blogId = document.getElementById("editBlogId").value;
+                
                 try {
-                    const res = await fetch("/api/admin/logout", { method: "POST" });
-                    const result = await res.json();
-                    if (result.success) {
-                        window.location.replace("/admin/login.html");
-                    } else {
-                        Swal.fire("Error", "Logout failed!", "error");
-                    }
-                } catch (err) {
-                    Swal.fire("Error", "Logout failed: " + err.message, "error");
-                    console.error(err);
+                    await authFetch(`/api/blogs?type=blogs&id=${blogId}`, { 
+                        method: "PUT", 
+                        body: fd 
+                    });
+                    editModal.hide();
+                    loadBlogs();
+                    Swal.fire("Success", "Blog updated successfully", "success");
+                } catch (error) {
+                    Swal.fire("Error", "Failed to update blog", "error");
                 }
             });
 
-            // ✅ Check auth
-            (async () => {
-                try {
-                    const res = await fetch('/api/admin/check-auth');
-                    const data = await res.json();
-                    if (!data.authenticated) {
-                        window.location.replace('/admin/login.html');
-                    }
-                } catch (err) {
-                    Swal.fire("Error", "Auth check failed", "error");
-                    console.error(err);
+            // Preview functionality
+            const previewModal = new bootstrap.Modal(document.getElementById("previewBlogModal"));
+            const showPreview = (data) => {
+                document.getElementById("previewTitle").innerText = data.title;
+                document.getElementById("previewDate").innerText = data.date;
+                document.getElementById("previewCategory").innerText = data.cat;
+                const img = document.getElementById("previewImage");
+                if (data.file) {
+                    img.src = URL.createObjectURL(data.file);
+                    img.style.display = 'block';
+                } else if (data.url) {
+                    img.src = data.url;
+                    img.style.display = 'block';
+                } else {
+                    img.style.display = 'none';
                 }
-            })();
+                
+                document.getElementById("previewDescription").innerHTML = data.desc;
+                previewModal.show();
+            };
 
-            // Initial load
-            await loadCategories(addCategorySelect);
-            loadBlogs();
+            document.getElementById("previewAddBtn").addEventListener("click", () => {
+                showPreview({
+                    title: document.querySelector("#addBlogForm [name=title]").value,
+                    date: document.querySelector("#addBlogForm [name=date]").value,
+                    cat: document.getElementById("addCategory").selectedOptions[0]?.text || 'Not selected',
+                    file: document.querySelector("#addBlogForm [name=image]").files[0],
+                    desc: addQuill.getSemanticHTML()
+                });
+            });
+            
+            document.getElementById("previewEditBtn").addEventListener("click", () => {
+                showPreview({
+                    title: document.getElementById("editTitle").value,
+                    date: document.getElementById("editDate").value,
+                    cat: document.getElementById("editCategory").selectedOptions[0]?.text || 'Not selected',
+                    file: document.getElementById("editImage").files[0],
+                    url: document.getElementById("editPreviewImage").src || '',
+                    desc: editQuill.getSemanticHTML()
+                });
+            });
+
+            // Logout handler
+            logoutBtn.addEventListener("click", async (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You will be logged out of the system.",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, log out",
+                    cancelButtonText: "Cancel"
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+                        try {
+                            const res = await authFetch("/api/admin/logout", { 
+                                method: "POST" 
+                            });
+                            const result = await res.json();
+                            if (result.success) {
+                                window.location.href = "/admin/login.html";
+                            } else {
+                                Swal.fire("Error", result.message || "Logout failed!", "error");
+                            }
+                        } catch (err) {
+                            console.error("Logout error:", err);
+                            window.location.href = "/admin/login.html";
+                        }
+                    }
+                });
+            });
+
+            // Initial data load
+            await loadCategories(document.getElementById("addCategory"));
+            await loadBlogs();
+            updateTablePreview();
         });
+
+        // Title input and slug generation
+        document.addEventListener("DOMContentLoaded", () => {
+            const titleInput = document.querySelector('#addBlogForm input[name="title"]');
+            const slugInput  = document.querySelector('#addBlogForm input[name="slug"]');
+
+            function generateSlug(text) {
+                return text
+                    .toLowerCase()
+                    .trim()
+                    .replace(/[^a-z0-9\s-]/g, '')   // remove special chars
+                    .replace(/\s+/g, '-')           // spaces to dash
+                    .replace(/-+/g, '-');           // avoid double dash
+            }
+
+            function generateSuffix() {
+                // simple client-side counter (01, 02, 03)
+                // replace with API call later if you need uniqueness
+                return "01";
+            }
+
+            titleInput.addEventListener("input", () => {
+                if (!titleInput.value) {
+                    slugInput.value = "";
+                    return;
+                }
+
+                const baseSlug = generateSlug(titleInput.value);
+                const suffix   = generateSuffix();
+
+                slugInput.value = `${baseSlug}-${suffix}`;
+            });
+        });
+// 🔹 Logout Button
+		document.getElementById("logoutBtn").addEventListener("click", async (e) => {
+			e.preventDefault();
+			try {
+				const res = await fetch("/api/admin/logout", { method: "POST" });
+				const result = await res.json();
+				if (result.success) {
+					window.location.replace("/admin/login.html");
+				} else {
+					alert("Logout failed!");
+				}
+			} catch (err) {
+				console.error("Logout error:", err);
+				alert("Logout failed: " + err.message);
+			}
+		});
+		
+        // Title validation (letters only)
+        document.addEventListener("DOMContentLoaded", () => {
+            const titleInput = document.querySelector('#addBlogForm input[name="title"]');
+
+            titleInput.addEventListener("input", (e) => {
+                // Remove everything except letters and spaces
+                const cleanValue = e.target.value.replace(/[^A-Za-z ]/g, "");
+                
+                if (e.target.value !== cleanValue) {
+                    e.target.value = cleanValue;
+                }
+            });
+        });
+
+        // Page authentication check on back/forward
+        (function () {
+            function checkAuthOnRestore() {
+                fetch("/api/admin/check-auth", { credentials: "include" })
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.authenticated) {
+                        window.location.replace("/admin/login.html");
+                    }
+                })
+                .catch(() => {
+                    window.location.replace("/admin/login.html");
+                });
+            }
+
+            // Normal load
+            document.addEventListener("DOMContentLoaded", checkAuthOnRestore);
+
+            // 🔥 Back/Forward cache restore
+            window.addEventListener("pageshow", function (event) {
+                if (event.persisted) {
+                    checkAuthOnRestore();
+                }
+            });
+        })();
+
     </script>
-
-
-
 </body>
-
 </html>

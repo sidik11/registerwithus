@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React from 'react';
 import Hero3 from '../components/Home/Hero3';
 import Counter from '../components/Home/Counter';
 import Clients from '../components/Home/Clients';
@@ -11,39 +11,43 @@ import WhyChooseUs from '../components/Home/WhyChooseUs';
 import Card from '../components/Home/Card';
 import Faq from '../components/Faq/Faq';
 import Footer from '../components/Common/Footer';
+import { Helmet } from 'react-helmet';
+import useSeo from '../components/hooks/useSeo';
+
 const HomePage = () => {
-  useEffect(() => {
-    // ✅ Set page title
-    document.title = "Start Your Business Legally in India | Trusted Compliance Partner";
-    // ✅ Set meta description
-    const metaDescription = document.querySelector("meta[name='description']");
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "Start your business legally in India with expert-backed registration, government-recognized documentation, and fast compliance services from India's trusted partner."
-      );
-    } else {
-      const desc = document.createElement("meta");
-      desc.name = "description";
-      desc.content = "Start your business legally in India with expert-backed registration, government-recognized documentation, and fast compliance services from India's trusted partner.";
-      document.head.appendChild(desc);
-    }
-    // ✅ Set meta keywords
-    const metaKeywords = document.querySelector("meta[name='keywords']");
-    if (metaKeywords) {
-      metaKeywords.setAttribute(
-        "content",
-        "business registration, company incorporation, startup India, legal compliance, company formation, gst registration, msme registration"
-      );
-    } else {
-      const keywords = document.createElement("meta");
-      keywords.name = "keywords";
-      keywords.content = "business registration, company incorporation, startup India, legal compliance, company formation, gst registration, msme registration";
-      document.head.appendChild(keywords);
-    }
-  }, []);
+  const seo = useSeo("home");
+
   return (
     <>
+
+     <Helmet>
+        {seo.title && <title>{seo.title}</title>}
+        {seo.description && (
+          console.log("SEO Description:", seo.description),
+          
+          <meta name="description" key="description" content={seo.description} />
+        )}
+        {seo.keywords && (
+          <meta name="keywords" key="keywords" content={seo.keywords} />
+        )}
+        {seo.author && (
+          <meta name="author" key="author" content={seo.author} />
+        )}
+        {seo.robots && (
+          <meta name="robots" key="robots" content={seo.robots} />
+        )}
+        {seo.canonical && (
+          <link rel="canonical" key="canonical" href={seo.canonical} />
+        )}
+
+        {/* Open Graph */}
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:type" content="website" />
+        {seo.canonical && (
+          <meta property="og:url" content={seo.canonical} />
+        )}
+      </Helmet>
       <Hero3 />
       <Counter />
       <Clients />

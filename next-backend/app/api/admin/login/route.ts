@@ -14,21 +14,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Fetch admin by email
+    // 🔍 Fetch admin
     const [rows] = await db.query(
       "SELECT * FROM admin WHERE email = ? AND status = 1",
       [email]
     );
+
     const admin = (rows as any[])[0];
 
     if (!admin) {
       return NextResponse.json(
-        { success: false, message: "Invalid credentials or inactive account" },
+        { success: false, message: "Invalid credentials" },
         { status: 401 }
       );
     }
 
-    // Compare password
+    // 🔐 Password check
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) {
       return NextResponse.json(
@@ -37,7 +38,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ✅ Generate JWT tokens
+    // 🔑 GENERATE TOKENS (THIS WAS MISSING)
     const accessToken = jwt.sign(
       { id: admin.id, email: admin.email },
       process.env.JWT_SECRET!,
@@ -50,27 +51,32 @@ export async function POST(req: NextRequest) {
       { expiresIn: "7d" }
     );
 
-    // ✅ Set cookies
+    // ✅ Response
     const res = NextResponse.json({
       success: true,
-      message: "JWT Generated Successfully",
-      accessToken, // 👈 send access token for alert
+      message: "Login successful",
     });
 
+    // 🍪 Cookies (DEV-SAFE)
     res.cookies.set("access_token", accessToken, {
       httpOnly: true,
       path: "/",
-      maxAge: 60 * 15, // 15 min
+      sameSite: "lax",
+      secure: false,
+      maxAge: 60 * 15,
     });
 
     res.cookies.set("refresh_token", refreshToken, {
       httpOnly: true,
       path: "/",
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      sameSite: "lax",
+      secure: false,
+      maxAge: 60 * 60 * 24 * 7,
     });
 
     return res;
   } catch (err) {
+    console.error("LOGIN ERROR:", err);
     return NextResponse.json(
       { success: false, message: "Server error" },
       { status: 500 }

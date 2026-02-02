@@ -1,42 +1,42 @@
-import { useEffect } from 'react';
 import Bloghead from '../components/Blogs/Bloghead';
 import Blogmain from '../components/Blogs/Blogmain';
 import Footer from '../components/Common/Footer';
+import { Helmet } from 'react-helmet';
+import useSeo from '../components/hooks/useSeo';
+
 const BlogPage = () => {
-  useEffect(() => {
-    // ✅ Set page title
-    document.title = "Blogs | Business Tips, Compliance Updates & Startup Guides";
-    // ✅ Set meta description
-    const metaDescription = document.querySelector("meta[name='description']");
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "Explore our latest blogs covering business registration, GST, compliance tips, startup advice, and more to help you grow your business legally and efficiently."
-      );
-    } else {
-      const desc = document.createElement("meta");
-      desc.name = "description";
-      desc.content =
-        "Explore our latest blogs covering business registration, GST, compliance tips, startup advice, and more to help you grow your business legally and efficiently.";
-      document.head.appendChild(desc);
-    }
-    // ✅ Set meta keywords
-    const metaKeywords = document.querySelector("meta[name='keywords']");
-    if (metaKeywords) {
-      metaKeywords.setAttribute(
-        "content",
-        "business blogs, startup tips, company registration, compliance updates, GST, MSME, legal services"
-      );
-    } else {
-      const keywords = document.createElement("meta");
-      keywords.name = "keywords";
-      keywords.content =
-        "business blogs, startup tips, company registration, compliance updates, GST, MSME, legal services";
-      document.head.appendChild(keywords);
-    }
-  }, []);
+  const seo = useSeo("blog");
+
   return (
     <>
+    <Helmet>
+            {seo.title && <title>{seo.title}</title>}
+            {seo.description && (
+              console.log("SEO Description:", seo.description),
+              
+              <meta name="description" key="description" content={seo.description} />
+            )}
+            {seo.keywords && (
+              <meta name="keywords" key="keywords" content={seo.keywords} />
+            )}
+            {seo.author && (
+              <meta name="author" key="author" content={seo.author} />
+            )}
+            {seo.robots && (
+              <meta name="robots" key="robots" content={seo.robots} />
+            )}
+            {seo.canonical && (
+              <link rel="canonical" key="canonical" href={seo.canonical} />
+            )}
+    
+            {/* Open Graph */}
+            <meta property="og:title" content={seo.title} />
+            <meta property="og:description" content={seo.description} />
+            <meta property="og:type" content="website" />
+            {seo.canonical && (
+              <meta property="og:url" content={seo.canonical} />
+            )}
+          </Helmet>
       <Bloghead />
       <Blogmain />
       <Footer />
