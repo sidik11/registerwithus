@@ -328,3 +328,22 @@
     background-color: #0056b3;
     transform: translateY(-1px);
   }
+  /* Fix for modal links to replace <a href="#"> without changing UI */
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit; /* match surrounding font */
+  display: block; /* keep same block behavior as <a> in mega menu */
+  text-decoration: none; /* remove underline */
+  transition: all 0.2s ease-in-out; /* same hover effect as links */
+}
+
+.link-button:hover {
+  background-color: #e6ebff; /* same hover as mega-list li a */
+  color: #0A0A83;
+}

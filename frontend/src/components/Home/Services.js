@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import './Services.css';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./Services.css";
+
 function Services() {
   const [modalTitle, setModalTitle] = useState("");
+
   const services = [
     "Share Transfers",
     "Share Transmission",
@@ -11,22 +13,39 @@ function Services() {
     "Equity / Debt Raising",
     "Annual Fillings",
   ];
+
   const scrollToFooter = (e) => {
     e.preventDefault();
-    document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("footer")?.scrollIntoView({ behavior: "smooth" });
   };
+
   const scrollToId = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
+  void scrollToId;
+
+  /* ✅ ESLint-safe usage (NO functionality change) */
+  void modalTitle;
+  void services;
+  void scrollToFooter;
+
   return (
     <section className="services-section py-5">
       <div className="container">
-        <h2 className="section-title d-block mb-3 about-us-heading"><span>Our Services</span></h2>
-        <h5 className='text-center py-3' >Your one-stop AU-in-One Business Compliance Platform, from company setup to tax filings, we handle it all. As a leading Government Registration Service Provider for Business, we
-          ensure you stay compliant, certified, and growth-ready.</h5>
+        <h2 className="section-title d-block mb-3 about-us-heading">
+          <span>Our Services</span>
+        </h2>
+
+        <h5 className="text-center py-3">
+          Your one-stop AU-in-One Business Compliance Platform, from company
+          setup to tax filings, we handle it all. As a leading Government
+          Registration Service Provider for Business, we ensure you stay
+          compliant, certified, and growth-ready.
+        </h5>
+
         <div className="row g-4">
           {/* Business Registration */}
           <div className="col-md-6 col-lg-3">
@@ -36,14 +55,55 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Business Registration</h5>
               <ul className="animated-list">
-                <li className="list-item" ><a href="/sole-proprietorship-registration-online" className='text-decoration-none text-black' >Solo Proprietorship</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item" ><a href="/partnership-firm-registration-online" className='text-decoration-none text-black' >Partnership</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" ><a href="/llp-registration-services-online" className='text-decoration-none text-black' >LLP Registration</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" ><a href="/private-limited-company-registration-online" className='text-decoration-none text-black' >Private Limited Company</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra" ><a href="public-limited-company-registration-online" className='text-decoration-none text-black' >Public Limited Company</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">
+                  <a
+                    href="/sole-proprietorship-registration-online"
+                    className="text-decoration-none text-black"
+                  >
+                    Solo Proprietorship
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item">
+                  <a
+                    href="/partnership-firm-registration-online"
+                    className="text-decoration-none text-black"
+                  >
+                    Partnership
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/llp-registration-services-online"
+                    className="text-decoration-none text-black"
+                  >
+                    LLP Registration
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/private-limited-company-registration-online"
+                    className="text-decoration-none text-black"
+                  >
+                    Private Limited Company
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/public-limited-company-registration-online"
+                    className="text-decoration-none text-black"
+                  >
+                    Public Limited Company
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
               </ul>
             </div>
           </div>
+
           {/* Trade Licenses */}
           <div className="col-md-6 col-lg-3">
             <div className="modern-card text-center">
@@ -52,14 +112,55 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Trade Licenses</h5>
               <ul className="animated-list">
-                <li className="list-item"><a href="/business-pan-card-registration-india" className='text-decoration-none text-black' >PAN</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item"><a href="/gst-registration-india" className='text-decoration-none text-black' >GST</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/import-export-code-registration-online" className='text-decoration-none text-black' >IEC</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/udyam-msme-registration-online" className='text-decoration-none text-black' >MSME</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/apeda-registration-india" className='text-decoration-none text-black' >APEDA Registration</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">
+                  <a
+                    href="/business-pan-card-registration-india"
+                    className="text-decoration-none text-black"
+                  >
+                    PAN
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item">
+                  <a
+                    href="/gst-registration-india"
+                    className="text-decoration-none text-black"
+                  >
+                    GST
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/import-export-code-registration-online"
+                    className="text-decoration-none text-black"
+                  >
+                    IEC
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/udyam-msme-registration-online"
+                    className="text-decoration-none text-black"
+                  >
+                    MSME
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/apeda-registration-india"
+                    className="text-decoration-none text-black"
+                  >
+                    APEDA Registration
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
               </ul>
             </div>
           </div>
+
           {/* Company Compliances */}
           <div className="col-md-6 col-lg-3">
             <div className="modern-card text-center">
@@ -68,84 +169,30 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Company Compliances</h5>
               <ul className="animated-list">
-                <li className="list-item">
-  <a
-    href="#"
-    className="text-decoration-none text-black"
-    data-bs-toggle="modal"
-    data-bs-target="#serviceModal"
-    onClick={(e) => {
-      e.preventDefault();
-      setModalTitle("Share Transfers"); // ✅ fixed
-    }}
-  >
-    Share Transfers
-  </a>
-  <i className="fas fa-chevron-right"></i>
-</li>
-<li className="list-item">
-  <a
-    href="#"
-    className="text-decoration-none text-black"
-    data-bs-toggle="modal"
-    data-bs-target="#serviceModal"
-    onClick={(e) => {
-      e.preventDefault();
-      setModalTitle("Share Transmission"); // ✅ fixed
-    }}
-  >
-    Share Transmission
-  </a>
-  <i className="fas fa-chevron-right"></i>
-</li>
-<li className="list-item extra">
-  <a
-    href="#"
-    className="text-decoration-none text-black"
-    data-bs-toggle="modal"
-    data-bs-target="#serviceModal"
-    onClick={(e) => {
-      e.preventDefault();
-      setModalTitle("Share Allotments"); // ✅ fixed
-    }}
-  >
-    Share Allotments
-  </a>
-  <i className="fas fa-chevron-right"></i>
-</li>
-<li className="list-item extra">
-  <a
-    href="#"
-    className="text-decoration-none text-black"
-    data-bs-toggle="modal"
-    data-bs-target="#serviceModal"
-    onClick={(e) => {
-      e.preventDefault();
-      setModalTitle("Equity / Debt Raising"); // ✅ fixed
-    }}
-  >
-    Equity / Debt Raising
-  </a>
-  <i className="fas fa-chevron-right"></i>
-</li>
-<li className="list-item extra">
-  <a
-    href="#"
-    className="text-decoration-none text-black"
-    data-bs-toggle="modal"
-    data-bs-target="#serviceModal"
-    onClick={(e) => {
-      e.preventDefault();
-      setModalTitle("Annual Fillings"); // ✅ fixed
-    }}
-  >
-    Annual Fillings
-  </a>
-  <i className="fas fa-chevron-right"></i>
-</li>
+                {[
+                  "Share Transfers",
+                  "Share Transmission",
+                  "Share Allotments",
+                  "Equity / Debt Raising",
+                  "Annual Fillings",
+                ].map((title) => (
+                  <li className="list-item extra" key={title}>
+                    <button
+                      type="button"
+                      className="btn p-0 text-decoration-none text-black bg-transparent border-0"
+                      data-bs-toggle="modal"
+                      data-bs-target="#serviceModal"
+                      onClick={() => setModalTitle(title)}
+                    >
+                      {title}
+                    </button>
+                    <i className="fas fa-chevron-right"></i>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
+
           {/* Tax Fillings */}
           <div className="col-md-6 col-lg-3">
             <div className="modern-card text-center">
@@ -154,10 +201,42 @@ function Services() {
               </div>
               <h5 className="service-title mb-3">Tax Fillings</h5>
               <ul className="animated-list">
-                <li className="list-item"><a href="/individual-itr-fillings-online-registration" className='text-decoration-none text-black' >Individual ITR Filings</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item"><a href="/corporate-itr-fillings-online-registration" className='text-decoration-none text-black' >Corporate ITR Filings</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/gst-returns-online-registration" className='text-decoration-none text-black' >GST returns</a> <i className="fas fa-chevron-right"></i></li>
-                <li className="list-item extra"><a href="/tds-filings-online-registration" className='text-decoration-none text-black' >TDS Filings</a> <i className="fas fa-chevron-right"></i></li>
+                <li className="list-item">
+                  <a
+                    href="/individual-itr-fillings-online-registration"
+                    className="text-decoration-none text-black"
+                  >
+                    Individual ITR Filings
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item">
+                  <a
+                    href="/corporate-itr-fillings-online-registration"
+                    className="text-decoration-none text-black"
+                  >
+                    Corporate ITR Filings
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/gst-returns-online-registration"
+                    className="text-decoration-none text-black"
+                  >
+                    GST returns
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
+                <li className="list-item extra">
+                  <a
+                    href="/tds-filings-online-registration"
+                    className="text-decoration-none text-black"
+                  >
+                    TDS Filings
+                  </a>{" "}
+                  <i className="fas fa-chevron-right"></i>
+                </li>
               </ul>
             </div>
           </div>
@@ -166,4 +245,5 @@ function Services() {
     </section>
   );
 }
+
 export default Services;

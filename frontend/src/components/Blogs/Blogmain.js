@@ -10,6 +10,7 @@ function Blogmain() {
   const [blogs, setBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     // Fetch all blogs
@@ -29,28 +30,55 @@ function Blogmain() {
       .catch(err => console.error("Categories API error:", err));
   }, []);
 
-  // Filter blogs by title or category
-  const filteredBlogs = blogs.filter(blog =>
-    blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    blog.category_name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filter blogs by search + category
+  const filteredBlogs = blogs.filter(blog => {
+    const matchesSearch =
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      blog.category_name?.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesCategory =
+      !selectedCategory || blog.category_name === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <section className="blogs-section py-5">
       <div className="container">
-        <h2 className="text-center mb-4 fw-bold theme-color">Blogs & Theories</h2>
+        <h2 className="text-center mb-4 fw-bold theme-color">
+          Blogs & Theories
+        </h2>
 
         {/* Search */}
-        <div className="d-flex justify-content-center mb-4">
+        <div className="d-flex justify-content-center mb-3">
           <div className="search-container w-100" style={{ maxWidth: "400px" }}>
-            <span className="icon"><i className="fa fa-search"></i></span>
+            <span className="icon">
+              <i className="fa fa-search"></i>
+            </span>
             <input
               type="text"
               placeholder="Search blogs..."
               value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+        </div>
+
+        {/* Category Filter */}
+        <div className="d-flex justify-content-center mb-4">
+          <select
+            className="form-select w-100"
+            style={{ maxWidth: "400px" }}
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            {categories.map((cat, index) => (
+              <option key={index} value={cat.name}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Blog Cards */}
@@ -64,19 +92,34 @@ function Blogmain() {
                     className="card-img-top"
                     alt={blog.title}
                   />
+
                   <div className="card-body">
-                    <div className="category mb-1">{blog.category_name}</div>
+                    <div className="category mb-1">
+                      {blog.category_name}
+                    </div>
+
                     <h5 className="card-title">
-                      <Link to={`/blogdetails/${blog.slug}`} className="text-dark text-decoration-none">
+                      <Link
+                        to={`/blogdetails/${blog.slug}`}
+                        className="text-dark text-decoration-none"
+                      >
                         {blog.title}
                       </Link>
                     </h5>
                   </div>
+
                   <div className="card-footer bg-white border-0 d-flex align-items-center">
-                    <img src="https://i.pravatar.cc/32?img=10" alt="Author" className="author-img me-2" />
+                    <img
+                      src="https://i.pravatar.cc/32?img=10"
+                      alt="Author"
+                      className="author-img me-2"
+                    />
                     <small>
-                      Register With Us • {new Date(blog.created_at).toLocaleDateString('en-GB', {
-                        day: '2-digit', month: 'long', year: 'numeric'
+                      Register With Us •{" "}
+                      {new Date(blog.created_at).toLocaleDateString('en-GB', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric'
                       })}
                     </small>
                   </div>
@@ -90,8 +133,12 @@ function Blogmain() {
                 alt="No blogs"
                 style={{ width: '120px', opacity: 0.6 }}
               />
-              <h4 className="mt-4 text-secondary fw-semibold">No Blogs Found</h4>
-              <p className="text-muted">Try adjusting your search or check back later.</p>
+              <h4 className="mt-4 text-secondary fw-semibold">
+                No Blogs Found
+              </h4>
+              <p className="text-muted">
+                Try adjusting your search or check back later.
+              </p>
             </div>
           )}
         </div>

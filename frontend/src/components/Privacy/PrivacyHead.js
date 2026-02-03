@@ -13,7 +13,7 @@ function PrivacyHead() {
                             <p className="fs-5">
                                 RWU India Private Limited (hereinafter referred to as the “Company”) recognizes the importance of privacy as well as the importance of maintaining the confidentiality of personal information. This Privacy Policy applies to all products and services provided by the Company and sets out how the Company may collect, use and disclose information in relation to Users of the Website.
                             </p>
-                            <a href="#" className="btn cta-btn-glass">
+                            <a href="tel:+919643981247" className="btn cta-btn-glass">
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>

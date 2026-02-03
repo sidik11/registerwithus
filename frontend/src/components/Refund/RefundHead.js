@@ -13,7 +13,7 @@ function RefundHead() {
                             <p className="fs-5">
                                 We thank you and appreciate your service or product purchase with us on our Website www.registerwithus.in (hereinafter referred to as “register with us” or “RWU”). Please read this policy and RWU terms and conditions carefully as they will give you important information and guidelines about your rights and obligations as our customer, with respect to any purchase or service we provide to you.
                             </p>
-                            <a href="#" className="btn cta-btn-glass">
+                            <a  href="tel:+919643981247" className="btn cta-btn-glass">
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>

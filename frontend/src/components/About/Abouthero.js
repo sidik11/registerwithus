@@ -48,16 +48,7 @@ function Abouthero() {
             });
         }
     };
-    const scrollToFooter = (e) => {
-        e.preventDefault();
-        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
-    };
-    const scrollToId = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+   
     return (
         <section className="about-section">
             <div className="about-overlay">
@@ -71,7 +62,7 @@ function Abouthero() {
                             <p className="fs-5 mt-3">
                                 <span className='fw-bold'>Register With Us</span> is India’s go-to legal-tech hub for entrepreneurs, startups, and SMEs looking to set up and scale their businesses completely online. We cut the clutter, no repetitive office visits, no surprise or hidden charges, just simple registration and compliance handled by experts.
                             </p>
-                            <a href="#" className="btn cta-btn-glass">
+                            <a  href="tel:+919643981247" className="btn cta-btn-glass">
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>

@@ -48,16 +48,7 @@ function Bloghead() {
             });
         }
     };
-    const scrollToFooter = (e) => {
-        e.preventDefault();
-        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
-    };
-    const scrollToId = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+   
     return (
         <section className="about-section">
             <div className="about-overlay">

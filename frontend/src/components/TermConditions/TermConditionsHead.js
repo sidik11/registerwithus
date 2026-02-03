@@ -17,7 +17,7 @@ function TermConditionsHead() {
                                 (hereinafter referred to as “Register With Us” or “RWU”).
                                 Please read this policy and RWU terms and conditions carefully as they provide important information and guidelines about your rights and obligations as our customer with respect to any purchase or service we provide to you.
                             </p>
-                            <a href="#" className="btn cta-btn-glass">
+                            <a  href="tel:+919643981247" className="btn cta-btn-glass">
                                 <i className="fa-solid fa-phone me-2"></i>Call Now <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>

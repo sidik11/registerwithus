@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Swal from 'sweetalert2';
 import './Servicedetails.css';
 import tabData from './services.json';
-import { Collapse } from 'bootstrap';
+
 // ========================== Component ==========================
 function Servicedetails() {
     const location = useLocation();
@@ -279,7 +279,7 @@ function Servicedetails() {
             window.removeEventListener("scroll", handleScroll);
             pills.forEach(pill => pill.removeEventListener("click", handleTabClick));
         };
-    }, [location.pathname, location.search, serviceSlug]);
+    }, [location.pathname, location.search, serviceSlug,location.hash]);
     // Scroll tabs
     const scrollTabs = (offset) => {
         const tabList = document.querySelector('.scroll-tabs');

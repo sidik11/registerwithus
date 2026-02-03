@@ -172,7 +172,9 @@ function ChatWidget() {
               <h5 className="fw-bold mb-3">Contact Info</h5>
               <ul className="list-unstyled small">
                 <li className="mb-3">
-                  <a href="https://maps.app.goo.gl/5Bw2aZ3sX1MrEgYw7" target="_blank" className="text-white text-decoration-none">
+                  <a href="https://maps.app.goo.gl/5Bw2aZ3sX1MrEgYw7" target="_blank"  rel="noopener noreferrer"
+                  
+                  className="text-white text-decoration-none">
                     <i className="fas fa-map-marker-alt fs-5 me-2 icon-color text-white"></i> 944, Block-c, Sushant Lok Phase-1, Gurgaon, Sadar Bazar, Haryana, India, 122001
                   </a>
                 </li>
@@ -218,9 +220,9 @@ function ChatWidget() {
               </span>
             </div>
             <div className="text-start">
-              <a href="#" className="text-white me-3"><i className="fab fa-facebook-f"></i></a>
-              <a href="#" className="text-white me-3"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="text-white"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://facebook.com" className="text-white me-3"><i className="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com" className="text-white me-3"><i className="fab fa-twitter"></i></a>
+              <a href="https://linkedin.com" className="text-white"><i className="fab fa-linkedin-in"></i></a>
             </div>
           </div>
         </div>

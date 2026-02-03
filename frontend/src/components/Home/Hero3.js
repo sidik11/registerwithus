@@ -80,9 +80,9 @@ function Hero3() {
                                 <li><i className="fas fa-check-circle text-success me-2"></i> 100% online process with real expert support</li>
                             </ul>
                             <div className="btn-area my-4 d-flex align-items-center flex-wrap">
-                                <a href="#" className="btn btn-yellow" onClick={scrollToFooter}>Explore More</a>
+                                <a href="/footer" className="btn btn-yellow" onClick={scrollToFooter}>Explore More</a>
                                 <button type="button" className="btn play-btnsss ms-3">
-                                    <a href="/contact" className='text-decoration-none text-black' rel="noopener noreferrer">Start Registration</a>
+                                    <a href="/contact" className='text-decoration-none text-black' rel="noopener noreferrer"  onClick={scrollToId}>Start Registration</a>
                                 </button>
                             </div>
                         </div>
