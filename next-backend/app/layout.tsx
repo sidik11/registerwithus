@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export const metadata = {
   metadataBase: new URL("https://registerwithus.com"),
   title: {
@@ -7,7 +9,11 @@ export const metadata = {
   description: "Official Register With Us platform",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="en">
       <body>{children}</body>
