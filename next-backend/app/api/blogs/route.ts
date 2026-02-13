@@ -6,7 +6,7 @@ import path from "path";
 import fs from "fs/promises";
 import formidable from "formidable";
 import { Readable } from "stream";
-import { getPool } from "../../lib/db"; // ✅ fixed relative path
+import { getPool } from "../lib/db"; // ✅ fixed relative path
 
 export const config = { api: { bodyParser: false } };
 
