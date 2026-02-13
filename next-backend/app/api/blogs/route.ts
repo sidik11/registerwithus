@@ -1,3 +1,4 @@
+// app/api/blogs/route.ts
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
@@ -5,7 +6,7 @@ import path from "path";
 import fs from "fs/promises";
 import formidable from "formidable";
 import { Readable } from "stream";
-import { getPool } from "@/app/lib/db";
+import { getPool } from "../../lib/db"; // ✅ fixed relative path
 
 export const config = { api: { bodyParser: false } };
 
@@ -55,7 +56,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     const id = searchParams.get("id");
     const slug = searchParams.get("slug");
 
-    const pool = await getPool();
+    const pool = await getPool(); // ✅ pooled connection
 
     if (type === "category") {
       const [rows] = await pool.query("SELECT * FROM blog_categories ORDER BY id DESC");
@@ -123,7 +124,7 @@ export async function POST(req: Request): Promise<NextResponse> {
     const { searchParams } = new URL(req.url);
     const type = searchParams.get("type");
 
-    const pool = await getPool();
+    const pool = await getPool(); // ✅ pooled connection
 
     if (type === "category") {
       const { name } = await req.json();
