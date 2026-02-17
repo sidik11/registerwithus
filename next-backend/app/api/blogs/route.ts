@@ -6,7 +6,8 @@ import path from "path";
 import fs from "fs/promises";
 import formidable from "formidable";
 import { Readable } from "stream";
-import { getPool } from "../db"; 
+import { getPool } from "../db";
+import { ResultSetHeader } from "mysql2";
 
 export const config = { api: { bodyParser: false } };
 
@@ -28,15 +29,6 @@ async function saveFile(file: any): Promise<string> {
     return `/uploads/blogs/${filename}`;
   }
 
-  if (actualFile instanceof File) {
-    const buffer = Buffer.from(await actualFile.arrayBuffer());
-    const filename = Date.now() + "_" + actualFile.name;
-    const filepath = path.join(uploadDir, filename);
-    await fs.mkdir(uploadDir, { recursive: true });
-    await fs.writeFile(filepath, buffer);
-    return `/uploads/blogs/${filename}`;
-  }
-
   throw new Error("Invalid file object");
 }
 
@@ -48,7 +40,9 @@ function formatDateToYYYYMMDD(date: Date): string {
   return `${y}/${m}/${d}`;
 }
 
-// ✅ GET Blogs OR Categories
+// =======================
+// ✅ GET
+// =======================
 export async function GET(req: NextRequest): Promise<NextResponse> {
   try {
     const { searchParams } = new URL(req.url);
@@ -56,7 +50,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     const id = searchParams.get("id");
     const slug = searchParams.get("slug");
 
-    const pool = await getPool(); // ✅ pooled connection
+    const pool = await getPool();
 
     if (type === "category") {
       const [rows] = await pool.query("SELECT * FROM blog_categories ORDER BY id DESC");
@@ -69,7 +63,9 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
          FROM blogs WHERE id=?`,
         [id]
       );
-      if (!blogs.length) return NextResponse.json({ success: false, message: "Blog not found" });
+
+      if (!blogs.length)
+        return NextResponse.json({ success: false, message: "Blog not found" });
 
       const [meta]: any = await pool.query(
         `SELECT meta_name, meta_content FROM blog_meta WHERE blog_id=?`,
@@ -81,7 +77,8 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
     if (slug) {
       const [blogs]: any = await pool.query(
-        `SELECT blogs.id, blogs.title, blogs.image, blogs.category_id, blogs.description AS blogDescription,
+        `SELECT blogs.id, blogs.title, blogs.image, blogs.category_id,
+         blogs.description AS blogDescription,
          DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
          blog_categories.name AS category_name
          FROM blogs
@@ -90,7 +87,8 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         [slug]
       );
 
-      if (!blogs.length) return NextResponse.json({ success: false, message: "Blog not found" });
+      if (!blogs.length)
+        return NextResponse.json({ success: false, message: "Blog not found" });
 
       const [meta]: any = await pool.query(
         `SELECT meta_name, meta_content FROM blog_meta WHERE blog_id=?`,
@@ -101,47 +99,60 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     }
 
     const [rows]: any = await pool.query(`
-      SELECT 
-        blogs.id, blogs.title, blogs.image, blogs.category_id, 
-        blogs.description AS blogDescription,
-        DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
-        blog_categories.name AS category_name,
-        blogs.slug
+      SELECT blogs.id, blogs.title, blogs.image, blogs.category_id,
+      blogs.description AS blogDescription,
+      DATE_FORMAT(blogs.created_at, '%Y-%m-%d %H:%i:%s') as created_at,
+      blog_categories.name AS category_name,
+      blogs.slug
       FROM blogs
       LEFT JOIN blog_categories ON blogs.category_id = blog_categories.id
       ORDER BY blogs.id DESC
     `);
 
     return NextResponse.json({ success: true, blogs: rows });
+
   } catch (e: any) {
     return NextResponse.json({ success: false, message: e.message }, { status: 500 });
   }
 }
 
-// ✅ POST: Add Blog OR Category
+// =======================
+// ✅ POST
+// =======================
 export async function POST(req: Request): Promise<NextResponse> {
   try {
     const { searchParams } = new URL(req.url);
     const type = searchParams.get("type");
 
-    const pool = await getPool(); // ✅ pooled connection
+    const pool = await getPool();
 
+    // ✅ Add Category
     if (type === "category") {
       const { name } = await req.json();
+
       if (!name || !nameRegex.test(name)) {
-        return NextResponse.json({ success: false, message: "Category name must contain only letters and spaces" }, { status: 400 });
+        return NextResponse.json(
+          { success: false, message: "Category name must contain only letters and spaces" },
+          { status: 400 }
+        );
       }
+
       await pool.execute("INSERT INTO blog_categories (name) VALUES (?)", [name.trim()]);
+
       return NextResponse.json({ success: true, message: "Category added successfully" });
     }
 
+    // ✅ Blog Upload
     const data = await req.arrayBuffer();
     const buffer = Buffer.from(data);
+
     const form = formidable({ multiples: true, keepExtensions: true });
 
     const [fields, files] = await new Promise<any>((resolve, reject) => {
       form.parse(
-        Object.assign(Readable.from(buffer), { headers: Object.fromEntries(req.headers) }) as any,
+        Object.assign(Readable.from(buffer), {
+          headers: Object.fromEntries(req.headers),
+        }) as any,
         (err, f, fl) => (err ? reject(err) : resolve([f, fl]))
       );
     });
@@ -152,39 +163,55 @@ export async function POST(req: Request): Promise<NextResponse> {
     const categoryId = Number(fields.category_id?.[0] || fields.category_id);
     const dateValue = fields.date?.[0] || fields.date;
 
-    if (!title || title.length < 3) return NextResponse.json({ success: false, message: "Title must be at least 3 characters" }, { status: 400 });
-    if (!slug || !slugRegex.test(slug)) return NextResponse.json({ success: false, message: "Slug must be lowercase letters, numbers and hyphens" }, { status: 400 });
-    if (!description || description.length < 10) return NextResponse.json({ success: false, message: "Description must be at least 10 characters" }, { status: 400 });
-    if (!categoryId || isNaN(categoryId)) return NextResponse.json({ success: false, message: "Valid category ID is required" }, { status: 400 });
+    if (!title || title.length < 3)
+      return NextResponse.json({ success: false, message: "Title must be at least 3 characters" }, { status: 400 });
 
-    const formattedDate = dateValue ? formatDateToYYYYMMDD(new Date(dateValue)) : formatDateToYYYYMMDD(new Date());
+    if (!slug || !slugRegex.test(slug))
+      return NextResponse.json({ success: false, message: "Slug must be lowercase letters, numbers and hyphens" }, { status: 400 });
+
+    if (!description || description.length < 10)
+      return NextResponse.json({ success: false, message: "Description must be at least 10 characters" }, { status: 400 });
+
+    if (!categoryId || isNaN(categoryId))
+      return NextResponse.json({ success: false, message: "Valid category ID is required" }, { status: 400 });
+
+    const formattedDate = dateValue
+      ? formatDateToYYYYMMDD(new Date(dateValue))
+      : formatDateToYYYYMMDD(new Date());
+
     const imageFile = files.image;
-    if (!imageFile) return NextResponse.json({ success: false, message: "Image is required" }, { status: 400 });
+    if (!imageFile)
+      return NextResponse.json({ success: false, message: "Image is required" }, { status: 400 });
+
     const imagePath = await saveFile(imageFile);
 
-    const [blogResult] = await pool.execute(
+    // ✅ Properly Typed INSERT
+    const [blogResult] = await pool.execute<ResultSetHeader>(
       "INSERT INTO blogs (title, slug, image, date, description, category_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [title.trim(), slug.trim(), imagePath, formattedDate, description.trim(), categoryId, new Date()]
     );
 
     const blogId = blogResult.insertId;
+
     const metaNames = fields["metatag[]"] || [];
     const metaContents = fields["metadesc[]"] || [];
+
     if (Array.isArray(metaNames)) {
       for (let i = 0; i < metaNames.length; i++) {
         const name = metaNames[i];
         const content = metaContents[i] || "";
+
         if (name && name.trim()) {
-          await pool.execute("INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)", [
-            blogId,
-            name.trim(),
-            content.trim(),
-          ]);
+          await pool.execute(
+            "INSERT INTO blog_meta (blog_id, meta_name, meta_content) VALUES (?, ?, ?)",
+            [blogId, name.trim(), content.trim()]
+          );
         }
       }
     }
 
     return NextResponse.json({ success: true, message: "Blog added successfully." });
+
   } catch (e: any) {
     return NextResponse.json({ success: false, message: e.message }, { status: 500 });
   }
