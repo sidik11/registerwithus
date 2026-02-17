@@ -6,7 +6,7 @@ import path from "path";
 import fs from "fs/promises";
 import formidable from "formidable";
 import { Readable } from "stream";
-import { getPool } from "../../db"; 
+import { getPool } from "../db"; 
 
 export const config = { api: { bodyParser: false } };
 
