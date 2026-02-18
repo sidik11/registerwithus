@@ -14,7 +14,9 @@ const db = mysql.createPool({
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
   database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT || 3306,
+  port: process.env.MYSQLPORT
+    ? parseInt(process.env.MYSQLPORT, 10)
+    : 3306, // ✅ convert string to number
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
